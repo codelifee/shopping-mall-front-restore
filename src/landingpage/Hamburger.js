@@ -116,6 +116,7 @@ const Hamburger = ({ state }) => {
                    find out who we are, what we do and what we stand for..
                 </p>
               </div>
+              </div>
               <div className='locations'>
                 Furniture:
                 {/* Returning the list of cities */}
@@ -128,7 +129,7 @@ const Hamburger = ({ state }) => {
                   </span>
                 ))}
               </div>
-            </div>
+            
           </div>
         </div>
       </div>
