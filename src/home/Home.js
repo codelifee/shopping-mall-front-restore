@@ -8,7 +8,7 @@ import Product from './Product';
 import product1 from '../img/product-1.jpg'
 import product2 from '../img/product-2.jpg'
 import product3 from '../img/product-3.jpg'
-
+import axios from 'axios';
 
 
 
@@ -64,6 +64,12 @@ function Home() {
                     rating={1}
                     /> */}
                 </div>
+                {/* <button className="btn btn-primary" onClick={()=>{
+                    axios.get('요청json')
+                    .then(()=>{})//성공했을때 
+                    .catch(()=>{})//실패했을떄
+
+                }}>더보기</button> */}
         </div>
     )
 }
