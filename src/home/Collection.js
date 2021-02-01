@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import './Collection.css'
 import CollectionData from './CollectionData'
 import {Link} from 'react-router-dom';
+import Product from './Product';
 
 function Collection(){
   let [collection,collectionChange] = useState(CollectionData);
@@ -10,28 +11,46 @@ function Collection(){
          <p className="title">2021년 컬렉션을 만나보세요</p>     
         <div className="swiper_wrapper">
             <div className="slide_item">
-              <Link to="/">
-              <img src={collection[0].img}/>
-              <h4>{collection[0].title}</h4>
+          <Link to="/">
+            <Product 
+                    id={collection[0].id}
+                    title={collection[0].title}
+                    image={collection[0].img}
+                   // description="양파로 즙을 낸 것"
+                   // price={6000}
+                    /> 
               </Link>
           </div>
             <div className="slide_item">
-              <Link to="/bed">
-              <img src={collection[1].img}/>
-              <h4>{collection[1].title}</h4>
+
+            <Link to="/bed">
+            <Product 
+                    id={collection[1].id}
+                    title={collection[1].title}
+                    image={collection[1].img}
+                   // description="양파로 즙을 낸 것"
+                   // price={6000}
+                    /> 
               </Link>
+              
             </div>
             <div className="slide_item">
-              <Link to="/">
-              <img src={collection[2].img}/>
-              <h4>{collection[2].title}</h4>
-              </Link>
+            <Product 
+                    id={collection[2].id}
+                    title={collection[2].title}
+                    image={collection[2].img}
+                   // description="양파로 즙을 낸 것"
+                   // price={6000}
+                    /> 
             </div>
             <div className="slide_item">
-              <Link to="/">
-              <img src={collection[3].img} />
-              <h4>{collection[3].title}</h4>
-              </Link>
+            <Product 
+                    id={collection[3].id}
+                    title={collection[3].title}
+                    image={collection[3].img}
+                   // description="양파로 즙을 낸 것"
+                   // price={6000}
+                    /> 
             </div>
         </div>
     </div>

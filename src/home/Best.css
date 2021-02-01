@@ -1,17 +1,26 @@
-a{
-    text-decoration: none; color: #1a1a1a;
-  }
-.home_container{
-    margin: 80px 0 100px 0;
+a {
+  text-decoration: none;
+  color: #1a1a1a;
 }
-.title{
-  margin: 16px 0; font-weight: 500; font-size: 23px; 
+.home_container {
+  margin: 80px 0 100px 0;
 }
- .content{
+.title {
+  margin: 16px 0;
+  font-weight: 500;
+  font-size: 23px;
+}
+.content {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(368px, 1fr));
   grid-gap: 22px;
 }
 .content img:hover {
   filter: blur(0.8px);
+}
+
+.BasketIcon {
+  position: relative;
+  top: -250px;
+  left: 330px;
 }

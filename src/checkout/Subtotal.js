@@ -11,18 +11,18 @@ function Subtotal() {
     const [{basket}, dispatch] = useStateValue();
 
     //first attempt without CurrencyFormat API
-    // const [price, setPrice] = useState(0);
+    const [price, setPrice] = useState(0);
 
-    // const addPrice = (num) => {
-    //     console.log("hello")
-    //     basket.map(item => (
-    //         setPrice(preValue => preValue + item.price)
-    //     ))
-    // }
+    const addPrice = (num) => {
+        console.log("hello")
+        basket.map(item => (
+            setPrice(preValue => preValue + item.price)
+        ))
+    }
 
-    // useEffect(() => {
-    //     addPrice()
-    // }, [])
+    useEffect(() => {
+        addPrice()
+    }, [])
 
     return (
         <div className='subtotal'>

@@ -2,47 +2,89 @@ import React,{useState} from 'react'
 import './Best.css'
 import BestData from './BestData'
 import {Link} from 'react-router-dom';
+import Product from './Product';
 
 function Best(){
   let [best,bestChange] = useState(BestData);
+ 
     return(
         <div className="home_container">
         <p className="title">인기상품을 만나보세요</p>
         <div className="content">
+          
+
+      
+
+          <div className="best_item">
+            
+            <Link to="/">
+            <Product 
+                    id={best[0].id}
+                    image={best[0].img}
+                   // description="양파로 즙을 낸 것"
+                   // price={6000}
+                    /> 
+            </Link>
+            
+          </div>
+
           <div className="best_item">
             <Link to="/">
-            <img src={best[0].img} alt="침대"/>
+            <Product 
+                    id={best[1].id}
+                    image={best[1].img}
+                   // description="양파로 즙을 낸 것"
+                   // price={6000}
+                    /> 
+                 </Link>
+            
+          </div>
+
+          <div className="best_item">
+            <Link to="/">
+            <Product 
+                    id={best[2].id}
+                    image={best[2].img}
+                   // description="양파로 즙을 낸 것"
+                   // price={6000}
+                    /> 
+            </Link>
+            
+          </div>
+
+          <div className="best_item">
+            <Link to="/">
+            <Product 
+                    id={best[3].id}
+                    image={best[3].img}
+                   // description="양파로 즙을 낸 것"
+                   // price={6000}
+                    /> 
             </Link>
           </div>
 
           <div className="best_item">
             <Link to="/">
-            <img src={best[1].img} alt="책장"/>
+            <Product 
+                    id={best[4].id}
+                    image={best[4].img}
+                   // description="양파로 즙을 낸 것"
+                   // price={6000}
+                    /> 
             </Link>
-          </div>
-
-          <div className="best_item">
-            <Link to="/">
-            <img src={best[2].img} alt="의자"/>
-            </Link>
-          </div>
-
-          <div className="best_item">
-            <Link to="/">
-            <img src={best[3].img} alt="러그"/>
-            </Link>
-          </div>
-
-          <div className="best_item">
-            <Link to="/">
-            <img src={best[4].img} alt="소파"/>
-            </Link>
+            
           </div>
 
           <div className="best_item">
           <Link to="/">
-            <img src={best[5].img} alt="테이블"/>
+          <Product 
+                    id={best[5].id}
+                    image={best[5].img}
+                   // description="양파로 즙을 낸 것"
+                   // price={6000}
+                    /> 
             </Link>
+            
           </div>
 
         </div> 
