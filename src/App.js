@@ -6,8 +6,8 @@ import Seller from './seller/Seller'
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Checkout from './checkout/Checkout';
 import Detail from './detail/Detail';
-//import Login from './authentication/Login';
-//import { auth } from './configuration/firebase';
+import Login from './authentication/Login';
+import { auth } from './configuration/firebase';
 import { useStateValue } from './StateProvider/StateProvider';
 import Payment from './payment/Payment'
 import Footer from './footer/Footer';
@@ -16,26 +16,26 @@ import ImgSlide from './slide/ImgSlide';
 function App() {
   const [{}, dispatch] = useStateValue();
 
-  // useEffect(() => {
+  useEffect(() => {
 
-  //   auth.onAuthStateChanged(authUser => {
-  //     console.log('THE USER IS >>>', authUser)
+    auth.onAuthStateChanged(authUser => {
+      console.log('THE USER IS >>>', authUser)
 
-  //     if (authUser) {
-  //       // the user logged in
-  //       dispatch({
-  //         type: 'SET_USER',
-  //         user: authUser
-  //       })
-  //     } else {
-  //       //the user is logged out
-  //       dispatch({
-  //         type: 'SET_USER',
-  //         user: null
-  //       })
-  //     }
-  //   })
-  // }, [])
+      if (authUser) {
+        // the user logged in
+        dispatch({
+          type: 'SET_USER',
+          user: authUser
+        })
+      } else {
+        //the user is logged out
+        dispatch({
+          type: 'SET_USER',
+          user: null
+        })
+      }
+    })
+  }, [])
 
   return (
     //BEM convention
@@ -43,9 +43,9 @@ function App() {
     <Router>
       <div className="app">
         <Switch>
-            {/* <Route path="/login">
+            <Route path="/login">
               <Login />
-            </Route> */}
+            </Route>
             <Route path="/checkout">
               <Header />
               <Checkout />
