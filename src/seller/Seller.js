@@ -1,6 +1,6 @@
 import React from 'react'
 import Navbar from './Navbar'
-import SellerProduct from './SellerProduct'
+import SellerProducts from './SellerProducts'
 import Order from './Order'
 import User from './User'
 import AddProduct from './AddProduct'
@@ -15,7 +15,7 @@ function Seller() {
                 <Switch>
                     <Route path='/seller/product'>
                         <Navbar />
-                        <SellerProduct />
+                        <SellerProducts />
                     </Route>
                     <Route path='/seller/addproduct'>
                         <Navbar />
@@ -34,7 +34,7 @@ function Seller() {
                     </Route>
                     <Route path='/seller'>
                         <Navbar />
-                        <SellerProduct />
+                        <SellerProducts />
                     </Route>
                 </Switch>
             </div>
