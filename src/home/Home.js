@@ -8,7 +8,7 @@ import Product from './Product';
 import product1 from '../img/product-1.jpg'
 import product2 from '../img/product-2.jpg'
 import product3 from '../img/product-3.jpg'
-//import axios from 'axios';
+import axios from 'axios';
 
 
 

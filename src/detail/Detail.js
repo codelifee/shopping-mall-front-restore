@@ -1,19 +1,19 @@
 import React, { useState, useContext } from "react";
 import Tabs from "./Tabs";
 import {Link, useParams, useHistory} from "react-router-dom";
-import Product from "../home/Product";
+import Product from "./Product";
+import ProductView from "../ProductView/ProductView";
 import product1 from "../ProductView/images/bed_0.jpg";
 import product2 from "../ProductView/images/bed_1.jpg";
 import product3 from "../ProductView/images/bed_2.jpg";
 import "./Detail.css";
-import Data from "../ProductView/Data"
 import {useStateValue} from "../StateProvider/StateProvider";
 
 
 function Detail() {
 
   const [quantity, setQuantity] = useState(1);
-  const [product, setProduct] = useState(Data);
+  const [product, setProduct] = useState(ProductView.products);
   const [img, setImg] = useState([product1, product2, product3]);
   const [{basket}, dispatch] = useStateValue();
   const history = useHistory();
@@ -28,7 +28,7 @@ function Detail() {
           <img src={img[id]} className="img" alt=""></img>
         </div>
         <div className="detail__product_info">
-          <p className="detail__product_name">{product[id].title}</p>
+          <p className="detail__product_name">{product[id-1].title}</p>
           <p className="detail__product_price">{new Intl.NumberFormat().format(product[id].price)}원</p>
           <p className="detail__product_delivery">
             배송정보 | 도서산간지역 제외 평균 2~3일 배송

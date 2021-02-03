@@ -2,7 +2,7 @@ import React from 'react'
 import fire from '../img/fire.svg';
 import './Product.css';
 import {useStateValue} from "../StateProvider/StateProvider"
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 
 
 function Product({ id, title, image, description//, price, rating
@@ -25,6 +25,8 @@ function Product({ id, title, image, description//, price, rating
         })
     }
     
+    const history = useHistory();
+
     return (
         <div className='product'>
             <div className="product__info">

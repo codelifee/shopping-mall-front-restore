@@ -6,7 +6,6 @@ import Seller from './seller/Seller'
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Checkout from './checkout/Checkout';
 import Detail from './detail/Detail';
-import Data from './ProductView/Data';
 import Login from './authentication/Login';
 import { auth } from './configuration/firebase';
 import { useStateValue } from './StateProvider/StateProvider';
@@ -14,7 +13,7 @@ import Payment from './payment/Payment'
 import Footer from './footer/Footer';
 import ImgSlide from './slide/ImgSlide';
 import LandingPage from './landingpage/LandingPage';
-import Bed from './ProductView/Bed';
+import ProductView from './ProductView/ProductView';
 import ReviewForm from './detail/ReviewForm';
 import QnAForm from './detail/QnAForm';
 
@@ -66,9 +65,9 @@ function App() {
               <Checkout />
             </Route>
 
-            <Route path="/bed">
+            <Route path="/products">
               <Header />
-              <Bed />
+              <ProductView />
             </Route>
 
             <Route path="/detail/:id">

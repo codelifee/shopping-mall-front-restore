@@ -24,7 +24,7 @@ function CheckoutProduct({id, title, image, description, price, rating}) {
                 </p>
                 <p className='checkoutProduct__price'>
                     <small>₩</small>
-                    <strong>{price}</strong>
+                    <strong>{new Intl.NumberFormat().format(price)}</strong>
                 </p>
                 <div className='checkoutProduct__rating'>
                     {Array(rating)
