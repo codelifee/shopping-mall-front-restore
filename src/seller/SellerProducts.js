@@ -1,7 +1,7 @@
 import React from 'react'
-import './SellerProduct.css'
+import './SellerProducts.css'
 
-function SellerProduct() {
+function SellerProducts() {
     return (
         <div className="sellerProduct">
             <div className="sellerProduct__container">
@@ -64,4 +64,4 @@ function SellerProduct() {
     )
 }
 
-export default SellerProduct
+export default SellerProducts;
