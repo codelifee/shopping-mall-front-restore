@@ -16,9 +16,9 @@ function CheckoutProduct({id, title, image, description, price, rating}) {
     return (
         <div className='checkoutProduct'>
             
-
+ <img className='checkoutProduct__image' src={image} />
             <div className='checkoutProduct__info'>
-                <img className='checkoutProduct__image' src={image} />
+               
                 <p className='checkoutProduct__title'>
                     {title}
                 </p>
@@ -30,11 +30,16 @@ function CheckoutProduct({id, title, image, description, price, rating}) {
                     {Array(rating)
                     .fill()
                     .map((_, i) => (
-                        <img src={fire} alt="fire"></img>
+                        <img src={fire} alt="fire"/>
                     ))}
                 </div>
             </div>
-            <button onClick={removeFromBasket}>Remove From Basket</button>
+            <div className="btnBox">
+            
+            <button className="remove" onClick={removeFromBasket}><span></span>
+    <span></span>
+    <span></span></button>
+            </div>
         </div>
     )
 }
