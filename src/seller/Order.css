@@ -91,10 +91,11 @@ input {
   /* background: wheat; */
   margin-left: 36px;
   width: 1130px;
-  height: 600px;
+  max-height: 600px;
   border: 2px solid rgb(167, 160, 160);
   border-collapse: collapse;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  margin-bottom: 30px;
 }
 
 table {

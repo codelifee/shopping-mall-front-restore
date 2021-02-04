@@ -1,0 +1,128 @@
+* {
+  box-sizing: border-box;
+}
+
+.sellerProduct {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.sellerProduct__container {
+  /* background: rgb(182, 167, 167); */
+  width: 1200px;
+  height: 95vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 200px 100px 1fr;
+  border: 2px solid gray;
+}
+
+select {
+  height: 30px;
+}
+
+input {
+  height: 30px;
+  width: 450px;
+}
+
+.sellerProduct__form {
+  /* display: grid; */
+  /* grid-template-rows: 1fr 1fr 1fr; */
+  margin-top: 90px;
+  margin-left: 36px;
+}
+
+.sellerProduct__search {
+  /* display: flex;
+  align-items: flex-end; */
+}
+
+.sellerProduct__searchbar {
+  display: flex;
+  align-items: center;
+}
+
+.sellerProduct__searchbar > label {
+  margin-right: 14px;
+  margin-left: 285px;
+}
+
+.sellerProduct__searchbar > select {
+  width: 200px;
+}
+
+.sellerProduct__button {
+  margin-top: 20px;
+}
+
+.search-button {
+  margin-right: 20px;
+  width: 100px;
+  height: 30px;
+  color: white;
+  background: rgb(200, 73, 73);
+}
+
+.reset-button {
+  width: 100px;
+  height: 30px;
+  background: white;
+}
+
+.sellerProduct__info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* background: purple; */
+  margin-left: 36px;
+  margin-right: 36px;
+}
+
+.sellerProduct__info > button {
+  width: 200px;
+  height: 30px;
+  color: aliceblue;
+  background: rgb(200, 73, 73);
+  font-size: medium;
+}
+
+.sellerProduct__table {
+  margin-left: 36px;
+  width: 1130px;
+  max-height: 700px;
+  border: 2px solid rgb(167, 160, 160);
+  border-collapse: collapse;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  overflow-x: scroll;
+  margin-bottom: 30px;
+}
+
+table {
+  width: 1125px;
+  text-align: left;
+}
+
+.sellerProduct__table thead {
+  background-color: rgb(179, 176, 176);
+  color: #ffffff;
+}
+
+.sellerProduct__table th,
+td {
+  padding: 12px 15px;
+}
+
+.sellerProduct__table tbody tr {
+  border-bottom: 1px solid #c7c3c3;
+}
+
+.sellerProduct__table tbody tr:nth-of-type(even) {
+  background-color: #e0dede;
+}
+
+.sellerProduct__table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}

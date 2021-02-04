@@ -10,12 +10,13 @@ import './Seller.css'
 
 function Seller() {
 
+    
 
     return (
         <Router>
             <div className="seller">
                 <Switch>
-                    <Route path='/seller/product'>
+                    <Route path='/seller/products'>
                         <Navbar />
                         <SellerProducts />
                     </Route>
