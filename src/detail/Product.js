@@ -16,8 +16,8 @@ function Product(props) {
     const description = props.data.product_description;
     const price = props.data.product_price;
 
-    <Detail id={id} title={title} image={image} description={description}
-    price={price}/>
+    // <Detail id={id} title={title} image={image} description={description}
+    // price={price}/>
 
     let history = useHistory();
 

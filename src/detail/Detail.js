@@ -28,7 +28,7 @@ function Detail() {
           <img src={img[id]} className="img" alt=""></img>
         </div>
         <div className="detail__product_info">
-          <p className="detail__product_name">{product[id-1].title}</p>
+          <p className="detail__product_name">{product[id].title}</p>
           <p className="detail__product_price">{new Intl.NumberFormat().format(product[id].price)}원</p>
           <p className="detail__product_delivery">
             배송정보 | 도서산간지역 제외 평균 2~3일 배송
