@@ -13,12 +13,13 @@ function Order() {
             <div className="order__container">
                 <div className="order__search">
                     <form className="order__searchbar">
-                        <input type="text" />
+                        <input type="text"  />
                         <FaSearch className="search-icon"/>
                     </form>
                     <div className="order__category">
                         <p>Order Creation Date</p>
                         <DatePicker
+                        className="date"
                         selected={startDate} 
                         onChange={date => setStartDate(date)} />
                     </div>
