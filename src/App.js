@@ -42,7 +42,6 @@ function App() {
     })
   }, [])
 
-
   return (
     //BEM convention
     
@@ -50,7 +49,7 @@ function App() {
       <div className="app">
         <Switch>
 	
-	<Route path="/landingpage">
+      	<Route path="/landingpage">
         <Header/>
               <LandingPage />
               <Footer/>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import Navbar from './Navbar'
 import SellerProducts from './SellerProducts'
 import Order from './Order'
@@ -9,11 +9,14 @@ import './Seller.css'
 
 
 function Seller() {
+
+    
+
     return (
         <Router>
             <div className="seller">
                 <Switch>
-                    <Route path='/seller/product'>
+                    <Route path='/seller/products'>
                         <Navbar />
                         <SellerProducts />
                     </Route>
