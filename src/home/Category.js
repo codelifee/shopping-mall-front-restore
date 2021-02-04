@@ -1,78 +1,109 @@
-import React from 'react'
+import React,{useState} from 'react'
 import './Category.css'
-import cabinet from './images/cabinet.jpg';
-import carpet from './images/carpet.jpg';
-import furniture from './images/furniture.jpg';
-import homedecor from './images/homedecor.jpg';
-import kitchen_product from './images/kitchen_product.jpg';
-import lamp from './images/lamp.jpg';
-import mattress from './images/mattress.jpg';
+import CategoryData from './CategoryData'
+import {Link} from 'react-router-dom';
+import Product from './Product';
 
 function Category(){
+  let [category,categoryChange] = useState(CategoryData);
     return(
         <div className="home_container">
          <p className="title">카테고리</p>
          <div className="swiper_wrapper">
           <div className="swiper_slide">
             <div className="slide_item">
-              <a href="#">
-              <img src={furniture} alt="가구"/>
-              <h4>가구</h4>
-              </a>
+              <Link to="/">
+              <Product 
+                    id={category[0].id}
+                    title={category[0].title}
+                    image={category[0].img}
+                   // description="양파로 즙을 낸 것"
+                   // price={6000}
+                    /> 
+              </Link>
             </div>
           </div>
 
           <div className="swiper_slide">
             <div className="slide_item">
-              <a href="#">
-              <img src={mattress} alt="침구/매트리스"/>
-              <h4>침대/매트리스</h4>
-              </a>
+              <Link to="/"><Product 
+                    id={category[1].id}
+                    title={category[1].title}
+                    image={category[1].img}
+                   // description="양파로 즙을 낸 것"
+                   // price={6000}
+                    /> 
+              </Link>
             </div>
           </div>
 
           <div className="swiper_slide">
             <div className="slide_item">
-              <a href="#">
-              <img src={cabinet} alt="수납/정리"/>
-              <h4>수납/정리</h4>
-              </a>
+              <Link to="/">
+              <Product 
+                    id={category[2].id}
+                    title={category[2].title}
+                    image={category[2].img}
+                   // description="양파로 즙을 낸 것"
+                   // price={6000}
+                    /> 
+              </Link>
             </div>
           </div>
 
           <div className="swiper_slide">
             <div className="slide_item">
-              <a href="#">
-              <img src={kitchen_product} alt="주방가구"/>
-              <h4>주방가구</h4>
-              </a>
+              <Link to="/">
+              <Product 
+                    id={category[3].id}
+                    title={category[3].title}
+                    image={category[3].img}
+                   // description="양파로 즙을 낸 것"
+                   // price={6000}
+                    /> 
+              </Link>
             </div>
           </div>
 
           <div className="swiper_slide">
             <div className="slide_item">
-              <a href="#">
-              <img src={homedecor} alt="홈데코"/>
-              <h4>홈데코</h4>
-              </a>
+              <Link to="/">
+              <Product 
+                    id={category[4].id}
+                    title={category[4].title}
+                    image={category[4].img}
+                   // description="양파로 즙을 낸 것"
+                   // price={6000}
+                    /> 
+              </Link>
             </div>
           </div>
 
           <div className="swiper_slide">
             <div className="slide_item">
-              <a href="#">
-              <img src={lamp} alt="조명"/>
-              <h4>조명</h4>
-              </a>
+              <Link to="/">
+              <Product 
+                    id={category[5].id}
+                    title={category[5].title}
+                    image={category[5].img}
+                   // description="양파로 즙을 낸 것"
+                   // price={6000}
+                    /> 
+              </Link>
             </div>
           </div>
 
           <div className="swiper_slide">
             <div className="slide_item">
-              <a href="#">
-              <img src={carpet} alt="러그"/>
-              <h4>러그</h4>
-              </a>
+            <Link to="/">
+              <Product 
+                    id={category[6].id}
+                    title={category[6].title}
+                    image={category[6].img}
+                   // description="양파로 즙을 낸 것"
+                   // price={6000}
+                    /> 
+              </Link>
             </div>
           </div>
 

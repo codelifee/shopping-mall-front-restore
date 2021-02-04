@@ -12,9 +12,7 @@ function Payment() {
             <div className="payment__container">
 
                 <h1>
-                    Checkout (
-                        <Link to="/checkout">{basket?.length} items</Link>
-                    )
+                  Checkout <Link to="/checkout">( {basket?.length} items ) </Link>
                 </h1>
 
 

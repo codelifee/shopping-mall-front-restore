@@ -1,7 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
-.home{
-  font-family: 'Noto Sans KR', sans-serif;
-  font-size: 16px; font-weight: 300; line-height: 1.75; color: #1a1a1a;
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap");
+.home {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: #1a1a1a;
 }
 * {
   margin: 0;
@@ -15,7 +18,8 @@
 }
 
 .home__row {
-  width: 1170px; margin: 0 auto;
+  max-width: 1170px;
+  margin: 0 auto;
 }
 
 .home__img {

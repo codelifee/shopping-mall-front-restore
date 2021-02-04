@@ -67,6 +67,7 @@ a {
 .header__optionLineOne {
   font-size: 10px;
   text-align: center;
+  font-weight: 800;
 }
 
 .header__option .header__optionLinetwo {

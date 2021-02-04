@@ -9,18 +9,18 @@ function Tabs(){
     
     return(
         <div className="tab_content">
-         
-            <input type='radio' name="tabmenu" id="tab01" checked/>
-            <label for="tab01">상품상세</label>
+            
+            <input type='radio' name="tabmenu" id="tab01" defaultChecked/>
+            <label htmlFor="tab01">상품상세</label>
 
             <input type='radio' name="tabmenu" id="tab02"/>
-            <label for="tab02">상품정보</label>
+            <label htmlFor="tab02">상품정보</label>
 
             <input type='radio' name="tabmenu" id="tab03"/>
-            <label for="tab03">리뷰</label>
+            <label htmlFor="tab03">리뷰</label>
 
             <input type='radio' name="tabmenu" id="tab04"/>
-            <label for="tab04">Q & A</label>
+            <label htmlFor="tab04">Q & A</label>
             <hr/>
 
             <div className="conbox con1"><Data/></div>

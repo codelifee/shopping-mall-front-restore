@@ -1,24 +1,31 @@
 .payment {
-  background: white;
+  background: #eee;
 }
 
 .payment__container > h1 {
   text-align: center;
-  padding: 10px;
+  padding: 15px;
   font-weight: 400;
-  background-color: rgb(234, 237, 237);
-  border-bottom: 1px solid lightgray;
+  border-bottom: 5px solid;
+  border-image: linear-gradient(to right, #9f79e2 0%, #d863ad 100%);
+  border-image-slice: 1;
 }
 
+.payment__container h1 {
+  background-color: #333;
+  color: #fff;
+}
 .payment__container > h1 a {
   text-decoration: none;
+  color: #fff;
+  display: inline;
 }
 
 .payment__section {
   display: flex;
   padding: 20px;
   margin: 0 20px;
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px dotted #bbb;
 }
 
 .payment__title {

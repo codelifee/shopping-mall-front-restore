@@ -12,6 +12,11 @@ import { useStateValue } from './StateProvider/StateProvider';
 import Payment from './payment/Payment'
 import Footer from './footer/Footer';
 import ImgSlide from './slide/ImgSlide';
+import LandingPage from './landingpage/LandingPage';
+import ProductView from './ProductView/ProductView';
+import ReviewForm from './detail/ReviewForm';
+import QnAForm from './detail/QnAForm';
+
 
 function App() {
   const [{}, dispatch] = useStateValue();
@@ -43,17 +48,38 @@ function App() {
     <Router>
       <div className="app">
         <Switch>
+	
+      	<Route path="/landingpage">
+        <Header/>
+              <LandingPage />
+              <Footer/>
+            </Route>
+	
             <Route path="/login">
               <Login />
             </Route>
+
             <Route path="/checkout">
               <Header />
               <Checkout />
             </Route>
 
-            <Route path="/detail">
-              <Header/>
-              <Detail/>
+            <Route path="/products">
+              <Header />
+              <ProductView />
+            </Route>
+
+            <Route path="/detail/:id">
+              <Header />
+              <Detail />
+            </Route>
+
+            <Route path="/review">
+              <ReviewForm/>
+            </Route>
+
+            <Route path="/QnA">
+              <QnAForm/>
             </Route>
 
             <Route path="/payment">

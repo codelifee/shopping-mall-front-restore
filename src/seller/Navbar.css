@@ -1,6 +1,17 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+}
+
+.navbar {
+  background-color: #fff;
+  text-align: center;
+}
+
 .navbar__logo {
   height: 5vh;
-  width: 200px;
+  width: 220px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,19 +32,21 @@
   flex-direction: column;
   justify-content: space-around;
   height: 95vh;
-  width: 200px;
-  padding-left: 10px;
+  width: 220px;
   background: white;
   list-style: none;
   transition: all 0.5ms ease-out;
+  text-align: center;
 }
-
+.icon {
+  margin-right: 25px;
+}
 .icon-active {
   transform: rotateX(180deg);
 }
 
 .navbar__link > div {
-  margin-left: 30px;
+  margin-left: 25px;
   margin-top: 10px;
   display: grid;
   grid-template-rows: repeat(auto-fit, 30px);
@@ -42,13 +55,14 @@
 
 .navbar__link > h2 {
   display: grid;
-  grid-template-columns: 30px 130px 1fr;
+  grid-template-columns: 30px 105px 1fr;
   align-items: center;
-  color: gray;
+  color: #333;
+  padding-left: 30px;
 }
 
 p {
-  color: black;
+  color: #333;
 }
 
 .navbar__link {

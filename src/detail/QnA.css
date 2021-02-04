@@ -1,3 +1,15 @@
-.question{
-    height:100px;
+.QnA{
+
+}
+
+.question__list {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.question__list_user{
+    width: 200px;
+    margin-right: 50px;
 }

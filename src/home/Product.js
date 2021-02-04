@@ -2,10 +2,11 @@ import React from 'react'
 import fire from '../img/fire.svg';
 import './Product.css';
 import {useStateValue} from "../StateProvider/StateProvider"
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 
 
-function Product({ id, title, image, description, price , rating}) {
+function Product({ id, title, image, description//, price, rating
+}) {
     //dispatch -> how we manipulate with data
     const [{basket}, dispatch] = useStateValue();
 
@@ -18,21 +19,23 @@ function Product({ id, title, image, description, price , rating}) {
                 title:title,
                 image: image,
                 description: description,
-                price: price,
-                rating: rating
+               // price: price,
+              //  rating: rating
             },
         })
     }
     
+    const history = useHistory();
+
     return (
         <div className='product'>
             <div className="product__info">
-                <p>{title}</p>
-                <p className="product__price">
+               
+                {/* <p className="product__price">
                     <small>{description}</small>
                     <strong>₩{price}</strong>
-                </p>
-                <div className="product__rating">
+                </p> */}
+                {/* <div className="product__rating">
                     {Array(rating)
                     .fill()
                     .map((_, i) => (
@@ -40,11 +43,11 @@ function Product({ id, title, image, description, price , rating}) {
                         <img src={fire} alt=""/>
                         </p>
                     ))}
-                </div>
+                </div> */}
             </div>
 
-            <Link to="/detail"><img className="product__img" src={image} alt=""/></Link>
-            <button onClick={addToBasket}>Add to the List</button>
+            <Link to="/detail"><img className="product__img" src={image} alt="" onClick={addToBasket}/></Link>
+             <h4>{title}</h4>
         </div>
     )
 }

@@ -5,31 +5,83 @@
 .review__score_avg{
     flex: 1;
     text-align: center;
+    line-height: 100px;
+    font-size : 50px;
+    font-weight: bold;
 }
 
 .review__score_list{
     flex: 1;
+    display: flex;
     text-align: center;
+    margin-bottom: 20px;
+    margin-left : 100px;
 }
 
-li{
+.review__score_list li{
     list-style-type: none;
+    width: 30px;
+}
+
+.review__button_{
+    text-align: center;
 }
 
 .review__button{
     flex: 1;
-    text-align: center;
+    width:180px;
+    height:50px;
+    margin-top:20px;
+    background:orange;
+    color: black;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
 }
 
-.review__score_graph div {
-    display: block;
+.review__score_graph_number{
+    width: 30px;
+}
+
+.review__score_graph {
     flex: 1;
-    width: 75%;
+    width: 100%;
+}
+
+.review__score_graph :nth-child(1) {
+    flex: 1;
+    width: 59%;
     background-color: orange;
+    border-radius: 50px;
+}
+.review__score_graph :nth-child(2) {
+    flex: 1;
+    width: 31%;
+    background-color: orange;
+    border-radius: 50px;
+}
+.review__score_graph :nth-child(3) {
+    flex: 1;
+    width: 10%;
+    background-color: orange;
+    border-radius: 50px;
+}
+.review__score_graph :nth-child(4) {
+    flex: 1;
+    width: 0%;
+    background-color: orange;
+    border-radius: 50px;
+}
+.review__score_graph :nth-child(5) {
+    flex: 1;
+    width: 0%;
+    background-color: orange;
+    border-radius: 50px;
 }
 
 .review__list {
     display: flex;
+    flex-direction: row;
     margin-top: 20px;
     margin-bottom: 40px;
 }
