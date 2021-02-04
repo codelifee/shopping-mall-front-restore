@@ -18,6 +18,7 @@
 .payment__container > h1 a {
   text-decoration: none;
   color: #fff;
+  display: inline;
 }
 
 .payment__section {
