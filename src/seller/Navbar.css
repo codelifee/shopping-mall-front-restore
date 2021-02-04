@@ -1,3 +1,14 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+}
+
+.navbar {
+  background-color: #fff;
+  text-align: center;
+}
+
 .navbar__logo {
   height: 5vh;
   width: 200px;
@@ -21,13 +32,15 @@
   flex-direction: column;
   justify-content: space-around;
   height: 95vh;
-  width: 200px;
-  padding-left: 10px;
+  width: 150px;
+  padding-right: 20px;
   background: white;
   list-style: none;
   transition: all 0.5ms ease-out;
 }
-
+.icon {
+  margin-right: 40px;
+}
 .icon-active {
   transform: rotateX(180deg);
 }
@@ -42,13 +55,14 @@
 
 .navbar__link > h2 {
   display: grid;
-  grid-template-columns: 30px 130px 1fr;
+  grid-template-columns: 30px 105px 1fr;
   align-items: center;
-  color: gray;
+  color: #333;
+  padding-left: 20px;
 }
 
 p {
-  color: black;
+  color: #333;
 }
 
 .navbar__link {
