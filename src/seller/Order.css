@@ -2,25 +2,38 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+
+  background-color: #333;
+  color: #fff;
 }
 
 .order__container {
   /* background: rgb(182, 167, 167); */
   width: 1200px;
-  height: 95vh;
+  height: 80vh;
   display: grid;
+  margin-top: 100px;
+  padding: 20px;
   grid-template-columns: 1fr;
   grid-template-rows: 100px 100px 100px 1fr;
-  border: 2px solid gray;
+  border: 10px solid;
+  border-image: linear-gradient(to right, #9f79e2 0%, #d863ad 100%);
+  border-image-slice: 1;
+  background-color: #333;
+  color: #fff;
 }
 
 .order__searchbar {
   width: 600px;
   display: flex;
   align-items: center;
+  color: #fff;
 }
-
+.date,
+.order__searchbar input {
+  border-radius: 10px;
+  padding: 0 5px;
+}
 .order__searchbar > input {
   margin-right: 10px;
 }
@@ -38,22 +51,29 @@ input {
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  margin: 0 23px;
   /* background: rgb(121, 112, 112); */
 }
 
 .order__category {
   display: flex;
   align-items: center;
+
+  position: relative;
+  width: 600px;
+  right: 35px;
 }
 
 .order__category > p {
   margin-right: 10px;
+  color: #fff;
 }
 
 .order__button {
   display: flex;
   margin-left: 36px;
   align-items: center;
+  color: #fff;
 }
 
 .search-button {
@@ -67,7 +87,6 @@ input {
 .reset-button {
   width: 100px;
   height: 30px;
-  background: white;
 }
 
 .order__info {
@@ -77,6 +96,7 @@ input {
   /* background: purple; */
   margin-left: 36px;
   margin-right: 36px;
+  color: #9f79e2;
 }
 
 .order__info > button {
@@ -91,19 +111,21 @@ input {
   /* background: wheat; */
   margin-left: 36px;
   width: 1130px;
-  height: 600px;
-  border: 2px solid rgb(167, 160, 160);
-  border-collapse: collapse;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  height: 400px;
+  margin: 0 10px;
+  color: #fff;
+  text-align: center;
 }
 
 table {
   width: 1125px;
-  text-align: left;
+  background-image: linear-gradient(to right, #c0bcf3 0%, #e7c8dc 100%);
+  border: 2px solid #333;
+  color: #333;
 }
 
 .order__table thead {
-  background-color: rgb(179, 176, 176);
+  background-color: #555;
   color: #ffffff;
 }
 
@@ -118,6 +140,7 @@ td {
 
 .order__table tbody tr:nth-of-type(even) {
   background-color: #e0dede;
+  color: #333;
 }
 
 .order__table tbody tr:last-of-type {
