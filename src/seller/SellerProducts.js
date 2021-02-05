@@ -23,6 +23,16 @@ function SellerProducts() {
         fetchDate();
     }, [])
 
+    const handleDelete = (id) => {
+        console.log(id)
+
+        axios.delete("products/" + id)
+        .then(res => 
+            console.log(res)  
+        )
+        .catch(err => console.log(err))
+    }
+
     return (
         <div className="sellerProduct">
             <div className="sellerProduct__container">
@@ -76,6 +86,7 @@ function SellerProducts() {
                                 id={product.product_id}
                                 name={product.product_name}
                                 price={product.product_price}
+                                handleDelete={handleDelete}
                                 />
                             ))}
                             </tbody>
