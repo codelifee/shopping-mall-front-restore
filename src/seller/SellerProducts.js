@@ -16,22 +16,29 @@ function SellerProducts() {
             )
             .catch(error => console.log(error))
             
+            console.log("useEffect")
            
             return request;
         }
+
+        console.log("useEffect")
+
 
         fetchDate();
     }, [])
 
     const handleDelete = (id) => {
+
         console.log(id)
 
         axios.delete("products/" + id)
-        .then(res => 
-            console.log(res)  
-        )
+        .then(res => {console.log(res)
+            window.location.reload(false)
+        })
         .catch(err => console.log(err))
     }
+
+    console.log("render")
 
     return (
         <div className="sellerProduct">
@@ -69,6 +76,7 @@ function SellerProducts() {
                                 <th>Product Name</th>
                                 <th>Price</th>
                                 <th>Stock</th>
+                                <th>DELETE</th>
                             </thead>
                             <tbody>
                             {products.filter(val => {
