@@ -13,18 +13,18 @@ import {
   staggerRevealClose
 } from "./Animations";
 
-import dallas from "./images/storage.jpg";
-import austin from "./images/kitchen.jpg";
-import newyork from "./images/bathroom.jpg";
-import sanfrancisco from "./images/lighting.jpg";
-import beijing from "./images/bed.jpg";
+import dallas from "./images/herb_1.jpg";
+import austin from "./images/herb_2.jpg";
+import newyork from "./images/herb_3.jpg";
+import sanfrancisco from "./images/herb_4.jpg";
+import beijing from "./images/herb_5.jpg";
 
 const cities = [
-  { name: "Storage", image: dallas },
-  { name: "Kitchen", image: austin },
-  { name: "Bathroom", image: newyork },
-  { name: "Lighting", image: sanfrancisco },
-  { name: "Bed", image: beijing }
+  { name: "Herb", image: dallas },
+  { name: "Nature", image: austin },
+  { name: "Fresh", image: newyork },
+  { name: "Beauty", image: sanfrancisco },
+  { name: "Healing", image: beijing }
 ];
 
 const Hamburger = ({ state }) => {
@@ -84,7 +84,7 @@ const Hamburger = ({ state }) => {
                       onMouseOut={e => handleHoverExit(e)}
                       ref={el => (line1 = el)}
                       to='/Payment'>
-                      Furniture
+                      Herb story
                     </Link>
                   </li>
                   <li>
@@ -109,16 +109,15 @@ const Hamburger = ({ state }) => {
                 </ul>
               </nav>
               <div ref={el => (info = el)} className='info'>
-                <h3>Our Vision</h3>
+                <h3>Our Story</h3>
                 <p>
-                   is To create a better everyday life for the many people. 
-                   On this site you can discover exactly what this means and 
-                   find out who we are, what we do and what we stand for..
+                   
+Herb refers to a plant grown in the West for use as a flavor or medicine.
                 </p>
               </div>
               </div>
               <div className='locations'>
-                Furniture:
+              Herb story:
                 {/* Returning the list of cities */}
                 {cities.map(el => (
                   <span

@@ -6,6 +6,7 @@ import {useHistory} from 'react-router-dom';
 
 function Review(){
 
+    
     const [{user}, dispatch] = useStateValue(); 
     const history = useHistory();
 
@@ -47,11 +48,13 @@ function Review(){
                       }}>리뷰 작성</button> : 
                       //db에서 구매했던 목록중 현재 페이지 상품과 동일한 것이 있다면
                       //이라는 조건 추가.
+                      
                       <button className="review__button" onClick={()=>{
                         history.push('/ReviewForm');
                       }}>리뷰 작성</button>
+
                     }
-                    
+
                 </div>
             </div><hr/>
 
