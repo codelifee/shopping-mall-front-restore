@@ -50,11 +50,13 @@ function App() {
       <div className="app">
         <Switch>
 	
-	<Route path="/">
-        <Header/>
-              <LandingPage />
-            </Route>
 	
+            <Route path="/home">
+              <Header />
+              <ImgSlide/>
+              <Home />
+              <Footer/>
+            </Route>
             <Route path="/login">
               <Login />
             </Route>
@@ -90,12 +92,9 @@ function App() {
             <Route path="/seller">
               <Seller />
             </Route>
-            <Route path="/home">
-              <Header />
-              
-                 <ImgSlide/>
-              <Home />
-              <Footer/>
+            
+            <Route path="/">
+              <LandingPage />
             </Route>
         </Switch>
       </div>
