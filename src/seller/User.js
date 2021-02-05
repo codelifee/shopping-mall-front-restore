@@ -1,12 +1,31 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './User.css'
 import {FaSearch} from 'react-icons/fa';
 import DatePicker from "react-datepicker";
+import axios from '../axios/axios'
+import UserTable from './UserTable'
 
 import "react-datepicker/dist/react-datepicker.css";
 function User() {
-
     const [startDate, setStartDate] = useState(new Date());
+
+    const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+        async function fetchDate() {
+            const request = await axios.get('users/all')
+            .then(response => 
+                setUsers(response.data)
+            )
+            .catch(error => console.log(error))
+            
+            return request;
+        }
+
+        console.log(users);
+
+        fetchDate();
+    }, [])
 
     return (
         <div className="user">
@@ -29,7 +48,6 @@ function User() {
                 </div>
                 <div className="user__info">
                     <h2>0 Users</h2>
-                    <button>+ Add a New User</button>
                 </div>
                 <div className="user__table">
                     <table>
@@ -39,29 +57,14 @@ function User() {
                             <th>Stock</th>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>양파즙</td>
-                                <td>3000</td>
-                                <td>40
-                        </td>
-
-                            </tr>
-                            <tr>
-                                <td>양파즙</td>
-                                <td>3000</td>
-                                <td>40</td>
-
-                            </tr>
-                            <tr>
-                                <td>양파즙</td>
-                                <td>3000</td>
-                                <td>40</td>
-                            </tr>
-                            <tr>
-                                <td>양파즙</td>
-                                <td>3000</td>
-                                <td>40</td>
-                            </tr>
+                            {users.map(user => (
+                                <UserTable 
+                                key={user.user_sequence_id}
+                                name={user.user_name}
+                                email={user.user_email}
+                                phone={user.user_phone}
+                                />
+                            ))}
                         </tbody>
                     </table>
                 </div>

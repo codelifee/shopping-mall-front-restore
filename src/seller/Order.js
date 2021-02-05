@@ -1,12 +1,32 @@
-import React, {useState} from 'react'
+import React, {useStatem, useEffect, useState} from 'react'
 import './Order.css'
 import {FaSearch} from 'react-icons/fa';
 import DatePicker from "react-datepicker";
-
+import OrderItems from './OrderItems'
+import axios from '../axios/axios'
 import "react-datepicker/dist/react-datepicker.css";
+
 function Order() {
 
     const [startDate, setStartDate] = useState(new Date());
+
+    const [orders, setOrders] = useState([]);
+
+    useEffect(() => {
+        async function fetchDate() {
+            const request = await axios.get('orders/all')
+            .then(response => 
+                setOrders(response.data)
+            )
+            .catch(error => console.log(error))
+            
+            return request;
+        }
+
+        console.log(orders)
+
+        fetchDate();
+    }, [])
 
     return (
         <div className="order">
@@ -35,34 +55,19 @@ function Order() {
                 <div className="order__table">
                     <table>
                         <thead>
-                            <th>Product Name</th>
-                            <th>Price</th>
-                            <th>Stock</th>
+                            <th>Name</th>
+                            <th>Ordered_Date</th>
+                            <th>Address</th>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>양파즙</td>
-                                <td>3000</td>
-                                <td>40
-                        </td>
-
-                            </tr>
-                            <tr>
-                                <td>양파즙</td>
-                                <td>3000</td>
-                                <td>40</td>
-
-                            </tr>
-                            <tr>
-                                <td>양파즙</td>
-                                <td>3000</td>
-                                <td>40</td>
-                            </tr>
-                            <tr>
-                                <td>양파즙</td>
-                                <td>3000</td>
-                                <td>40</td>
-                            </tr>
+                            {orders.map(order => (
+                                <OrderItems 
+                                key={order.order_id}
+                                name={order.user_id}
+                                date={order.order_date_created}
+                                address={order.user_address}
+                                />
+                            ))}
                         </tbody>
                     </table>
                 </div>

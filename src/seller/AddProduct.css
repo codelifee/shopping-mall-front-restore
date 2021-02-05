@@ -38,10 +38,11 @@ body {
 .addProduct__search {
   display: flex;
   flex-direction: column;
-  margin-left: 80px;
+  margin-left: 30px;
   margin-top: 50px;
+  height: 500px;
 
-  /* background: rgb(121, 112, 112); */
+  background: rgb(121, 112, 112);
 }
 
 .addProduct__search > input {
@@ -51,6 +52,7 @@ body {
 
 .addProduct__searchbar {
   display: flex;
+  margin-left:40px;
 }
 
 .addProduct__searchbar > p {
@@ -61,8 +63,7 @@ body {
 .addProduct__category {
   display: flex;
   height: 56px;
-  margin-right: 160px;
-  margin-left: 40px;
+  margin-left: 80px;
   margin-top: 20px;
 }
 
@@ -76,18 +77,12 @@ body {
   color: #fff;
 }
 
-.addProduct__form {
-  display: flex;
-  margin-left: 36px;
-  margin-top: 60px;
-}
-
 .product-description {
   display: flex;
 }
 
 .product-description > label {
-  padding: 10px;
+  margin-right: 10px;
 }
 
 .product-description > input {
@@ -113,10 +108,9 @@ body {
 .stock > label {
   padding-right: 6px;
 }
-.inputs {
-  width: 835px;
-  border-radius: 10px;
-  border: 1px solid #000;
-  padding: 0 10px;
-  background-image: linear-gradient(to right, #c0bcf3 0%, #e7c8dc 100%);
+
+.addProduct__search > button {
+  margin-top: 50px;
+  width: 200px;
+  margin-left: 165px;
 }

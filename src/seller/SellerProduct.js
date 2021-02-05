@@ -1,47 +1,30 @@
 import React, {useState, useEffect} from 'react'
 import axios from '../axios/axios'
 
-function SellerProduct() {
+function SellerProduct({name, price, key, id }) {
 
-    const [products, setProducts] = useState([]);
+    const handleDelete = () => {
+        console.log(key)
 
-    useEffect(() => {
-        async function fetchDate() {
-            const request = await axios.get('products/all')
-            .then(response => 
-                setProducts(response.data)
-            )
-            .catch(error => console.log(error))
-            
-            console.log(products)
-            return request;
-        }
-
-        fetchDate();
-    }, [])
-
-    console.log(products)
+        axios.delete("products/" + id)
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
+    }
 
     return (
-        <div className="sellerproducts">
-            <table>
-                    <thead>
-                        <th>Product Name</th>
-                        <th>Price</th>
-                        <th>Stock</th>
-                    </thead>
-                    <tbody>
-                    {products.map(product => (
-                        <tr>
-                        <td>{product.product_name}</td>
-                        <td>{product.product_price}</td>
-                        <td>40
-                        </td>
-                    </tr>
-                    ))}
-                    </tbody>
-                </table>
-        </div>
+        <>
+        <tr>
+            
+            <td>{name}</td>
+            <td>{price}</td>
+            <td>40</td>
+            <button
+            onClick={handleDelete}
+            >
+            DELETE
+            </button>
+        </tr>
+        </>
     )
 }
 

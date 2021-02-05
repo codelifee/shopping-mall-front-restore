@@ -1,8 +1,27 @@
 import React, {useState, useEffect} from 'react'
 import './SellerProducts.css'
 import SellerProduct from "./SellerProduct"
+import axios from '../axios/axios'
 
 function SellerProducts() {
+
+    const [products, setProducts] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
+
+    useEffect(() => {
+        async function fetchDate() {
+            const request = await axios.get('products/all')
+            .then(response => 
+                setProducts(response.data)
+            )
+            .catch(error => console.log(error))
+            
+           
+            return request;
+        }
+
+        fetchDate();
+    }, [])
 
     return (
         <div className="sellerProduct">
@@ -13,8 +32,11 @@ function SellerProducts() {
                             <select>
                                 <option value="Product Name">Product Name</option>
                             </select>
-                            <input type="text"/>
-                            <label for="categories">Category</label>
+                            <input 
+                            type="text"
+                            onChange={e => {setSearchTerm(e.target.value)}}
+                            />
+                            <label htmlFor="categories">Category</label>
                             <select name="categories" id="categories">
                                 <option value="1">의자</option>
                                 <option value="2">서랍</option>
@@ -32,7 +54,32 @@ function SellerProducts() {
                     <button>+ Add a New Product</button>
                 </div>
                 <div className="sellerProduct__table">
-                <SellerProduct />
+                    <table>
+                            <thead>
+                                <th>Product Name</th>
+                                <th>Price</th>
+                                <th>Stock</th>
+                            </thead>
+                            <tbody>
+                            {products.filter(val => {
+                                if (searchTerm == "") {
+                                    return val
+                                } 
+                                else if (val.product_name.toLowerCase().includes(searchTerm.toLowerCase())) 
+                                {
+                                    return val
+                                }
+                            }
+                            ).map(product => (
+                                <SellerProduct 
+                                key={product.product_id}
+                                id={product.product_id}
+                                name={product.product_name}
+                                price={product.product_price}
+                                />
+                            ))}
+                            </tbody>
+                 </table>    
                 </div>
             </div>
         </div>
