@@ -16,7 +16,6 @@ import LandingPage from './landingpage/LandingPage';
 import ProductView from './ProductView/ProductView';
 import ReviewForm from './detail/ReviewForm';
 import QnAForm from './detail/QnAForm';
-//import Star from "./detail/StarRating";
 
 
 function App() {
@@ -43,6 +42,7 @@ function App() {
     })
   }, [])
 
+
   return (
     //BEM convention
     
@@ -50,10 +50,9 @@ function App() {
       <div className="app">
         <Switch>
 	
-      	<Route path="/landingpage">
-         <Header/>
+	<Route path="/">
+        <Header/>
               <LandingPage />
-              <Footer/>
             </Route>
 	
             <Route path="/login">
@@ -75,10 +74,6 @@ function App() {
               <Detail />
             </Route>
 
-            {/* <Route path="/star">
-              <Star/>
-            </Route> */}
-
             <Route path="/review">
               <ReviewForm/>
             </Route>
@@ -92,12 +87,10 @@ function App() {
               
               <Payment />
             </Route>
-
             <Route path="/seller">
               <Seller />
             </Route>
-
-            <Route path="/">
+            <Route path="/home">
               <Header />
               
                  <ImgSlide/>
