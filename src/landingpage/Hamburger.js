@@ -13,18 +13,18 @@ import {
   staggerRevealClose
 } from "./Animations";
 
-import dallas from "./images/herb_1.jpg";
-import austin from "./images/herb_2.jpg";
-import newyork from "./images/herb_3.jpg";
-import sanfrancisco from "./images/herb_4.jpg";
-import beijing from "./images/herb_5.jpg";
+import dallas from "./images/pumpkin_main.jpg";
+import austin from "./images/cabbage_main.jpg";
+import newyork from "./images/apple_main.jpg";
+import sanfrancisco from "./images/pomegranate_main.jpg";
+import beijing from "./images/onion_main.jpg";
 
 const cities = [
-  { name: "Herb", image: dallas },
+  { name: "Qualitative", image: dallas },
   { name: "Nature", image: austin },
   { name: "Fresh", image: newyork },
-  { name: "Beauty", image: sanfrancisco },
-  { name: "Healing", image: beijing }
+  { name: "High quality", image: sanfrancisco },
+  { name: "health", image: beijing }
 ];
 
 const Hamburger = ({ state }) => {
@@ -84,7 +84,8 @@ const Hamburger = ({ state }) => {
                       onMouseOut={e => handleHoverExit(e)}
                       ref={el => (line1 = el)}
                       to='/Payment'>
-                      Herb story
+                      
+Healthy story
                     </Link>
                   </li>
                   <li>
@@ -93,7 +94,8 @@ const Hamburger = ({ state }) => {
                       onMouseOut={e => handleHoverExit(e)}
                       ref={el => (line2 = el)}
                       to='/Detail'>
-                      Space Idea
+                      
+See more
                     </Link>
                   </li>
                   <li>
@@ -117,7 +119,8 @@ Herb refers to a plant grown in the West for use as a flavor or medicine.
               </div>
               </div>
               <div className='locations'>
-              Herb story:
+              
+Good market:
                 {/* Returning the list of cities */}
                 {cities.map(el => (
                   <span
