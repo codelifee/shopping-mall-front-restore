@@ -24,10 +24,10 @@ a {
   height: 60px;
   width: 60px;
   object-fit: contain;
-  margin: 0 20px;
   color: white;
   background-color: #fff;
   border-radius: 50%;
+  margin: 10px 20px 0 20px;
 }
 
 .header__search {
@@ -36,28 +36,28 @@ a {
   width: 350px;
   border-radius: 24px;
   padding-left: 20px;
-  background-color: #ddd;
+  background-color: #fff;
 }
 
 .header__searchInput {
-  height: 25px;
+  height: 30px;
   padding: 10px;
   border: none;
   width: 280px;
   border-radius: 24px;
-  background-color: #ddd;
+  background-color: #fff;
   color: #000;
 }
 
 .header__searchIcon {
   transition: all 0.3s;
   padding-right: 0px;
-  height: 35px !important;
+  height: 40px !important;
   font-size: 35px;
   color: #555;
-  margin: 0 10px;
+
   border-radius: 25% 25% 25% 25%;
-  background-color: #ddd;
+  background-color: #fff;
 }
 
 .header__searchIcon:hover {
