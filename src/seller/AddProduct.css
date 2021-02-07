@@ -6,8 +6,8 @@ body {
   width: 100%;
   display: flex;
   justify-content: center;
-  background-color: #333;
-  color: #fff;
+  background-color: #eee;
+  color: #476600;
 }
 
 .addProduct__container {
@@ -16,24 +16,24 @@ body {
   height: 80vh;
   display: grid;
   margin-top: 100px;
-  padding: 20px;
+  padding: 70px 20px;
   grid-template-columns: 1fr;
   grid-template-rows: 100px 100px auto;
   border: 10px solid;
-  border-image: linear-gradient(to right, #9f79e2 0%, #d863ad 100%);
+  border-image: linear-gradient(45deg, #f2cb61, #bce55c);
   border-image-slice: 1;
-  background-color: #333;
-  color: #fff;
+  background-color: #fff;
+  color: #476600;
 }
 .addProduct__container__head h1 {
-  color: #9f79e2;
+  color: #6b9900;
 }
 .addProduct__container__head {
   padding-left: 36px;
   padding-top: 20px;
 }
 .addProduct__container__head p {
-  color: #d863ad;
+  color: #6b9900;
 }
 .addProduct__search {
   display: flex;
@@ -42,22 +42,21 @@ body {
   margin-top: 50px;
   height: 500px;
 
-  background: rgb(121, 112, 112);
+  background: #fff;
 }
 
 .addProduct__search > input {
   height: 30px;
-  width: 450px;
 }
 
 .addProduct__searchbar {
   display: flex;
-  margin-left:40px;
+  margin-left: 40px;
 }
 
 .addProduct__searchbar > p {
   margin-right: 14px;
-  color: #fff;
+  color: #476600;
 }
 
 .addProduct__category {
@@ -69,12 +68,12 @@ body {
 
 .addProduct__category > select {
   height: 32px;
-  border-radius: 10px;
+  border: 1px dotted #6b9900;
 }
 
 .addProduct__category > p {
   margin-right: 14px;
-  color: #fff;
+  color: #476600;
 }
 
 .product-description {
@@ -88,6 +87,7 @@ body {
 .product-description > input {
   height: 200px;
   width: 835px;
+  background: linear-gradient(45deg, #faf4c0, #e4f7ba);
 }
 
 .price {
@@ -101,7 +101,7 @@ body {
 }
 
 .stock {
-  margin-left: 120px;
+  margin-left: 110px;
   margin-top: 30px;
 }
 
@@ -113,4 +113,11 @@ body {
   margin-top: 50px;
   width: 200px;
   margin-left: 165px;
+  border: 1px dotted #6b9900;
+  background: #e4f7ba;
+}
+
+input {
+  background: linear-gradient(45deg, #faf4c0, #e4f7ba);
+  border: 1px dotted #6b9900;
 }
