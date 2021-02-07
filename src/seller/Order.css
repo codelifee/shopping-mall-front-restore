@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
 
-  background-color: #333;
+  background-color: #eee;
   color: #fff;
 }
 
@@ -17,21 +17,20 @@
   grid-template-columns: 1fr;
   grid-template-rows: 100px 100px 100px 1fr;
   border: 10px solid;
-  border-image: linear-gradient(to right, #9f79e2 0%, #d863ad 100%);
+  border-image: linear-gradient(45deg, #f2cb61, #bce55c);
   border-image-slice: 1;
-  background-color: #333;
-  color: #fff;
+  background-color: #fff;
+  color: #476600;
 }
 
 .order__searchbar {
   width: 600px;
   display: flex;
   align-items: center;
-  color: #fff;
+  color: #476600;
 }
 .date,
 .order__searchbar input {
-  border-radius: 10px;
   padding: 0 5px;
 }
 .order__searchbar > input {
@@ -66,14 +65,14 @@ input {
 
 .order__category > p {
   margin-right: 10px;
-  color: #fff;
+  color: #476600;
 }
 
 .order__button {
   display: flex;
   margin-left: 36px;
   align-items: center;
-  color: #fff;
+  color: #476600;
 }
 
 .search-button {
@@ -96,7 +95,7 @@ input {
   /* background: purple; */
   margin-left: 36px;
   margin-right: 36px;
-  color: #9f79e2;
+  color: #6b9900;
 }
 
 .order__info > button {
@@ -111,23 +110,22 @@ input {
   /* background: wheat; */
   margin-left: 36px;
   width: 1130px;
-  max-height: 600px;
-  border: 2px solid rgb(167, 160, 160);
-  border-collapse: collapse;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-  margin-bottom: 30px;
+  height: 400px;
+  margin: 0 10px;
+  color: #476600;
+  text-align: center;
 }
 
 table {
   width: 1125px;
-  background-image: linear-gradient(to right, #c0bcf3 0%, #e7c8dc 100%);
-  border: 2px solid #333;
-  color: #333;
+  background-image: linear-gradient(to right, #faf4c0 0%, #f1d9f5 100%);
+  border: 2px solid #f2cb61;
+  color: #476600;
 }
 
 .order__table thead {
   background-color: #555;
-  color: #ffffff;
+  color: #fff;
 }
 
 .order__table th,
@@ -141,7 +139,7 @@ td {
 
 .order__table tbody tr:nth-of-type(even) {
   background-color: #e0dede;
-  color: #333;
+  color: #476600;
 }
 
 .order__table tbody tr:last-of-type {
