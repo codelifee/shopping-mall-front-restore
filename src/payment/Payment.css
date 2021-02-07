@@ -6,8 +6,8 @@
   text-align: center;
   padding: 15px;
   font-weight: 400;
-  border-bottom: 5px solid;
-  border-image: linear-gradient(to right, #9f79e2 0%, #d863ad 100%);
+  border-bottom: 10px solid;
+  border-image: linear-gradient(45deg, #bce55c, #e5d85c);
   border-image-slice: 1;
 }
 
