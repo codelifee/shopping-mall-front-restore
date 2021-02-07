@@ -86,7 +86,7 @@ header .hamburger-menu .menu-secondary-background-color {
 }
 header .hamburger-menu .menu-layer {
   position: relative;
-  background: #cfaffa;
+  background: linear-gradient(45deg, #f2cb61, #bce55c);
   height: 100%;
   overflow: hidden;
 }
@@ -133,7 +133,7 @@ header .hamburger-menu .menu-layer .wrapper .menu-links nav ul li {
 }
 header .hamburger-menu .menu-layer .wrapper .menu-links nav ul li a {
   position: absolute;
-  color: rgb(217, 205, 236);
+  color: rgb(233, 240, 178);
 
   text-decoration: none;
 }
@@ -153,7 +153,7 @@ header .hamburger-menu .menu-layer .wrapper .menu-links .info p {
   font-size: 0.8rem;
 }
 header .hamburger-menu .menu-layer .wrapper .locations {
-  color: rgb(53, 8, 71);
+  color: rgb(8, 71, 22);
 
   font-size: 2rem;
   font-weight: 1000;
@@ -169,7 +169,7 @@ header .hamburger-menu .menu-layer .wrapper .locations span:first-child {
   margin-left: 64px;
 }
 header .hamburger-menu .menu-layer .wrapper .locations span:hover {
-  color: #fff;
+  color: #bce55c;
   background: #191919;
   padding: 8px 24px;
   border-radius: 4px;
@@ -194,7 +194,7 @@ header .hamburger-menu .menu-layer .wrapper .locations span:hover {
 }
 @media screen and (max-height: 1000px) {
   header .hamburger-menu .menu-layer .wrapper .locations {
-    color: rgb(53, 8, 71);
+    color: rgb(8, 71, 22);
 
     font-size: 2vw;
     font-weight: 1000;
@@ -203,7 +203,7 @@ header .hamburger-menu .menu-layer .wrapper .locations span:hover {
 }
 @media screen and (max-width: 900px) {
   header .hamburger-menu .menu-layer .wrapper .locations {
-    color: rgb(53, 8, 71);
+    color: rgb(8, 71, 22);
 
     font-size: 2vw;
     font-weight: 1000;
