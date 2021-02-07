@@ -1,22 +1,26 @@
-* {
-  box-sizing: border-box;
-}
-
 .sellerProduct {
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  background-color: #eee;
+  color: #fff;
 }
 
 .sellerProduct__container {
   /* background: rgb(182, 167, 167); */
   width: 1200px;
-  height: 95vh;
+  height: 80vh;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 200px 100px 1fr;
+  grid-template-rows: 100px 100px 100px 1fr;
   border: 2px solid gray;
+  margin-top: 100px;
+  padding-top: 100px;
+  border: 10px solid;
+  border-image: linear-gradient(45deg, #f2cb61, #bce55c);
+  border-image-slice: 1;
+  background-color: #fff;
+  color: #333;
 }
 
 select {
@@ -26,36 +30,41 @@ select {
 input {
   height: 30px;
   width: 450px;
+  margin-right: 10px;
 }
-
-.sellerProduct__form {
-  /* display: grid; */
-  /* grid-template-rows: 1fr 1fr 1fr; */
-  margin-top: 90px;
-  margin-left: 36px;
+.sellerProduct__searchbar > select {
+  border: 1px solid #6b9900;
+  margin: 10px;
+  padding: 0;
 }
 
 .sellerProduct__search {
-  /* display: flex;
-  align-items: flex-end; */
+  display: flex;
+  align-items: flex-end;
+
+  /* background: rgb(121, 112, 112); */
 }
 
 .sellerProduct__searchbar {
+  width: 600px;
+  margin-left: 36px;
+}
+
+.sellerProduct__category {
   display: flex;
-  align-items: center;
 }
 
-.sellerProduct__searchbar > label {
+.sellerProduct__category > p {
   margin-right: 14px;
-  margin-left: 285px;
-}
-
-.sellerProduct__searchbar > select {
-  width: 200px;
+  color: #fff;
 }
 
 .sellerProduct__button {
-  margin-top: 20px;
+  display: flex;
+  margin-left: 36px;
+  align-items: center;
+
+  /* background: blue; */
 }
 
 .search-button {
@@ -64,12 +73,14 @@ input {
   height: 30px;
   color: white;
   background: rgb(200, 73, 73);
+  border: 1px solid #6b9900;
 }
 
 .reset-button {
   width: 100px;
   height: 30px;
   background: white;
+  border: 1px solid #6b9900;
 }
 
 .sellerProduct__info {
@@ -79,34 +90,36 @@ input {
   /* background: purple; */
   margin-left: 36px;
   margin-right: 36px;
+  color: #6b9900;
 }
 
 .sellerProduct__info > button {
   width: 200px;
   height: 30px;
-  color: aliceblue;
-  background: rgb(200, 73, 73);
+  margin-right: 20px;
   font-size: medium;
+  border: 1px dotted #6b9900;
+  background: #e4f7ba;
 }
 
 .sellerProduct__table {
+  /* background: wheat; */
   margin-left: 36px;
   width: 1130px;
-  max-height: 700px;
-  border: 2px solid rgb(167, 160, 160);
-  border-collapse: collapse;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-  overflow-x: scroll;
-  margin-bottom: 30px;
+  height: 600px;
+  border: 0px solid rgb(167, 160, 160);
+
+  margin: 0 10px;
+  color: #fff;
+  text-align: center;
 }
 
 table {
   width: 1125px;
-  text-align: left;
 }
 
 .sellerProduct__table thead {
-  background-color: rgb(179, 176, 176);
+  background-color: #555;
   color: #ffffff;
 }
 
