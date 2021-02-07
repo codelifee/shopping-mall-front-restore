@@ -2,17 +2,22 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 20px;
 }
 
 .user__container {
   /* background: rgb(182, 167, 167); */
   width: 1200px;
-  height: 95vh;
+  height: 80vh;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 100px 100px 100px 1fr;
-  border: 2px solid gray;
+  margin-top: 100px;
+  padding: 20px;
+  border: 10px solid;
+  border-image: linear-gradient(45deg, #f2cb61, #bce55c);
+  border-image-slice: 1;
+  background-color: #fff;
+  color: #476600;
 }
 
 .user__searchbar {
@@ -32,6 +37,7 @@ select {
 input {
   height: 30px;
   width: 360px;
+  padding: 2px 5px;
 }
 
 .user__search {
@@ -80,6 +86,7 @@ input {
 }
 
 .user__info > button {
+  margin-right: 20px;
   width: 200px;
   height: 30px;
   color: aliceblue;
@@ -89,13 +96,9 @@ input {
 
 .user__table {
   /* background: wheat; */
-  margin-left: 36px;
+  margin-left: 10px;
   width: 1130px;
-  max-height: 600px;
-  border: 2px solid rgb(167, 160, 160);
-  border-collapse: collapse;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-  margin-bottom: 30px;
+  height: 600px;
 }
 
 table {
@@ -104,7 +107,7 @@ table {
 }
 
 .user__table thead {
-  background-color: rgb(179, 176, 176);
+  background-color: #555;
   color: #ffffff;
 }
 
