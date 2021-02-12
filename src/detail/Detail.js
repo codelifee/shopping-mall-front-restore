@@ -1,48 +1,45 @@
 import React, { useState, useContext, useEffect } from "react";
 import Tabs from "./Tabs";
-import {Link, useParams, useHistory} from "react-router-dom";
-import Product from "./Product";
-import ProductView from "../ProductView/ProductView";
+import {useLocation, useParams, useHistory} from "react-router-dom";
 import "./Detail.css";
 import {useStateValue} from "../StateProvider/StateProvider";
 import axios from '../axios/axios';
 
 
 function Detail() {
-
+  
   const [products, setProducts] = useState([]);
+  const {id} = useParams();
   
   useEffect(()=>{
       async function fetchDate() {
-          const request = await axios.get('products/all')
+          const request = await axios.get(`products/${id}`)
           .then(response =>
-              setProducts(response.data)
-              )
-          .catch(error => console.log(error))
-  
-          return request;
-      }
-      
-      fetchDate();
-  }, [])
-  
-  console.log(products)
+            setProducts(response.data)
+          )
+            .catch(error => console.log(error))
+            
+            return request;
+          }
+          
+          fetchDate();
+        }, [])
 
   const [quantity, setQuantity] = useState(1);
   const [{basket}, dispatch] = useStateValue();
   const history = useHistory();
-
-  const {id} = useParams();
+  const [keep, setKeep] = useState();
 
   return (
+
     <div className="detail">
       <div className="detail__product">
         <div className="detail__product_img">
-          <img src='' className="img" alt=""></img>
+          <img src={products.product_picture} className="img" alt=""/>
         </div>
         <div className="detail__product_info">
-          <p className="detail__product_name">{products[id].product_name}</p>
-          <p className="detail__product_price">{new Intl.NumberFormat().format(products[id].price)}원</p>
+          <p className="detail__product_name">{products.product_name}</p>
+          <p className="detail__product_price">{new Intl.NumberFormat().format(products.product_price)}원</p>
           <p className="detail__product_delivery">
             배송정보 | 도서산간지역 제외 평균 2~3일 배송
           </p>
@@ -79,18 +76,18 @@ function Detail() {
             </button>
           </p>
           <p className="detail__product_totalPrice">
-            총 금액 {new Intl.NumberFormat().format(products[id].price * quantity)}원
+            총 금액 {new Intl.NumberFormat().format(products.product_price * quantity)}원
           </p>
             <button className="detail__keep" onClick={()=>{
               dispatch(
                 {type:'ADD_TO_BASKET',
                  item: {
-                  id: products[id].id,
-                  title: products[id].title,
-                  image:'',
-                  description: products[id].description,
-                  price: Intl.NumberFormat().format(products[id].price * quantity),
-                  rating: products[id].rating
+                  id: products.product_id,
+                  title: products.product_name,
+                  image: products.product_picture,
+                  description: products.product_description,
+                  price: products.product_price * quantity,
+                  rating: products.product_rating
                 }}
               )
             }}>장바구니</button>
@@ -100,12 +97,12 @@ function Detail() {
               dispatch(
                 {type:'ADD_TO_BASKET',
                  item: {
-                  id: products[id].id,
-                  title: products[id].title,
-                  image:'',
-                  description: products[id].description,
-                  price: Intl.NumberFormat().format(products[id].price * quantity),
-                  rating: products[id].rating
+                  id: products.product_id,
+                  title: products.product_name,
+                  image:products.product_picture,
+                  description: products.product_description,
+                  price: products.product_price * quantity,
+                  rating: products.product_rating
                 }}
               )
               history.push('/payment')
@@ -113,7 +110,7 @@ function Detail() {
           
         </div>
       </div>
-      <Tabs />
+      <Tabs/>
     </div>
   );
 }

@@ -9,14 +9,18 @@
   box-sizing: border-box;
 }
 .products {
-  margin-left: auto;
-  margin-right: auto;
+  display: grid;
+  grid-template-columns: auto;
+  background-color: rgb(252, 240, 133);
+  text-align: center;
   height: 100%;
 }
 
 .products__row {
-  display: flex;
-  width: 1170px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  margin: 20px;
+  justify-items: center;
 }
 
 .home__img {

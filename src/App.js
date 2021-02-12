@@ -18,6 +18,7 @@ import ReviewForm from './detail/ReviewForm';
 import QnAForm from './detail/QnAForm';
 
 
+
 function App() {
   const [{}, dispatch] = useStateValue();
 
@@ -50,7 +51,6 @@ function App() {
       <div className="app">
         <Switch>
 	
-	
             <Route path="/home">
               <Header />
               <ImgSlide/>
@@ -76,11 +76,11 @@ function App() {
               <Detail />
             </Route>
 
-            <Route path="/review">
+            <Route path="/review/:id">
               <ReviewForm/>
             </Route>
 
-            <Route path="/QnA">
+            <Route path="/question/:id">
               <QnAForm/>
             </Route>
 

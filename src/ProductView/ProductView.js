@@ -2,7 +2,8 @@ import React, {useState, useEffect} from 'react';
 import Product from '../detail/Product';
 import axios from '../axios/axios';
 import './ProductView.css';
-import Collection from '../home/Collection';
+import Tabs from '../detail/Tabs';
+
 
 //카테고리 id에 맞게 출력될 것
 
@@ -36,7 +37,7 @@ function ProductView(){
                 {
                     products.map((product, i)=>{
                         return <Product
-                        id={product.product_id} 
+                        id= {product.product_id} 
                         title = {product.product_name} 
                         image = {product.product_picture}
                         description = {product.product_description}

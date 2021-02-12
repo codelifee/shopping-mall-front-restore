@@ -1,13 +1,11 @@
 import React, {useState, useContext, useEffect} from 'react'
-import fire from '../img/fire.svg';
 import './Product.css';
 import {useStateValue} from "../StateProvider/StateProvider"
 import {useHistory, useParams} from "react-router-dom";
 
 
-
-
 function Product(props) {
+    const [products, setProducts] = useState([{props}]);
     //dispatch -> how we manipulate with data
     const [{basket}, dispatch] = useStateValue();
     
@@ -42,13 +40,14 @@ function Product(props) {
                     <strong>₩{new Intl.NumberFormat().format(props.price)}</strong>
                 </p>
                 <div className="product__rating">
-                    {Array(props.product_rating)
-                    .fill()
-                    .map((_, i) => (
-                        <p>
-                        {/* <img src={fire} alt=""/> */}
-                        </p>
-                    ))}
+                    {//Array(props.product_rating)
+                    //.fill()
+                    //.map((_, i) => (
+                     //   <p>
+                     //   {/* <img src={fire} alt=""/> */}
+                     //   </p>
+                   // ))
+                    }
                 </div> 
             </div>
 

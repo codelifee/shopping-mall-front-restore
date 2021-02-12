@@ -7,8 +7,8 @@ import './Sidebar.css'
     return (
       <div>
         <input type="checkbox" id="menuicon" className="All_Products"/>
-<label for="menuicon" >
-              <span class="headr_products">All Products</span>
+<label htmlFor="menuicon" >
+              <span className="headr_products">All Products</span>
   </label>
       </div>
      
