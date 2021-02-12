@@ -7,7 +7,7 @@ import axios from '../axios/axios';
 function QnA(){
 
     const history = useHistory();
-    const id = useParams();
+    const {id} = useParams();
     const [{user}, dispatch] = useStateValue();
     const [question, setQuestion] = useState([]);
 

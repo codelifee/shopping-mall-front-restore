@@ -27,7 +27,7 @@ function Review(props) {
       
       fetchDate();
     }, []);   
-    
+
         const col = reviews.filter(function (review) {
           return review.product_id == id;
         }).map((review)=>{
@@ -40,8 +40,6 @@ function Review(props) {
         })
 
         const avg = (result/col.length).toFixed(1);
-
-    
  
     //reviews 길이만큼 반복하고 total += reviews.review_rating, return total / reviews길이
     //total에서 rating 5 4 3 2 1 인 사람들 각각 숫자 구해서 사람수 / total * 100 = 각 점수 %
@@ -111,7 +109,7 @@ function Review(props) {
                 <div>
                   <div className="review__list_content">{review.review}</div>
                   <div className="review__list_pictuer">
-                    {review.review_picture}
+                    <img src={review.review_picture}/>
                   </div>
                 </div>
               </li>

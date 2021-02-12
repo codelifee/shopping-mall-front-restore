@@ -21,12 +21,12 @@ const formData = new FormData();
     const [form, setForm] = useState({
         review_id: 5,
         product_id: 1,
-        user_sequence_id: 5,
-        product_detail_id: 5,
+        user_sequence_id: 6,
+        product_detail_id: 1,
         review: '',
         star: 0,
-        review_picture: 'null',
-        review_date_created: '2021/02/10',
+        review_picture: '사진',
+        review_date_created: '2021-02-10',
         product_name: '녹색 의자',
         productDetailsList: '녹색의 의자'
         }
@@ -125,7 +125,7 @@ const formData = new FormData();
                 value={form.review}
                 onChange={handleChange}
                 />
-                
+
                 <div className="file_upload">
                 <input 
                 type="file" 

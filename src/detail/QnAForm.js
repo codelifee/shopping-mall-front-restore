@@ -10,8 +10,12 @@ function QnAForm(){
     const history = useHistory();
 
     const [form, setForm] = useState({
-        QnA_form: ''
+        question: '',
+        product_id: 1,
+        user_sequence_id:6,
+        question_date_created: "2021-02-12"
     })
+
 
     const handleChange = e => {
         e.preventDefault();
@@ -28,7 +32,7 @@ function QnAForm(){
     const showForm = (e) => {
         e.preventDefault()
         
-        axios.post('QnA', form)
+        axios.post('question', form)
         .then(res => console.log(res))
         .catch(err => console.log(err))
     }
@@ -41,8 +45,8 @@ function QnAForm(){
            <input 
            id="input"
            type="text" 
-           name="QnA_form"
-           value={form.QnA_form}
+           name="question"
+           value={form.question}
            onChange={handleChange}
            />
        <div className="button">
