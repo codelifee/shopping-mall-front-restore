@@ -20,7 +20,12 @@ function Seller() {
                         <Navbar />
                         <SellerProducts />
                     </Route>
-                    <Route path='/seller/addproduct'>
+                    <Route path='/seller/addProduct'>
+                        <Navbar />
+                        <AddProduct />
+                
+                    </Route>
+                    <Route path='/seller/updateProduct'>
                         <Navbar />
                         <AddProduct />
                 

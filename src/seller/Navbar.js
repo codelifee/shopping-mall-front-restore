@@ -42,6 +42,9 @@ function Navbar() {
                             <Link to="/seller/addProduct">
                                 <p>Add New Product</p>
                             </Link>
+                            <Link to="/seller/updateProduct">
+                                <p>Update Product</p>
+                            </Link>
                             </div>
                         }
                         
