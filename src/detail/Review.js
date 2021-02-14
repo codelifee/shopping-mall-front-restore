@@ -82,12 +82,7 @@ function Review(props) {
               
               <button
               className="review__button"
-              onClick={() => {
-                history.push({
-                  pathname: `/review/${id}`,
-                  state: {}
-                });
-              }}
+              onClick={()=>{window.open(`/review/${id}`,'review_form','width=600,height=700,location=no,status=no,scrollbars=no')}}
               >
               리뷰 작성
             </button>

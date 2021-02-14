@@ -115,7 +115,7 @@ const formData = new FormData();
 				})}
 		    </div>
 
-            <form className="review_form" onSubmit={showForm}> 
+            <form className="review_form" onSubmit={form.question != '' ? showForm : ''}> 
                 <label htmlFor="input">리뷰 작성</label>
               
                 <input 
@@ -139,7 +139,14 @@ const formData = new FormData();
                 {console.log(form)}
 
             <div className="button">
-                <button type="submit" onClick={history.goBack}>Submit</button>
+                
+            <button type="submit" onClick={()=>{
+                
+                    form.review == '' ? alert("내용을 입력해주세요!") : alert("내용이 입력됐습니다.");
+                    window.close()} 
+                
+                }>Submit</button>
+                
             </div>
             </form>
          </div>
