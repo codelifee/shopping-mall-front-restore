@@ -27,7 +27,7 @@ function QnA(){
     return(
         <div className="QnA">
             <div className="QnA__header">
-                <h3>문의하실 사항을 작성해주세요.</h3>
+                <h3>해당 상품 관련 문의 사항을 작성해주세요.</h3>
                 <div className="QnA__button_">
                         {/* {user == null ?  
                         <button className="QnA__button" onClick={()=>{
@@ -36,8 +36,7 @@ function QnA(){
                         //db에서 구매했던 목록중 현재 페이지 상품과 동일한 것이 있다면
                         //이라는 조건 추가. */}
                         <button className="QnA__button" onClick={()=>{
-                            console.log(id);
-                            history.push(`/question/${id}`);
+                            window.open(`/question/${id}`,'review_form','width=600,height=700,location=no,status=no,scrollbars=no')
                         }}>문의사항 작성</button>
                         {/* } */}
                 </div>
