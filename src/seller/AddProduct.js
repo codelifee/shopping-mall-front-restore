@@ -31,7 +31,6 @@ function AddProduct() {
 
     }    
     
-    console.log(form);
 
     const showForm = (e) => {
         e.preventDefault()

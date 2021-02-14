@@ -93,7 +93,7 @@ input {
   color: #6b9900;
 }
 
-.sellerProduct__info > button {
+button {
   width: 200px;
   height: 30px;
   margin-right: 20px;

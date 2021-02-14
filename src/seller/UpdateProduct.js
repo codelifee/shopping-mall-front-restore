@@ -2,8 +2,11 @@ import React, {useState, useEffect} from 'react'
 import './UpdateProduct.css'
 import axios from '../axios/axios'
 import { fromNumber } from 'long'
+import { useParams } from 'react-router-dom'
 
 function UpdateProduct() {
+
+    const {id} = useParams();
 
     const [form, setForm] = useState({
         category_id: 1,
@@ -12,6 +15,12 @@ function UpdateProduct() {
         product_price: 1000,
         product_picture: '',
     })
+
+    const [product, setProduct] = useState({})
+
+    useEffect(() => {
+        fetchProduct();
+    }, [])
 
     const handleChange = e => {
         e.preventDefault()
@@ -31,9 +40,14 @@ function UpdateProduct() {
 
     }    
     
-    console.log(form);
+    const fetchProduct = () => {
 
-    const showForm = (e) => {
+        axios.get(`products/${id}`, form)
+        .then(res => setProduct(res.data))
+        .catch(err => console.log(err))
+    }
+
+    const updateProduct = (e) => {
         e.preventDefault()
         
         axios.put('products', form)
@@ -45,17 +59,17 @@ function UpdateProduct() {
         <div className="UpdateProduct">
             <div className="UpdateProduct__container">
                 <div className="UpdateProduct__container__head">
-                    <h1>Add a New Product</h1>
+                    <h1>Update a Product</h1>
                     <p>Please choose the right category for your product</p>
                 </div>
                 <form className="UpdateProduct__search" 
-                onSubmit={showForm}>
+                onSubmit={updateProduct}>
                     <div className="UpdateProduct__searchbar">
                         <p>Product Name</p>
                         <input 
                         type="text" 
                         name="product_name"
-                        value={form.product_name}
+                        value={product.product_name}
                         onChange={handleChange}
                         />
                     </div>
@@ -79,7 +93,7 @@ function UpdateProduct() {
                         <input 
                         type="text" 
                         name="product_description"
-                        value={form.product_description}
+                        value={product.product_description}
                         onChange={handleChange}
                         />
                     </div>
@@ -88,6 +102,7 @@ function UpdateProduct() {
                         <input 
                         type="text" 
                         name="product_price"
+                        value={product.product_price}
                         onChange={handleChange}
                         />
                     </div>

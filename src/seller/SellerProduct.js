@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import axios from '../axios/axios'
 import './SellerProduct.css'
+import {Link} from 'react-router-dom'
 
 function SellerProduct({name, price, id, handleDelete }) {
 
@@ -16,6 +17,11 @@ function SellerProduct({name, price, id, handleDelete }) {
             onClick={() => handleDelete(id)}
             >
             DELETE
+            </td>
+            <td className="sellerProduct__tableButton">
+                <Link to={`/seller/updateProduct/${id}`}>
+                    Update
+                </Link>
             </td>
         </tr>
             

@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import './SellerProducts.css'
 import SellerProduct from "./SellerProduct"
 import axios from '../axios/axios'
+import {Link} from 'react-router-dom'
 
 function SellerProducts() {
 
@@ -68,7 +69,10 @@ function SellerProducts() {
                 </div>
                 <div className="sellerProduct__info">
                     <h2>0 Product</h2>
+                    <Link to="/seller/addProduct">
                     <button>+ Add a New Product</button>
+                    </Link>
+                    
                 </div>
                 <div className="sellerProduct__table">
                     <table>
@@ -77,6 +81,7 @@ function SellerProducts() {
                                 <th>Price</th>
                                 <th>Stock</th>
                                 <th>DELETE</th>
+                                <th>Update</th>
                             </thead>
                             <tbody>
                             {products.filter(val => {
