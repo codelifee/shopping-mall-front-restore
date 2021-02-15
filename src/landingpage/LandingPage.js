@@ -13,7 +13,7 @@ function LandingPage() {
         <div className="container1">
           <div className="wrapper">
             <div className="home">
-      
+          
             </div>
           </div>
         </div>

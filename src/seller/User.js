@@ -52,9 +52,9 @@ function User() {
                 <div className="user__table">
                     <table>
                         <thead>
-                            <th>Product Name</th>
-                            <th>Price</th>
-                            <th>Stock</th>
+                            <th>Customer Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
                         </thead>
                         <tbody>
                             {users.map(user => (
