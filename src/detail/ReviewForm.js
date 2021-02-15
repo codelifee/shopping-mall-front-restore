@@ -26,7 +26,7 @@ const formData = new FormData();
         review: '',
         star: 0,
         review_picture: '사진',
-        review_date_created: '2021-02-10',
+        review_date_created: '2021-02-15',
         product_name: '녹색 의자',
         productDetailsList: '녹색의 의자'
         }
@@ -79,7 +79,7 @@ const formData = new FormData();
     const showForm = (e) => {
         e.preventDefault();
         
-         axios.post('/review', formData, config)
+         axios.post('/review/upload', formData, config)
         .then(res => console.log(res))
         .catch(err => console.log(err))
     }
@@ -143,7 +143,7 @@ const formData = new FormData();
             <button type="submit" onClick={()=>{
                 
                     form.review == '' ? alert("내용을 입력해주세요!") : alert("내용이 입력됐습니다.");
-                    window.close()} 
+                    /* window.close()*/} 
                 
                 }>Submit</button>
                 
