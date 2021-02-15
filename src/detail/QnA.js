@@ -23,7 +23,6 @@ function QnA(){
         fetchDate();
       }, []);
     
-
     return(
         <div className="QnA">
             <div className="QnA__header">
@@ -41,24 +40,28 @@ function QnA(){
                         {/* } */}
                 </div>
             </div>
-            <br/><hr/>
             {
                 question
-                .filter((qus)=>{
-                   return qus.product_id === id;
+                .filter(function (qus){
+                    console.log(qus);
+                   return qus.product_id == id;
                 })
-                .map((qus)=>{
+                .map((qus, i)=>{
                     return(
-                <div>
+                <div key={i}>
                 <li className="question__list">
                     <div className="question__list_user">
                         {qus.user_sequence_id}
                     </div>
-                <div>
+                
                     <div className="question__list_content">
-                        {qus.question}
+                        <p>Q: {qus.question}</p>
+                        <p>A: {qus.answer}</p>
                     </div>
-                </div>
+                    
+                    <div className="question__list_date">
+                        <p>{qus.question_date_created}</p>
+                    </div>
             </li>
             </div>
                     )

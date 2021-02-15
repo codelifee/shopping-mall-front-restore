@@ -23,8 +23,7 @@ function ProductView(){
         
         fetchDate();
     }, [])
-    
-    console.log(products)
+
     
     // //메인 클릭으로 넘어온 카테고리 id를 가진 상품들 정보 
     // const index = products.findIndex(
