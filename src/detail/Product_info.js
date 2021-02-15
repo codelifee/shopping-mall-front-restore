@@ -6,6 +6,7 @@ import {useParams} from 'react-router-dom';
 function Product_info() {
 
     const {id} = useParams();
+    const quality_img = `http://shoppingmall-env.eba-jac9afx7.us-east-1.elasticbeanstalk.com/products/showQualityImage/${id}`;
      const [products, setProducts] = useState([]);
      useEffect(()=>{
           async function fetchDate() {
@@ -24,7 +25,7 @@ function Product_info() {
     return(
         <div className="info">
             <h3>상품정보 고시</h3>
-            <img src={products.quality_img} alt="상품고시" className="detail_img"/>
+            <img src={quality_img} alt="상품고시" className="detail_img"/>
             {/* <hr/>
             <dl>
                 <dt>용량/중량</dt> 

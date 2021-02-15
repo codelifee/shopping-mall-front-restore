@@ -8,7 +8,7 @@ function Product(props) {
     const [products, setProducts] = useState([{props}]);
     //dispatch -> how we manipulate with data
     const [{basket}, dispatch] = useStateValue();
-    
+    const image = "http://shoppingmall-env.eba-jac9afx7.us-east-1.elasticbeanstalk.com/products/showProductImage/";
     
     let history = useHistory();
     
@@ -51,7 +51,7 @@ function Product(props) {
                 </div> 
             </div>
 
-            <img className="product__img" src={props.image} alt="" onClick={()=>{
+            <img className="product__img" src={image+props.id} alt="" onClick={()=>{
                 history.push(`/detail/${props.id}`);
             }}/> 
             <button onClick={addToBasket}>Add to the List</button>

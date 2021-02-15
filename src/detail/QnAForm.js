@@ -44,7 +44,7 @@ function QnAForm(){
         <div className="QnAForm">
            
            <form className="QnA_form" onSubmit={
-               form.question != '' ? showForm : ''
+               form.question != '' ? showForm : null
                }> 
                 <label htmlFor="input">질문 작성</label>
            <input 

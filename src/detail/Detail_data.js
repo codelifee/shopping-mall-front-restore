@@ -5,7 +5,8 @@ import './Detail_data.css';
 
  function Detail_data(){
 
-     const {id} = useParams();
+   const {id} = useParams();
+    const info_img = `http://shoppingmall-env.eba-jac9afx7.us-east-1.elasticbeanstalk.com/products/showInfoImage/${id}`;
      const [products, setProducts] = useState([]);
      useEffect(()=>{
           async function fetchDate() {
@@ -22,7 +23,7 @@ import './Detail_data.css';
               }, [])
      return (
          <div>
-              <img src={products.product_picture} alt="디테일" className="detail_img"/>
+              <img src={info_img} alt="디테일" className="detail_img"/>
          </div>
      )
  }

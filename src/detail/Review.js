@@ -15,6 +15,8 @@ function Review(props) {
 
   const history = useHistory();
 
+  const review_img = `http://shoppingmall-env.eba-jac9afx7.us-east-1.elasticbeanstalk.com/review/show/`;
+
   useEffect(() => {
     async function fetchDate() {
       const request = await axios
@@ -98,6 +100,7 @@ function Review(props) {
     background: #ffc107;
     width: ${one_per}%;
   `;
+
   return (
     <div className="review">
       <div className="review__score">
@@ -163,7 +166,7 @@ function Review(props) {
 
                 <div className="review__list_content">
                   {review.review}
-                  <img src={review.review_picture} />
+                  <img src={review_img+review.review_id} />
                 </div>
 
                 <div className="review__list_date">

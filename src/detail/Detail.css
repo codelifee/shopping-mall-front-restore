@@ -63,6 +63,12 @@ a{
 .detail__product_deliveryPrice_{
     margin-bottom: 30px;
 }
+
+.detail__proudct_stock{
+    border-bottom: solid 1px black;
+    padding-bottom: 20px;
+}
+
 .quantity{
     font-size:21px;
     margin-top: 20px;
