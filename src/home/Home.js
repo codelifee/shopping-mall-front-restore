@@ -1,6 +1,6 @@
 import './Home.css';
 import React from 'react';
-import Collection from './Collection'
+import Recommendation from './Recommendation'
 import Best from './Best'
 import Category from './Category'
 import New from './New'
@@ -21,7 +21,7 @@ function Home() {
 
                 <div className="home__row">
 
-                  <Collection />
+                  <Recommendation />
                     <Best />
                     <Category />
                     <New/> 

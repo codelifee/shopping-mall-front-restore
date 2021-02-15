@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Product from '../detail/Product';
 import axios from '../axios/axios';
 import './ProductView.css';
-import Collection from '../home/Collection';
+import Recommendation from '../home/Recommendation';
 
 //카테고리 id에 맞게 출력될 것
 

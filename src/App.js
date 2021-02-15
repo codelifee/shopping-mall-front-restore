@@ -16,6 +16,7 @@ import LandingPage from './landingpage/LandingPage';
 import ProductView from './ProductView/ProductView';
 import ReviewForm from './detail/ReviewForm';
 import QnAForm from './detail/QnAForm';
+import Customer from './customer/Customer'
 
 
 function App() {
@@ -91,6 +92,10 @@ function App() {
             </Route>
             <Route path="/seller">
               <Seller />
+            </Route>
+
+            <Route path="/customer">
+              <Customer />
             </Route>
             
             <Route path="/">
