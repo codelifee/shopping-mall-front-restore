@@ -10,7 +10,7 @@ function UpdateCustomer() {
 
     useEffect(() => {
         async function fetchData() {
-            const request = await axios.get(`/users/${user_sequence_id}`)
+            const request = await axios.get(`users/${user_sequence_id}`)
             .then(response => 
                 setCustomer(response.data)
             )
@@ -24,11 +24,11 @@ function UpdateCustomer() {
     console.log(customer)
 
     const [form, setForm] = useState({
-        user_id : '',
-        user_pwd : '',
-        user_name : '',
-        user_phone : '',
-        user_address: ''
+        user_id : customer.user_id,
+        user_pwd : customer.user_pwd,
+        user_name : customer.user_name,
+        user_phone : customer.user_phone,
+        user_address: customer.user_address 
     })
 
     const handleChange = e => {
@@ -41,25 +41,23 @@ function UpdateCustomer() {
     
     console.log(form);
 
+    const updateCheck = () => {
+        if(customer.user_pwd !== form.user_pwd){
+            alert("비밀번호를 다시 입력하세요.");
+            return false;
+        } 
+        // if(!(/^[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}/.test(form.user_phone))){
+        //     alert("전화번호를 '-' 형식으로 입력하세요.");
+        //     return false;
+        //     }   
+    }
+
     const showForm = (e) => {
         e.preventDefault()
 
-        axios.put(`/users/${user_sequence_id}`, form)
-        .then(res => console.log(res))
+        axios.put(`users/${user_sequence_id}`, form)
+        .then(alert("수정이 완료되었습니다."))
         .catch(err => console.log(err))
-    }
-
-    const updateCheck = () => {
-        if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(form.user_id))){
-            alert('아이디를 이메일 형식으로 입력하세요.');
-            return false;
-            }
-        if(!(/^[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}/.test(form.user_phone))){
-            alert("전화번호를 '-' 형식으로 입력하세요.");
-            return false;
-            }
-        }
-        alert('회원가입이 완료되었습니다.');
     }
 
     return (
@@ -76,14 +74,13 @@ function UpdateCustomer() {
                         <input 
                         type="text" 
                         name="user_id"
-                        placeholder={customer.user_id}
-                        onChange={handleChange}
+                        value={customer.user_id}
                         />
                     </div>
                     <div className="password">
                         <label htmlfor="">Password</label>
                         <input 
-                        type="text" 
+                        type="password" 
                         name="user_pwd"
                         onChange={handleChange}
                         />
@@ -93,7 +90,7 @@ function UpdateCustomer() {
                         <input 
                         type="text" 
                         name="user_name"
-                        placeholder={customer.user_name}
+                        value={customer.user_name}
                         onChange={handleChange}
                         />
                     </div>

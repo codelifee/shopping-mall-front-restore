@@ -1,9 +1,12 @@
 import React, {useState, useEffect} from 'react'
-import './AddProduct.css'
+import './UpdateProduct.css'
 import axios from '../axios/axios'
 import { fromNumber } from 'long'
+import { useParams } from 'react-router-dom'
 
-function AddProduct() {
+function UpdateProduct() {
+
+    const {id} = useParams();
 
     const [form, setForm] = useState({
         category_id: 1,
@@ -12,6 +15,12 @@ function AddProduct() {
         product_price: 1000,
         product_picture: '',
     })
+
+    const [product, setProduct] = useState({})
+
+    useEffect(() => {
+        fetchProduct();
+    }, [])
 
     const handleChange = e => {
         e.preventDefault()
@@ -31,34 +40,40 @@ function AddProduct() {
 
     }    
     
+    const fetchProduct = () => {
 
-    const showForm = (e) => {
+        axios.get(`products/${id}`, form)
+        .then(res => setProduct(res.data))
+        .catch(err => console.log(err))
+    }
+
+    const updateProduct = (e) => {
         e.preventDefault()
         
-        axios.post('products', form)
+        axios.put('products', form)
         .then(res => console.log(res))
         .catch(err => console.log(err))
     }
 
     return (
-        <div className="addProduct">
-            <div className="addProduct__container">
-                <div className="addProduct__container__head">
-                    <h1>Add a New Product</h1>
+        <div className="UpdateProduct">
+            <div className="UpdateProduct__container">
+                <div className="UpdateProduct__container__head">
+                    <h1>Update a Product</h1>
                     <p>Please choose the right category for your product</p>
                 </div>
-                <form className="addProduct__search" 
-                onSubmit={showForm}>
-                    <div className="addProduct__searchbar">
+                <form className="UpdateProduct__search" 
+                onSubmit={updateProduct}>
+                    <div className="UpdateProduct__searchbar">
                         <p>Product Name</p>
                         <input 
                         type="text" 
                         name="product_name"
-                        value={form.product_name}
+                        value={product.product_name}
                         onChange={handleChange}
                         />
                     </div>
-                    <div className="addProduct__category">
+                    <div className="UpdateProduct__category">
                         <p>Category</p>
                         <select
                         name="category_id" 
@@ -78,7 +93,7 @@ function AddProduct() {
                         <input 
                         type="text" 
                         name="product_description"
-                        value={form.product_description}
+                        value={product.product_description}
                         onChange={handleChange}
                         />
                     </div>
@@ -87,6 +102,7 @@ function AddProduct() {
                         <input 
                         type="text" 
                         name="product_price"
+                        value={product.product_price}
                         onChange={handleChange}
                         />
                     </div>
@@ -107,4 +123,4 @@ function AddProduct() {
     )
 }
 
-export default AddProduct
+export default UpdateProduct

@@ -1,0 +1,22 @@
+.modal{
+    position:fixed;
+    width: 180px;
+    height: 100px;
+    border: solid 2px rgb(49, 209, 49);
+    z-index: 1;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.modal_content{
+    margin-top: 10px;
+}
+
+button{
+    border: none;
+    border-radius: 20px;
+    width:130px;
+    height: 30px;
+    background-color: greenyellow;
+    cursor: pointer;
+}

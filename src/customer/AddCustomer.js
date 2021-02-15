@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './AddCustomer.css';
 import axios from '../axios/axios';
+import $ from "jquery";
 
 function AddCustomer() {
 
@@ -8,7 +9,7 @@ function AddCustomer() {
 
     useEffect(() => {
         async function fetchData() {
-            const request = await axios.get(`/users/all`)
+            const request = await axios.get(`http://localhost:5000/users/all`)
             .then(response => 
                 setCustomer(response.data)
             )
@@ -35,26 +36,13 @@ function AddCustomer() {
                 [e.target.name]: e.target.value 
             })
     }      
-    
     console.log(form);
 
-    const showForm = (e) => {
+    const joinCheck = (e) => {
         e.preventDefault()
-        
-        axios.post(`users`, form)
-        .then(res => console.log(res))
-        .catch(err => console.log(err))
-    }
-
-    const joinCheck = () => {
         if(form.user_id === ''){
             alert('아이디를 입력하세요.');
             return false;
-        }else{
-            if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(form.user_id))){
-                alert('아이디를 이메일 형식으로 입력하세요.');
-                return false;
-            }
         }
         if(form.user_pwd === ''){
             alert('비밀번호를 입력하세요.');
@@ -68,26 +56,26 @@ function AddCustomer() {
             alert('전화번호를 입력하세요.');
             return false;
         }else{
-            if(!(/^[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}/.test(form.user_phone))){
-                alert("전화번호를 '-' 형식으로 입력하세요.");
-                return false;
-            }
+            
         }
         if(form.user_address === ''){
             alert('주소를 입력하세요.');
             return false;
         }
-        alert('회원가입이 완료되었습니다.');
     }
 
     const checkId = () => {
         let status = true;
         customer.map((data,i)=>{
-            if(form.user_id === customer.user_id[i]){
+            if(form.user_id === customer[i].user_id){
                 status = false;
             }
         })
         if(status){
+            if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(form.user_id))){
+                alert('아이디를 이메일 형식으로 입력하세요.');             
+                return false;
+            }
             return alert('사용 가능한 아이디입니다.')
         }else{
             return alert('사용 불가능한 아이디입니다.')
@@ -96,15 +84,27 @@ function AddCustomer() {
     const checkPhone = () => {
         let status = true;
         customer.map((data,i)=>{
-            if(form.user_phone === customer.user_phone[i]){
+            if(form.user_phone === customer[i].user_phone){
                 status = false;
             }
         })
         if(status){
+            if(!(/^[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}/.test(form.user_phone))){
+                alert("전화번호를 '-' 형식으로 입력하세요.");
+                return false;
+            }
             return alert('사용 가능한 전화번호입니다.')
         }else{
             return alert('사용 불가능한 전화번호입니다.')
         }
+    }
+
+    const showForm = (e) => {
+        e.preventDefault()
+        
+        axios.post(`http://localhost:5000/users`, form)
+        .then(alert("가입이 완료되었습니다."))
+        .catch(err => console.log(err))
     }
 
     return (
@@ -114,7 +114,7 @@ function AddCustomer() {
                     <h1>Add a New Customer</h1>
                 </div>
                 <form className="addCustomer__search" 
-                onSubmit={showForm,joinCheck}>
+                onSubmit={showForm}>
                     <div className="id">
                         <label htmlfor="">Id</label>
                         <input 
@@ -132,7 +132,7 @@ function AddCustomer() {
                     <div className="password">
                         <label htmlfor="">Password</label>
                         <input 
-                        type="text" 
+                        type="password" 
                         name="user_pwd"
                         onChange={handleChange}
                         />
@@ -169,6 +169,7 @@ function AddCustomer() {
                     </div>
                     <button 
                     type="submit"
+                    onClick={joinCheck}
                     >Submit</button>
                 </form>
             </div>

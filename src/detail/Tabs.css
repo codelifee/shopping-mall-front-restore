@@ -8,14 +8,14 @@ input[type="radio"] + label {
     padding:20px; 
     width: 200px;
     text-align: center;
-    background:#ccc; 
-    color:#999; 
+    background:#b0e96f; 
+    color:rgb(163, 163, 163); 
     font-size:14px; 
     cursor: pointer;
 }
     
 input[type="radio"]:checked + label {
-        background:#aaa; 
+        background:#84df1c; 
         color:#000;
     }
     

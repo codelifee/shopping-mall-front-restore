@@ -62,10 +62,11 @@ body {
   }
 
   .id > button{
-    width: 80px;
+    width: 60px;
     margin-left: 5px;
     border: 1px dotted #6b9900;
     background: #e4f7ba;
+    font-size: 10px;
   }
   
   .password {
@@ -102,10 +103,11 @@ body {
   }
 
   .phone > button{
-    width:100px;
+    width:80px;
     margin-left: 5px;
     border: 1px dotted #6b9900;
     background: #e4f7ba;
+    font-size: 10px;
   }
 
   .address {
