@@ -25,6 +25,7 @@ function Detail() {
   
   const [products, setProducts] = useState([]);
   const {id} = useParams();
+  const product_img = `http://shoppingmall-env.eba-jac9afx7.us-east-1.elasticbeanstalk.com/products/showProductImage/${id}`;
   const [modal, setModal] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const [{basket}, dispatch] = useStateValue();
@@ -51,7 +52,7 @@ function Detail() {
           <div className="detail">
       <div className="detail__product">
         <div className="detail__product_img">
-          <img src={products.product_picture} className="img" alt=""/>
+          <img src={product_img} className="img" alt=""/>
         </div>
         <div className="detail__product_info">
           <p className="detail__product_name">{products.product_name}</p>
@@ -63,7 +64,10 @@ function Detail() {
           <p className="detail__product_deliveryPrice_">
             일반지역 2,500원 / 도서산간지역 4,000원{" "}
           </p>
-          <hr />
+          <p className="detail__proudct_stock">
+            재고 : {products.stock}
+          </p>
+          
           <p className="quantity">
             {quantity > 1 ? (<button onClick={() => {setQuantity(quantity - 1);}}>-</button>) : (<button onClick={() => {setQuantity(quantity);}}>-</button>)}
             구매수량 {quantity}
@@ -84,7 +88,7 @@ function Detail() {
                    item: {
                     id: products.product_id,
                     title: products.product_name,
-                    image:products.product_picture,
+                    image:product_img,
                     description: products.product_description,
                     price: products.product_price * quantity,
                     rating: products.product_rating
@@ -101,7 +105,7 @@ function Detail() {
                  item: {
                   id: products.product_id,
                   title: products.product_name,
-                  image:products.product_picture,
+                  image:product_img,
                   description: products.product_description,
                   price: products.product_price * quantity,
                   rating: products.product_rating

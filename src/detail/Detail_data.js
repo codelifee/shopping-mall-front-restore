@@ -1,14 +1,31 @@
-import React, {useState} from 'react';
-//import Data from '../ProductView/Data';
+import React, {useState, useEffect} from 'react';
+import {useParams} from 'react-router-dom';
+import axios from '../axios/axios';
 import './Detail_data.css';
 
  function Detail_data(){
-//     const [data_product, setData_product] = useState(Data);
-     return null //(
-//         <div>
-//              <img src={data_product[0].detail_data} alt="디테일" className="detail_img"/>
-//         </div>
-//     )
+
+   const {id} = useParams();
+    const info_img = `http://shoppingmall-env.eba-jac9afx7.us-east-1.elasticbeanstalk.com/products/showInfoImage/${id}`;
+     const [products, setProducts] = useState([]);
+     useEffect(()=>{
+          async function fetchDate() {
+            const request = await axios.get(`products/${id}`)
+            .then(response =>
+                  setProducts(response.data)
+                  )
+                  .catch(error => console.log(error))
+                  
+                  return request;
+                }
+                
+                fetchDate();
+              }, [])
+     return (
+         <div>
+              <img src={info_img} alt="디테일" className="detail_img"/>
+         </div>
+     )
  }
 
 

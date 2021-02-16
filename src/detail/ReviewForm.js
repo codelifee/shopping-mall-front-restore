@@ -25,8 +25,8 @@ const formData = new FormData();
         product_detail_id: 1,
         review: '',
         star: 0,
-        review_picture: '사진',
-        review_date_created: '2021-02-10',
+        review_picture: null,
+        review_date_created: '2021-02-15',
         product_name: '녹색 의자',
         productDetailsList: '녹색의 의자'
         }
@@ -38,8 +38,7 @@ const formData = new FormData();
     formData.append('product_detail_id',form.product_detail_id)
     formData.append('review',form.review)
     formData.append('star',form.star)
-    formData.append('review_picture', new Blob([JSON.stringify(form.review_picture)])
-    , { type: "application/json" })
+    formData.append('review_picture', form.review_picture)
     formData.append('review_date_created',form.review_date_created)
     formData.append('product_name',form.product_name)
     formData.append('productDetailsList',form.productDetailsList)
@@ -78,10 +77,17 @@ const formData = new FormData();
 
     const showForm = (e) => {
         e.preventDefault();
-        
-         axios.post('/review', formData, config)
-        .then(res => console.log(res))
-        .catch(err => console.log(err))
+        //삼항연산자로 사진이 null이면 글만 넘어가는 post로
+        //null이 아니면 아래 post로 동작하게 만들기
+        if(form.review_picture!=null){
+            return axios.post('/review/upload', formData, config)
+            .then(res => console.log(res))
+            .catch(err => console.log(err))
+        }else{
+            axios.post('/review', form)
+            .then(res => console.log(res))
+            .catch(err => console.log(err))
+        }
     }
 
 
@@ -115,7 +121,7 @@ const formData = new FormData();
 				})}
 		    </div>
 
-            <form className="review_form" onSubmit={form.question != '' ? showForm : ''}> 
+            <form className="review_form" onSubmit={form.review != '' ? showForm : null}> 
                 <label htmlFor="input">리뷰 작성</label>
               
                 <input 
@@ -127,13 +133,16 @@ const formData = new FormData();
                 />
 
                 <div className="file_upload">
-                <input 
-                type="file" 
-                id="file_upload"
-                name="review_picture" 
-                file={form.review_picture} 
-                multiple onChange={handleFileChange}/>
-                </div>
+                   
+                    <input 
+                    type="file" 
+                    id="file_upload"
+                    name="review_picture" 
+                    file={form.review_picture} 
+                    multiple onChange={handleFileChange}/>
+                    
+                </div>    
+            
             
 
                 {console.log(form)}
@@ -143,7 +152,7 @@ const formData = new FormData();
             <button type="submit" onClick={()=>{
                 
                     form.review == '' ? alert("내용을 입력해주세요!") : alert("내용이 입력됐습니다.");
-                    window.close()} 
+                    /* window.close()*/} 
                 
                 }>Submit</button>
                 

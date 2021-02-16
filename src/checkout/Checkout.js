@@ -24,9 +24,9 @@ function Checkout() {
                                 id={item.id}
                                 title={item.title}
                                 image={item.image}
-                               // description={item.description}
+                                description={item.description}
                                 price={item.price}
-                               // rating={item.rating}
+                                rating={item.rating}
                             />
                         ))
                         }

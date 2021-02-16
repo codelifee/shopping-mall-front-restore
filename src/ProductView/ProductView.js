@@ -2,8 +2,8 @@ import React, {useState, useEffect} from 'react';
 import Product from '../detail/Product';
 import axios from '../axios/axios';
 import './ProductView.css';
+import Recommendation from '../home/Recommendation';
 import Tabs from '../detail/Tabs';
-
 
 //카테고리 id에 맞게 출력될 것
 
@@ -23,8 +23,7 @@ function ProductView(){
         
         fetchDate();
     }, [])
-    
-    console.log(products)
+
     
     // //메인 클릭으로 넘어온 카테고리 id를 가진 상품들 정보 
     // const index = products.findIndex(

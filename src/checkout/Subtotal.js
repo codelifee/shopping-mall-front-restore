@@ -1,6 +1,6 @@
 import React from 'react'
 import "./Subtotal.css";
-//import CurrencyFormat from "react-currency-format";
+import CurrencyFormat from "react-currency-format";
 import { useStateValue } from '../StateProvider/StateProvider';
 import {useState, useEffect} from 'react';
 import {getBasketTotal} from '../StateProvider/Reducer'
@@ -26,7 +26,7 @@ function Subtotal() {
 
     return (
         <div className='subtotal'>
-            {/* <CurrencyFormat
+            <CurrencyFormat
                 renderText={(value) => (
                     <>
                         <p>
@@ -44,7 +44,7 @@ function Subtotal() {
                 displayType={"text"}
                 thousandSeparator={true}
                 prefix={"₩"}
-                /> */}
+                />
 
                 <button onClick={e => history.push('/payment')}>Proceed to Checkout</button>
         </div>

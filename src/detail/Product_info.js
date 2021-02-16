@@ -1,11 +1,32 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './Product_info.css';
+import axios from '../axios/axios';
+import {useParams} from 'react-router-dom';
 
 function Product_info() {
+
+    const {id} = useParams();
+    const quality_img = `http://shoppingmall-env.eba-jac9afx7.us-east-1.elasticbeanstalk.com/products/showQualityImage/${id}`;
+     const [products, setProducts] = useState([]);
+     useEffect(()=>{
+          async function fetchDate() {
+            const request = await axios.get(`products/${id}`)
+            .then(response =>
+                  setProducts(response.data)
+                  )
+                  .catch(error => console.log(error))
+                  
+                  return request;
+                }
+                
+                fetchDate();
+              }, [])
+
     return(
         <div className="info">
             <h3>상품정보 고시</h3>
-            <hr/>
+            <img src={quality_img} alt="상품고시" className="detail_img"/>
+            {/* <hr/>
             <dl>
                 <dt>용량/중량</dt> 
                 <dd>215ml</dd>
@@ -57,7 +78,7 @@ function Product_info() {
                 <dt>품질보증기준</dt> 
                 <dd>본 제품에 이상이 있을 경우 공정거래위원회 고시 '소비자분쟁해결기준'에 의하여 보상해드립니다.</dd>
             </dl>
-            <hr/>
+            <hr/> */}
         </div>
     )
 }
