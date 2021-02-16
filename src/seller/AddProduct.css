@@ -90,6 +90,11 @@ body {
   background: linear-gradient(45deg, #faf4c0, #e4f7ba);
 }
 
+.image {
+  margin-top: 20px;
+  margin-left: 170px;
+}
+
 .price {
   display: flex;
   margin-top: 30px;
@@ -98,15 +103,6 @@ body {
 
 .price > label {
   padding-right: 10px;
-}
-
-.stock {
-  margin-left: 110px;
-  margin-top: 30px;
-}
-
-.stock > label {
-  padding-right: 6px;
 }
 
 .addProduct__search > button {

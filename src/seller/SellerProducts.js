@@ -16,13 +16,9 @@ function SellerProducts() {
                 setProducts(response.data)
             )
             .catch(error => console.log(error))
-            
-            console.log("useEffect")
-           
+                       
             return request;
         }
-
-        console.log("useEffect")
 
 
         fetchDate();
@@ -39,8 +35,6 @@ function SellerProducts() {
         .catch(err => console.log(err))
     }
 
-    console.log("render")
-
     return (
         <div className="sellerProduct">
             <div className="sellerProduct__container">
@@ -54,7 +48,7 @@ function SellerProducts() {
                             type="text"
                             onChange={e => {setSearchTerm(e.target.value)}}
                             />
-                            <label htmlFor="categories">Category</label>
+                            <label>Category</label>
                             <select name="categories" id="categories">
                                 <option value="1">의자</option>
                                 <option value="2">서랍</option>

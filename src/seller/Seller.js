@@ -5,6 +5,7 @@ import Order from './Order'
 import User from './User'
 import AddProduct from './AddProduct'
 import UpdateProduct from './UpdateProduct'
+import AddPhoto from './AddPhoto'
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import './Seller.css'
 
@@ -29,6 +30,11 @@ function Seller() {
                     <Route path='/seller/updateProduct/:id'>
                         <Navbar />
                         <UpdateProduct />
+                
+                    </Route>
+                    <Route path='/seller/addPhoto'>
+                        <Navbar />
+                        <AddPhoto />
                 
                     </Route>
                     <Route path='/seller/order'>
