@@ -7,7 +7,6 @@ import {useHistory} from 'react-router-dom'
 
 function AddProduct() {
 
-    const history = useHistory();
 
     const [form, setForm] = useState({
         category_id: 1,
@@ -19,8 +18,6 @@ function AddProduct() {
         quality_img: null,
         stock: 100,
     })
-
-    const [formdata, setFormdata] = useState(new FormData)
 
     const handleChange = e => {
         e.preventDefault()
@@ -51,24 +48,7 @@ function AddProduct() {
             })
         }
 
-        // let data = new FormData();
-
-        // for (const [key, value] of Object.entries(form)) {
-        //     console.log(`${key} : ${value}`)
-        // }
-
-        // for (const [key, value] of Object.entries(form)) {
-        //     data.append(key, value)
-        // }
-
-        // for (let pair of data.entries()) {
-        //     console.log(pair[0] + ', ' + pair[1])
-        // }
-
     }    
-
-    // console.log(form);
-    // console.log(formdata)
 
     
 
@@ -162,7 +142,6 @@ function AddProduct() {
                     <div>
                         <label>상세 이미지 2</label>
                         <input type="file" name="quality_img" onChange={handleChange} />
-                        <button>Upload Image</button>
                     </div>
                     <button 
                     type="submit"
