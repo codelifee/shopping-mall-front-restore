@@ -1,24 +1,24 @@
-import new1 from './images/new1.jpg';
-import new2 from './images/new2.jpg';
-import new3 from './images/new3.jpg';
-
-
-
+import grape from './images/grape.jpg';
+import tomato from './images/tomato.jpg';
+import plum from './images/plum.jpg';
 
 export default [
     {
         id:0,
-        img: new1
+        title: "포도즙",
+        img: grape
 
     },
     {
         id:1,
-        img: new2
+        title: "토마토즙",
+        img: tomato
 
     },
     {
         id:2,
-        img: new3
+        title: "매실즙",
+        img: plum
 
     }
 ]

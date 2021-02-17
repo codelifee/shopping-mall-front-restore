@@ -4,7 +4,7 @@ import DatePicker from "react-datepicker";
 import OrdersData from "./OrdersData";
 import axios from "../axios/axios";
 import { useHistory, useParams } from "react-router-dom";
-
+import "./Order.css";
 function Orders(props) {
   const [startDate, setStartDate] = useState(new Date());
   const [orders, setOrders] = useState([{ props }]);
@@ -17,13 +17,13 @@ function Orders(props) {
   useEffect(() => {
     async function fetchDate() {
       const request = await axios
-        .get(`Orders/{id}`)
+        .get(`orders/${id}`)
         .then(response => setOrders(response.data))
         .catch(error => console.log(error));
 
       return request;
     }
-
+    console.log(orders);
     fetchDate();
   }, []);
 
@@ -35,7 +35,7 @@ function Orders(props) {
           history.push(`/orders/{props.id}`);
         }}
       >
-        {props.title}
+        {orders.product_name}
       </p>
       <div className="order__container">
         <div className="order__search">
@@ -60,23 +60,23 @@ function Orders(props) {
           <h2>{orders?.length} Orders</h2>
         </div>
         <div className="order__table">
-          {orders.map(order => (
-            <div>
-              <OrdersData
-                status={order.order_status}
-                key={order.order_id}
-                name={order.user_id}
-                product={order.product_name}
-                date={order.order_date_created}
-                address={order.user_address}
-                picture={img}
-                amount={order.product_price}
-              />
-            </div>
-          ))}
+          상품명: {orders.product_name}
+          {/* {orders.map((order, i) => (
+            <OrdersData
+              status={order.order_status}
+              key={order.order_id}
+              name={order.user_id}
+              product={order.product_name}
+              date={order.order_date_created}
+              address={order.user_address}
+              picture={img}
+              amount={order.product_price}
+            />
+          ))} */}
         </div>
       </div>
     </div>
   );
 }
+
 export default Orders;

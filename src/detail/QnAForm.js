@@ -10,10 +10,13 @@ function QnAForm(){
     const history = useHistory();
 
     const [form, setForm] = useState({
-        question: '',
-        product_id: 1,
+        product_id: 2,
         user_sequence_id:6,
-        question_date_created: "2021-02-12"
+        question: '',
+        question_date_created: "2021-02-12",
+        answer_id : 1,
+        answer: '내일 출고됩니다.',
+        answer_date_created: "2021-02-13"
     })
 
 
@@ -40,7 +43,9 @@ function QnAForm(){
     return (
         <div className="QnAForm">
            
-           <form className="QnA_form" onSubmit={showForm}> 
+           <form className="QnA_form" onSubmit={
+               form.question != '' ? showForm : null
+               }> 
                 <label htmlFor="input">질문 작성</label>
            <input 
            id="input"
@@ -50,10 +55,13 @@ function QnAForm(){
            onChange={handleChange}
            />
        <div className="button">
-           <button type="submit" onClick={()=>{
-               history.goBack()
-           }}>Submit</button>
-       </div>
+       <button type="submit" onClick={()=>{
+                
+                form.question == '' ? alert("내용을 입력해주세요!") : alert("내용이 입력됐습니다.");
+                /*window.close() */
+                
+            }}>Submit</button>
+            </div>
        </form>
     </div>
 );

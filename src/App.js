@@ -17,6 +17,9 @@ import ProductView from "./ProductView/ProductView";
 import ReviewForm from "./detail/ReviewForm";
 import QnAForm from "./detail/QnAForm";
 import Map from "./KakaoMap";
+import "./App.css";
+import Customer from "./customer/Customer";
+
 function App() {
   const [{}, dispatch] = useStateValue();
 
@@ -92,7 +95,13 @@ function App() {
             <Map />
           </Route>
 
-          
+          <Route path="/seller">
+            <Seller />
+          </Route>
+
+          <Route path="/customer">
+            <Customer />
+          </Route>
 
           <Route path="/">
             <LandingPage />

@@ -4,19 +4,40 @@ import {useLocation, useParams, useHistory} from "react-router-dom";
 import "./Detail.css";
 import {useStateValue} from "../StateProvider/StateProvider";
 import axios from '../axios/axios';
+import './Modal.css';
 
+function Modal(){
+  const history = useHistory();
+ 
+  return(
+    <div id="myModal" className="modal">
+      <div className="modal_content">
+        <h4>장바구니에 상품이 <br/> 담겼습니다.</h4>
+        <button onClick={()=>{
+          history.push('/checkout')
+        }}>장바구니로 이동</button>
+      </div>
+    </div>
+  )
+}
 
 function Detail() {
   
   const [products, setProducts] = useState([]);
   const {id} = useParams();
+  const product_img = `http://shoppingmall-env.eba-jac9afx7.us-east-1.elasticbeanstalk.com/products/showProductImage/${id}`;
+  const [modal, setModal] = useState(false);
+  const [quantity, setQuantity] = useState(1);
+  const [{basket}, dispatch] = useStateValue();
+  const history = useHistory();
+  const [keep, setKeep] = useState();
   
   useEffect(()=>{
-      async function fetchDate() {
-          const request = await axios.get(`products/${id}`)
-          .then(response =>
+    async function fetchDate() {
+      const request = await axios.get(`products/${id}`)
+      .then(response =>
             setProducts(response.data)
-          )
+            )
             .catch(error => console.log(error))
             
             return request;
@@ -24,18 +45,14 @@ function Detail() {
           
           fetchDate();
         }, [])
-
-  const [quantity, setQuantity] = useState(1);
-  const [{basket}, dispatch] = useStateValue();
-  const history = useHistory();
-  const [keep, setKeep] = useState();
-
-  return (
-
-    <div className="detail">
+        
+        
+        return (
+          
+          <div className="detail">
       <div className="detail__product">
         <div className="detail__product_img">
-          <img src={products.product_picture} className="img" alt=""/>
+          <img src={product_img} className="img" alt=""/>
         </div>
         <div className="detail__product_info">
           <p className="detail__product_name">{products.product_name}</p>
@@ -47,49 +64,38 @@ function Detail() {
           <p className="detail__product_deliveryPrice_">
             일반지역 2,500원 / 도서산간지역 4,000원{" "}
           </p>
-          <hr />
+          <p className="detail__proudct_stock">
+            재고 : {products.stock}
+          </p>
+          
           <p className="quantity">
-            {quantity > 1 ? (
-              <button
-                onClick={() => {
-                  setQuantity(quantity - 1);
-                }}
-              >
-                -
-              </button>
-            ) : (
-              <button
-                onClick={() => {
-                  setQuantity(quantity);
-                }}
-              >
-                -
-              </button>
-            )}
+            {quantity > 1 ? (<button onClick={() => {setQuantity(quantity - 1);}}>-</button>) : (<button onClick={() => {setQuantity(quantity);}}>-</button>)}
             구매수량 {quantity}
-            <button
-              onClick={() => {
-                setQuantity(quantity + 1);
-              }}
-            >
-              +
-            </button>
+            <button onClick={() => {setQuantity(quantity + 1);}}>+</button>
           </p>
           <p className="detail__product_totalPrice">
             총 금액 {new Intl.NumberFormat().format(products.product_price * quantity)}원
           </p>
+
+        <div>
+
+          {modal===true ? <Modal/> : null}
+          
             <button className="detail__keep" onClick={()=>{
-              dispatch(
-                {type:'ADD_TO_BASKET',
-                 item: {
-                  id: products.product_id,
-                  title: products.product_name,
-                  image: products.product_picture,
-                  description: products.product_description,
-                  price: products.product_price * quantity,
-                  rating: products.product_rating
-                }}
-              )
+              if(modal==false){
+                dispatch(
+                  {type:'ADD_TO_BASKET',
+                   item: {
+                    id: products.product_id,
+                    title: products.product_name,
+                    image:product_img,
+                    description: products.product_description,
+                    price: products.product_price * quantity,
+                    rating: products.product_rating
+                  }}
+                );
+              }
+              setModal(!modal)
             }}>장바구니</button>
           
           
@@ -99,7 +105,7 @@ function Detail() {
                  item: {
                   id: products.product_id,
                   title: products.product_name,
-                  image:products.product_picture,
+                  image:product_img,
                   description: products.product_description,
                   price: products.product_price * quantity,
                   rating: products.product_rating
@@ -108,6 +114,7 @@ function Detail() {
               history.push('/payment')
             }}>주문하기</button>
           
+        </div>
         </div>
       </div>
       <Tabs/>

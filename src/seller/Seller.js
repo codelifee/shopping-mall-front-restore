@@ -4,6 +4,7 @@ import SellerProducts from "./SellerProducts";
 import Order from "./Orders";
 import User from "./User";
 import AddProduct from "./AddProduct";
+import UpdateProduct from "./UpdateProduct";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./Seller.css";
 
@@ -16,9 +17,13 @@ function Seller() {
             <Navbar />
             <SellerProducts />
           </Route>
-          <Route path="/seller/addproduct">
+          <Route path="/seller/addProduct">
             <Navbar />
             <AddProduct />
+          </Route>
+          <Route path="/seller/updateProduct/:id">
+            <Navbar />
+            <UpdateProduct />
           </Route>
           <Route path="/seller/order">
             <Navbar />

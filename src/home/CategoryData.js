@@ -1,55 +1,39 @@
-import cabinet from './images/cabinet.jpg';
-import carpet from './images/carpet.jpg';
-import furniture from './images/furniture.jpg';
-import homedecor from './images/homedecor.jpg';
-import kitchen_product from './images/kitchen_product.jpg';
-import lamp from './images/lamp.jpg';
-import mattress from './images/mattress.jpg';
+import fruits from './images/fruits.jpg';
+import vegetables from './images/vegetables.jpg';
+import ginseng from './images/ginseng.jpg';
+import velvet from './images/velvet.jpg';
+
 
 export default [
     {
         id:0,
-        title:"Furniture",
-        img: furniture
+        title: "과일즙",
+        img: fruits
 
     },
     {
         id:1,
-        title:"Bed / Mattress",
-        img: mattress
+        title:"채소즙",
+        img: vegetables
 
     },
     {
         id:2,
-        title:"Storing / Organizing",
-        img: cabinet
+        title:"홍삼",
+        img: ginseng
 
     },
     {
         id:3,
-        title:"Kitchen utensils",
-        img: kitchen_product
+        title:"약탕",
+        img: ginseng
 
     }
     ,
     {
         id:4,
-        title:"Home Decoration",
-        img: homedecor
-
-    }
-    ,
-    {
-        id:5,
-        title:"Lighting",
-        img: lamp
-
-    }
-    ,
-    {
-        id:6,
-        title:"Rugs",
-        img: carpet
+        title:"건강즙",
+        img: velvet
 
     }
 ]
