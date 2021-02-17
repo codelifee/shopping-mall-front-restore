@@ -1,0 +1,138 @@
+.user {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.user__container {
+  /* background: rgb(182, 167, 167); */
+  width: 1200px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 100px 100px 100px 1fr;
+  margin-top: 100px;
+  background-color: #fff;
+  color: #476600;
+  margin-bottom: 100px;
+}
+
+.user__searchbar {
+  width: 500px;
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.user__searchbar > .user__input {
+  margin-right: 10px;
+}
+
+.user__input {
+  height: 30px;
+  width: 300px;
+  border-radius: 5px;
+}
+
+.user__search {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  /* background: rgb(121, 112, 112); */
+}
+
+.datepicker_date {
+  padding: 3px;
+  border-radius: 5px;
+}
+
+.user__category {
+  display: flex;
+  align-items: flex-start;
+  margin-left: -50px;
+}
+
+.user__category > p {
+  margin-right: 10px;
+}
+
+.user__button {
+  display: flex;
+  align-items: center;
+}
+
+.user__search-button {
+  margin-right: 20px;
+  width: 100px;
+  height: 30px;
+  color: white;
+  background: #777;
+  border: 1px solid #6b9900;
+  border-radius: 5px;
+}
+
+.user__reset-button {
+  width: 100px;
+  height: 30px;
+  background: #fff;
+  border: 1px solid #6b9900;
+  border-radius: 5px;
+}
+
+.user__info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* background: purple; */
+  margin-left: 36px;
+  margin-right: 36px;
+}
+
+.user__info > button {
+  margin-right: 20px;
+  width: 200px;
+  height: 30px;
+  color: aliceblue;
+  background: rgb(200, 73, 73);
+  font-size: medium;
+}
+
+.user__table_bg {
+  /* background: wheat; */
+
+  width: 1130px;
+  height: 600px;
+}
+
+table {
+  width: 1125px;
+  text-align: center;
+  border-radius: 5px;
+  background-image: linear-gradient(to right, #faf4c0 0%, #f1d9f5 100%);
+  border: 2px solid #f2cb61;
+  color: #333;
+}
+
+.user__table thead {
+  background-color: #555;
+  color: #ffffff;
+}
+.user__table th {
+  border-radius: 5px;
+}
+.user__table th,
+td {
+  padding: 12px 15px;
+}
+
+.user__table tbody tr {
+  border-bottom: 1px solid #c7c3c3;
+}
+
+.user__table tbody tr:nth-of-type(even) {
+  background-color: #e0dede;
+}
+
+.user__table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}

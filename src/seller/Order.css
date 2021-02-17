@@ -1,0 +1,146 @@
+.order {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+  color: #eee;
+}
+
+.order__container {
+  /* background: rgb(182, 167, 167); */
+  width: 1200px;
+  display: grid;
+  margin-top: 100px;
+  grid-template-columns: 1fr;
+  grid-template-rows: 100px 100px 100px 1fr;
+  background-color: #fff;
+  color: #476600;
+  margin-bottom: 100px;
+}
+
+.order__searchbar {
+  width: 600px;
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+.date {
+  padding: 3px;
+  border-radius: 5px;
+}
+.date,
+.order__searchbar > input {
+  margin-right: 10px;
+}
+
+.order__input {
+  height: 30px;
+  width: 350px;
+  border-radius: 5px;
+}
+
+.order__search {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin: 0 23px;
+  /* background: rgb(121, 112, 112); */
+}
+
+.order__category {
+  display: flex;
+  align-items: center;
+  width: 500px;
+  right: 35px;
+  margin-left: -130px;
+}
+
+.order__category > p {
+  margin-right: 10px;
+  color: #476600;
+}
+
+.order__button {
+  display: flex;
+  margin-left: 36px;
+  align-items: center;
+  color: #476600;
+}
+
+.order__search-button {
+  margin-right: 20px;
+  width: 100px;
+  height: 30px;
+  color: white;
+  background: #777;
+  border: 1px solid #6b9900;
+  border-radius: 5px;
+}
+
+.order__reset-button {
+  width: 100px;
+  height: 30px;
+  background: #fff;
+  border: 1px solid #6b9900;
+  border-radius: 5px;
+}
+
+.order__info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* background: purple; */
+  margin-left: 36px;
+  margin-right: 36px;
+  color: #333;
+}
+
+.order__info > button {
+  width: 200px;
+  height: 30px;
+  color: aliceblue;
+  background: rgb(200, 73, 73);
+  font-size: medium;
+}
+
+.order__table_bg {
+  /* background: wheat; */
+  width: 1130px;
+  height: 400px;
+}
+
+.order__table {
+  width: 1125px;
+  background-image: linear-gradient(to right, #faf4c0 0%, #f1d9f5 100%);
+  border: 2px solid #f2cb61;
+  color: #333;
+  margin-left: 10px;
+  margin-right: 0;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.order__table thead {
+  background-color: #555;
+  color: #fff;
+}
+.order__table th {
+  border-radius: 5px;
+}
+.order__table th,
+td {
+  padding: 12px 15px;
+}
+
+.order__table tbody tr {
+  border-bottom: 1px solid #c7c3c3;
+}
+
+.order__table tbody tr:nth-of-type(even) {
+  background-color: #e0dede;
+  color: #476600;
+}
+
+.order__table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}

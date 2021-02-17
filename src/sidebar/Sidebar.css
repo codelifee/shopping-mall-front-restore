@@ -1,0 +1,102 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.menu_botton {
+  padding-left: 30px;
+}
+
+.menu[id="menuicon"] {
+  display: none;
+}
+.menu[id="menuicon"] + label {
+  display: block;
+  width: 35px;
+  height: 25px;
+  position: relative;
+  cursor: pointer;
+}
+.menu[id="menuicon"] + label span {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 5px;
+  border-radius: 30px 30px 30px 30px;
+  background-color: #000;
+  transition: all 0.35s;
+}
+
+.menu[id="menuicon"] + label span:nth-child(1) {
+  top: 0;
+}
+.menu[id="menuicon"] + label span:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.menu[id="menuicon"] + label span:nth-child(3) {
+  bottom: 0;
+}
+
+.menu[id="menuicon"]:checked + label span:nth-child(1) {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  width: 80%;
+
+  z-index: 300;
+}
+.menu[id="menuicon"]:checked + label span:nth-child(2) {
+  opacity: 0;
+
+  z-index: 300;
+}
+.menu[id="menuicon"]:checked + label span:nth-child(3) {
+  bottom: 50%;
+  transform: translateY(50%) rotate(-45deg);
+  width: 80%;
+
+  z-index: 300;
+}
+
+.sidebar {
+  width: 300px;
+  height: 100%;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: -300px;
+  z-index: 200;
+  transition: all 0.35s;
+  opacity: 0.9;
+}
+.menu[id="menuicon"]:checked + label + div {
+  left: 0;
+}
+
+.menu_list {
+  margin: 100px 40px;
+  list-style: none;
+}
+
+.menu_list li {
+  margin: 10px 0px;
+}
+
+.menu_link {
+  color: #000;
+  font-size: 15px;
+}
+
+.All_Products {
+  display: none;
+}
+.headr_products {
+  color: #555;
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 20px;
+  transition: all 0.3s;
+}
+.headr_products:hover {
+  color: #000;
+}

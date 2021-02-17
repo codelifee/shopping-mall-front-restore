@@ -1,0 +1,123 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+.UpdateProduct {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #eee;
+  color: #476600;
+}
+
+.UpdateProduct__container {
+  /* background: rgb(182, 167, 167); */
+  width: 1200px;
+  height: 83vh;
+  display: grid;
+  margin-top: 100px;
+  padding: 70px 20px;
+  grid-template-columns: 1fr;
+  grid-template-rows: 100px 100px auto;
+  border: 10px solid;
+  border-image: linear-gradient(45deg, #f2cb61, #bce55c);
+  border-image-slice: 1;
+  background-color: #fff;
+  color: #476600;
+}
+.UpdateProduct__container__head h1 {
+  color: #6b9900;
+}
+.UpdateProduct__container__head {
+  padding-left: 36px;
+  padding-top: 20px;
+}
+.UpdateProduct__container__head p {
+  color: #6b9900;
+}
+.UpdateProduct__search {
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+  margin-top: 50px;
+  height: 500px;
+
+  background: #fff;
+}
+
+.UpdateProduct__search > input {
+  height: 30px;
+}
+
+.UpdateProduct__searchbar {
+  display: flex;
+  margin-left: 40px;
+}
+
+.UpdateProduct__searchbar > p {
+  margin-right: 14px;
+  color: #476600;
+}
+
+.UpdateProduct__category {
+  display: flex;
+  height: 56px;
+  margin-left: 80px;
+  margin-top: 20px;
+}
+
+.UpdateProduct__category > select {
+  height: 32px;
+  border: 1px dotted #6b9900;
+}
+
+.UpdateProduct__category > p {
+  margin-right: 14px;
+  color: #476600;
+}
+
+.product-description {
+  display: flex;
+}
+
+.product-description > label {
+  margin-right: 10px;
+}
+
+.product-description > input {
+  height: 200px;
+  width: 835px;
+  background: linear-gradient(45deg, #faf4c0, #e4f7ba);
+}
+
+.price {
+  display: flex;
+  margin-top: 30px;
+  margin-left: 120px;
+}
+
+.price > label {
+  padding-right: 10px;
+}
+
+.stock {
+  margin-left: 110px;
+  margin-top: 30px;
+}
+
+.stock > label {
+  padding-right: 6px;
+}
+
+.UpdateProduct__search > button {
+  margin-top: 50px;
+  width: 200px;
+  margin-left: 165px;
+  border: 1px dotted #6b9900;
+  background: #e4f7ba;
+}
+
+input {
+  background: linear-gradient(45deg, #faf4c0, #e4f7ba);
+  border: 1px dotted #6b9900;
+}
