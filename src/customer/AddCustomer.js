@@ -1,13 +1,7 @@
-<<<<<<< HEAD
-import React, {useState, useEffect} from 'react';
-import './AddCustomer.css';
-import axios from '../axios/axios';
-//import $ from "jquery";
-=======
 import React, { useState, useEffect } from "react";
 import "./AddCustomer.css";
 import axios from "../axios/axios";
->>>>>>> 6c2d7c67d0ac068d5bf0a21c5c24b561fa05e13d
+
 
 function AddCustomer() {
   const [customer, setCustomer] = useState([]);
