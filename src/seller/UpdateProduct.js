@@ -73,15 +73,40 @@ function AddProduct() {
 
     }
 
+    const blobToFile = (theBlob, fileName) => {
+         //A Blob() is almost a File() - it's just missing the two properties below which we will add
+        theBlob.lastModifiedDate = new Date();
+        theBlob.name = fileName;
+        return theBlob;
+    }
+
     const getProduct = () => {
         axios.get(`products/${productId}`)
         .then(res => setForm(res.data))
         .catch(err => console.log(err))
+
+         //create blob object
+         const newBlob = new Blob([form.product_picture], {type:'image/png'})
+
+         //create file object and pass in blob object
+         const myfile = blobToFile(newBlob, "product_picture.png");
+
+         console.log(myfile)
+ 
+         setForm ({
+             ...form,
+             ["product_picture"]: myfile
+         })
+
+        
+        console.log(form);    
     }
 
     useEffect(() => {
         getProduct();
+    
     },[])
+
 
     return (
         <div className="addProduct">
