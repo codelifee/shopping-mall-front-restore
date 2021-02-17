@@ -13,11 +13,7 @@ function Sidebar() {
      <div className="menu_botton">
 
  <input type="checkbox" id="menuicon" className="menu"/>
-<<<<<<< HEAD
   <label for="menuicon">
-=======
-  <label htmlFor="menuicon">
->>>>>>> 6c2d7c67d0ac068d5bf0a21c5c24b561fa05e13d
     <span></span>
     <span></span>
     <span></span>

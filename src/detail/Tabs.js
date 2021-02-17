@@ -22,17 +22,10 @@ function Tabs(){
             <input type='radio' name="tabmenu" id="tab04"/>
             <label htmlFor="tab04">Q & A</label>
             <hr/>
-<<<<<<< HEAD
-
-            <div className="conbox con1"><Data/></div>
-            <div className="conbox con2"><Info/></div>
-            <div className="conbox con3"><Review/></div>
-=======
             
             <div className="conbox con1"><Data/></div>
             <div className="conbox con2"><Info/></div>
             <div className="conbox con3"><Review/></div> 
->>>>>>> 6c2d7c67d0ac068d5bf0a21c5c24b561fa05e13d
             <div className="conbox con4"><QnA/></div>
         </div>
     )

@@ -20,11 +20,7 @@
 .checkout__title {
   padding: 10px;
   border-bottom: 1px solid lightgray;
-<<<<<<< HEAD
-  background: linear-gradient(45deg, #bce55c, #e5d85c);
-=======
   background-color: #333;
->>>>>>> 6c2d7c67d0ac068d5bf0a21c5c24b561fa05e13d
   width: 100%;
   color: #fff;
   border-radius: 10px;

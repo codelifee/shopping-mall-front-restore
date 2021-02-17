@@ -23,11 +23,7 @@ body {
 }
 
 .remove:hover {
-<<<<<<< HEAD
-  background: #476600;
-=======
   background: #000;
->>>>>>> 6c2d7c67d0ac068d5bf0a21c5c24b561fa05e13d
   border: 2px solid #aaa;
 }
 /* .select {
@@ -62,11 +58,7 @@ body {
 
 .remove {
   display: block;
-<<<<<<< HEAD
-  background: #22741c;
-=======
   background: #333;
->>>>>>> 6c2d7c67d0ac068d5bf0a21c5c24b561fa05e13d
   border: 2px solid #777;
   color: #fff;
   border-radius: 40px;
