@@ -42,7 +42,7 @@ function Orders() {
       <div className="order__container">
         <div className="order__search">
           <form className="order__searchbar">
-            <input type="text" />
+            <input name="keyword" placeholder="Search" type="text" />
             <FaSearch className="search-icon" />
           </form>
           <div className="order__category">
@@ -73,7 +73,7 @@ function Orders() {
               date={order.order_date_created}
               address={order.user_address}
               picture={img + order.product_id}
-              amount={order.order_amount}
+              amount={order.product_price}
             />
           ))}
         </div>

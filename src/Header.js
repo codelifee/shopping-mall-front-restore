@@ -22,7 +22,11 @@ function Header() {
     return (
         <div className='header'>
              <Sidebar/>
+<<<<<<< HEAD
             <Link to='/home'>
+=======
+            <Link to='/'>
+>>>>>>> 6c2d7c67d0ac068d5bf0a21c5c24b561fa05e13d
                 <img
                 className='header__logo'
                 src={Logo} alt=""/>

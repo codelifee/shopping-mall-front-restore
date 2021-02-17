@@ -6,8 +6,13 @@
   height: 150px;
   margin-left: 100px;
   padding: 20px;
+<<<<<<< HEAD
   background: #e5d85c;
   border-radius: 10px;
+=======
+  background: rgb(235, 178, 199);
+  border-radius: 3px;
+>>>>>>> 6c2d7c67d0ac068d5bf0a21c5c24b561fa05e13d
 }
 
 .subtotal__gift {
@@ -20,7 +25,11 @@
 }
 
 .subtotal > button {
+<<<<<<< HEAD
   background: #6b9900;
+=======
+  background: #333;
+>>>>>>> 6c2d7c67d0ac068d5bf0a21c5c24b561fa05e13d
   border-radius: 2px;
   width: 100%;
   height: 30px;
@@ -28,5 +37,8 @@
   margin-top: 10px;
   border: none;
   color: #fff;
+<<<<<<< HEAD
   border-radius: 5px;
+=======
+>>>>>>> 6c2d7c67d0ac068d5bf0a21c5c24b561fa05e13d
 }

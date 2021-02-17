@@ -1,11 +1,19 @@
 body {
   margin: 0;
   padding: 0;
+<<<<<<< HEAD
   background-color: #aaa;
 }
 
 .navbar {
   background-color: #aaa;
+=======
+  background-color: #fff;
+}
+
+.navbar {
+  background-color: #fff;
+>>>>>>> 6c2d7c67d0ac068d5bf0a21c5c24b561fa05e13d
   text-align: center;
 }
 
@@ -15,7 +23,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+<<<<<<< HEAD
   background: #aaa;
+=======
+  background: white;
+>>>>>>> 6c2d7c67d0ac068d5bf0a21c5c24b561fa05e13d
   font-size: 13px;
   /* color: rgb(175, 126, 35); */
   padding-top: 70px;

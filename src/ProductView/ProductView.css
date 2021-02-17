@@ -9,14 +9,28 @@
   box-sizing: border-box;
 }
 .products {
+<<<<<<< HEAD
   margin-left: auto;
   margin-right: auto;
+=======
+  display: grid;
+  grid-template-columns: auto;
+  background-color: rgb(252, 240, 133);
+  text-align: center;
+>>>>>>> 6c2d7c67d0ac068d5bf0a21c5c24b561fa05e13d
   height: 100%;
 }
 
 .products__row {
+<<<<<<< HEAD
   display: flex;
   width: 1170px; margin: 0 auto;
+=======
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  margin: 20px;
+  justify-items: center;
+>>>>>>> 6c2d7c67d0ac068d5bf0a21c5c24b561fa05e13d
 }
 
 .home__img {
