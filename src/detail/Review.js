@@ -30,6 +30,8 @@ function Review(props) {
     fetchDate();
   }, []);
 
+  console.log(reviews)
+
   //해당삼품의 리뷰 별점 배열
   const col = reviews
     .filter(function (review) {
@@ -161,12 +163,15 @@ function Review(props) {
             <div key={i}>
               <li className="review__list">
                 <div className="review__list_user">
-                  {review.user_sequence_id}
+                  {review.user_id}
                 </div>
 
                 <div className="review__list_content">
                   {review.review}
-                  <img src={review_img+review.review_id} />
+                  {review.review_picture!=null ?
+                    <img src={review_img+review.review_id}/>: null
+                  }
+                  
                 </div>
 
                 <div className="review__list_date">

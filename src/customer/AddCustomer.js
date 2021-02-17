@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './AddCustomer.css';
 import axios from '../axios/axios';
-import $ from "jquery";
+//import $ from "jquery";
 
 function AddCustomer() {
 

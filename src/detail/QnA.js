@@ -10,9 +10,10 @@ function QnA(){
     const {id} = useParams();
     const [{user}, dispatch] = useStateValue();
     const [question, setQuestion] = useState([]);
+    const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        async function fetchDate() {
+        async function fetchDate() { //http://localhost:5000/question/all
           const request = await axios.get(`question/all`)
             .then((response) => setQuestion(response.data))
             .catch((error) => console.log(error));
@@ -23,6 +24,18 @@ function QnA(){
         fetchDate();
       }, []);
     
+    console.log(question)
+
+    // async function getUser() {
+    //     const req = await axios.get(`users/all`)
+    //       .then((response) => setUsers(response.data))
+    //       .catch((error) => console.log(error));
+  
+    //     return req;
+    //   }
+  
+    //   getUser();
+
     return(
         <div className="QnA">
             <div className="QnA__header">
@@ -35,7 +48,7 @@ function QnA(){
                         //db에서 구매했던 목록중 현재 페이지 상품과 동일한 것이 있다면
                         //이라는 조건 추가. */}
                         <button className="QnA__button" onClick={()=>{
-                            window.open(`/question/${id}`,'review_form','width=600,height=700,location=no,status=no,scrollbars=no')
+                            window.open(`/question/${id}`,'question_form','width=600,height=700,location=no,status=no,scrollbars=no')
                         }}>문의사항 작성</button>
                         {/* } */}
                 </div>
@@ -51,7 +64,7 @@ function QnA(){
                 <div key={i}>
                 <li className="question__list">
                     <div className="question__list_user">
-                        {qus.user_sequence_id}
+                        {qus.user_id}
                     </div>
                 
                     <div className="question__list_content">

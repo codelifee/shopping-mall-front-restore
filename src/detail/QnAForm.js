@@ -11,12 +11,12 @@ function QnAForm(){
 
     const [form, setForm] = useState({
         product_id: 2,
-        user_sequence_id:6,
+        user_sequence_id:8,
         question: '',
-        question_date_created: "2021-02-12",
+        question_date_created: "2021-02-16",
         answer_id : 1,
         answer: '내일 출고됩니다.',
-        answer_date_created: "2021-02-13"
+        answer_date_created: "2021-02-16"
     })
 
 
