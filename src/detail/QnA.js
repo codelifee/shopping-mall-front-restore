@@ -26,16 +26,6 @@ function QnA(){
     
     console.log(question)
 
-    // async function getUser() {
-    //     const req = await axios.get(`users/all`)
-    //       .then((response) => setUsers(response.data))
-    //       .catch((error) => console.log(error));
-  
-    //     return req;
-    //   }
-  
-    //   getUser();
-
     return(
         <div className="QnA">
             <div className="QnA__header">
