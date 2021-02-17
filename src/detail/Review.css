@@ -64,10 +64,15 @@
     flex:1;
 }
 
-.review_list_content{
+.review__list_content{
     flex:1;
     display:flex;
     flex-direction: column
+}
+
+.review__list_content img{
+    width: 150px;
+    height: 100px;
 }
 
 .review__list_date{
