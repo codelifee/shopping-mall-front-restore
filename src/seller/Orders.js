@@ -5,9 +5,9 @@ import OrdersData from "./OrdersData";
 import axios from "../axios/axios";
 import { useHistory, useParams } from "react-router-dom";
 import "./Order.css";
-function Orders(props) {
+function Orders() {
   const [startDate, setStartDate] = useState(new Date());
-  const [orders, setOrders] = useState([{ props }]);
+  const [orders, setOrders] = useState([{ }]);
 
   let history = useHistory();
 
@@ -17,7 +17,7 @@ function Orders(props) {
   useEffect(() => {
     async function fetchDate() {
       const request = await axios
-        .get(`orders/${id}`)
+        .get(`orders/all`)
         .then(response => setOrders(response.data))
         .catch(error => console.log(error));
 
@@ -32,7 +32,7 @@ function Orders(props) {
       <p
         className="product__name"
         onClick={() => {
-          history.push(`/orders/{props.id}`);
+          history.push(`/orders/{id}`);
         }}
       >
         {orders.product_name}
@@ -60,8 +60,8 @@ function Orders(props) {
           <h2>{orders?.length} Orders</h2>
         </div>
         <div className="order__table">
-          상품명: {orders.product_name}
-          {/* {orders.map((order, i) => (
+    
+          {orders.map((order, i) => (
             <OrdersData
               status={order.order_status}
               key={order.order_id}
@@ -72,7 +72,7 @@ function Orders(props) {
               picture={img}
               amount={order.product_price}
             />
-          ))} */}
+          ))}
         </div>
       </div>
     </div>

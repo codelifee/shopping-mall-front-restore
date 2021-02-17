@@ -12,13 +12,14 @@ function Orders() {
 
   let history = useHistory();
 
-  const { id } = useParams();
+  const { user_sequence_id } = useParams();
   const img = `http://shoppingmall-env.eba-jac9afx7.us-east-1.elasticbeanstalk.com/products/showProductImage/`;
+
 
   useEffect(() => {
     async function fetchDate() {
       const request = await axios
-        .get(`http://localhost:5000/orders/userid/6`)
+        .get(`http://localhost:5000/orders/userid/${user_sequence_id}`)
 
         .then(response => setOrders(response.data))
         .catch(error => console.log(error));
@@ -34,7 +35,7 @@ function Orders() {
       <p
         className="product__name"
         onClick={() => {
-          history.push(`orders/${id}`);
+          history.push(`orders/${user_sequence_id}`);
         }}
       >
         {orders.title}
@@ -42,7 +43,7 @@ function Orders() {
       <div className="order__container">
         <div className="order__search">
           <form className="order__searchbar">
-            <input type="text" />
+            <input name="keyword" placeholder="Search" type="text" />
             <FaSearch className="search-icon" />
           </form>
           <div className="order__category">
