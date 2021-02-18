@@ -3,45 +3,44 @@ import "./Review.css";
 import styled from "styled-components";
 import { useStateValue } from "../StateProvider/StateProvider";
 import { useHistory, useParams, useLocation } from "react-router-dom";
-import { FaStar } from "react-icons/fa";
+import { FaStar, FaStarHalf } from "react-icons/fa";
 import axios from "../axios/axios";
 
+
 function Review(props) {
+  
   const [reviews, setReviews] = useState([]);
-
+  
   const { id } = useParams();
-
+  
   const [{ user }, dispatch] = useStateValue();
-
+  
   const history = useHistory();
-
+  
   const review_img = `http://shoppingmall-env.eba-jac9afx7.us-east-1.elasticbeanstalk.com/review/show/`;
-
+  
   useEffect(() => {
     async function fetchDate() {
       const request = await axios
-        .get(`review/all`)
-        .then((response) => setReviews(response.data))
-        .catch((error) => console.log(error));
-
+      .get(`review/all`)
+      .then((response) => setReviews(response.data))
+      .catch((error) => console.log(error));
+      
       return request;
     }
-
+    
     fetchDate();
   }, []);
 
-  console.log(reviews)
-
   //해당삼품의 리뷰 별점 배열
   const col = reviews
-    .filter(function (review) {
-      return review.product_id == id;
-    })
+  .filter(function (review) {
+    return review.product_id == id;
+  })
     .map((review) => {
       return review.star;
     });
 
-  console.log(col);
   //해당상품 평균 별점
   let result = 0;
   col.map((sum) => {
@@ -114,11 +113,11 @@ function Review(props) {
         </div>
         <div className="review__score_list">
           <div className="review__score_graph_number">
-            <li className="five">5점</li>
-            <li className="four">4점</li>
-            <li className="three">3점</li>
-            <li className="two">2점</li>
-            <li className="one">1점</li>
+            <li className="five" key={50}>5점</li>
+            <li className="four" key={51}>4점</li>
+            <li className="three" key={52}>3점</li>
+            <li className="two" key={53}>2점</li>
+            <li className="one" key={54}>1점</li>
           </div>
           <div className="review__score_graph">
             <Graph5>{five_per}%</Graph5>
@@ -150,32 +149,75 @@ function Review(props) {
             >
               리뷰 작성
             </button>
-          }
+          }<br/>
+          
+          {/* 별점별 리뷰 보기
+          <br/>
+          <select className="star">
+          <option value="all">
+            모든 리뷰
+          </option>
+          <option value="5">
+          ★★★★★ 5점
+          </option>
+            <option value="4">
+            ★★★★ 4점
+            </option>
+            <option value="3">
+            ★★★ 3점
+            </option>
+            <option value="2">
+            ★★ 2점
+            </option>
+            <option value="1">
+            ★ 1점
+            </option>
+          </select> */}
         </div>
       </div>
 
       {reviews
         .filter(function (review) {
-          return review.product_id == id;
+           return review.product_id == id;
         })
-        .map((review, i) => {
+        .map((review, i) => { 
+          function star(){//user_id옆 별점 표시
+           if(review.star==5){
+             return [...Array(5)].map((k)=>{
+               return <FaStar color={"#ffc107"} size={20} />
+             })
+           }else if(review.star==4){
+             return [...Array(4)].map((k)=>{
+               return <FaStar color={"#ffc107"} size={20}/>
+             })
+           }else if(review.star==3){
+             return [...Array(3)].map((k)=>{
+               return <FaStar color={"#ffc107"} size={20} />
+             })
+           }else if(review.star==2){
+             return [...Array(2)].map((k)=>{
+               return <FaStar color={"#ffc107"} size={20} />
+             })
+           }else if(review.star==1){
+             return <FaStar color={"#ffc107"} size={20} />
+           }
+         }
           return (
-            <div key={i}>
-              <li className="review__list">
+            
+            <div>
+              <li className="review__list" key={i}>
+                  
                 <div className="review__list_user">
-                  {review.user_id}
+                  {review.user_id} 님 {star()}
                 </div>
 
                 <div className="review__list_content">
+                  {review.review_date_created} 작성<br/>
                   {review.review}
                   {review.review_picture!=null ?
                     <img src={review_img+review.review_id}/>: null
                   }
                   
-                </div>
-
-                <div className="review__list_date">
-                  {review.review_date_created}
                 </div>
               </li>
             </div>
