@@ -1,12 +1,13 @@
 import React from 'react'
 
-function UserTable({name, email, phone}) {
+function UserTable({id, name, phone, address}) {
     return (
         <>
         <tr>
+            <td>{id}</td>
             <td>{name}</td>
-            <td>{email}</td>
             <td>{phone}</td>
+            <td>{address}</td>
         </tr>
         </>
     )

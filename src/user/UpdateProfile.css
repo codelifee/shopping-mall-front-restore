@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
 }
-.updateCustomer {
+.updateProfile {
   width: 100%;
   height: 100vh;
   display: flex;
@@ -11,7 +11,7 @@ body {
   color: #476600;
 }
 
-.updateCustomer__container {
+.updateProfile__container {
   /* background: rgb(182, 167, 167); */
   width: 1200px;
   height: 87vh;
@@ -26,17 +26,17 @@ body {
   background-color: #fff;
   color: #476600;
 }
-.updateCustomer__container__head h1 {
+.updateProfile__container__head h1 {
   color: #6b9900;
 }
-.updateCustomer__container__head {
+.updateProfile__container__head {
   padding-left: 36px;
   padding-top: 20px;
 }
-.updateCustomer__container__head p {
+.updateProfile__container__head p {
   color: #6b9900;
 }
-.updateCustomer__search {
+.updateProfile__search {
   display: flex;
   flex-direction: column;
   margin-left: 30px;
@@ -46,7 +46,7 @@ body {
   background: #fff;
 }
 
-.updateCustomer__search > input {
+.updateProfile__search > input {
   height: 30px;
   /* width: 450px; */
 }
@@ -72,7 +72,7 @@ body {
   color: #476600;
 }
 
-.name {
+.name p {
   display: flex;
   margin-left: 40px;
   margin-bottom: 30px;
@@ -100,9 +100,13 @@ body {
   background: #e4f7ba;
 }
 
+.phone p{
+  color: red;
+}
+
 .address {
   display: flex;
-  margin-left: 40px;
+  margin-left: 41px;
 }
   
 .address > label {
@@ -110,7 +114,7 @@ body {
   color: #476600;
 }
 
-.updateCustomer__search > button {
+.updateProfile__search > button {
   margin-top: 30px;
   width: 200px;
   margin-left: 165px;

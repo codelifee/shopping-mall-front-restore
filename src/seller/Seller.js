@@ -11,7 +11,7 @@ import './Seller.css'
 
 function Seller() {
 
-    
+
 
     return (
         <Router>

@@ -52,17 +52,19 @@ function User() {
                 <div className="user__table">
                     <table>
                         <thead>
-                            <th>Customer Name</th>
-                            <th>Email</th>
+                            <th>Customer Id</th>
+                            <th>Name</th>
                             <th>Phone</th>
+                            <th>Address</th>
                         </thead>
                         <tbody>
                             {users.map(user => (
                                 <UserTable 
                                 key={user.user_sequence_id}
+                                id={user.user_id}
                                 name={user.user_name}
-                                email={user.user_email}
                                 phone={user.user_phone}
+                                address={user.user_address}
                                 />
                             ))}
                         </tbody>

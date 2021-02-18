@@ -16,7 +16,7 @@ import LandingPage from './landingpage/LandingPage';
 import ProductView from './ProductView/ProductView';
 import ReviewForm from './detail/ReviewForm';
 import QnAForm from './detail/QnAForm';
-import Customer from './customer/Customer'
+import User from './user/User'
 
 
 
@@ -94,8 +94,8 @@ function App() {
               <Seller />
             </Route>
 
-            <Route path="/customer">
-              <Customer />
+            <Route path="/user">
+              <User />
             </Route>
             
             <Route path="/">

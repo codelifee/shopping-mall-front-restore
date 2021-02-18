@@ -45,6 +45,10 @@ body {
   
     background: #fff;
   }
+
+  .addCustomer__search p{
+    color: red;
+}
   
   .addCustomer__search > input {
     height: 30px;
@@ -76,6 +80,17 @@ body {
   }
     
   .password > label {
+    margin-right: 9px;
+    color: #476600;
+  }
+
+  .password2 {
+    display: flex;
+    margin-left: 40px;
+    margin-bottom: 40px;
+  }
+    
+  .password2 > label {
     margin-right: 9px;
     color: #476600;
   }
@@ -112,7 +127,7 @@ body {
 
   .address {
     display: flex;
-    margin-left: 40px;
+    margin-left: 41px;
   }
     
   .address > label {
