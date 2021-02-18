@@ -1,11 +1,11 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #fff;
+  background-color: #aaa;
 }
 
 .navbar {
-  background-color: #fff;
+  background-color: #aaa;
   text-align: center;
 }
 
@@ -15,7 +15,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: white;
+  background: #aaa;
   font-size: 13px;
   /* color: rgb(175, 126, 35); */
   padding-top: 70px;

@@ -12,9 +12,8 @@ function Orders() {
 
   let history = useHistory();
 
-  const { user_sequence_id } = useParams();
+  const {user_sequence_id} = useParams();
   const img = `http://shoppingmall-env.eba-jac9afx7.us-east-1.elasticbeanstalk.com/products/showProductImage/`;
-
 
   useEffect(() => {
     async function fetchDate() {

@@ -31,26 +31,28 @@ function User() {
         <div className="user">
             <div className="user__container">
                 <div className="user__search">
+                <div className="user__button">
+                    <button className="user__search-button">Search</button>
+                    <button className="user__reset-button">Reset</button>
+                </div>
                     <form className="user__searchbar">
-                        <input type="text" />
+                        <input type="text" className="user__input" />
                         <FaSearch className="search-icon"/>
                     </form>
                     <div className="user__category">
                         <p>User Creation Date</p>
                         <DatePicker
+                        className="datepicker_date"
                         selected={startDate} 
                         onChange={date => setStartDate(date)} />
                     </div>
                 </div>
-                <div className="user__button">
-                    <button className="search-button">Search</button>
-                    <button className="reset-button">Reset</button>
-                </div>
+                
                 <div className="user__info">
                     <h2>0 Users</h2>
                 </div>
-                <div className="user__table">
-                    <table>
+                <div className="user__table_bg">
+                    <table className="user__table">
                         <thead>
                             <th>Customer Name</th>
                             <th>Email</th>

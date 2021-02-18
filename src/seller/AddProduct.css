@@ -6,8 +6,8 @@ body {
   width: 100%;
   display: flex;
   justify-content: center;
-  background-color: #eee;
-  color: #476600;
+  background-color: #fff;
+  color: #333;
 }
 
 .addProduct__container {
@@ -19,34 +19,42 @@ body {
   padding: 70px 20px;
   grid-template-columns: 1fr;
   grid-template-rows: 100px 100px auto;
-  border: 10px solid;
-  border-image: linear-gradient(45deg, #f2cb61, #bce55c);
-  border-image-slice: 1;
   background-color: #fff;
-  color: #476600;
+  color: #333;
 }
 .addProduct__container__head h1 {
-  color: #6b9900;
+  color: #333;
 }
 .addProduct__container__head {
   padding-left: 36px;
   padding-top: 20px;
+  display: f;
 }
 .addProduct__container__head p {
-  color: #6b9900;
+  color: #333;
 }
 .addProduct__search {
   display: flex;
   flex-direction: column;
-  margin-left: 30px;
+
   margin-top: 50px;
   height: 500px;
 
   background: #fff;
 }
 
+.addProduct__input {
+  height: 30px;
+}
+
+.searchbar_and_category {
+  display: flex;
+  align-items: center;
+}
+
 .addProduct__search > input {
   height: 30px;
+  border-radius: 5px;
 }
 
 .addProduct__searchbar {
@@ -66,7 +74,13 @@ body {
   margin-top: 20px;
 }
 
-.addProduct__category > select {
+.addProduct__select {
+  background-color: #777;
+  color: #fff;
+  border-radius: 5px;
+  padding: 0 5px;
+}
+.addProduct__category > .addProduct__select {
   height: 32px;
   border: 1px dotted #6b9900;
 }
@@ -87,6 +101,7 @@ body {
 .product-description > input {
   height: 200px;
   width: 835px;
+  border-radius: 5px;
   background: linear-gradient(45deg, #faf4c0, #e4f7ba);
 }
 
@@ -103,17 +118,25 @@ body {
 
 .price > label {
   padding-right: 10px;
+  border-radius: 5px;
 }
 
-.addProduct__search > button {
-  margin-top: 50px;
-  width: 200px;
-  margin-left: 165px;
-  border: 1px dotted #6b9900;
-  background: #e4f7ba;
-}
-
-input {
+.product-description_input {
   background: linear-gradient(45deg, #faf4c0, #e4f7ba);
   border: 1px dotted #6b9900;
+  border-radius: 5px;
+  margin: 15px 0;
+}
+.label_and_input {
+  margin-left: 60px;
+}
+.add_fin_button {
+  margin-top: 50px;
+  margin-left: 160px;
+  width: 300px;
+  height: 50px;
+  color: white;
+  background: #333;
+  border: 1px solid #6b9900;
+  border-radius: 5px;
 }

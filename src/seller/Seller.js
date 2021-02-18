@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import SellerProducts from "./SellerProducts";
-import Orders from "./Orders";
+import Order from "./Order";
 import User from "./User";
 import AddProduct from "./AddProduct";
 import UpdateProduct from "./UpdateProduct";
@@ -27,7 +27,7 @@ function Seller() {
           </Route>
           <Route path="/seller/order">
             <Navbar />
-            <Orders />
+            <Order />
           </Route>
           <Route path="/seller/user">
             <Navbar />
