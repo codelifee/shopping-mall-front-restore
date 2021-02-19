@@ -1,0 +1,42 @@
+.orderDetails {
+  width: 100%;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+  /* background-image: linear-gradient(to right, #faf4c0 0%, #f1d9f5 100%); */
+}
+
+.order__container {
+  /* background: rgb(182, 167, 167); */
+  width: 1200px;
+  display: grid;
+
+  grid-template-columns: 1fr;
+  grid-template-rows: 100px 100px 100px 1fr;
+  background-color: #fff;
+  color: #476600;
+}
+
+p {
+  margin: 10px 0;
+  font-weight: 600;
+  color: #333;
+}
+
+.orderDetails__info td,
+.orderDetails__info tr,
+.orderDetails__price td,
+.orderDetails__price tr {
+  background-color: #fff;
+}
+.orderDetails__info,
+.orderDetails__price {
+  font-size: 13px;
+  color: #333;
+  border: none;
+}
+
+.orderDetails_table {
+  margin-top: 40px;
+}

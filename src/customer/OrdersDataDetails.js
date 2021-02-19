@@ -13,9 +13,7 @@ function OrdersData({ name, date, address, status, product, amount, picture }) {
           <h4>{date} &gt;&gt;</h4>
         </span>
     
-    <span className="orderTitle2">
-          <h4>주문상세보기 &gt;&gt;</h4>
-        </span>
+    
         </div>
     <div className="ordersData" >
       
