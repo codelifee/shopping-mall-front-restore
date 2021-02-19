@@ -22,8 +22,6 @@ function QnA() {
     
         fetchDate();
       }, []);
-    
-    console.log(question)
 
     return (
       <div className="QnA">
@@ -52,10 +50,10 @@ function QnA() {
               문의사항 작성
             </button>
             {/* } */}
+            </div>
           </div>
           {question
             .filter(function (qus) {
-              console.log(qus);
               return qus.product_id == id;
             })
             .map((qus, i) => {
@@ -76,7 +74,6 @@ function QnA() {
                 </div>
               );
             })}
-        </div>
       </div>
     );
 

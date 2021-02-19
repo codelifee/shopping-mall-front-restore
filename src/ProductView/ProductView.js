@@ -2,15 +2,16 @@ import React, {useState, useEffect} from 'react';
 import Product from '../detail/Product';
 import axios from '../axios/axios';
 import './ProductView.css';
-import Recommendation from '../home/Recommendation';
-import Tabs from '../detail/Tabs';
+import {useParams} from 'react-router-dom';
+//import Recommendation from '../home/Recommendation';
+
 
 //카테고리 id에 맞게 출력될 것
 
 function ProductView(){
 
     const [products, setProducts] = useState([]);
-  
+    const {id} = useParams();
     useEffect(()=>{
         async function fetchDate() {
             const request = await axios.get('products/all')
@@ -34,7 +35,11 @@ function ProductView(){
         <div className="products">
             <div className="products__row">
                 {
-                    products.map((product, i)=>{
+                    products
+                    .filter(function(product){
+                        return product.category_id == id;
+                    })
+                    .map((product, i)=>{
                         return <Product
                         id= {product.product_id} 
                         title = {product.product_name} 
