@@ -93,10 +93,10 @@ function Navbar() {
                         </h2>
                         {answer &&
                             <div>
-                            <Link to="/seller/answer_yet">
+                            <Link to="/seller/answerYetCategory">
                                 <p>답변 미완료</p>
                             </Link>
-                            <Link to="/seller/answered">
+                            <Link to="/seller/answeredCategory">
                                 <p>답변 완료</p>
                             </Link>
                             </div>

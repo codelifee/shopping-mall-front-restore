@@ -37,7 +37,7 @@ function ProductView(){
                 {
                     products
                     .filter(function(product){
-                        return product.category_id == id;
+                        return product.category_id === id;
                     })
                     .map((product, i)=>{
                         return <Product

@@ -5,8 +5,12 @@ import Order from "./Order";
 import User from "./User";
 import AddProduct from "./AddProduct";
 import UpdateProduct from "./UpdateProduct";
-import AnswerYet from "./AnswerYet";
-import Answered from "./Answered";
+import AnswerYetCategory from "./AnswerYetCategory";
+import AnswerYetProducts from "./AnswerYetProducts";
+import AnswerYetQuestions from "./AnswerYetQuestion";
+import AnsweredCategory from "./AnsweredCategory";
+import AnsweredProducts from "./AnsweredProducts";
+
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./Seller.css";
 
@@ -35,13 +39,25 @@ function Seller() {
             <Navbar />
             <User />
           </Route>
-          <Route path="/seller/answer_yet">
+          <Route path="/seller/answerYetCategory">
             <Navbar />
-            <AnswerYet />
+            <AnswerYetCategory />
           </Route>
-          <Route path="/seller/answered">
+          <Route path="/seller/answerYetProducts/:id">
+            <Navbar/>
+            <AnswerYetProducts/>
+          </Route>
+          <Route path="/seller/answerYetQuestions/:id">
+            <Navbar/>
+            <AnswerYetQuestions/>
+          </Route>
+          <Route path="/seller/answeredCategory">
             <Navbar />
-            <Answered />
+            <AnsweredCategory />
+          </Route>
+          <Route path="/seller/answeredProducts/:id">
+            <Navbar />
+            <AnsweredProducts />
           </Route>
           <Route path="/seller">
             <Navbar />
