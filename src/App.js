@@ -15,10 +15,10 @@ import ImgSlide from "./slide/ImgSlide";
 import LandingPage from "./landingpage/LandingPage";
 import ProductView from "./ProductView/ProductView";
 import ReviewForm from "./detail/ReviewForm";
-import QnAForm from "./detail/QnAForm";
-import Map from "./KakaoMap";
 import "./App.css";
 import Customer from "./customer/Customer";
+import QnAForm from "./detail/QnAForm";
+import KakaoMap from "./Introduction/KakaoMap";
 
 function App() {
   const [{}, dispatch] = useStateValue();
@@ -91,16 +91,16 @@ function App() {
             <Seller />
           </Route>
 
-          <Route path="/map">
-            <Map />
-          </Route>
-
           <Route path="/seller">
             <Seller />
           </Route>
 
           <Route path="/customer">
             <Customer />
+          </Route>
+
+          <Route path="/introduction">
+            <KakaoMap />
           </Route>
 
           <Route path="/">
