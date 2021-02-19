@@ -4,7 +4,7 @@ import axios from '../axios/axios'
 
 
 function Users({}) {
-
+   
   
 
     const [startDate, setStartDate] = useState(new Date());
@@ -14,8 +14,8 @@ function Users({}) {
     useEffect(() => {
         async function fetchDate() {
             const request = await axios.get('users/all')
-            				
             
+        
             
             .then(response => 
                 setUser(response.data)
@@ -26,6 +26,13 @@ function Users({}) {
         }
         fetchDate();
     }, [])
+
+  
+  
+  
+
+
+
 
     return (
         
@@ -43,6 +50,7 @@ function Users({}) {
                                  
                                      
                                 />
+                                 
                                   </div>
                             ))}
                    </div> 
