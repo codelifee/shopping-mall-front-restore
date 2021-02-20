@@ -49,6 +49,9 @@ function App() {
     <Router>
       <div className="app">
         <Switch>
+        <Route path="/map">
+            <Map />
+          </Route>
           <Route path="/home">
             <Header />
             <ImgSlide />
@@ -91,9 +94,7 @@ function App() {
             <Seller />
           </Route>
 
-          <Route path="/map">
-            <Map />
-          </Route>
+        
 
           <Route path="/seller">
             <Seller />

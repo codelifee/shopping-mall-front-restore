@@ -34,7 +34,7 @@ function Sidebar() {
     </label>
    
     <div  className="sidebar" >
-      {/*meun */}
+     
 
       <ul className="menu_list">
      {/* <li><Link to='/' className="menu_link">Home smart</Link></li>

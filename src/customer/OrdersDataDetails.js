@@ -33,7 +33,7 @@ function OrdersData({ name, date, address, status, product, amount, picture }) {
           <div className="orderPrice">{amount}원</div>
           
         </div>
-        <button className="order_Product_btn">제품상세보기</button>
+        {/* <button className="order_Product_btn">제품상세보기</button> */}
         <div className="order_Button">
           
           <button className="order_btn">반품신청</button>

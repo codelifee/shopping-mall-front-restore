@@ -25,9 +25,7 @@ p {
 }
 
 .orderDetails__info td,
-.orderDetails__info tr,
-.orderDetails__price td,
-.orderDetails__price tr {
+.orderDetails__price td {
   background-color: #fff;
 }
 .orderDetails__info,

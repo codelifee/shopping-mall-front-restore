@@ -6,12 +6,12 @@ import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from "./serviceWorker";
 import reducer, {initialState} from "./StateProvider/Reducer";
 import {StateProvider} from './StateProvider/StateProvider'
-import KakaoMap from "./KakaoMap";
+
 
 ReactDOM.render(
   <React.StrictMode>
     <StateProvider initialState={initialState} reducer={reducer}>
-    <KakaoMap />
+   
       <App />
     </StateProvider>
   </React.StrictMode>,
