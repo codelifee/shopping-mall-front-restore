@@ -6,14 +6,13 @@ import axios from "../axios/axios";
 import { useHistory, useParams } from "react-router-dom";
 import "./Orders.css";
 
-
 function Orders() {
   const [startDate, setStartDate] = useState(new Date());
   const [orders, setOrders] = useState([{}]);
 
   let history = useHistory();
 
-  const {user_sequence_id} = useParams();
+  const { user_sequence_id } = useParams();
   const img = `http://shoppingmall-env.eba-jac9afx7.us-east-1.elasticbeanstalk.com/products/showProductImage/`;
 
   useEffect(() => {
@@ -43,11 +42,16 @@ function Orders() {
       <div className="orders__container">
         <div className="orders__search">
           <div className="orders__button">
-          <button className="orders__search-button">Search</button>
-          <button className="orders__reset-button">Reset</button>
-        </div>
+            <button className="orders__search-button">Search</button>
+            <button className="orders__reset-button">Reset</button>
+          </div>
           <form className="orders__searchbar">
-            <input name="keyword" placeholder="Search" type="text" className="orders__input"/>
+            <input
+              name="keyword"
+              placeholder="Search"
+              type="text"
+              className="orders__input"
+            />
             <FaSearch className="search-icon" />
           </form>
           <div className="orders__category">
@@ -59,7 +63,7 @@ function Orders() {
             />
           </div>
         </div>
-        
+
         <div className="orders__info">
           <h2>{orders?.length} Orders</h2>
         </div>

@@ -23,7 +23,7 @@ function Customer() {
           </Route>
           <Route path="/customer/orderDetails/:user_sequence_id">
             <Navbar />
-            <OrderDetails/>
+            <OrderDetails />
           </Route>
 
           <Route path="/customer/updatecustomer/:user_sequence_id">

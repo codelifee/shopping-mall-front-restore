@@ -1,21 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 import * as serviceWorker from "./serviceWorker";
-import reducer, {initialState} from "./StateProvider/Reducer";
-import {StateProvider} from './StateProvider/StateProvider'
-
+import reducer, { initialState } from "./StateProvider/Reducer";
+import { StateProvider } from "./StateProvider/StateProvider";
+import KakaoMap from "./Introduction/KakaoMap";
 
 ReactDOM.render(
   <React.StrictMode>
     <StateProvider initialState={initialState} reducer={reducer}>
-   
       <App />
     </StateProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
