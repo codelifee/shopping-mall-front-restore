@@ -32,8 +32,12 @@ function Order() {
         <div className="order">
             <div className="order__container">
                 <div className="order__search">
+                 <div className="order__button">
+                    <button className="order__search-button">Search</button>
+                    <button className="order__reset-button">Reset</button>
+                </div>
                     <form className="order__searchbar">
-                        <input type="text"  />
+                        <input type="text" className="order__input" />
                         <FaSearch className="search-icon"/>
                     </form>
                     <div className="order__category">
@@ -44,16 +48,13 @@ function Order() {
                         onChange={date => setStartDate(date)} />
                     </div>
                 </div>
-                <div className="order__button">
-                    <button className="search-button">Search</button>
-                    <button className="reset-button">Reset</button>
-                </div>
+               
                 <div className="order__info">
                     <h2>0 Orders</h2>
                     
                 </div>
-                <div className="order__table">
-                    <table>
+                <div className="order__table_bg">
+                    <table className="order__table">
                         <thead>
                             <th>Name</th>
                             <th>Ordered_Date</th>

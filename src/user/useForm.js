@@ -13,7 +13,7 @@ const useForm = (callback,validate) => {
     const[values, setValues] = useState({
         user_id:'',
         user_pwd:'',
-        //user_pwd2:'',
+        user_pwd2:'',
         user_name:'',
         user_phone:'',
         user_address:''
@@ -63,24 +63,26 @@ const useForm = (callback,validate) => {
     const checkId = () => {
         let status = true;
         customer.map((data,i)=>{
-            if(values.user_id === data[i].user_id){
+            if(values.user_id === customer[i].user_id){
                 status = false;
             }
         })
-        if(!status){
+        if(status){
             return errors.user_id = "사용가능한 아이디입니다.";
         }
+        return errors.user_id = "사용불가능한 아이디입니다.";
     }
     const checkPhone = () => {
         let status = true;
         customer.map((data,i)=>{
-            if(values.user_phone === data[i].user_phone){
+            if(values.user_phone === customer[i].user_phone){
                 status = false;
             }
         })
-        if(!status){
+        if(status){
             return errors.user_phone = "사용가능한 전화번호입니다.";
         }
+        return errors.user_phone = "사용불가능한 전화번호입니다.";
     }
 
     return {handleChange, values, handleSubmit, errors, checkId, checkPhone};

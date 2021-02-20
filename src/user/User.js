@@ -7,7 +7,7 @@ import Orders from './Orders';
 import OrdersData from './OrdersData';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import './User.css';
-import SignupSuccess from './SignupSuccess';
+import Login from'../authentication/Login';
 
 function User() {
     const[isSubmittied, setIsSubmitted] = useState(false);
@@ -20,19 +20,20 @@ function User() {
         <Router>
             <div className="user">
                 <Switch>
+
                     <Route path='/user/profile/:user_sequence_id'>
                         <Navbar />
                         <Profile />
                     </Route>
                     <Route path='/user/signup'>
-                        <Navbar />
                         {!isSubmittied ? (<SignUp submitForm={submitForm}/>)
-                        : (<SignupSuccess/>)}
+                        : (<Login/>)}
+                        {/* signup submit 후 Login 화면에서 Navbar제거하기 */}
                     </Route>
                     <Route path='/user/updateprofile/:user_sequence_id'>
                         <Navbar/>
                         {!isSubmittied ? (<UpdateProfile submitForm={submitForm}/>)
-                        : (<Profile/>)}
+                        : (<Profile/>)} 
                     </Route>
                     <Route path='/user/order/:id'>
                         <Navbar/>

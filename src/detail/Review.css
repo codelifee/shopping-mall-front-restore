@@ -1,6 +1,6 @@
 .review__score{
     display: flex;
-    border-bottom: 1px solid black;
+    border-bottom: 0.5px solid black;
 }
 
 .review__score_avg{
@@ -11,6 +11,7 @@
     font-size : 50px;
     font-weight: bold;
 }
+
 
 .review__score_list{
     flex: 1;
@@ -43,6 +44,10 @@
     border-radius: 8px;
 }
 
+.star_select{
+    width: 180px;
+}
+
 .review__score_graph_number{
     width: 30px;
 }
@@ -54,7 +59,7 @@
 
 .review__list {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     padding-top:20px;
     padding-bottom:20px;
     border-bottom: solid 1px black;
@@ -62,12 +67,19 @@
 
 .review__list_user{
     flex:1;
+    font-weight: bold;
+    font-size: 17px;
 }
 
-.review_list_content{
+.review__list_content{
     flex:1;
     display:flex;
     flex-direction: column
+}
+
+.review__list_content img{
+    width: 150px;
+    height: 100px;
 }
 
 .review__list_date{

@@ -8,15 +8,15 @@ function SignUp({submitForm}) {
     const {handleChange, values, handleSubmit, errors, checkId, checkPhone} = useForm(submitForm,validate);
 
     return (
-        <div className="addCustomer">
-            <div className="addCustomer__container">
-                <div className="addCustomer__container__head">
+        <div className="addUser">
+            <div className="addUser__container">
+                <div className="addUser__container__head">
                     <h1>Sign up</h1>
                 </div>
-                <form className="addCustomer__search" 
+                <form className="addUser__search" 
                 onSubmit={handleSubmit}
                 >
-                    <div className="id">
+                    <div className="add_id">
                         <label htmlfor="">Id</label>
                         <input 
                             id="user_id"
@@ -34,7 +34,7 @@ function SignUp({submitForm}) {
                         </button>
                         {errors.user_id && <p>{errors.user_id}</p>}
                     </div>
-                    <div className="password">
+                    <div className="add_password">
                         <label htmlfor="">Password</label>
                         <input 
                             id="user_pwd"
@@ -46,19 +46,19 @@ function SignUp({submitForm}) {
                         />
                         {errors.user_pwd && <p>{errors.user_pwd}</p>}
                     </div>
-                    {/* <div className="password2">
+                    <div className="add_password2">
                         <label htmlfor="">Confirm <br/>Password</label>
                         <input 
                             id="user_pwd2"
-                            type="password2" 
+                            type="password" 
                             name="user_pwd2"
                             placeholder="Enter your password again"
                             value={values.user_pwd2}
                             onChange={handleChange}
                         />
                         {errors.user_pwd2 && <p>{errors.user_pwd2}</p>}
-                    </div> */}
-                    <div className="name">
+                    </div>
+                    <div className="add_name">
                         <label htmlfor="">Name</label>
                         <input 
                             id="user_name"
@@ -70,7 +70,7 @@ function SignUp({submitForm}) {
                         />
                         {errors.user_name && <p>{errors.user_name}</p>}
                     </div>
-                    <div className="phone">
+                    <div className="add_phone">
                         <label htmlfor="">Phone</label>
                         <input 
                             id="user_phone"
@@ -88,7 +88,7 @@ function SignUp({submitForm}) {
                         </button>
                         {errors.user_phone && <p>{errors.user_phone}</p>}
                     </div>
-                    <div className="address">
+                    <div className="add_address">
                         <label htmlfor="">Address</label>
                         <input 
                             id="user_address"

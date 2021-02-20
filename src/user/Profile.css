@@ -50,61 +50,44 @@ body {
     color: #6b9900;
   }  
   
-  .id {
+  .profile__id {
     display: flex;
     margin: 40px 0 30px 50px;
   }
   
-  .id > label {
+  .profile__id > label {
     margin-right: 70px;
     color: #476600;
   }
   
-  .password {
+  .profile__name {
     display: flex;
     margin-left: 50px;
     margin-bottom: 30px;
   }
     
-  .password > label {
-    margin-right: 9px;
-    color: #476600;
-  }
-
-  .password > input {
-    height: 30px;
-    background: linear-gradient(45deg, #faf4c0, #e4f7ba);
-    border: 1px dotted #6b9900;
-  }
-  
-  .name {
-    display: flex;
-    margin-left: 50px;
-    margin-bottom: 30px;
-  }
-    
-  .name > label {
+  .profile__name > label {
     margin-right: 38px;
     color: #476600;
   }
   
-  .phone {
+  .profile__phone {
     display: flex;
     margin-left: 50px;
     margin-bottom: 30px;
   }
     
-  .phone > label {
+  .profile__phone > label {
     margin-right: 37px;
     color: #476600;
   }
   
-  .address {
+  .profile__address {
     display: flex;
     margin-left: 51px;
   }
     
-  .address > label {
+  .profile__address > label {
     margin-right: 19px;
     color: #476600;
   }

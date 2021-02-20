@@ -27,36 +27,26 @@ function Profile() {
         <div className="profile">
             <div className="profile__container">
                 <div className="profile__container__head">
-                    <h1>{customer.user_name}'s Information</h1>
+                    <h1>{customer.user_name}'s Profile</h1>
                 </div>
                 <div className="profile__search"> 
-                    <div className="id">
+                    <div className="profile__id">
                         <label htmlfor="">Id</label>
                         <p>{customer.user_id}</p>
                     </div>
-                    <div className="password">
-                        <label htmlfor="">Password</label>
-                        <input 
-                            id="user_pwd"
-                            type="password" 
-                            name="user_pwd"
-                            placeholder="Enter your password"
-                            //onChange={handleChange}
-                        />
-                    </div>
-                    <div className="name">
+                    <div className="profile__name">
                         <label htmlfor="">Name</label>
                         <p>{customer.user_name}</p>
                     </div>
-                    <div className="phone">
+                    <div className="profile__phone">
                         <label htmlfor="">Phone</label>
                         <p>{customer.user_phone}</p>
                     </div>
-                    <div className="address">
+                    <div className="profile__address">
                         <label htmlfor="">Address</label>
                         <p>{customer.user_address}</p>
                     </div>
-                    <Link to="/user/updateprofile/:user_sequence_id">
+                    <Link to={`/user/updateprofile/${user_sequence_id}`}>
                         <button className="update">
                             Go to update
                         </button>

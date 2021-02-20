@@ -46,70 +46,90 @@ body {
   background: #fff;
 }
 
-.updateProfile__search > input {
+.updateProfile__search  input {
   height: 30px;
-  /* width: 450px; */
+  width: 300px;
 }
 
-.id {
+.updateProfile__search p{
+  margin-left: 5px;
+  color: red;
+}
+
+.update__i span{
+  color: #6b9900;
+}
+
+.update__id {
   display: flex;
   margin: 40px 0 30px 40px;
 }
 
-.id > label {
+.update__id > label {
   margin-right: 70px;
   color: #476600;
 }
 
-.password {
+.update__password {
   display: flex;
   margin-left: 40px;
   margin-bottom: 30px;
 }
   
-.password > label {
-  margin-right: 9px;
+.update__password > label {
+  margin-right: 10px;
   color: #476600;
 }
 
-.name p {
+.update__password2 {
   display: flex;
   margin-left: 40px;
   margin-bottom: 30px;
 }
   
-.name > label {
+.update__password2 > label {
+  margin-right: 10px;
+  color: #476600;
+}
+
+.update__name {
+  display: flex;
+  margin-left: 40px;
+  margin-bottom: 30px;
+}
+  
+.update__name > label {
   margin-right: 38px;
   color: #476600;
 }
 
-.phone {
+.update__phone {
   display: flex;
   margin-left: 40px;
   margin-bottom: 30px;
 }
   
-.phone > label {
+.update__phone > label {
   margin-right: 37px;
   color: #476600;
 }
 
-.phone > button{
+.update__phone > button{
   margin-left: 5px;
   border: 1px dotted #6b9900;
   background: #e4f7ba;
 }
 
-.phone p{
+.update__phone p{
   color: red;
 }
 
-.address {
+.update__address {
   display: flex;
   margin-left: 41px;
 }
   
-.address > label {
+.update__address > label {
   margin-right: 19px;
   color: #476600;
 }

@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import './Navbar.css'
-import {Link} from 'react-router-dom'
+import {Link, useParams} from 'react-router-dom'
 import { FaShoppingBag, FaUserCog, FaCaretDown } from "react-icons/fa"; //FaChair,
 import Logo from '../img/logo.png'
 
@@ -8,6 +8,7 @@ function Navbar() {
 
     const [order, setOrder] = useState(false);
     const [user, setUser] = useState(false);
+    const {user_sequence_id} = useParams();
 
     return (
         <div className="navbar">
@@ -29,7 +30,7 @@ function Navbar() {
                         </h2>
                         <div>
                             {order &&
-                                <Link to="/user/orders/:user_sequence_id">
+                                <Link to={`/user/orders/${user_sequence_id}`}>
                                 <p>My Orders</p>
                                 </Link>
                             }
@@ -47,7 +48,7 @@ function Navbar() {
                         </h2>
                         <div>
                             {user && 
-                                <Link to="/user/updateprofile/:user_sequence_id">
+                                <Link to={`/user/updateprofile/${user_sequence_id}`}>
                                 <p>Update Informations</p>
                                 </Link>
                             }

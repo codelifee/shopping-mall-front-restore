@@ -13,11 +13,11 @@ export default function ValidateInfo(values){
         errors.user_pwd = '비밀번호는 8자리 이상으로 입력하세요.';
     }
 
-    // if(!values.user_pwd2.trim()){
-    //     errors.user_pwd2 = '비밀번호 확인을 입력하세요.';
-    // }else if(values.user_pwd2 !== values.user_pwd){
-    //     errors.user_pwd2 = '일치하지 않은 비밀번호입니다.';
-    // }
+    if(!values.user_pwd2.trim()){
+        errors.user_pwd2 = '비밀번호 확인을 입력하세요.';
+    }else if(values.user_pwd2 !== values.user_pwd){
+        errors.user_pwd2 = '일치하지 않은 비밀번호입니다.';
+    }
 
     if(!values.user_name.trim()){
         errors.user_name = '이름을 입력하세요.';
