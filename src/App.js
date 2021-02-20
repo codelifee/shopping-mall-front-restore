@@ -64,7 +64,7 @@ function App() {
             <Checkout />
           </Route>
 
-          <Route path="/products">
+          <Route path="/products/:id">
             <Header />
             <ProductView />
           </Route>
@@ -100,7 +100,10 @@ function App() {
           </Route>
 
           <Route path="/introduction">
+            <Header />
+            
             <KakaoMap />
+            <Footer />
           </Route>
 
           <Route path="/">

@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import SellerProducts from "./SellerProducts";
-import Orders from "./Orders";
+import Order from "./Order";
 import User from "./User";
 import AddProduct from "./AddProduct";
 import UpdateProduct from "./UpdateProduct";
+import AnswerYetCategory from "./AnswerYetCategory";
+import AnswerYetProducts from "./AnswerYetProducts";
+import AnswerYetQuestions from "./AnswerYetQuestion";
+import AnsweredCategory from "./AnsweredCategory";
+import AnsweredProducts from "./AnsweredProducts";
+
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./Seller.css";
 
@@ -27,11 +33,31 @@ function Seller() {
           </Route>
           <Route path="/seller/order">
             <Navbar />
-            <Orders />
+            <Order />
           </Route>
           <Route path="/seller/user">
             <Navbar />
             <User />
+          </Route>
+          <Route path="/seller/answerYetCategory">
+            <Navbar />
+            <AnswerYetCategory />
+          </Route>
+          <Route path="/seller/answerYetProducts/:id">
+            <Navbar/>
+            <AnswerYetProducts/>
+          </Route>
+          <Route path="/seller/answerYetQuestions/:id">
+            <Navbar/>
+            <AnswerYetQuestions/>
+          </Route>
+          <Route path="/seller/answeredCategory">
+            <Navbar />
+            <AnsweredCategory />
+          </Route>
+          <Route path="/seller/answeredProducts/:id">
+            <Navbar />
+            <AnsweredProducts />
           </Route>
           <Route path="/seller">
             <Navbar />

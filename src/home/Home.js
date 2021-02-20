@@ -19,7 +19,7 @@ function Home() {
 
 
                 <div className="home__row">
-
+                
                   <Recommendation />
                     <Best />
                     <Category />

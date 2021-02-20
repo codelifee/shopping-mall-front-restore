@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./AddCustomer.css";
 import axios from "../axios/axios";
 
+
 function AddCustomer() {
   const [customer, setCustomer] = useState([]);
 

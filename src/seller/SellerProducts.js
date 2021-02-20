@@ -5,6 +5,9 @@ import axios from '../axios/axios'
 import {Link} from 'react-router-dom'
 
 function SellerProducts() {
+    
+
+    
 
     const [products, setProducts] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
@@ -34,42 +37,46 @@ function SellerProducts() {
         })
         .catch(err => console.log(err))
     }
-
+    
+       
     return (
         <div className="sellerProduct">
             <div className="sellerProduct__container">
                 <div className="sellerProduct__search">
                     <form className="sellerProduct__form">
                         <div className="sellerProduct__searchbar">
-                            <select>
+                          <div className="sellerProduct__button">
+                            <button className="sellerProduct__search-button">Search</button>
+                            <button className="sellerProduct__reset-button">Reset</button>
+                        </div>
+                        <input 
+                            type="text" className="sellerProduct__input"
+                            onChange={e => {setSearchTerm(e.target.value)}}
+                            /> <label className="sellerProduct__label">Category</label> 
+                            <select  className="sellerProduct__select">
                                 <option value="Product Name">Product Name</option>
                             </select>
-                            <input 
-                            type="text"
-                            onChange={e => {setSearchTerm(e.target.value)}}
-                            />
-                            <label>Category</label>
-                            <select name="categories" id="categories">
+                            
+                            
+                            <select name="categories" id="categories" className="sellerProduct__select">
                                 <option value="1">의자</option>
                                 <option value="2">서랍</option>
                                 <option value="3">책상</option>
                             </select>
+                           
                         </div>
-                        <div className="sellerProduct__button">
-                            <button className="search-button">Search</button>
-                            <button className="reset-button">Reset</button>
-                        </div>
+                        
                     </form>
                 </div>
                 <div className="sellerProduct__info">
                     <h2>0 Product</h2>
                     <Link to="/seller/addProduct">
-                    <button>+ Add a New Product</button>
+                    <button className="Button">+ Add a New Product</button>
                     </Link>
                     
                 </div>
-                <div className="sellerProduct__table">
-                    <table>
+                <div className="sellerProduct__table_bg">
+                    <table className="sellerProduct__table">
                             <thead>
                                 <th>Product Name</th>
                                 <th>Price</th>
@@ -97,7 +104,13 @@ function SellerProducts() {
                                 />
                             ))}
                             </tbody>
-                 </table>    
+                 </table> 
+
+                
+ 
+
+
+
                 </div>
             </div>
         </div>

@@ -1,6 +1,5 @@
 /*global kakao */
 import React, { useEffect } from "react";
-
 export default function Map() {
   useEffect(() => {
     mapscript();
