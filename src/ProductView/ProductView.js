@@ -25,19 +25,13 @@ function ProductView(){
         fetchDate();
     }, [])
 
-    
-    // //메인 클릭으로 넘어온 카테고리 id를 가진 상품들 정보 
-    // const index = products.findIndex(
-    //     (productsItem) => productsItem.id === Collection.products.category_id
-    // );
-
     return(
         <div className="products">
             <div className="products__row">
                 {
                     products
                     .filter(function(product){
-                        return product.category_id === id;
+                        return product.category_id == id;
                     })
                     .map((product, i)=>{
                         return <Product

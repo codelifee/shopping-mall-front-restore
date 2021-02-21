@@ -1,14 +1,14 @@
-import React,{useState} from "react";
+import React,{useState, useEffect} from "react";
 import axios from "../axios/axios";
 import "./AnswerYetQuestionModal.css";
 
 function AnswerYetQuestionModal({id}){//question_id
 
     const [form, setForm] = useState({
-        answer_id: 2,
+        answer_id: '',
         answer: '',
         question_id: id,
-        answer_date_created: '2021-02-20'
+        answer_date_created: ''
     })
 
 
@@ -52,7 +52,7 @@ function AnswerYetQuestionModal({id}){//question_id
                 form.answer == ""
                   ? alert("내용을 입력해주세요!")
                   : alert("내용이 입력됐습니다.");
-                /*window.close() */
+                  window.location.reload(); 
               }}
             >
               Submit

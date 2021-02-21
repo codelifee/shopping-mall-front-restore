@@ -27,6 +27,9 @@
 }
 .orders__category {
   flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .orders__category_p {
   color: #333;

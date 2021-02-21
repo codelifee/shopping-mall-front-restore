@@ -2,9 +2,24 @@ import React, { useState, useEffect } from "react";
 import axios from "../axios/axios";
 import "./OrdersData.css";
 import { useParams } from "react-router-dom";
+import { Link, useHistory } from 'react-router-dom';
 
-function OrdersData({ name, date, address, status, product, amount, picture }) {
- 
+function OrdersData({  date, status, product, amount, picture }) {
+  const [orders, setOrders] = useState([]);
+  const history = useHistory();
+  const {user_sequence_id} = useParams();
+  useEffect(()=>{
+    async function fetchDate(){
+        const request = await axios.get(`orders/all`)
+        .then(response =>
+            setOrders(response.data))
+        .catch(error => console.log(error))
+             
+        return request;
+    }
+    fetchDate();
+}, [])
+
    
   return (
     <div>
@@ -14,7 +29,13 @@ function OrdersData({ name, date, address, status, product, amount, picture }) {
         </span>
     
     <span className="orderTitle2">
-          <h4>주문상세보기 &gt;&gt;</h4>
+    
+     <div  className="order_details" onClick={()=>{
+         history.push(`/customer/orderDetails/${user_sequence_id}`)
+       }}
+       >주문상세보기 &gt;&gt;</div>
+    
+          
         </span>
         </div>
     <div className="ordersData" >
@@ -35,7 +56,7 @@ function OrdersData({ name, date, address, status, product, amount, picture }) {
           <div className="orderPrice">{amount}원</div>
           
         </div>
-        <button className="order_Product_btn">제품상세보기</button>
+        {/* <button className="order_Product_btn">제품상세보기</button> */}
         <div className="order_Button">
           
           <button className="order_btn">반품신청</button>

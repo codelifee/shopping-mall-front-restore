@@ -11,7 +11,7 @@ body {
   background: #fff;
   /* background-image: linear-gradient(to right, #faf4c0 0%, #f1d9f5 100%); */
 
-  border: 1px solid #ccc;
+  border: 1px solid #ffb755;
 }
 .order_title {
   display: flex;
@@ -27,25 +27,25 @@ body {
 }
 .orderTitle2 {
   flex: 1;
-  color: #6799ff;
+  color: #333;
   text-align: right;
   font-size: 14px;
 }
 .orderTitle3 {
-  color: #6799ff;
+  color: #333;
   font-weight: 800;
   font-size: 17px;
   display: flex;
-  flex-direction: column;
+
   align-items: center;
-  justify-content: center;
-  padding: 10px;
+
+  padding: 10px 20px;
 }
 
 .orders {
   color: #333;
   background: none;
-  border-top: 1px solid #eee;
+  border-top: 1px solid #ffb755;
   /* border-bottom: 1px dotted #aaa; */
 
   display: flex;
@@ -58,9 +58,9 @@ body {
   width: 180px;
   height: 40px;
   background: #fff;
-  color: #6799ff;
+  color: #eb7d7a;
   cursor: pointer;
-  border: 1px solid #6799ff;
+  border: 1px solid #eb7d7a;
   border-radius: 5px;
   margin: 7px;
   display: flex;
@@ -69,11 +69,12 @@ body {
   justify-content: center;
 }
 .order_Product_btn {
+  color: #aaa;
   position: relative;
   bottom: -95px;
   border-radius: 5px;
   background: #fff;
-  border: 1px solid #eee;
+  border: 1px solid #ffb755;
 }
 .orderImg {
   width: 100px;
@@ -82,7 +83,10 @@ body {
   margin: 20px 20px 0 20px;
   background-color: khaki;
 }
-
+.order_details {
+  cursor: pointer;
+  color: #333;
+}
 .orderWrp {
   display: flex;
   flex: 3;

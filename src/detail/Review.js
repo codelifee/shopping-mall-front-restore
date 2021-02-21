@@ -106,7 +106,7 @@ function Review(props) {
     <div className="review">
       <div className="review__score">
         <div className="review__score_avg">
-          {avg}
+          {reviews == null ? 0 : avg}
           <p>
             <FaStar color={"#ffc107"} size={80} />
           </p>

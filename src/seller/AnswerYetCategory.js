@@ -29,13 +29,12 @@ function AnswerYetCategory() {
             return request;
         }
 
-        console.log(categories);
-
         fetchDate();
     }, [])
 
     const [question, setQuestion] = useState([]);
-console.log(question)
+
+    //select *, p.category_id from question_tab q join products p on q.product_id=p.product_id order by q.question_id; ?
     useEffect(()=>{
         async function getQuestion() {
             const request = await axios.get('question/all')
@@ -47,6 +46,8 @@ console.log(question)
         }
         getQuestion();
         }, [])
+
+        console.log(question);
     
         const totalQuestion = 
         question
@@ -58,8 +59,6 @@ console.log(question)
                 return ques.product_id;
             }
         )  
-        
-         console.log(totalQuestion)
 
     return (
         <div className="category">
@@ -89,9 +88,19 @@ console.log(question)
                     <table className="category__table">
                         <thead>
                             <th>Category Name</th>
+                            <th>Answer Wating Questions</th>
                         </thead>
                         <tbody>
                             {categories.map((category)=>{
+                                let categoryQuestion = null;
+                                categoryQuestion = question.filter((val)=>{
+                                    return val.category_id == category.category_id;
+                                })
+                                .map(
+                                    (val)=>{
+                                        return val.question_id
+                                    }
+                                )
                                 return(
                                     <tr key={category.category_id}>
                                         <td>
@@ -104,6 +113,9 @@ console.log(question)
                                             }>
                                                 {category.category_name}
                                             </span>
+                                        </td>
+                                        <td>
+                                            {categoryQuestion.length}
                                         </td>
                                     </tr>
                                 )
