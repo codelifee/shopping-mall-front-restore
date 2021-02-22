@@ -26,9 +26,7 @@ function Product(props) {
             },
         })
     }
-    
-    
-    
+
     return (
         <div className='product'>
             <div className="product__info">

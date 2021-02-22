@@ -18,6 +18,8 @@ function AnswerYetProducts(){
     const product_img = `http://shoppingmall-env.eba-jac9afx7.us-east-1.elasticbeanstalk.com/products/showProductImage/`;
     const {id} = useParams();
     const history = useHistory();
+    
+    let total = null; //답변 전 상품별 전체 질문
 
     useEffect(()=>{
         async function fetchDate() {
@@ -32,7 +34,6 @@ function AnswerYetProducts(){
         fetchDate();
     }, [])
 
-    let wait=null; //답변 전 질문 개수
 
     const [question, setQuestion]=useState([]);
 
@@ -47,6 +48,7 @@ function AnswerYetProducts(){
     }
     getQuestion();
     }, [])
+
 
     return(
         <div className="AnsweYetProduct">
@@ -70,10 +72,10 @@ function AnswerYetProducts(){
                         onChange={date => setStartDate(date)} />
                     </div>
                 </div>
-                
-                <div className="question__info">
+                <br/>
+                {/* <div className="question__info">
                     <h2>0 Questions</h2>
-                </div>
+                </div> */}
                 <div className="AnsweYetProduct__table_bg">
                     <table className="AnsweYetProduct__table">
                         <thead>
@@ -93,6 +95,7 @@ function AnswerYetProducts(){
                                 }
                             })
                             .map((product)=>{
+                                let wait=null; //답변 전 상품별 질문 개수
                                 {wait = question
                                 .filter(
                                     (ques)=>{return (ques.answer==null)&&(
@@ -100,19 +103,19 @@ function AnswerYetProducts(){
                                     )}
                                 )
                                 .map(
-                                    (ques, i)=>{
+                                    (ques)=>{
                                         return ques.product_id;
                                     }
-                                    )}   
+                                )}
                                 return(
                                     <AnswerYetProductsView 
                                     key={product.product_id}
                                     id={product.product_id}
-                                    picture={<img src={product_img+product.product_id}/>}
+                                    picture={<img src={product_img+product.product_id}/>} 
                                     name={product.product_name}
                                     description={product.product_description}
                                     question={wait.length}
-                                    />
+                                    /> 
                                 )
                             })}
                              

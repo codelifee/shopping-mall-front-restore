@@ -57,6 +57,7 @@ function AnswerYetQuestion (){
                             <th>User Name</th>
                             <th>Questions</th>
                             <th>Answer</th>
+                            <th>date</th>
                         </thead>
                         <tbody>
                             
@@ -64,7 +65,7 @@ function AnswerYetQuestion (){
                                question
                                .filter(
                                    (val)=>{
-                                       return val.product_id == id;
+                                       return val.product_id == id && val.answer==null;
                                    })
                                .map(
                                    (val)=>{
@@ -73,6 +74,7 @@ function AnswerYetQuestion (){
                                         <tr>
                                             <td>{val.user_id}</td>
                                             <td>{val.question}</td>
+                                            <td>{val.question_date_created}</td>
                                             <td>
                                                 <div className="answer_button"
                                                 onClick={()=>{
@@ -84,7 +86,8 @@ function AnswerYetQuestion (){
                                         </tr>
                                         {modal == true ? 
                                             <tr><td>답변 작성</td>
-                                            <td colSpan="2"><AnswerYetQuestionModal id={val.question_id}/></td></tr>
+                                            <td colSpan="3"><AnswerYetQuestionModal id={val.question_id}
+                                            /></td></tr>
                                             :null
                                         }
                                         </>
