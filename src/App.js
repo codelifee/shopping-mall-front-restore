@@ -49,7 +49,7 @@ function App() {
     <Router>
       <div className="app">
         <Switch>
-        {/* <Route path="/map">
+          {/* <Route path="/map">
             <Map />
           </Route> */}
           <Route path="/home">
@@ -104,7 +104,7 @@ function App() {
 
           <Route path="/introduction">
             <Header />
-            
+
             <KakaoMap />
             <Footer />
           </Route>

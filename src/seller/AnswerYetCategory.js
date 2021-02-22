@@ -61,6 +61,7 @@ console.log(question)
         
          console.log(totalQuestion)
 
+        
     return (
         <div className="category">
             <div className="category__container">
@@ -115,5 +116,6 @@ console.log(question)
         </div>
     )
 }
+
 
 export default AnswerYetCategory;
