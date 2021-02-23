@@ -26,8 +26,6 @@ function SellerProducts() {
 
     const handleDelete = (id) => {
 
-        console.log(id)
-
         axios.delete("products/" + id)
         .then(res => {console.log(res)
             window.location.reload(false)

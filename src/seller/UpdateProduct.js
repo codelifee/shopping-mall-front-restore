@@ -54,12 +54,25 @@ function AddProduct() {
     const postForm = (e) => {
         e.preventDefault()
 
-        //declare formdata
+        // console.log(form)
+
         let data = new FormData();
 
         //push every datas from form into formdata
         for (const [key, value] of Object.entries(form)) {
-            data.append(key, value)
+
+            if(key === "product_picture" || key === "info_img" || key === "quality_img"
+            && value != null && value != File) {
+
+                let blob = new Blob([value], {type: 'image/png'})
+                let file = blobToFile(blob, 'image.png');
+
+                data.append(key, file);
+
+                // console.log(file)
+            } else {
+                data.append(key, value)
+            }
         }
 
         //check entries in formdata
@@ -67,7 +80,7 @@ function AddProduct() {
             console.log(pair[0] + ', ' + pair[1])
         }
         
-        axios.post(`products/${productId}`, data)
+        axios.put(`products/${productId}`, data)
         .then(res => console.log(res))
         .catch(err => console.log(err))
 
@@ -82,29 +95,14 @@ function AddProduct() {
 
     const getProduct = () => {
         axios.get(`products/${productId}`)
-        .then(res => setForm(res.data))
+        .then(res => {
+            setForm(res.data)
+        })
         .catch(err => console.log(err))
-
-         //create blob object
-         const newBlob = new Blob([form.product_picture], {type:'image/png'})
-
-         //create file object and pass in blob object
-         const myfile = blobToFile(newBlob, "product_picture.png");
-
-         console.log(myfile)
- 
-         setForm ({
-             ...form,
-             ["product_picture"]: myfile
-         })
-
-        
-        console.log(form);    
     }
 
     useEffect(() => {
         getProduct();
-    
     },[])
 
 
