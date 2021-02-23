@@ -27,10 +27,10 @@ return (
                     
                 </div>
                 <ul className="colors">
-                    <li><a href="#" className="color color1">A</a></li>
-                    <li><a href="#" className="color color2">B</a></li>
-                    <li><a href="#" className="color color3">C</a></li>
-                    <li><a href="#" className="color color4">D</a></li>
+                    <li><Link to="/" className="color color1">A</Link></li>
+                    <li><Link to="/" className="color color2">B</Link></li>
+                    <li><Link to="/" className="color color3">C</Link></li>
+                    <li><Link to="/" className="color color4">D</Link></li>
                 </ul>
                 <div className="details">
                     <h2>Herb<span className="job-title">
@@ -44,10 +44,10 @@ Herb refers to a plant grown in the West for use as a flavor or medicine.</span>
                     <img src={main_2} />
                 </div>
                 <ul className="colors">
-                    <li><a href="#" className="color color5">A</a></li>
-                    <li><a href="#" className="color color6">B</a></li>
-                    <li><a href="#" className="color color7">C</a></li>
-                    <li><a href="#" className="color color8">D</a></li>
+                    <li><Link to="/" className="color color5">A</Link></li>
+                    <li><Link to="/" className="color color6">B</Link></li>
+                    <li><Link to="/" className="color color7">C</Link></li>
+                    <li><Link to="/" className="color color8">D</Link></li>
                 </ul>
                 <div className="details">
                     <h2>Herb<span className="job-title">
@@ -61,10 +61,10 @@ Herb refers to a plant grown in the West for use as a flavor or medicine.</span>
                     <img src={main_3} />
                 </div>
                 <ul className="colors">
-                    <li><a href="#" className="color color9">A</a></li>
-                    <li><a href="#" className="color color10">B</a></li>
-                    <li><a href="#" className="color color11">C</a></li>
-                    <li><a href="#" className="color color12">D</a></li>
+                    <li><Link to="/" className="color color9">A</Link></li>
+                    <li><Link to="/" className="color color10">B</Link></li>
+                    <li><Link to="/" className="color color11">C</Link></li>
+                    <li><Link to="/" className="color color12">D</Link></li>
                 </ul>
                 <div className="details">
                     <h2>Herb<span className="job-title">
@@ -78,10 +78,10 @@ Herb refers to a plant grown in the West for use as a flavor or medicine.</span>
                     
                 </div>
                 <ul className="colors">
-                    <li><a href="#" className="color color1">A</a></li>
-                    <li><a href="#" className="color color2">B</a></li>
-                    <li><a href="#" className="color color3">C</a></li>
-                    <li><a href="#" className="color color4">D</a></li>
+                    <li><Link to="/" className="color color1">A</Link></li>
+                    <li><Link to="/" className="color color2">B</Link></li>
+                    <li><Link to="/" className="color color3">C</Link></li>
+                    <li><Link to="/" className="color color4">D</Link></li>
                 </ul>
                 <div className="details">
                     <h2>Herb<span className="job-title">
@@ -95,10 +95,10 @@ Herb refers to a plant grown in the West for use as a flavor or medicine.</span>
                     <img src={main_5} />
                 </div>
                 <ul className="colors">
-                    <li><a href="#" className="color color5">A</a></li>
-                    <li><a href="#" className="color color6">B</a></li>
-                    <li><a href="#" className="color color7">C</a></li>
-                    <li><a href="#" className="color color8">D</a></li>
+                    <li><Link to="/" className="color color5">A</Link></li>
+                    <li><Link to="/" className="color color6">B</Link></li>
+                    <li><Link to="/" className="color color7">C</Link></li>
+                    <li><Link to="/" className="color color8">D</Link></li>
                 </ul>
                 <div className="details">
                     <h2>Herb<span className="job-title">

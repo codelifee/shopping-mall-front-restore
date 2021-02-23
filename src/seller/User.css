@@ -7,49 +7,49 @@
 .user__container {
   /* background: rgb(182, 167, 167); */
   width: 1200px;
-  height: 80vh;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 100px 100px 100px 1fr;
   margin-top: 100px;
-  padding: 20px;
-  border: 10px solid;
-  border-image: linear-gradient(45deg, #f2cb61, #bce55c);
-  border-image-slice: 1;
   background-color: #fff;
   color: #476600;
+  margin-bottom: 100px;
 }
 
 .user__searchbar {
-  width: 600px;
+  width: 500px;
   display: flex;
   align-items: center;
+  margin-left: 20px;
 }
 
-.user__searchbar > input {
+.user__searchbar > .user__input {
   margin-right: 10px;
 }
 
-select {
+.user__input {
   height: 30px;
-}
-
-input {
-  height: 30px;
-  width: 360px;
-  padding: 2px 5px;
+  width: 300px;
+  border-radius: 5px;
 }
 
 .user__search {
   display: flex;
   align-items: flex-end;
   justify-content: center;
+
   /* background: rgb(121, 112, 112); */
+}
+
+.datepicker_date {
+  padding: 3px;
+  border-radius: 5px;
 }
 
 .user__category {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  margin-left: -50px;
 }
 
 .user__category > p {
@@ -58,22 +58,25 @@ input {
 
 .user__button {
   display: flex;
-  margin-left: 36px;
   align-items: center;
 }
 
-.search-button {
+.user__search-button {
   margin-right: 20px;
   width: 100px;
   height: 30px;
   color: white;
-  background: rgb(200, 73, 73);
+  background: #777;
+  border: 1px solid #6b9900;
+  border-radius: 5px;
 }
 
-.reset-button {
+.user__reset-button {
   width: 100px;
   height: 30px;
-  background: white;
+  background: #fff;
+  border: 1px solid #6b9900;
+  border-radius: 5px;
 }
 
 .user__info {
@@ -94,23 +97,29 @@ input {
   font-size: medium;
 }
 
-.user__table {
+.user__table_bg {
   /* background: wheat; */
-  margin-left: 10px;
+
   width: 1130px;
   height: 600px;
 }
 
 table {
   width: 1125px;
-  text-align: left;
+  text-align: center;
+  border-radius: 5px;
+  background-image: linear-gradient(to right, #faf4c0 0%, #f1d9f5 100%);
+  border: 2px solid #f2cb61;
+  color: #333;
 }
 
 .user__table thead {
   background-color: #555;
   color: #ffffff;
 }
-
+.user__table th {
+  border-radius: 5px;
+}
 .user__table th,
 td {
   padding: 12px 15px;

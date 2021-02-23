@@ -1,6 +1,6 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Tabs from "./Tabs";
-import {useLocation, useParams, useHistory} from "react-router-dom";
+import {useParams, useHistory} from "react-router-dom";
 import "./Detail.css";
 import {useStateValue} from "../StateProvider/StateProvider";
 import axios from '../axios/axios';
@@ -13,7 +13,7 @@ function Modal(){
     <div id="myModal" className="modal">
       <div className="modal_content">
         <h4>장바구니에 상품이 <br/> 담겼습니다.</h4>
-        <button onClick={()=>{
+        <button className="modalButton" onClick={()=>{
           history.push('/checkout')
         }}>장바구니로 이동</button>
       </div>
@@ -30,7 +30,6 @@ function Detail() {
   const [quantity, setQuantity] = useState(1);
   const [{basket}, dispatch] = useStateValue();
   const history = useHistory();
-  const [keep, setKeep] = useState();
   
   useEffect(()=>{
     async function fetchDate() {
@@ -79,7 +78,7 @@ function Detail() {
 
         <div>
 
-          {modal===true ? <Modal/> : null}
+          {modal==true ? <Modal/> : null}
           
             <button className="detail__keep" onClick={()=>{
               if(modal==false){
