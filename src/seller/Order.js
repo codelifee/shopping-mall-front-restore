@@ -59,14 +59,17 @@ function Order() {
                             <th>Name</th>
                             <th>Ordered_Date</th>
                             <th>Address</th>
+                            <th>Status</th>
                         </thead>
                         <tbody>
                             {orders.map(order => (
                                 <OrderItems 
                                 key={order.order_id}
+                                id={order.order_id}
                                 name={order.user_id}
                                 date={order.order_date_created}
                                 address={order.user_address}
+                                status={order.order_status}
                                 />
                             ))}
                         </tbody>
