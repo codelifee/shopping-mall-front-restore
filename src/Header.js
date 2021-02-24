@@ -1,5 +1,6 @@
 import React from "react";
 import Logo from "./img/logo.png";
+import Brand from "./img/brand_name.png";
 import SearchIcon from "@material-ui/icons/Search";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import "./header.css";
@@ -32,7 +33,7 @@ function Header() {
         </Link>
 
         <Link to="/home">
-          <p className="logo_name">천지연</p>
+          <img className="header__logo2" src={Brand} alt="" />
         </Link>
       </div>
 

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?amily=Gaegu&family=Gugi&family=Jua&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Monoton&display=swap");
 
 * {
   margin: 0;
@@ -10,20 +10,12 @@ a {
   text-decoration: none;
 }
 
-.logo_name {
-  margin-right: 30px;
-  color: black;
-  font-family: "Gaegu", "Gugi", cursive, "Jua", sans-serif;
-  font-size: 40px;
-}
-
 .log_name_wap {
+  margin-left: 300px;
   display: flex;
   flex: 10;
   align-items: center;
-  justify-content: center;
-  margin-left: 0;
-  margin-right: 0;
+  align-self: center;
 }
 
 .header {
@@ -45,7 +37,11 @@ a {
   color: white;
   background-color: #fff;
   border-radius: 50%;
-  margin: 10px 20px 0 20px;
+}
+
+.header__logo2 {
+  max-width: 50%;
+  height: auto !important;
 }
 
 .header__search {
@@ -120,7 +116,7 @@ a {
   justify-content: flex-end;
   color: white;
   padding-right: 50px;
-  margin-left: 50px;
+  margin-left: -10px;
 }
 
 .header__option {
