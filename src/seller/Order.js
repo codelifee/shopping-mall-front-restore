@@ -59,7 +59,8 @@ function Order() {
                             <th>Name</th>
                             <th>Ordered_Date</th>
                             <th>Address</th>
-                            <th>Status</th>
+                            <th>배송상태</th>
+                            <th>배송상태 변경</th>
                         </thead>
                         <tbody>
                             {orders.map(order => (

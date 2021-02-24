@@ -3,25 +3,39 @@ import axios from '../axios/axios'
 
 function OrderItems({id, name, date, address, status}) {
 
-    const [status, setStatus] = useState({
-        status: "배송준비중",
+    const [newStatus, setNewStatus] = useState({
+        order_status: "배송준비중",
     })
 
     const handleStatus = e => {
         e.preventDefault();
+            let id = e.target.id;
 
-        console.log(e.target.id)
-        let id = e.target.id;
+            setNewStatus({
+                order_status: e.target.value
+            })
 
-        console.log(e.target.value)
-        setStatus({
-            status: e.target.value
-        })
+            console.log(newStatus)
 
-        axios.patch(`/orders/${id}`, status)
-        .then(res => console.log(res))
-        .catch(err => console.log(err))
     }
+
+    const patchOrderStatus = (e) => {
+            let id = e.target.id;
+
+            console.log(id)
+            
+            axios.patch(`/orders/${id}`, newStatus)
+            .then(res => console.log(res))
+            .catch(err => console.log(err))
+    }
+
+    useEffect(() => {
+        setNewStatus({
+            order_status: status
+        })        
+    }, newStatus)
+
+    console.log(newStatus)
 
     return(
         <>
@@ -30,12 +44,15 @@ function OrderItems({id, name, date, address, status}) {
                 <td>{address}</td>
                 <td>{date}</td>
                 <td>
-                    <select id={id} onChange={handleStatus}>
+                    <select value={newStatus.order_status} id={id} onChange={handleStatus}>
                         <option value="배송완료">배송완료</option>
                         <option value="배송중">배송중</option>
                         <option value="배송시작">배송시작</option>
                         <option value="배송준비중">배송준비중</option>
                     </select>
+                </td>
+                <td>
+                    <button id={id} onClick={patchOrderStatus}>변경하기</button>
                 </td>
             </tr>
         </>
