@@ -107,6 +107,7 @@ function AnsweredProducts() {
                       <td>{name}</td>
                       <td>{val.question}</td>
                       <td>{val.answer}</td>
+                    
                     </tr>
                   );
                 })}

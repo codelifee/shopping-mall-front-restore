@@ -54,10 +54,10 @@ function AnswerYetQuestion (){
                 <div className="AnsweYetProduct__table_bg">
                     <table className="AnsweYetProduct__table">
                         <thead>
-                            <th>User Name</th>
-                            <th>Questions</th>
-                            <th>Answer</th>
-                            <th>date</th>
+                            <th>사용자ID</th>
+                            <th>질문내용</th>
+                            <th>질문입력일자</th>
+                            <th>답변하기</th>
                         </thead>
                         <tbody>
                             
