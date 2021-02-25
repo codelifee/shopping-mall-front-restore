@@ -60,6 +60,7 @@ function AnswerYetCategory() {
             }
         )  
 
+        
     return (
         <div className="category">
             <div className="category__container">
@@ -127,5 +128,6 @@ function AnswerYetCategory() {
         </div>
     )
 }
+
 
 export default AnswerYetCategory;
