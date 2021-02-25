@@ -87,7 +87,6 @@ body {
 .product-description > input {
   height: 200px;
   width: 835px;
-  background: linear-gradient(45deg, #faf4c0, #e4f7ba);
 }
 
 .price {
@@ -117,7 +116,7 @@ body {
   background: #e4f7ba;
 }
 
-input {
+/* input {
   background: linear-gradient(45deg, #faf4c0, #e4f7ba);
   border: 1px dotted #6b9900;
-}
+} */

@@ -66,17 +66,17 @@ function Detail() {
           <p className="detail__proudct_stock">
             재고 : {products.stock}
           </p>
-          
+          <div className="center">
           <p className="quantity">
-            {quantity > 1 ? (<button onClick={() => {setQuantity(quantity - 1);}}>-</button>) : (<button onClick={() => {setQuantity(quantity);}}>-</button>)}
+            {quantity > 1 ? (<button onClick={() => {setQuantity(quantity - 1);}} className="quantity_button">-</button>) : (<button onClick={() => {setQuantity(quantity);}}  className="quantity_button">-</button>)}
             구매수량 {quantity}
-            <button onClick={() => {setQuantity(quantity + 1);}}>+</button>
+            <button onClick={() => {setQuantity(quantity + 1);}} className="quantity_button">+</button>
           </p>
           <p className="detail__product_totalPrice">
             총 금액 {new Intl.NumberFormat().format(products.product_price * quantity)}원
           </p>
-
-        <div>
+          </div>
+        <div className="button_box">
 
           {modal==true ? <Modal/> : null}
           

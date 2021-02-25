@@ -5,7 +5,6 @@ import DatePicker from 'react-datepicker';
 import { FaSearch } from 'react-icons/fa';
 import { useHistory, Link } from 'react-router-dom';
 import './AnswerYetProducts.css';
-import AnswerYetProductsView from './AnswerYetProductsView';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import { Category } from '@material-ui/icons';
@@ -23,7 +22,7 @@ function AnsweredProducts() {
   useEffect(() => {
     async function fetchDate() {
       const request = await axios
-        .get('products/all')
+        .get('products/all') 
         .then((response) => setProducts(response.data))
         .catch((error) => console.log(error));
 
@@ -86,6 +85,8 @@ function AnsweredProducts() {
               <th>Answer</th>
             </thead>
             <tbody>
+
+              
               {question
                 .filter((val) => {
                   //question의 category_id == id && question의 answer !=null 일때
@@ -111,6 +112,7 @@ function AnsweredProducts() {
                     </tr>
                   );
                 })}
+
             </tbody>
           </table>
         </div>

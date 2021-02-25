@@ -30,6 +30,9 @@ function Product(props) {
 
     return (
         <div className='product'>
+             <img className="product__img" src={image+props.id} alt="" onClick={()=>{
+                history.push(`/detail/${props.id}`);
+            }}/> 
             <div className="product__info"  onClick={()=>{
                     history.push(`/detail/${props.id}`);
                 }}>
@@ -51,9 +54,7 @@ function Product(props) {
                 </div> 
             </div>
 
-            <img className="product__img" src={image+props.id} alt="" onClick={()=>{
-                history.push(`/detail/${props.id}`);
-            }}/> 
+           
             <div><FaComment/> {props.comment}</div>
             <button onClick={addToBasket}><FaShoppingCart className="product__cartIcon"/> Cart</button>
             

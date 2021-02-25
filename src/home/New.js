@@ -26,7 +26,8 @@ function New(){
     return(
       <div className="home_container">
         <p className="title">신제품을 만나보세요</p>
-        <div className="content">
+        <div className="new_content">
+        
         {
           new_.map((data, i)=>{
             return <NewItem new_={new_[i]} key={i}/>
@@ -41,10 +42,14 @@ function New(){
 function NewItem(props){
   return(
     <div className="new_item">
-      <div as={Link} to ='/'>
+      <div as={Link} to ='/'className="new_item_box">
         <img src={props.new_.img}/>
+        <div className="new_item_h4">
+        <h4>{props.new_.decoration}</h4>
         <h4>{props.new_.title}</h4>
+        <h4>{props.new_.price}원</h4>
       </div>
+    </div>
     </div>
   )
 }

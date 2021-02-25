@@ -1,26 +1,31 @@
-.modal{
-    width: 180px;
-    height: 100px;
-    border: solid 2px rgb(49, 209, 49);
-    z-index: 1;
-    text-align: center;
-    margin-bottom: 10px;
+.modal {
+  width: 180px;
+  height: 100px;
+  border: solid 1px #ffb755;
+  z-index: 1;
+  text-align: center;
+  margin-bottom: 10px;
+  color: #333;
+  border-radius: 5px;
+  margin-left: 15px;
+  background: rgba(255, 183, 85, 0.2);
 }
 
-.modal_content{
-    margin: 0 auto;
-    margin-top: 10px;
+.modal_content {
+  margin: 0 auto;
+  margin-top: 10px;
 }
 
 .modal button {
-    margin-left: 20px;
+  margin-top: 5px;
 }
 
-.modalButton{
-    border: none;
-    border-radius: 20px;
-    width:130px;
-    height: 30px;
-    background-color: greenyellow;
-    cursor: pointer;
+.modalButton {
+  border: none;
+  border-radius: 20px;
+  width: 130px;
+  height: 30px;
+  background-color: #ffb755;
+  cursor: pointer;
+  color: #333;
 }

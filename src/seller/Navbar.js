@@ -13,20 +13,20 @@ function Navbar() {
 
 
     return (
-        <div className="navbar">
+        <div className="seller_navbar">
             {/* <Link to="/seller">
                 <div className="navbar__logo">
                     <h1>Seller Center</h1>
                 </div>
             </Link> */}
-            <Link onClick={() => {window.location.href="/"}}>
-                <div className='navbar__logo'>
+            <Link onClick={() => {window.location.href="/home"}}>
+                <div className='seller_navbar__logo'>
                 <img
-                src={Logo} alt=""/>
+                src={Logo} alt="" className="seller_img"/>
                 </div>
             </Link>
-                <div className="navbar__links">
-                    <div className="navbar__link">
+                <div className="seller_navbar__links">
+                    <div className="seller_navbar__link">
                         <h2>
                         <FaChair />
                         Product
@@ -47,7 +47,7 @@ function Navbar() {
                         }
                         
                     </div>
-                    <div className="navbar__link">
+                    <div className="seller_navbar__link">
                         <h2>
                         <FaShoppingBag />
                             Order
@@ -65,7 +65,7 @@ function Navbar() {
                         </div>
                         
                     </div>
-                    <div className="navbar__link">
+                    <div className="seller_navbar__link">
                         <h2>
                             <FaUserCog />
                             User
@@ -82,7 +82,7 @@ function Navbar() {
                             }
                         </div>
                     </div>
-                    <div className="navbar__link">
+                    <div className="seller_navbar__link">
                         <h2>
                         <FaComment />
                         Answers

@@ -4,8 +4,8 @@
   box-sizing: border-box;
 }
 .main_footer {
-  color: #ddd;
-  background-color: #333;
+  color: #333;
+  background-color: rgba(255, 183, 85, 0.3);
   position: relative;
   margin-bottom: 0;
   width: 100%;
@@ -28,6 +28,7 @@
 .footer_ul p {
   margin: 10px 50px;
   width: 250px;
+  color: #333;
 }
 
 .footer_ul li {
@@ -43,8 +44,9 @@
   text-align: center;
   font-size: 12px;
   width: 100%;
+  color: #333;
 }
 
 .footer_link {
-  color: #ddd;
+  color: #333;
 }

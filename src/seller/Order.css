@@ -14,7 +14,7 @@
   grid-template-columns: 1fr;
   grid-template-rows: 100px 100px 100px 1fr;
   background-color: #fff;
-  color: #476600;
+  color: #333;
   margin-bottom: 100px;
 }
 
@@ -37,6 +37,7 @@
   height: 30px;
   width: 350px;
   border-radius: 5px;
+  background-color: rgba(255, 183, 85, 0.3);
 }
 
 .order__search {
@@ -57,14 +58,14 @@
 
 .order__category > p {
   margin-right: 10px;
-  color: #476600;
+  color: #333;
 }
 
 .order__button {
   display: flex;
   margin-left: 36px;
   align-items: center;
-  color: #476600;
+  color: #333;
 }
 
 .order__search-button {
@@ -73,7 +74,7 @@
   height: 30px;
   color: white;
   background: #777;
-  border: 1px solid #6b9900;
+  border: 1px solid #333;
   border-radius: 5px;
 }
 
@@ -81,7 +82,7 @@
   width: 100px;
   height: 30px;
   background: #fff;
-  border: 1px solid #6b9900;
+  border: 1px solid #333;
   border-radius: 5px;
 }
 
@@ -111,7 +112,11 @@
 
 .order__table {
   width: 1125px;
-  background-image: linear-gradient(to right, #faf4c0 0%, #f1d9f5 100%);
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 183, 85, 0.3) 0%,
+    rgba(251, 115, 185, 0.2) 100%
+  );
   border: 2px solid #f2cb61;
   color: #333;
   margin-left: 10px;
@@ -138,7 +143,7 @@ td {
 
 .order__table tbody tr:nth-of-type(even) {
   background-color: #e0dede;
-  color: #476600;
+  color: #333;
 }
 
 .order__table tbody tr:last-of-type {
