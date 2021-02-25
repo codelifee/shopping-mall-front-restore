@@ -29,13 +29,11 @@ function AnswerYetCategory() {
             return request;
         }
 
-        console.log(categories);
-
         fetchDate();
     }, [])
 
     const [question, setQuestion] = useState([]);
-console.log(question)
+
     useEffect(()=>{
         async function getQuestion() {
             const request = await axios.get('question/all')
@@ -47,6 +45,8 @@ console.log(question)
         }
         getQuestion();
         }, [])
+
+        console.log(question);
     
         const totalQuestion = 
         question
@@ -58,9 +58,8 @@ console.log(question)
                 return ques.product_id;
             }
         )  
-        
-         console.log(totalQuestion)
 
+        
     return (
         <div className="category">
             <div className="category__container">
@@ -89,9 +88,19 @@ console.log(question)
                     <table className="category__table">
                         <thead>
                             <th>Category Name</th>
+                            <th>Answer Wating Questions</th>
                         </thead>
                         <tbody>
                             {categories.map((category)=>{
+                                let categoryQuestion = null;
+                                categoryQuestion = question.filter((val)=>{
+                                    return val.category_id == category.category_id && val.answer==null;
+                                })
+                                .map(
+                                    (val)=>{
+                                        return val.question_id
+                                    }
+                                )
                                 return(
                                     <tr key={category.category_id}>
                                         <td>
@@ -105,6 +114,17 @@ console.log(question)
                                                 {category.category_name}
                                             </span>
                                         </td>
+                                        <td>
+                                            <span  onClick={
+                                                ()=>{
+                                                    history.push(
+                                                        `/seller/answerYetProducts/${category.category_id}`
+                                                    )
+                                                }
+                                            }>
+                                                {categoryQuestion.length}
+                                            </span>
+                                        </td>
                                     </tr>
                                 )
                             })}
@@ -115,5 +135,6 @@ console.log(question)
         </div>
     )
 }
+
 
 export default AnswerYetCategory;

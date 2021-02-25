@@ -14,7 +14,7 @@ function SellerProducts() {
 
     useEffect(() => {
         async function fetchDate() {
-            const request = await axios.get('products/all')
+            const request = await axios.get('products/allJsonData')
             .then(response => 
                 setProducts(response.data)
             )
@@ -28,8 +28,6 @@ function SellerProducts() {
     }, [])
 
     const handleDelete = (id) => {
-
-        console.log(id)
 
         axios.delete("products/" + id)
         .then(res => {console.log(res)

@@ -23,9 +23,23 @@
   cursor: pointer;
 }
 
+.product__status{
+  color: orangered;
+  border: solid 1px black;
+  width: 58px;
+  height: 25px;
+  line-height: 25px;
+  margin: 0 auto;
+}
+
 .product__rating {
   margin-top: 10px;
   display: flex;
+}
+.product__info {
+  height: 130px;
+  margin-bottom: 10px;
+  cursor: pointer;
 }
 .product__img {
   max-height: 200px;
@@ -44,11 +58,16 @@
   background: #fb73b9;
   border-radius: 5px;
   width: 150px;
+  height: 40px;
+  font-size: 15px;
   padding: 2px 10px;
   border: none;
   margin: 0;
   color: #fff;
   cursor: pointer;
+}
+.product__cartIcon{
+  font-size: 20px;
 }
 .product__price {
   display: flex;

@@ -37,7 +37,7 @@ console.log(categories)
          <div className="swiper_wrapper">
          {
           categories.map((data, i)=>{
-            return <SlideItem2 category={categories[i]}
+            return <SlideItem2 category={data}
             picture={category_picture[i]} key={i}/>
           })
         }

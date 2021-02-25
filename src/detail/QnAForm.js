@@ -1,22 +1,24 @@
 import React, {useState} from 'react';
 import axios from '../axios/axios';
 import {useStateValue} from '../StateProvider/StateProvider'
-import {useHistory} from "react-router-dom";
+import {useHistory, useParams} from "react-router-dom";
 import './QnAForm.css';
 
 function QnAForm(){
     const [{user}, dispatch] = useStateValue(); 
 
+    const {id} = useParams();
+
     const history = useHistory();
 
     const [form, setForm] = useState({
-        product_id: 2,
+        product_id: id,
         user_sequence_id:8,
         question: '',
-        question_date_created: "2021-02-16",
-        answer_id : 1,
-        answer: '내일 출고됩니다.',
-        answer_date_created: "2021-02-16"
+        question_date_created: '',
+        answer_id : '',
+        answer: '',
+        answer_date_created: ''
     })
 
 
