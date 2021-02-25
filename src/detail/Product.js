@@ -2,10 +2,11 @@ import React, {useState, useContext, useEffect} from 'react'
 import './Product.css';
 import {useStateValue} from "../StateProvider/StateProvider"
 import {useHistory, useParams} from "react-router-dom";
+import {FaComment, FaShoppingCart} from 'react-icons/fa';
 
 
 function Product(props) {
-    const [products, setProducts] = useState([{props}]);
+    
     //dispatch -> how we manipulate with data
     const [{basket}, dispatch] = useStateValue();
     const image = "http://shoppingmall-env.eba-jac9afx7.us-east-1.elasticbeanstalk.com/products/showProductImage/";
@@ -29,10 +30,11 @@ function Product(props) {
 
     return (
         <div className='product'>
-            <div className="product__info">
-                <p className="product__name" onClick={()=>{
+            <div className="product__info"  onClick={()=>{
                     history.push(`/detail/${props.id}`);
-                }}>{props.title}</p>
+                }}>
+                <p className="product__name">{props.title}</p>
+                <p className="product__status">{props.status}</p>
                 <p className="product__price">
                     <small>{props.description}</small>
                     <strong>₩{new Intl.NumberFormat().format(props.price)}</strong>
@@ -52,7 +54,8 @@ function Product(props) {
             <img className="product__img" src={image+props.id} alt="" onClick={()=>{
                 history.push(`/detail/${props.id}`);
             }}/> 
-            <button onClick={addToBasket}>Add to the List</button>
+            <div><FaComment/> {props.comment}</div>
+            <button onClick={addToBasket}><FaShoppingCart className="product__cartIcon"/> Cart</button>
             
         </div>
     )
