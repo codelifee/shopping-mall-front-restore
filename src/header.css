@@ -9,7 +9,6 @@
 a {
   text-decoration: none;
 }
-<<<<<<< HEAD
 .header_container {
   height: 70px;
   display: flex;
@@ -21,17 +20,6 @@ a {
   width: 100%;
   margin: 0 auto;
 }
-=======
-
-.log_name_wap {
-  margin-left: 300px;
-  display: flex;
-  flex: 10;
-  align-items: center;
-  align-self: center;
-}
-
->>>>>>> b0bb787d353c9fac4c10f055eeddc425ba155e54
 .header {
   height: 100px;
   display: flex;
@@ -51,16 +39,8 @@ a {
   color: white;
   background-color: rgba(255, 183, 85, 0.1);
   border-radius: 50%;
-<<<<<<< HEAD
   margin: 10px 0 0 20px;
   padding: 3px;
-=======
-}
-
-.header__logo2 {
-  max-width: 50%;
-  height: auto !important;
->>>>>>> b0bb787d353c9fac4c10f055eeddc425ba155e54
 }
 
 .header__search {

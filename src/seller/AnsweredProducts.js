@@ -5,7 +5,6 @@ import DatePicker from 'react-datepicker';
 import { FaSearch } from 'react-icons/fa';
 import { useHistory, Link } from 'react-router-dom';
 import './AnswerYetProducts.css';
-import AnswerYetProductsView from './AnswerYetProductsView';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import { Category } from '@material-ui/icons';
@@ -121,4 +120,4 @@ function AnsweredProducts() {
   );
 }
 
-export default AnswerYetProducts;
+export default AnsweredProducts;
