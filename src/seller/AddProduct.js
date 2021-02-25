@@ -22,7 +22,7 @@ function AddProduct() {
     const handleChange = e => {
         e.preventDefault()
 
-        if (e.target.name === "category_id" || 
+        if (e.target.name == "category_id" || 
         e.target.name === "product_price") {
 
             setForm({
@@ -120,6 +120,7 @@ function AddProduct() {
                     <div className="product-description">
                         <label>Product Description</label>
                         <input 
+                        className="addproduct-description_input"
                         type="text" 
                         name="product_description"
                         value={form.product_description}

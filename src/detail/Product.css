@@ -14,12 +14,12 @@
   width: 300px;
   max-height: 400px;
   min-width: 200px;
-  background-color: white;
+  background-color: rgba(230, 183, 151, 0.5);
   z-index: 1;
   border-radius: 10px;
 }
 
-.product__name{
+.product__name {
   cursor: pointer;
 }
 
@@ -33,14 +33,16 @@
   object-fit: contain;
   margin-bottom: 15px;
   cursor: pointer;
+  border-radius: 10px;
 }
+
 .product__info {
   height: 100px;
   margin-bottom: 10px;
 }
 .product > button {
-  background:#9feb61;
-  border-radius: 20px 20px 20px 20px;
+  background: #fb73b9;
+  border-radius: 5px;
   width: 150px;
   padding: 2px 10px;
   border: none;

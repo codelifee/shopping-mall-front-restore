@@ -108,7 +108,7 @@ function Review(props) {
         <div className="review__score_avg">
           {avg}
           <p>
-            <FaStar color={"#ffc107"} size={80} />
+            <FaStar color={"#ffc107"} size={60} />
           </p>
         </div>
         <div className="review__score_list">

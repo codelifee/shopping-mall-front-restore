@@ -22,6 +22,11 @@ body {
   background-color: #fff;
   color: #333;
 }
+
+.product-description_input,
+.Price_input {
+  background: rgba(255, 183, 85, 0.3);
+}
 .addProduct__container__head h1 {
   color: #333;
 }
@@ -44,17 +49,22 @@ body {
 }
 
 .addProduct__input {
-  height: 30px;
+  height: 25px;
+  background: rgba(255, 183, 85, 0.3);
+  width: 280px;
+  border-radius: 5px;
+  border: 1px dotted #333;
 }
 
 .searchbar_and_category {
   display: flex;
-  align-items: center;
+  line-height: 20px;
 }
 
 .addProduct__search > input {
   height: 30px;
   border-radius: 5px;
+  border: 1px dotted #333;
 }
 
 .addProduct__searchbar {
@@ -64,7 +74,7 @@ body {
 
 .addProduct__searchbar > p {
   margin-right: 14px;
-  color: #476600;
+  color: #333;
 }
 
 .addProduct__category {
@@ -81,13 +91,13 @@ body {
   padding: 0 5px;
 }
 .addProduct__category > .addProduct__select {
-  height: 32px;
-  border: 1px dotted #6b9900;
+  height: 28px;
+  border: 1px dotted #333;
 }
 
 .addProduct__category > p {
   margin-right: 14px;
-  color: #476600;
+  color: #333;
 }
 
 .product-description {
@@ -102,7 +112,7 @@ body {
   height: 200px;
   width: 835px;
   border-radius: 5px;
-  background: linear-gradient(45deg, #faf4c0, #e4f7ba);
+  background: rgba(255, 183, 85, 0.3);
 }
 
 .image {
@@ -120,12 +130,21 @@ body {
   padding-right: 10px;
   border-radius: 5px;
 }
-
+.Price_input {
+  width: 280px;
+  border-radius: 5px;
+  border: 1px dotted #333;
+}
 .product-description_input {
-  background: linear-gradient(45deg, #faf4c0, #e4f7ba);
-  border: 1px dotted #6b9900;
+  background: rgba(255, 183, 85, 0.3);
+  border: 1px dotted #333;
   border-radius: 5px;
   margin: 15px 0;
+  height: 25px;
+}
+.addproduct-description_input {
+  background: rgba(219, 187, 141, 0.3);
+  border: 1px dotted #333;
 }
 .label_and_input {
   margin-left: 60px;
@@ -135,8 +154,8 @@ body {
   margin-left: 160px;
   width: 300px;
   height: 50px;
-  color: white;
+  color: #fff;
   background: #333;
-  border: 1px solid #6b9900;
+  border: 1px solid #777;
   border-radius: 5px;
 }

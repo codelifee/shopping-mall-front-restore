@@ -1,12 +1,13 @@
 import React from 'react'
 import Logo from './img/logo.png';
+import Log from './img/log.png';
 import SearchIcon from '@material-ui/icons/Search';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import './header.css'
 import { Link } from 'react-router-dom';
 import { useStateValue } from './StateProvider/StateProvider';
 import Sidebar from './sidebar/Sidebar'
-import AllProducts from './sidebar/AllProducts'
+
 import {auth} from  './configuration/firebase';
 
 
@@ -20,15 +21,10 @@ function Header() {
     }
 
     return (
+        <div className='header_container'>
         <div className='header'>
              <Sidebar/>
-            <Link to='/home'>
-                <img
-                className='header__logo'
-                src={Logo} alt=""/>
-            </Link>
-           
-            <AllProducts/>
+            
            
             <div className="header__search">
                 <input 
@@ -36,7 +32,15 @@ function Header() {
                 type="text"/>
                 <SearchIcon className="header__searchIcon" />
             </div>
-
+            <div className="log_name_wap">
+            <Link to='/home'>
+                <img
+                className='header__logo'
+                src={Logo} alt=""/>
+            </Link>
+           
+            <Link to="/home"><p className="logo_name">ChenJiYeon</p></Link>
+            </div>
             <div className="header__nav">
                <Link to={!user && '/login'}>
                  <div onClick={handleAuthentication} className='header__option'>
@@ -70,6 +74,7 @@ function Header() {
                     </div>
                 </Link>
             </div>
+        </div>
         </div>
     )
 }

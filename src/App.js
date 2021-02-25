@@ -11,7 +11,8 @@ import { auth } from "./configuration/firebase";
 import { useStateValue } from "./StateProvider/StateProvider";
 import Payment from "./payment/Payment";
 import Footer from "./footer/Footer";
-import ImgSlide from "./slide/ImgSlide";
+// import ImgSlide from "./slide/ImgSlide";
+import Slide2 from "./slide2/Slide2";
 import LandingPage from "./landingpage/LandingPage";
 import ProductView from "./ProductView/ProductView";
 import ReviewForm from "./detail/ReviewForm";
@@ -54,7 +55,7 @@ function App() {
           </Route> */}
           <Route path="/home">
             <Header />
-            <ImgSlide />
+            <Slide2 />
             <Home />
             <Footer />
           </Route>

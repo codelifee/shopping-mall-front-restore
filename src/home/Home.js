@@ -19,10 +19,9 @@ function Home() {
 
 
                 <div className="home__row">
-                
+                <Category />
+                <Best />
                   <Recommendation />
-                    <Best />
-                    <Category />
                     <New/> 
 
 

@@ -23,7 +23,7 @@
   width: 100%;
   height: 5px;
   border-radius: 30px 30px 30px 30px;
-  background-color: #000;
+  background-color: #333;
   transition: all 0.35s;
 }
 
@@ -42,6 +42,7 @@
   top: 50%;
   transform: translateY(-50%) rotate(45deg);
   width: 80%;
+  background-color: #333;
 
   z-index: 300;
 }
@@ -54,11 +55,14 @@
   bottom: 50%;
   transform: translateY(50%) rotate(-45deg);
   width: 80%;
-
+  background-color: #333;
   z-index: 300;
 }
-
+.sidebar Link {
+  color: #333;
+}
 .sidebar {
+  color: #333;
   width: 300px;
   height: 100%;
   background-color: #fff;
@@ -66,8 +70,8 @@
   top: 0;
   left: -300px;
   z-index: 200;
-  transition: all 0.35s;
   opacity: 0.9;
+  transition: all 0.35s;
 }
 .menu[id="menuicon"]:checked + label + div {
   left: 0;
@@ -84,7 +88,7 @@
 }
 
 .menu_link {
-  color: #000;
+  color: #333;
   font-size: 20px;
   font-weight: bold;
 }
@@ -93,12 +97,12 @@
   display: none;
 }
 .headr_products {
-  color: #555;
+  color: #333;
   font-size: 20px;
   font-weight: bold;
   margin-right: 20px;
   transition: all 0.3s;
 }
 .headr_products:hover {
-  color: #000;
+  color: #fff;
 }
