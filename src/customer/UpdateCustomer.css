@@ -7,34 +7,32 @@ body {
   height: 100vh;
   display: flex;
   justify-content: center;
-  background-color: #eee;
-  color: #476600;
+  background-color: #fff;
+  color: #333;
 }
 
 .updateCustomer__container {
   /* background: rgb(182, 167, 167); */
   width: 1200px;
   height: 87vh;
-  display: grid;
+  display: flex;
   margin-top: 100px;
   padding: 20px;
-  grid-template-columns: 1fr;
-  grid-template-rows: 100px 100px auto;
-  border: 10px solid;
-  border-image: linear-gradient(45deg, #f2cb61, #bce55c);
-  border-image-slice: 1;
+  align-items: center;
+
+  flex-direction: column;
   background-color: #fff;
-  color: #476600;
+  color: #333;
 }
 .updateCustomer__container__head h1 {
-  color: #6b9900;
+  color: #333;
 }
 .updateCustomer__container__head {
   padding-left: 36px;
   padding-top: 20px;
 }
 .updateCustomer__container__head p {
-  color: #6b9900;
+  color: #333;
 }
 .updateCustomer__search {
   display: flex;
@@ -58,7 +56,7 @@ body {
 
 .id > label {
   margin-right: 70px;
-  color: #476600;
+  color: #333;
 }
 
 .password {
@@ -66,10 +64,10 @@ body {
   margin-left: 40px;
   margin-bottom: 30px;
 }
-  
+
 .password > label {
   margin-right: 9px;
-  color: #476600;
+  color: #333;
 }
 
 .name {
@@ -77,10 +75,10 @@ body {
   margin-left: 40px;
   margin-bottom: 30px;
 }
-  
+
 .name > label {
   margin-right: 38px;
-  color: #476600;
+  color: #333;
 }
 
 .phone {
@@ -88,37 +86,45 @@ body {
   margin-left: 40px;
   margin-bottom: 30px;
 }
-  
+
 .phone > label {
   margin-right: 37px;
-  color: #476600;
+  color: #333;
 }
 
-.phone > button{
+.phone > button {
   margin-left: 5px;
-  border: 1px dotted #6b9900;
-  background: #e4f7ba;
+  border: 1px dotted #333;
+  background: #ffb755;
 }
 
 .address {
   display: flex;
   margin-left: 40px;
 }
-  
+
 .address > label {
   margin-right: 19px;
-  color: #476600;
+  color: #333;
 }
 
 .updateCustomer__search > button {
   margin-top: 30px;
   width: 200px;
-  margin-left: 165px;
-  border: 1px dotted #6b9900;
-  background: #e4f7ba;
+  margin-left: 125px;
+  border: 1px dotted #333;
+  background: #ffb755;
+  border-radius: 5px;
 }
 
-input {
+/* input {
   background: linear-gradient(45deg, #faf4c0, #e4f7ba);
   border: 1px dotted #6b9900;
+} */
+.updateCustomer__input {
+  background: rgba(255, 183, 85, 0.3);
+  border-radius: 5px;
+  border: 1px dotted #333;
+  width: 200px;
+  padding: 0 5px;
 }

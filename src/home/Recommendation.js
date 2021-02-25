@@ -26,7 +26,7 @@ function Recommendation(){
     return(
       <div className="home_container">
          <p className="title">추천 상품을 만나보세요</p>     
-        <div className="swiper_wrapper">
+        <div className="swiper_wrapper2">
         {
           Recommendation.map((data, i)=>{
             return <SlideItem Recommendation={Recommendation[i]} key={i}/>
@@ -39,10 +39,14 @@ function Recommendation(){
 
 function SlideItem(props){
   return(
-    <div className="slide_item">
-      <div as={Link} to ='/'>
+    <div className="slide_item2">
+      <div as={Link} to ='/' className="slide_item2_box">
         <img src={props.Recommendation.img}/>
+        <div>
+        <h4>{props.Recommendation.decoration}</h4>
         <h4>{props.Recommendation.title}</h4>
+        <h4>{props.Recommendation.price}원</h4>
+        </div>
       </div>
     </div>
   )

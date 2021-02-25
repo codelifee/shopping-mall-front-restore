@@ -16,6 +16,7 @@ function Collection(){
                     id={collection[0].id}
                     title={collection[0].title}
                     image={collection[0].img}
+                    className="slide_item_img"
                    // description="양파로 즙을 낸 것"
                    // price={6000}
                     /> 
@@ -28,6 +29,7 @@ function Collection(){
                     id={collection[1].id}
                     title={collection[1].title}
                     image={collection[1].img}
+                    className="slide_item_img"
                    // description="양파로 즙을 낸 것"
                    // price={6000}
                     /> 
@@ -39,6 +41,7 @@ function Collection(){
                     id={collection[2].id}
                     title={collection[2].title}
                     image={collection[2].img}
+                    className="slide_item_img"
                    // description="양파로 즙을 낸 것"
                    // price={6000}
                     /> 
@@ -48,6 +51,7 @@ function Collection(){
                     id={collection[3].id}
                     title={collection[3].title}
                     image={collection[3].img}
+                    className="slide_item_img"
                    // description="양파로 즙을 낸 것"
                    // price={6000}
                     /> 

@@ -1,136 +1,138 @@
 body {
-    margin: 0;
-    padding: 0;
-  }
-  .addCustomer {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    background-color: #eee;
-    color: #476600;
-  }
-  
-  .addCustomer__container {
-    /* background: rgb(182, 167, 167); */
-    width: 1200px;
-    height: 87vh;
-    display: grid;
-    margin-top: 100px;
-    padding: 20px;
-    grid-template-columns: 1fr;
-    grid-template-rows: 100px 100px auto;
-    border: 10px solid;
-    border-image: linear-gradient(45deg, #f2cb61, #bce55c);
-    border-image-slice: 1;
-    background-color: #fff;
-    color: #476600;
-  }
-  .addCustomer__container__head h1 {
-    color: #6b9900;
-  }
-  .addCustomer__container__head {
-    padding-left: 36px;
-    padding-top: 20px;
-  }
-  .addCustomer__container__head p {
-    color: #6b9900;
-  }
-  .addCustomer__search {
-    display: flex;
-    flex-direction: column;
-    margin-left: 30px;
-    margin-top: 30px;
-    height: 450px;
-  
-    background: #fff;
-  }
-  
-  .addCustomer__search > input {
-    height: 30px;
-    /* width: 450px; */
-  }
-  
-  .id {
-    display: flex;
-    margin: 40px 0 40px 40px;
-  }
-  
-  .id > label {
-    margin-right: 70px;
-    color: #476600;
-  }
+  margin: 0;
+  padding: 0;
+}
+.addCustomer {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+  color: #333;
+}
 
-  .id > button{
-    width: 60px;
-    margin-left: 5px;
-    border: 1px dotted #6b9900;
-    background: #e4f7ba;
-    font-size: 10px;
-  }
-  
-  .password {
-    display: flex;
-    margin-left: 40px;
-    margin-bottom: 40px;
-  }
-    
-  .password > label {
-    margin-right: 9px;
-    color: #476600;
-  }
-  
-  .name {
-    display: flex;
-    margin-left: 40px;
-    margin-bottom: 40px;
-  }
-    
-  .name > label {
-    margin-right: 38px;
-    color:#476600;
-  }
+.addCustomer__container {
+  /* background: rgb(182, 167, 167); */
+  width: 1200px;
+  height: 87vh;
+  display: flex;
+  margin-top: 100px;
+  padding: 20px;
+  align-items: center;
 
-  .phone {
-    display: flex;
-    margin-left: 40px;
-    margin-bottom: 40px;
-  }
-    
-  .phone > label {
-    margin-right: 37px;
-    color: #476600;
-  }
+  flex-direction: column;
 
-  .phone > button{
-    width:80px;
-    margin-left: 5px;
-    border: 1px dotted #6b9900;
-    background: #e4f7ba;
-    font-size: 10px;
-  }
+  background-color: #fff;
+  color: #333;
+}
+.addCustomer__container__head h1 {
+  color: #333;
+}
+.addCustomer__container__head {
+  padding-left: 36px;
+  padding-top: 20px;
+}
+.addCustomer__container__head p {
+  color: #333;
+}
+.addCustomer__search {
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+  margin-top: 30px;
+  height: 450px;
 
-  .address {
-    display: flex;
-    margin-left: 40px;
-  }
-    
-  .address > label {
-    margin-right: 21px;
-    color: #476600;
-  }
-  
-  .addCustomer__search > button {
-    margin-top: 30px;
-    width: 200px;
-    margin-left: 165px;
-    border: 1px dotted #6b9900;
-    background: #e4f7ba;
-  }
+  background: #fff;
+}
 
-  input {
-    background: linear-gradient(45deg, #faf4c0, #e4f7ba);
-    border: 1px dotted #6b9900;
-  }
+.addCustomer__search > input {
+  height: 30px;
+  /* width: 450px; */
+  background: rgba(255, 183, 85, 0.3);
+}
 
-  
+.id {
+  display: flex;
+  margin: 40px 0 40px 40px;
+}
+
+.id > label {
+  margin-right: 70px;
+  color: #333;
+}
+
+.id > button {
+  width: 80px;
+  margin-left: 10px;
+  border: 1px dotted #333;
+  background: #ffb755;
+  border-radius: 5px;
+  font-size: 10px;
+}
+
+.password {
+  display: flex;
+  margin-left: 40px;
+  margin-bottom: 40px;
+}
+
+.password > label {
+  margin-right: 9px;
+  color: #333;
+}
+
+.name {
+  display: flex;
+  margin-left: 40px;
+  margin-bottom: 40px;
+}
+
+.name > label {
+  margin-right: 38px;
+  color: #333;
+}
+
+.phone {
+  display: flex;
+  margin-left: 40px;
+  margin-bottom: 40px;
+}
+
+.phone > label {
+  margin-right: 37px;
+  color: #333;
+}
+
+.phone > button {
+  width: 80px;
+  margin-left: 10px;
+  border: 1px dotted #333;
+  background: #ffb755;
+  border-radius: 5px;
+  font-size: 10px;
+}
+
+.address {
+  display: flex;
+  margin-left: 40px;
+}
+
+.address > label {
+  margin-right: 21px;
+  color: #333;
+}
+
+.addCustomer__search > button {
+  margin-top: 30px;
+  width: 200px;
+  margin-left: 125px;
+  border: 1px dotted #333;
+  background: #ffb755;
+  border-radius: 5px;
+}
+.addCustomer__input {
+  background: rgba(255, 183, 85, 0.3);
+  border-radius: 5px;
+  border: 1px dotted #333;
+  width: 200px;
+}

@@ -27,13 +27,12 @@ return (
                     
                 </div>
                 <ul className="colors">
-                    <li><Link to="/" className="color color1">A</Link></li>
-                    <li><Link to="/" className="color color2">B</Link></li>
-                    <li><Link to="/" className="color color3">C</Link></li>
-                    <li><Link to="/" className="color color4">D</Link></li>
+                    <li><Link to="/" className="color">상세보기</Link></li>
+                   
+                    
                 </ul>
                 <div className="details">
-                    <h2>Herb<span className="job-title">
+                    <h2>50% 세일<span className="job-title">
 Herb refers to a plant grown in the West for use as a flavor or medicine.</span></h2>
                 </div>
             </div>
@@ -44,13 +43,11 @@ Herb refers to a plant grown in the West for use as a flavor or medicine.</span>
                     <img src={main_2} />
                 </div>
                 <ul className="colors">
-                    <li><Link to="/" className="color color5">A</Link></li>
-                    <li><Link to="/" className="color color6">B</Link></li>
-                    <li><Link to="/" className="color color7">C</Link></li>
-                    <li><Link to="/" className="color color8">D</Link></li>
+                <li><Link to="/" className="color">상세보기</Link></li>
+                   
                 </ul>
                 <div className="details">
-                    <h2>Herb<span className="job-title">
+                    <h2>인기상품<span className="job-title">
 Herb refers to a plant grown in the West for use as a flavor or medicine.</span></h2>
                 </div>
             </div>
@@ -58,16 +55,15 @@ Herb refers to a plant grown in the West for use as a flavor or medicine.</span>
         <div className="card-wrapper">
             <div className="card">
                 <div className="card-image">
+                    
                     <img src={main_3} />
                 </div>
                 <ul className="colors">
-                    <li><Link to="/" className="color color9">A</Link></li>
-                    <li><Link to="/" className="color color10">B</Link></li>
-                    <li><Link to="/" className="color color11">C</Link></li>
-                    <li><Link to="/" className="color color12">D</Link></li>
+                <li><Link to="/" className="color">상세보기</Link></li>
+                 
                 </ul>
                 <div className="details">
-                    <h2>Herb<span className="job-title">
+                    <h2>추천상품<span className="job-title">
 Herb refers to a plant grown in the West for use as a flavor or medicine.</span></h2>
                 </div>
             </div>
@@ -78,13 +74,11 @@ Herb refers to a plant grown in the West for use as a flavor or medicine.</span>
                     
                 </div>
                 <ul className="colors">
-                    <li><Link to="/" className="color color1">A</Link></li>
-                    <li><Link to="/" className="color color2">B</Link></li>
-                    <li><Link to="/" className="color color3">C</Link></li>
-                    <li><Link to="/" className="color color4">D</Link></li>
+                <li><Link to="/" className="color">상세보기</Link></li>
+                   
                 </ul>
                 <div className="details">
-                    <h2>Herb<span className="job-title">
+                    <h2>행사상품<span className="job-title">
 Herb refers to a plant grown in the West for use as a flavor or medicine.</span></h2>
                 </div>
             </div>
@@ -95,13 +89,11 @@ Herb refers to a plant grown in the West for use as a flavor or medicine.</span>
                     <img src={main_5} />
                 </div>
                 <ul className="colors">
-                    <li><Link to="/" className="color color5">A</Link></li>
-                    <li><Link to="/" className="color color6">B</Link></li>
-                    <li><Link to="/" className="color color7">C</Link></li>
-                    <li><Link to="/" className="color color8">D</Link></li>
+                <li><Link to="/" className="color">상세보기</Link></li>
+                   
                 </ul>
                 <div className="details">
-                    <h2>Herb<span className="job-title">
+                    <h2>신제품<span className="job-title">
 Herb refers to a plant grown in the West for use as a flavor or medicine.</span></h2>
                 </div>
             </div>

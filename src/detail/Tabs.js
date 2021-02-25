@@ -8,8 +8,8 @@ import './Tabs.css';
 function Tabs(){
     
     return(
-        <div className="tab_content">
-            
+        
+            <div className="tab_center">
             <input type='radio' name="tabmenu" id="tab01" defaultChecked/>
             <label htmlFor="tab01">상품상세</label>
 
@@ -21,13 +21,16 @@ function Tabs(){
 
             <input type='radio' name="tabmenu" id="tab04"/>
             <label htmlFor="tab04">Q & A</label>
-            <hr/>
-            
+
+           
+            <div style={{width:'100%',borderTop:'2px solid rgba(230, 125, 122, 1)'}}>
+            </div> 
             <div className="conbox con1"><Data/></div>
             <div className="conbox con2"><Info/></div>
             <div className="conbox con3"><Review/></div> 
             <div className="conbox con4"><QnA/></div>
         </div>
+        
     )
 }
 

@@ -18,7 +18,7 @@ function Orders() {
   useEffect(() => {
     async function fetchDate() {
       const request = await axios
-        .get(`http://localhost:5000/orders/userid/${user_sequence_id}`)
+        .get(`/orders/userid/${user_sequence_id}`)
 
         .then(response => setOrders(response.data))
         .catch(error => console.log(error));
@@ -79,7 +79,7 @@ function Orders() {
               date={order.order_date_created}
               address={order.user_address}
               picture={img + order.product_id}
-              amount={order.product_price}
+              price={order.product_price}
             />
           ))}
         </div>

@@ -12,7 +12,7 @@ a {
 }
 .swiper_wrapper {
   width: 1170px;
-  height: 350px;
+  height: 500px;
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
@@ -37,9 +37,9 @@ a {
 .slide_item img:hover {
   filter: blur(0.8px);
 }
-.slide_item img {
+.slide_item_img {
   width: 400px;
-  height: 266px;
+  height: 400px;
 }
 .slide_item h4 {
   margin: 16px 0;

@@ -10,7 +10,7 @@ import AnswerYetProductsView from './AnswerYetProductsView';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Category } from '@material-ui/icons';
 
-function AnswerYetProducts() {
+function AnsweredProducts() {
   const [startDate, setStartDate] = useState(new Date());
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -86,39 +86,33 @@ function AnswerYetProducts() {
               <th>Answer</th>
             </thead>
             <tbody>
-            
-              {question.filter((val)=>{
-                      //question의 category_id == id && question의 answer !=null 일때
-                      return val.category_id == id && val.answer!=null; 
-                    }).map((val, i)=>{
-                        
-                        //위에서 한차례 필터링된 question의 product_id 와 product.product_id 같을 때 product_name 출력
-                       const name =  products.filter(
-                            (prd)=>{
-                                return prd.product_id == val.product_id;
-                            }
-                        ).map((prd)=>{
-                            return prd.product_name;
-                        })
-                        console.log(i, name)
 
-                        return(  
-                        <tr>
-                          <td>
-                            {name}
-                          </td>
-                          <td>
-                            {val.question}
-                          </td>
-                          <td>
-                            {val.answer}
-                          </td>
-                      </tr>
-                      )
-                  }
-              )
-              }
               
+              {question
+                .filter((val) => {
+                  //question의 category_id == id && question의 answer !=null 일때
+                  return val.category_id == id && val.answer != null;
+                })
+                .map((val, i) => {
+                  //위에서 한차례 필터링된 question의 product_id랑 product.product_id 같을 때 product_name 출력
+                  const name = products
+                    .filter((prd) => {
+                      return prd.product_id == val.product_id;
+                    })
+                    .map((prd) => {
+                      return prd.product_name;
+                    });
+                  console.log(i, name);
+
+                  return (
+                    <tr>
+                      <td>{name}</td>
+                      <td>{val.question}</td>
+                      <td>{val.answer}</td>
+                    </tr>
+                  );
+                })}
+
             </tbody>
           </table>
         </div>

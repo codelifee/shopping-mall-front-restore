@@ -95,19 +95,19 @@ body {
   list-style: none;
 }
 .colors li a:hover {
-  background: #000;
+  background: #333;
   -webkit-transition: 0.2s;
   transition: 0.2s;
-  color: #fff;
+  color: rgba(250, 154, 127, 1);
 }
 .colors li a {
   position: relative;
   display: block;
-  width: 50px;
+  width: 110px;
   height: 50px;
   line-height: 50px;
   text-align: center;
-  background: #fff;
+  background: rgba(250, 154, 127, 1);
   font-size: 23px;
   color: #333;
   font-weight: bold;
@@ -118,6 +118,7 @@ body {
   transform: translateY(200px);
   opacity: 0;
   text-decoration: none;
+  border-radius: 5px;
 }
 
 .card:hover .colors li a {
@@ -165,7 +166,7 @@ body {
   position: absolute;
   bottom: 400px;
   left: 0;
-  background: #fff;
+  background: rgba(250, 154, 127, 0.7);
   width: 100%;
   height: 120px;
   z-index: 1;
@@ -222,12 +223,12 @@ body {
 
 .carousel .slick-dots li.slick-active button,
 .carousel .slick-dots li:hover button {
-  border-color: tomato;
+  border-color: #ffb755;
 }
 
 .carousel .slick-dots li.slick-active button:before,
 .carousel .slick-dots li:hover button:before {
-  background-color: tomato;
+  background-color: #ffb755;
   opacity: 1;
 }
 
