@@ -34,7 +34,6 @@ function AnswerYetCategory() {
 
     const [question, setQuestion] = useState([]);
 
-    //select *, p.category_id from question_tab q join products p on q.product_id=p.product_id order by q.question_id; ?
     useEffect(()=>{
         async function getQuestion() {
             const request = await axios.get('question/all')
@@ -95,7 +94,7 @@ function AnswerYetCategory() {
                             {categories.map((category)=>{
                                 let categoryQuestion = null;
                                 categoryQuestion = question.filter((val)=>{
-                                    return val.category_id == category.category_id;
+                                    return val.category_id == category.category_id && val.answer==null;
                                 })
                                 .map(
                                     (val)=>{
@@ -116,7 +115,15 @@ function AnswerYetCategory() {
                                             </span>
                                         </td>
                                         <td>
-                                            {categoryQuestion.length}
+                                            <span  onClick={
+                                                ()=>{
+                                                    history.push(
+                                                        `/seller/answerYetProducts/${category.category_id}`
+                                                    )
+                                                }
+                                            }>
+                                                {categoryQuestion.length}
+                                            </span>
                                         </td>
                                     </tr>
                                 )
