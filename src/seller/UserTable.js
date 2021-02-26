@@ -1,6 +1,7 @@
 import React from 'react'
 
 function UserTable({id, name, phone, address}) {
+
     return (
         <>
         <tr>
@@ -9,6 +10,7 @@ function UserTable({id, name, phone, address}) {
             <td>{phone}</td>
             <td>{address}</td>
         </tr>
+        
         </>
     )
 }

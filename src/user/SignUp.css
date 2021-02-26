@@ -12,9 +12,8 @@ body {
   }
   
   .addUser__container {
-    /* background: rgb(182, 167, 167); */
-    width: 1200px;
-    height: 87vh;
+    width: 850px;
+    height: 85vh;
     display: grid;
     margin-top: 100px;
     padding: 20px;
@@ -41,8 +40,7 @@ body {
     flex-direction: column;
     margin-left: 30px;
     margin-top: 30px;
-    height: 450px;
-  
+    height: 430px;
     background: #fff;
   }
 
@@ -58,7 +56,7 @@ body {
   
   .add_id {
     display: flex;
-    margin: 40px 0 40px 40px;
+    margin: 0 0 40px 40px;
   }
   
   .add_id > label {

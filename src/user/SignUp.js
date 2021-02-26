@@ -1,11 +1,11 @@
 import React from 'react';
 import './SignUp.css';
-import useForm from './useForm';
-import validate from './ValidateInfo';
+import SignUpData from './SignUpData';
+import Validate from './ValidateInfo';
 
 function SignUp({submitForm}) {
 
-    const {handleChange, values, handleSubmit, errors, checkId, checkPhone} = useForm(submitForm,validate);
+    const {handleChange, values, handleSubmit, errors, checkId, checkPhone} = SignUpData(submitForm,Validate);
 
     return (
         <div className="addUser">
@@ -17,7 +17,7 @@ function SignUp({submitForm}) {
                 onSubmit={handleSubmit}
                 >
                     <div className="add_id">
-                        <label htmlfor="">Id</label>
+                        <label htmlFor="">Id</label>
                         <input 
                             id="user_id"
                             type="email" 
@@ -35,7 +35,7 @@ function SignUp({submitForm}) {
                         {errors.user_id && <p>{errors.user_id}</p>}
                     </div>
                     <div className="add_password">
-                        <label htmlfor="">Password</label>
+                        <label htmlFor="">Password</label>
                         <input 
                             id="user_pwd"
                             type="password" 
@@ -47,7 +47,7 @@ function SignUp({submitForm}) {
                         {errors.user_pwd && <p>{errors.user_pwd}</p>}
                     </div>
                     <div className="add_password2">
-                        <label htmlfor="">Confirm <br/>Password</label>
+                        <label htmlFor="">Confirm <br/>Password</label>
                         <input 
                             id="user_pwd2"
                             type="password" 
@@ -59,7 +59,7 @@ function SignUp({submitForm}) {
                         {errors.user_pwd2 && <p>{errors.user_pwd2}</p>}
                     </div>
                     <div className="add_name">
-                        <label htmlfor="">Name</label>
+                        <label htmlFor="">Name</label>
                         <input 
                             id="user_name"
                             type="text" 
@@ -71,7 +71,7 @@ function SignUp({submitForm}) {
                         {errors.user_name && <p>{errors.user_name}</p>}
                     </div>
                     <div className="add_phone">
-                        <label htmlfor="">Phone</label>
+                        <label htmlFor="">Phone</label>
                         <input 
                             id="user_phone"
                             type="text" 
@@ -89,7 +89,7 @@ function SignUp({submitForm}) {
                         {errors.user_phone && <p>{errors.user_phone}</p>}
                     </div>
                     <div className="add_address">
-                        <label htmlfor="">Address</label>
+                        <label htmlFor="">Address</label>
                         <input 
                             id="user_address"
                             type="text" 

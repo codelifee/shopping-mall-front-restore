@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import './Navbar.css'
 import {Link} from 'react-router-dom'
-import { FaShoppingBag, FaChair,  FaUserCog, FaCaretDown } from "react-icons/fa";
+import { FaShoppingBag, FaChair,  FaUserCog, FaComment, FaCaretDown } from "react-icons/fa";
 import Logo from '../img/logo.png'
 
 function Navbar() {
@@ -9,6 +9,7 @@ function Navbar() {
     const [product, setProduct] = useState(false);
     const [order, setOrder] = useState(false);
     const [user, setUser] = useState(false);
+    const [answer, setAnswer]  = useState(false);
 
 
     return (
@@ -80,6 +81,27 @@ function Navbar() {
                                 </Link>
                             }
                         </div>
+                    </div>
+                    <div className="navbar__link">
+                        <h2>
+                        <FaComment />
+                        Answers
+                        <FaCaretDown 
+                        onClick={()=>setAnswer(!answer)}
+                        className={answer ? "icon-active" : "icon"}
+                        />
+                        </h2>
+                        {answer &&
+                            <div>
+                            <Link to="/seller/answerYetCategory">
+                                <p>답변 미완료</p>
+                            </Link>
+                            <Link to="/seller/answeredCategory">
+                                <p>답변 완료</p>
+                            </Link>
+                            </div>
+                        }
+                        
                     </div>
                 </div>
                 

@@ -75,7 +75,22 @@ const Hamburger = ({ state }) => {
           className='menu-city-background'></div>
         <div className='container1'>
           <div className='wrapper'>
+          <div className='locations'>
+              
+              Good market:
+                              {/* Returning the list of cities */}
+                              {cities.map(el => (
+                                <span
+                                  key={el.name}
+                                  onMouseLeave={() => handleCity(el.image, cityBackground)}
+                                  onMouseEnter={() => handleCity(el.image, cityBackground)}
+                                  onMouseOut={() => handleCityReturn(cityBackground)}>
+                                  {el.name}
+                                </span>
+                              ))}
+                            </div>
             <div className='menu-links'>
+              
               <nav>
                 <ul>
                   <li>
@@ -118,19 +133,7 @@ Herb refers to a plant grown in the West for use as a flavor or medicine.
                 </p>
               </div>
               </div>
-              <div className='locations'>
               
-Good market:
-                {/* Returning the list of cities */}
-                {cities.map(el => (
-                  <span
-                    key={el.name}
-                    onMouseEnter={() => handleCity(el.image, cityBackground)}
-                    onMouseOut={() => handleCityReturn(cityBackground)}>
-                    {el.name}
-                  </span>
-                ))}
-              </div>
             
           </div>
         </div>

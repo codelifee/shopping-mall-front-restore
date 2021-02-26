@@ -48,9 +48,14 @@ function Navbar() {
                         </h2>
                         <div>
                             {user && 
-                                <Link to={`/user/updateprofile/${user_sequence_id}`}>
-                                <p>Update Informations</p>
-                                </Link>
+                                <div>
+                                    <Link to={`/user/updateprofile/${user_sequence_id}`}>
+                                    <p>Update Informations</p>
+                                    </Link>
+                                    <Link to={`/user/Withdrawal/${user_sequence_id}`}>
+                                    <p>Delete Informations</p>
+                                    </Link>
+                                </div>
                             }
                         </div>
                     </div>

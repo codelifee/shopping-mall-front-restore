@@ -1,77 +1,135 @@
-import React from 'react'
+import React, {Component} from 'react'
 import Logo from './img/logo.png';
 import SearchIcon from '@material-ui/icons/Search';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import './header.css'
 import { Link } from 'react-router-dom';
-import { useStateValue } from './StateProvider/StateProvider';
+//import { useStateValue } from './StateProvider/StateProvider';
 import Sidebar from './sidebar/Sidebar'
 import AllProducts from './sidebar/AllProducts'
-import {auth} from  './configuration/firebase';
+//import {auth} from  './configuration/firebase';
+import {connect} from 'react-redux';
+import {logoutUser} from './services/index';
 
+class Header extends Component{
 
-function Header() {
-    const [{basket, user}, dispatch] = useStateValue();
+    logout = () => {
+        this.props.logoutUser();
+    };
 
-    const handleAuthentication = () => {
-        if (user) {
-         auth.signOut();
-        }
-    }
+    render() {
+        //const [{basket, user}, dispatch] = useStateValue();
 
-    return (
-        <div className='header'>
-             <Sidebar/>
-            <Link to='/home'>
-                <img
-                className='header__logo'
-                src={Logo} alt=""/>
-            </Link>
-           
-            <AllProducts/>
-           
-            <div className="header__search">
-                <input 
-                className="header__searchInput" 
-                type="text"/>
-                <SearchIcon className="header__searchIcon" />
-            </div>
+        // const handleAuthentication = () => {
+        //     if (user) {
+        //     auth.signOut();
+        //     }
+        // }
 
-            <div className="header__nav">
-               <Link to={!user && '/login'}>
-                 <div onClick={handleAuthentication} className='header__option'>
-                     <span className='header__optionLineOne'>
-                         Hello {!user ? 'Guest' : user?.email}
-                     </span>
-                     <span className='header__optionLinetwo'>
-                         {user ? 'Sign out' : 'Sign In'}
-                     </span>
-                 </div>
-                 </Link>
-
-                 <Link to="/seller">
+        const guestLinks = (
+            <>
+            <Link to="/loginForm">
                 <div className='header__option'>
-                    <span className='header__optionLineOne'>Returns</span>
-                    <span className='header__optionLinetwo'>Orders</span>
+                    <span className='header__optionLineOne'>Please</span>
+                    <span className='header__optionLinetwo'>Log In</span>
                 </div>
-                </Link>
-                <Link to="/seller">
+            </Link>  
+            </> 
+        );
+
+        const userLinks = (
+            <>
+            <Link to="/home" onClick={this.logout}>
                 <div className='header__option'>
-                    <span className='header__optionLineOne'>seller</span>
-                    <span className='header__optionLinetwo'>Center</span>
+                    <span className='header__optionLineOne'>Goodbye</span>
+                    <span className='header__optionLinetwo'>Log Out</span>
                 </div>
-                </Link>
-                <Link to='/checkout'>
-                    <div className="header__optionBasket">
-                        <ShoppingBasketIcon />
-                        <span className="header__optionLineTwo header__basketCount">
-                            {basket?.length}
-                        </span>
+            </Link> 
+
+            <Link to="/seller">
+                    <div className='header__option'>
+                        <span className='header__optionLineOne'>Returns</span>
+                        <span className='header__optionLinetwo'>Orders</span>
                     </div>
-                </Link>
-            </div>
-        </div>
-    )
-}
+                    </Link>
 
-export default Header;
+            <Link to='/checkout'>
+                <div className="header__optionBasket">
+                    <ShoppingBasketIcon />
+                    <span className="header__optionLineTwo header__basketCount">
+                        {/* {basket?.length} */}
+                    </span>
+                </div>
+            </Link>
+            </>
+        );
+
+        const adminLinks = (
+            <>
+                <Link to="/home" onClick={this.logout}>
+                    <div className='header__option'>
+                        <span className='header__optionLineOne'>Goodbye</span>
+                        <span className='header__optionLinetwo'>Log Out</span>
+                    </div>
+                </Link> 
+                    
+                    <Link to="/seller">
+                        <div className='header__option'>
+                            <span className='header__optionLineOne'>seller</span>
+                            <span className='header__optionLinetwo'>Center</span>
+                        </div>
+                    </Link>
+            </>
+        );
+
+        return (
+            <div className='header'>
+                <Sidebar/>
+                <Link to='/home'>
+                    <img
+                    className='header__logo'
+                    src={Logo} alt=""/>
+                </Link>
+            
+                <AllProducts/>
+            
+                <div className="header__search">
+                    <input 
+                    className="header__searchInput" 
+                    type="text"/>
+                    <SearchIcon className="header__searchIcon" />
+                </div>
+
+                <div className="header__nav">  
+                    {this.props.auth.isLoggedIn ? userLinks:guestLinks}
+                    
+                    {/* <Link to={!user && '/login'}>
+                        <div onClick={handleAuthentication} className='header__option'>
+                            <span className='header__optionLineOne'>
+                                Hello {!user ? 'Guest' : user?.email}
+                            </span>
+                            <span className='header__optionLinetwo'>
+                                {user ? 'Sign out' : 'Sign In'}
+                            </span>
+                        </div>
+                    </Link> */}
+                    
+                </div>
+            </div>
+        )
+    };
+};
+
+const mapStateProps = state => {
+    return {
+        auth:state.auth
+    }
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        logoutUser:() => dispatch(logoutUser())
+    };
+};
+
+export default connect(mapStateProps, mapDispatchToProps)(Header);

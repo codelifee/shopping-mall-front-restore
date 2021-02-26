@@ -1,11 +1,11 @@
 import React from 'react'
 import './UpdateProfile.css'
-import useForm2 from './useForm2';
-import validate2 from './ValidateInfo2';
+import UpdateProfileData from './UpdateProfileData';
+import Validate from './ValidateInfo';
 
 function UpdateProfile({submitForm}) {
 
-    const {handleChange2, form, handleSubmit2, errors2} = useForm2(submitForm,validate2);
+    const {handleChange, form, handleSubmit, errors, checkPhone2} = UpdateProfileData(submitForm,Validate);
 
     return (
         <div className="updateProfile">
@@ -13,7 +13,7 @@ function UpdateProfile({submitForm}) {
                 <div className="updateProfile__container__head">
                     <h1>Update {form.user_name}'s Profile</h1>
                 </div>
-                <form className="updateProfile__search" onSubmit={handleSubmit2}>
+                <form className="updateProfile__search" onSubmit={handleSubmit}>
                     <div className="update__id">
                         <label>Id</label>
                         <span>{form.user_id}</span>
@@ -24,9 +24,9 @@ function UpdateProfile({submitForm}) {
                         type="password" 
                         name="user_pwd"
                         defaultValue={form.user_pwd}
-                        onChange={handleChange2}
+                        onChange={handleChange}
                         />
-                        {errors2.user_pwd && <p>{errors2.user_pwd}</p>}
+                        {errors.user_pwd && <p>{errors.user_pwd}</p>}
                     </div>
                     <div className="update__password2">
                         <label htmlfor="">Confirm <br/>Password</label>
@@ -36,9 +36,9 @@ function UpdateProfile({submitForm}) {
                             name="user_pwd2"
                             placeholder="Enter your password again"
                             defaultValue={form.user_pwd2}
-                            onChange={handleChange2}
+                            onChange={handleChange}
                         />
-                        {errors2.user_pwd2 && <p>{errors2.user_pwd2}</p>}
+                        {errors.user_pwd2 && <p>{errors.user_pwd2}</p>}
                     </div>
                     <div className="update__name">
                         <label>Name</label>
@@ -46,9 +46,9 @@ function UpdateProfile({submitForm}) {
                         type="text" 
                         name="user_name"
                         defaultValue={form.user_name}
-                        onChange={handleChange2}
+                        onChange={handleChange}
                         />
-                        {errors2.user_name && <p>{errors2.user_name}</p>}
+                        {errors.user_name && <p>{errors.user_name}</p>}
                     </div>
                     <div className="update__phone">
                         <label>Phone</label>
@@ -56,15 +56,15 @@ function UpdateProfile({submitForm}) {
                         type="text" 
                         name="user_phone"
                         defaultValue={form.user_phone}
-                        onChange={handleChange2}
+                        onChange={handleChange}
                         />
-                        {/* <button 
+                        <button 
                         type="button"
-                        onClick={checkPhone}
+                        onClick={checkPhone2}
                         >
                             Check Phone
-                        </button> */}
-                        {errors2.user_phone && <p>{errors2.user_phone}</p>}
+                        </button>
+                        {errors.user_phone && <p>{errors.user_phone}</p>}
                     </div>
                     <div className="update__address">
                         <label>Address</label>
@@ -72,9 +72,9 @@ function UpdateProfile({submitForm}) {
                         type="text" 
                         name="user_address"
                         defaultValue={form.user_address}
-                        onChange={handleChange2}
+                        onChange={handleChange}
                         />
-                        {errors2.user_address && <p>{errors2.user_address}</p>}
+                        {errors.user_address && <p>{errors.user_address}</p>}
                     </div>
                     <button 
                     type="submit"
