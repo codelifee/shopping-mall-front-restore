@@ -8,8 +8,9 @@ import { Link } from 'react-router-dom';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import { Category } from '@material-ui/icons';
+import AnsweredProducts from './AnsweredProducts';
 
-function Answered() {
+function AnsweredCategory() {
   const [startDate, setStartDate] = useState(new Date());
   const [products, setProducts] = useState([]);
 
@@ -101,16 +102,16 @@ function Answered() {
                   });
                 return (
                   <tr key={category.category_id}>
-                    <Link
-                      to={`/seller/answeredProducts/${category.category_id}`}
-                    >
-                      {' '}
-                      <td>
-                        <span>{category.category_name} </span>
-                      </td>
-                    </Link>
-
-                    <td>{categoryQuestion.length}</td>
+                    <td>
+                      <span>{category.category_name} </span>
+                    </td>
+                    <td>
+                      <Link
+                        to={`/seller/answeredProducts/${category.category_id}`}
+                      >
+                        {categoryQuestion.length}
+                      </Link>
+                    </td>
                   </tr>
                 );
               })}
@@ -122,4 +123,4 @@ function Answered() {
   );
 }
 
-export default Answered;
+export default AnsweredCategory;

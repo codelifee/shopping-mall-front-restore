@@ -66,7 +66,7 @@ function AnswerYetProducts() {
             <FaSearch className="search-icon" />
           </form>
           <div className="answer__category">
-            <p>Answer Creation Date</p>
+            <p>답변생성일자</p>
             <DatePicker
               className="datepicker_date"
               selected={startDate}
@@ -81,9 +81,8 @@ function AnswerYetProducts() {
         <div className="AnsweYetProduct__table_bg">
           <table className="AnsweYetProduct__table">
             <thead>
-              <th>Product Name</th>
-              <th>Product Description</th>
-              <th>Wating answer questions</th>
+              <th>상품명</th>
+              <th>답변대기중인 질문개수</th>
             </thead>
             <tbody>
               {products
@@ -117,14 +116,7 @@ function AnswerYetProducts() {
                     <AnswerYetProductsView
                       key={product.product_id}
                       id={product.product_id}
-                      picture={
-                        <img
-                          src={product_img + product.product_id}
-                          alt="사진"
-                        />
-                      }
                       name={product.product_name}
-                      description={product.product_description}
                       question={wait.length}
                     />
                   );
