@@ -7,8 +7,8 @@ body {
     height: 100vh;
     display: flex;
     justify-content: center;
-    background-color: #eee;
-    color: #476600;
+    background-color: #fff;
+    color: #333;
   }
   
   .delete__container {
@@ -23,17 +23,17 @@ body {
     border-image: linear-gradient(45deg, #f2cb61, #bce55c);
     border-image-slice: 1;
     background-color: #fff;
-    color: #476600;
+    color: #333;
   }
   .delete__container__head h1 {
-    color: #6b9900;
+    color: #333;
   }
   .delete__container__head {
     padding-left: 36px;
     padding-top: 20px;
   }
   .delete__container__head p {
-    color: #6b9900;
+    color: #333;
   }
   .delete__search {
     display: flex;
@@ -45,12 +45,16 @@ body {
   }
   
   .delete__search p {
-    color: #6b9900;
+    color: #333;
   }
   
   .delete__search input {
     height: 30px;
     width: 300px;
+    background: rgba(255, 183, 85, 0.3);
+    border-radius: 5px;
+    border: 1px dotted #333;
+    width: 200px;
   }
   
   .delete__id {
@@ -60,7 +64,7 @@ body {
   
   .delete__id > label {
     margin-right: 77px;
-    color: #476600;
+    color: #333;
   }
 
   .delete_password {
@@ -71,7 +75,7 @@ body {
     
   .delete_password > label {
     margin-right: 15px;
-    color: #476600;
+    color: #333;
   }
   
   .delete__name {
@@ -82,7 +86,7 @@ body {
     
   .delete__name > label {
     margin-right: 43px;
-    color: #476600;
+    color: #333;
   }
   
   .delete__phone {
@@ -93,7 +97,7 @@ body {
     
   .delete__phone > label {
     margin-right: 42px;
-    color: #476600;
+    color: #333;
   }
   
   .delete__address {
@@ -103,20 +107,25 @@ body {
     
   .delete__address > label {
     margin-right: 27px;
-    color: #476600;
+    color: #333;
   }
   
-  .update {
+  .deleteBtn {
     margin-top: 30px;
     width: 200px;
     margin-left: 165px;
-    border: 1px dotted #6b9900;
-    background: #e4f7ba;
+    border: 1px dotted #333;
+    background: #ffb755;
+    border-radius: 5px;
   }
 
   input {
-    background: linear-gradient(45deg, #faf4c0, #e4f7ba);
-    border: 1px dotted #6b9900;
+    height: 30px;
+    width: 300px;
+    background: rgba(255, 183, 85, 0.3);
+    border-radius: 5px;
+    border: 1px dotted #333;
+    width: 200px;
   }
   
   

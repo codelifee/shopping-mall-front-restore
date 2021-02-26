@@ -50,10 +50,10 @@ function Navbar() {
                             {user && 
                                 <div>
                                     <Link to={`/user/updateprofile/${user_sequence_id}`}>
-                                    <p>Update Informations</p>
+                                    <p>Update Profile</p>
                                     </Link>
-                                    <Link to={`/user/Withdrawal/${user_sequence_id}`}>
-                                    <p>Delete Informations</p>
+                                    <Link to={`/user/deleteprofile/${user_sequence_id}`}>
+                                    <p>Delete Profile</p>
                                     </Link>
                                 </div>
                             }
