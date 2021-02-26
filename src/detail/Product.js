@@ -20,7 +20,7 @@ function Product(props) {
             item: {
                 id: props.id,
                 title: props.title,
-                image: props.image,
+                image: image+props.id,
                 description: props.description,
                 price: props.price
                 //rating: props.product_rating
