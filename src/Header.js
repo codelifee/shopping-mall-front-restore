@@ -101,9 +101,9 @@ class Header extends Component{
                     className='header__logo'
                     src={Logo} alt=""/>
                 </Link>
-                </div>
-            
+
                 <Link to="/home"><p className="logo_name">ChenJiYeon</p></Link>
+                </div>
 
                 <div className="header__nav">  
                     {this.props.auth.isLoggedIn ? userLinks:guestLinks}
