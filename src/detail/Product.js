@@ -20,7 +20,7 @@ function Product(props) {
             item: {
                 id: props.id,
                 title: props.title,
-                image: props.image,
+                image: image+props.id,
                 description: props.description,
                 price: props.price
                 //rating: props.product_rating
@@ -29,20 +29,27 @@ function Product(props) {
     }
 
     return (
-        <div className='product'>
-             <img className="product__img" src={image+props.id} alt="" onClick={()=>{
+        <div className='product2'>
+           
+             <img className="product2__img" src={image+props.id} alt="" onClick={()=>{
                 history.push(`/detail/${props.id}`);
             }}/> 
-            <div className="product__info"  onClick={()=>{
+             <div className="icons">
+                <button onClick={addToBasket}><FaShoppingCart className="product__cartIcon"/></button>
+            <div className="tok"><FaComment/>{props.comment}</div>
+            </div> 
+            <div className="product2__info"  onClick={()=>{
                     history.push(`/detail/${props.id}`);
                 }}>
-                <p className="product__name">{props.title}</p>
-                <p className="product__status">{props.status}</p>
-                <p className="product__price">
+                   
+                <p className="product2__name">{props.title}</p>
+             <div className="price_status">  <strong>₩{new Intl.NumberFormat().format(props.price)}</strong>
+                <span className="product2__status">{props.status}</span></div> 
+                <p className="product2__price">
                     <small>{props.description}</small>
-                    <strong>₩{new Intl.NumberFormat().format(props.price)}</strong>
+                    
                 </p>
-                <div className="product__rating">
+                <div className="product2__rating">
                     {//Array(props.product_rating)
                     //.fill()
                     //.map((_, i) => (
@@ -55,8 +62,6 @@ function Product(props) {
             </div>
 
            
-            <div><FaComment/> {props.comment}</div>
-            <button onClick={addToBasket}><FaShoppingCart className="product__cartIcon"/> Cart</button>
             
         </div>
     )
