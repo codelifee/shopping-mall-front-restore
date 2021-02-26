@@ -25,6 +25,20 @@ function AnswerYetQuestion (){
         getQuestion();
         }, [])
 
+    const [products, setProducts] = useState([]);
+    useEffect(()=>{
+        async function getProducts() {
+            const request = await axios.get(`products/${id}`)
+            .then(response =>
+                setProducts(response.data))
+            .catch(error => console.log(error))
+    
+            return request;
+        }
+        getProducts();
+        }, [])
+        console.log(products)
+
     return(
         <div className="AnsweYetProduct">
             <div className="AnsweYetProduct__container">
@@ -49,7 +63,7 @@ function AnswerYetQuestion (){
                 </div>
                 
                 <div className="question__info">
-                    <h2>0 Questions</h2>
+                    <h2>{products.product_name}</h2>
                 </div>
                 <div className="AnsweYetProduct__table_bg">
                     <table className="AnsweYetProduct__table">
@@ -57,6 +71,7 @@ function AnswerYetQuestion (){
                             <th>User Name</th>
                             <th>Questions</th>
                             <th>Answer</th>
+                            <th>date</th>
                         </thead>
                         <tbody>
                             
@@ -64,7 +79,7 @@ function AnswerYetQuestion (){
                                question
                                .filter(
                                    (val)=>{
-                                       return val.product_id == id;
+                                       return val.product_id == id && val.answer==null;
                                    })
                                .map(
                                    (val)=>{
@@ -73,6 +88,7 @@ function AnswerYetQuestion (){
                                         <tr>
                                             <td>{val.user_id}</td>
                                             <td>{val.question}</td>
+                                            <td>{val.question_date_created}</td>
                                             <td>
                                                 <div className="answer_button"
                                                 onClick={()=>{
@@ -84,7 +100,8 @@ function AnswerYetQuestion (){
                                         </tr>
                                         {modal == true ? 
                                             <tr><td>답변 작성</td>
-                                            <td colSpan="2"><AnswerYetQuestionModal id={val.question_id}/></td></tr>
+                                            <td colSpan="3"><AnswerYetQuestionModal id={val.question_id}
+                                            /></td></tr>
                                             :null
                                         }
                                         </>

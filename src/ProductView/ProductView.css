@@ -14,9 +14,14 @@
 .products {
   display: grid;
   grid-template-columns: auto;
-  background-color: rgb(252, 240, 133);
+  background-color: #fff;
   text-align: center;
   height: 100%;
+}
+
+.products__category{
+  font-size: 25px;
+  font-weight: bold;
 }
 
 .products__row {

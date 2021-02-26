@@ -14,21 +14,19 @@ const [rating, setRating] = useState(null);
 	
 const [hover, setHover] = useState(null);
 
-const id = useParams();
+const {id} = useParams();
 
 const formData = new FormData();
 
     const [form, setForm] = useState({
-        review_id: 5,
-        product_id: 1,
-        user_sequence_id: 6,
-        product_detail_id: 1,
+        review_id: '',
+        product_id: id,
+        user_sequence_id: 8, //로그인 한 user의 user_sequence_id넣기
+        //if review 안에 있는 user정보와 로그인된 user 정보 같으면
         review: '',
         star: 0,
         review_picture: null,
-        review_date_created: '2021-02-15',
-        product_name: '녹색 의자',
-        productDetailsList: '녹색의 의자'
+        review_date_created: ''
         }
     )
 

@@ -1,15 +1,17 @@
 import React, {Component} from 'react'
 import Logo from './img/logo.png';
+import Log from './img/log.png';
 import SearchIcon from '@material-ui/icons/Search';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import './header.css'
 import { Link } from 'react-router-dom';
 //import { useStateValue } from './StateProvider/StateProvider';
 import Sidebar from './sidebar/Sidebar'
-import AllProducts from './sidebar/AllProducts'
+import AllProducts from './sidebar/Sidebar'
 //import {auth} from  './configuration/firebase';
 import {connect} from 'react-redux';
 import {logoutUser} from './services/index';
+
 
 class Header extends Component{
 
@@ -83,22 +85,25 @@ class Header extends Component{
         );
 
         return (
-            <div className='header'>
+            <div className='header_container'>
+                <div className='header'>
                 <Sidebar/>
-                <Link to='/home'>
-                    <img
-                    className='header__logo'
-                    src={Logo} alt=""/>
-                </Link>
-            
-                <AllProducts/>
-            
+
                 <div className="header__search">
                     <input 
                     className="header__searchInput" 
                     type="text"/>
                     <SearchIcon className="header__searchIcon" />
                 </div>
+                <div className="log_name_wap">
+                <Link to='/home'>
+                    <img
+                    className='header__logo'
+                    src={Logo} alt=""/>
+                </Link>
+                </div>
+            
+                <Link to="/home"><p className="logo_name">ChenJiYeon</p></Link>
 
                 <div className="header__nav">  
                     {this.props.auth.isLoggedIn ? userLinks:guestLinks}
@@ -112,8 +117,8 @@ class Header extends Component{
                                 {user ? 'Sign out' : 'Sign In'}
                             </span>
                         </div>
-                    </Link> */}
-                    
+                    </Link> */} 
+                    </div>
                 </div>
             </div>
         )

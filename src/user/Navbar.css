@@ -25,6 +25,7 @@ body {
 .navbar__logo > img {
   width: 100px;
   height: 100px;
+  border-radius: 50px;
 }
 
 .navbar__links {

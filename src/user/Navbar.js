@@ -12,7 +12,7 @@ function Navbar() {
 
     return (
         <div className="navbar">
-            <Link onClick={() => {window.location.href="/"}}>
+            <Link onClick={() => {window.location.href="/home"}}>
                 <div className='navbar__logo'>
                 <img
                 src={Logo} alt=""/>

@@ -28,9 +28,11 @@
   width: 450px;
   margin: 0 5px 0 30px;
   border-radius: 5px;
+  background: rgba(255, 183, 85, 0.3);
+  border: 1px dotted #333;
 }
 .sellerProduct__searchbar > select {
-  border: 1px solid #6b9900;
+  border: 1px solid #333;
   margin: 10px;
   padding: 0 5px;
   background-color: #777;
@@ -80,7 +82,7 @@
   height: 30px;
   color: white;
   background: #777;
-  border: 1px solid #6b9900;
+  border: 1px dotted #333;
   border-radius: 5px;
 }
 
@@ -88,7 +90,7 @@
   width: 100px;
   height: 30px;
   background: #fff;
-  border: 1px solid #6b9900;
+  border: 1px dotted #333;
   border-radius: 5px;
 }
 
@@ -124,7 +126,11 @@
 .sellerProduct__table {
   width: 1125px;
   border-radius: 5px;
-  background-image: linear-gradient(to right, #faf4c0 0%, #f1d9f5 100%);
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 183, 85, 0.3) 0%,
+    rgba(251, 115, 185, 0.2) 100%
+  );
   border: 2px solid #f2cb61;
   color: #333;
 }

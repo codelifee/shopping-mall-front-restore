@@ -10,11 +10,12 @@ function Home() {
     return (
         <div className="home">
                 <div className="home__row">
-                  <Recommendation />
-                    <Best />
                     <Category />
-                    <New/>                              
-                </div>              
+                    <Best />
+                    <Recommendation />
+                    <New/> 
+                </div>
+                
                 {/* <button className="btn btn-primary" onClick={()=>{
                     axios.get('요청json')
                     .then(()=>{})//성공했을때 

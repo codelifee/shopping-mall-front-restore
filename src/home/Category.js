@@ -37,7 +37,7 @@ console.log(categories)
          <div className="swiper_wrapper">
          {
           categories.map((data, i)=>{
-            return <SlideItem2 category={categories[i]}
+            return <SlideItem2 category={data}
             picture={category_picture[i]} key={i}/>
           })
         }
@@ -48,18 +48,27 @@ console.log(categories)
 
 function SlideItem2(props){
 
-  const history = useHistory();
+const history = useHistory();
 
-  return(
-    <div className="slide_item">
-      {/* <div as={Link} to ='/'> */}
-      <div onClick={()=>{
-        history.push(`/products/${props.category.category_id}`)
-      }}>
-        <img src={props.picture}/>
-        <h4>{props.category.category_name}</h4>
-      </div>
-    </div>
+
+return(
+  <div className="slide_item">
+    {/* <div as={Link} to ='/'> */}
+    <div className="slide_item_ul">
+    <div className="slide_item_li">
+    <div  className="link" onClick={()=>{
+      history.push(`/products/${props.category.category_id}`)
+    }}>
+      <div className="screen">
+      <div className="top">{props.category.category_name}</div>
+        <div className="bottom">데코글이 있었으면 좋겠습니다~</div>
+      
+        
+      <img src={props.picture}/>
+      
+      
+    </div><div><h3>{props.category.category_name}</h3></div></div></div></div>
+  </div>
   )
 }
 

@@ -4,7 +4,7 @@ import "./OrdersData.css";
 import { useParams } from "react-router-dom";
 import { Link, useHistory } from 'react-router-dom';
 
-function OrdersData({  date, status, product, amount, picture }) {
+function OrdersData({  date, status, product, price, picture }) {
   const [orders, setOrders] = useState([]);
   const history = useHistory();
   const {user_sequence_id} = useParams();
@@ -53,7 +53,7 @@ function OrdersData({  date, status, product, amount, picture }) {
         <img src={picture} className="orderImg" alt="제품사진" />
         <div className="orderWrp">
           <div className="orderProduct">{product}</div>
-          <div className="orderPrice">{amount}원</div>
+          <div className="orderPrice">{price}원</div>
           
         </div>
         {/* <button className="order_Product_btn">제품상세보기</button> */}

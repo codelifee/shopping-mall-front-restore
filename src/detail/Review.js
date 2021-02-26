@@ -17,7 +17,7 @@ function Review(props) {
   
   const history = useHistory();
   
-  const review_img = `http://shoppingmall-env.eba-jac9afx7.us-east-1.elasticbeanstalk.com/review/show/`;
+  const review_img = "http://shoppingmall-env.eba-jac9afx7.us-east-1.elasticbeanstalk.com/review/showReviewImage/";
   
   useEffect(() => {
     async function fetchDate() {
@@ -106,9 +106,9 @@ function Review(props) {
     <div className="review">
       <div className="review__score">
         <div className="review__score_avg">
-          {avg}
+          {reviews == null ? 0 : avg}
           <p>
-            <FaStar color={"#ffc107"} size={80} />
+            <FaStar color={"#ffc107"} size={60} />
           </p>
         </div>
         <div className="review__score_list">
@@ -120,11 +120,11 @@ function Review(props) {
             <li className="one" key={54}>1점</li>
           </div>
           <div className="review__score_graph">
-            <Graph5>{five_per}%</Graph5>
-            <Graph4>{four_per}%</Graph4>
-            <Graph3>{three_per}%</Graph3>
-            <Graph2>{two_per}%</Graph2>
-            <Graph1>{one_per}%</Graph1>
+            <Graph5>{five_per.toFixed(1)}%</Graph5>
+            <Graph4>{four_per.toFixed(1)}%</Graph4>
+            <Graph3>{three_per.toFixed(1)}%</Graph3>
+            <Graph2>{two_per.toFixed(1)}%</Graph2>
+            <Graph1>{one_per.toFixed(1)}%</Graph1>
           </div>
         </div>
         <div className="review__button_">
@@ -215,7 +215,7 @@ function Review(props) {
                   {review.review_date_created} 작성<br/>
                   {review.review}
                   {review.review_picture!=null ?
-                    <img src={review_img+review.review_id}/>: null
+                    <img src={review_img+1}/>: null
                   }
                   
                 </div>
