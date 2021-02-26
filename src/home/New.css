@@ -110,3 +110,24 @@ a:hover img {
 
   text-align: left;
 }
+@media all and (max-width: 414px) {
+  .new_item_box {
+    display: flex;
+    align-items: center;
+    width: 300px;
+    border: 1px solid rgba(255, 183, 85, 0.7);
+    border-radius: 10px;
+    padding: 10px;
+    background: rgba(230, 183, 151, 0.3);
+  }
+  .new_item img {
+    width: 180px;
+    max-width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    margin: 2px 15px 2px 5px;
+  }
+  .new_item h4 {
+    margin: 0;
+  }
+}

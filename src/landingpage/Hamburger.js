@@ -98,6 +98,7 @@ const Hamburger = ({ state }) => {
                       onMouseEnter={e => handleHover(e)}
                       onMouseOut={e => handleHoverExit(e)}
                       ref={el => (line1 = el)}
+                      className="link1"
                       to='/Payment'>
                       
 Healthy story
@@ -108,6 +109,7 @@ Healthy story
                       onMouseEnter={e => handleHover(e)}
                       onMouseOut={e => handleHoverExit(e)}
                       ref={el => (line2 = el)}
+                      className="link2"
                       to='/Detail'>
                       
 See more
@@ -119,6 +121,7 @@ See more
                       onMouseEnter={e => handleHover(e)}
                       onMouseOut={e => handleHoverExit(e)}
                       ref={el => (line3 = el)}
+                      className="link3"
                       to='/home'>
                       Go Shopping 
                       </Link>

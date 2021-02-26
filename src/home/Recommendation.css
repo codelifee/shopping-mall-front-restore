@@ -70,3 +70,25 @@ a:hover img {
   padding: 10px;
   background: rgba(230, 183, 151, 0.3);
 }
+
+@media all and (max-width: 414px) {
+  .slide_item2_box {
+    display: flex;
+    align-items: center;
+    width: 300px;
+    border: 1px solid rgba(255, 183, 85, 0.7);
+    border-radius: 10px;
+    padding: 10px;
+    background: rgba(230, 183, 151, 0.3);
+  }
+  .slide_item2 img {
+    width: 180px;
+    max-width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    margin: 2px 15px 2px 5px;
+  }
+  .slide_item2 h4 {
+    margin: 0;
+  }
+}

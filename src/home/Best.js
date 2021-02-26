@@ -57,7 +57,7 @@ function BestItem(props){
       <div as={Link} to ='/'>
         <div className="ranking">{props.best.ranking}</div>
       <img src={props.best.img}  className="best_item_img"/>
-      <h4>{props.best.decoration}</h4>
+      <h4 className="none">{props.best.decoration}</h4>
       <h4>{props.best.title}</h4>
       <h4>{props.best.price}원</h4>
       </div>
@@ -70,7 +70,7 @@ function BestItem2(props){
       <div as={Link} to ='/'>
       <div className="ranking">{props.best2.ranking}</div>
       <img src={props.best2.img} className="best_item_img"/>
-      <h4>{props.best2.decoration}</h4>
+      <h4 className="none">{props.best2.decoration}</h4>
       <h4>{props.best2.title}</h4>
       <h4>{props.best2.price}원</h4>
       </div>
