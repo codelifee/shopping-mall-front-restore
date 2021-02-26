@@ -142,12 +142,15 @@ header .hamburger-menu .menu-layer .wrapper .menu-links nav {
 header .hamburger-menu .menu-layer .wrapper .menu-links nav ul {
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
 }
 header .hamburger-menu .menu-layer .wrapper .menu-links nav ul li {
   list-style: none;
-  font-size: 6vw;
+  font-size: 5vw;
   font-weight: 700;
-  height: 135px;
+  height: 200px;
+  width: 900px;
 
   position: relative;
 }
@@ -178,7 +181,7 @@ header .hamburger-menu .menu-layer .wrapper .menu-links .info p {
 header .hamburger-menu .menu-layer .wrapper .locations {
   color: #ffb755;
   text-shadow: 1px 1px 2px #333;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 1000;
 }
 header .hamburger-menu .menu-layer .wrapper .locations span {
@@ -231,7 +234,7 @@ header .hamburger-menu .menu-layer .wrapper .locations span:hover {
     font-weight: 1000;
   }
 }
-@media all and (max-width: 430px) {
+@media all and (max-width: 414px) {
   .info h3 {
     display: none;
   }
@@ -255,8 +258,8 @@ header .hamburger-menu .menu-layer .wrapper .locations span:hover {
   }
   .menu-links ul li .link3 {
     position: absolute;
-    bottom: 150px;
-    left: 10px;
+    bottom: 140px;
+    left: -50px;
     width: 300px;
     font-size: 10vw;
   }

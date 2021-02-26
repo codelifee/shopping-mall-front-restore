@@ -47,8 +47,7 @@ function OrderDetails() {
     useEffect(() => {
       async function fetchDate() {
         const request = await axios
-          .get(`/orders/userid/${user_sequence_id}`)
-  
+          .get(`orders/userid/${user_sequence_id}`)  
           .then(response => setOrders(response.data))
           .catch(error => console.log(error));
   

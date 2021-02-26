@@ -1,0 +1,154 @@
+body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .addUser {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+    color: #333;
+  }
+  
+  .addUser__container {
+    width: 850px;
+    height: 85vh;
+    display: grid;
+    margin-top: 100px;
+    padding: 20px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 100px 100px auto;
+    border: 10px solid;
+    border-image: linear-gradient(45deg, #f2cb61, #bce55c);
+    border-image-slice: 1;
+    background-color: #fff;
+    color: #333;
+  }
+  .addUser__container__head h1 {
+    color: #333;
+  }
+  .addUser__container__head {
+    padding-left: 36px;
+    padding-top: 20px;
+  }
+  .addUser__container__head p {
+    color: #333;
+  }
+  .addUser__search {
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+    margin-top: 30px;
+    height: 430px;
+    background: #fff;
+  }
+
+  .addUser__search p{
+    margin-left: 5px;
+    color: red;
+}
+  
+  .addUser__search input {
+    height: 30px;
+    width: 300px;
+    background: rgba(255, 183, 85, 0.3);
+    border-radius: 5px;
+    border: 1px dotted #333;
+    width: 200px;
+  }
+  
+  .add_id {
+    display: flex;
+    margin: 0 0 40px 40px;
+  }
+  
+  .add_id > label {
+    margin-right: 70px;
+    color: #333;
+  }
+
+  .add_id > button{
+    width: 60px;
+    margin-left: 5px;
+    border: 1px dotted #333;
+    background: #ffb755;
+    border-radius: 5px;
+    font-size: 10px;
+  }
+  
+  .add_password {
+    display: flex;
+    margin-left: 40px;
+    margin-bottom: 40px;
+  }
+    
+  .add_password > label {
+    margin-right: 9px;
+    color: #333;
+  }
+
+  .add_password2 {
+    display: flex;
+    margin-left: 40px;
+    margin-bottom: 40px;
+  }
+    
+  .add_password2 > label {
+    margin-right: 9px;
+    color: #333;
+  }
+  
+  .add_name {
+    display: flex;
+    margin-left: 40px;
+    margin-bottom: 40px;
+  }
+    
+  .add_name > label {
+    margin-right: 38px;
+    color: #333;
+  }
+
+  .add_phone {
+    display: flex;
+    margin-left: 40px;
+    margin-bottom: 40px;
+  }
+    
+  .add_phone > label {
+    margin-right: 37px;
+    color: #333;
+  }
+
+  .add_phone > button{
+    width:80px;
+    margin-left: 5px;
+    border: 1px dotted #333;
+    background: #ffb755;
+    border-radius: 5px;
+    font-size: 10px;
+  }
+
+  .add_address {
+    display: flex;
+    margin-left: 41px;
+  }
+    
+  .add_address > label {
+    margin-right: 21px;
+    color: #333;
+  }
+  
+  .addUser__search > button {
+    margin-top: 30px;
+    width: 200px;
+    margin-left: 165px;
+    border: 1px dotted #333;
+    background: #ffb755;
+    border-radius: 5px;
+  }
+
+
+

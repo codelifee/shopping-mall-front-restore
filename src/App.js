@@ -1,6 +1,6 @@
 import "./App.css";
 import Header from "./Header";
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Home from "./home/Home";
 import Seller from "./seller/Seller";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -17,32 +17,34 @@ import LandingPage from "./landingpage/LandingPage";
 import ProductView from "./ProductView/ProductView";
 import ReviewForm from "./detail/ReviewForm";
 import "./App.css";
-import Customer from "./customer/Customer";
 import QnAForm from "./detail/QnAForm";
 import KakaoMap from "./Introduction/KakaoMap";
+import User from './user/User';
+import LoginForm from './authentication/LoginForm';
 
 function App() {
-  const [{}, dispatch] = useStateValue();
 
-  useEffect(() => {
-    auth.onAuthStateChanged(authUser => {
-      console.log("THE USER IS >>>", authUser);
+  // const [{}, dispatch] = useStateValue();
 
-      if (authUser) {
-        // the user logged in
-        dispatch({
-          type: "SET_USER",
-          user: authUser,
-        });
-      } else {
-        //the user is logged out
-        dispatch({
-          type: "SET_USER",
-          user: null,
-        });
-      }
-    });
-  }, []);
+  // useEffect(() => {
+  //   auth.onAuthStateChanged(authUser => {
+  //     console.log("THE USER IS >>>", authUser);
+
+  //     if (authUser) {
+  //       // the user logged in
+  //       dispatch({
+  //         type: "SET_USER",
+  //         user: authUser,
+  //       });
+  //     } else {
+  //       //the user is logged out
+  //       dispatch({
+  //         type: "SET_USER",
+  //         user: null,
+  //       });
+  //     }
+  //   });
+  // }, []);
 
   return (
     //BEM convention
@@ -62,7 +64,12 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
-
+          <Route path="/loginform">
+            <LoginForm />
+          </Route>
+          <Route path="/logout">
+            <LoginForm />
+          </Route>
           <Route path="/checkout">
             <Header />
             <Checkout />
@@ -99,9 +106,9 @@ function App() {
             <Seller />
           </Route>
 
-          <Route path="/customer">
-            <Customer />
-          </Route>
+          <Route path="/user">
+              <User />
+            </Route>
 
           <Route path="/introduction">
             <Header />
@@ -113,6 +120,7 @@ function App() {
           <Route path="/">
             <LandingPage />
           </Route>
+
         </Switch>
       </div>
     </Router>
