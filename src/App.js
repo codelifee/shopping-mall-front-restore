@@ -16,6 +16,7 @@ import Slide2 from "./slide2/Slide2";
 import LandingPage from "./landingpage/LandingPage";
 import ProductView from "./ProductView/ProductView";
 import ReviewForm from "./detail/ReviewForm";
+import ReviewPatchForm from "./detail/ReviewPatchForm";
 import "./App.css";
 import QnAForm from "./detail/QnAForm";
 import KakaoMap from "./Introduction/KakaoMap";
@@ -87,6 +88,10 @@ function App() {
 
           <Route path="/review/:id">
             <ReviewForm />
+          </Route>
+
+          <Route path="/reviewUpdate/:id">
+            <ReviewPatchForm />
           </Route>
 
           <Route path="/question/:id">

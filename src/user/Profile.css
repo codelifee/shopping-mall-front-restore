@@ -7,8 +7,8 @@ body {
     height: 100vh;
     display: flex;
     justify-content: center;
-    background-color: #eee;
-    color: #476600;
+    background-color: #fff;
+    color: #333;
   }
   
   .profile__container {
@@ -23,17 +23,17 @@ body {
     border-image: linear-gradient(45deg, #f2cb61, #bce55c);
     border-image-slice: 1;
     background-color: #fff;
-    color: #476600;
+    color: #333;
   }
   .profile__container__head h1 {
-    color: #6b9900;
+    color: #333;
   }
   .profile__container__head {
     padding-left: 36px;
     padding-top: 20px;
   }
   .profile__container__head p {
-    color: #6b9900;
+    color: #333;
   }
   .profile__search {
     display: flex;
@@ -41,7 +41,6 @@ body {
     margin-left: 30px;
     margin-top: 30px;
     height: 400px;
-  
     background: #fff;
   }
   
@@ -56,7 +55,7 @@ body {
   
   .profile__id > label {
     margin-right: 70px;
-    color: #476600;
+    color: #333;
   }
   
   .profile__name {
@@ -67,7 +66,7 @@ body {
     
   .profile__name > label {
     margin-right: 38px;
-    color: #476600;
+    color: #333;
   }
   
   .profile__phone {
@@ -78,7 +77,7 @@ body {
     
   .profile__phone > label {
     margin-right: 37px;
-    color: #476600;
+    color: #333;
   }
   
   .profile__address {
@@ -88,15 +87,16 @@ body {
     
   .profile__address > label {
     margin-right: 19px;
-    color: #476600;
+    color: #333;
   }
   
   .update {
     margin-top: 30px;
     width: 200px;
     margin-left: 165px;
-    border: 1px dotted #6b9900;
-    background: #e4f7ba;
+    border: 1px dotted #333;
+    background: #ffb755;
+    border-radius: 5px;
   }
   
   

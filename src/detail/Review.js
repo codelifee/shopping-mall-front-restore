@@ -13,7 +13,7 @@ function Review(props) {
   
   const { id } = useParams();
   
-  const [{ user }, dispatch] = useStateValue();
+  //const [{ user }, dispatch] = useStateValue();
   
   const history = useHistory();
   
@@ -199,8 +199,17 @@ function Review(props) {
               
                 <div className="review__update_button">
                   {/* review.user_sequence_id == user.user_sequence_id ? : null */}
-                  <button>수정하기</button>
-                  <button>삭제하기</button>
+                  <button className="review__update_button_"
+                    onClick={() => {
+                    window.open(
+                    `/reviewUpdate/${review.review_id}`,
+                     "reviewUpdateForm",
+                    "width=600,height=700,location=no,status=no,scrollbars=no"
+                   );
+                  }}>수정하기</button>
+                  <button onClick={()=>{
+                    alert('정말로 삭제하시겠습니까?');
+                  }}>삭제하기</button>
                 </div>
               </li>
             </div>

@@ -5,80 +5,67 @@
 ul,
 li {
   list-style: none;
+  height: 450px;
+}
+
+ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .slide {
-  height: 500px;
+  height: 450px;
   overflow: hidden;
-  position: relative;
 }
 .slide ul {
   width: calc(100% * 4);
   display: flex;
-  transition: 1s;
-}
+  animation: slide 8s infinite;
+} /* slide를 8초동안 진행하며 무한반복 함 */
 .slide li {
   width: calc(100% / 4);
-  height: 500px;
+  height: 300px;
 }
 .slide li:nth-child(1) {
-  /* background: url("../img/pomegranate_slide.jpg");
-  background-position: center;
-  background-size: cover;
-*/
+  background: none;
 }
 .slide li:nth-child(2) {
-  /* background: url("../img/pumpkin_slide.jpg");
-  background-position: center;
-  background-size: cover; */
+  background: none;
 }
-/* .slide li:nth-child(3) {
-  background: #afa;
+.slide li:nth-child(3) {
+  background: none;
 }
 .slide li:nth-child(4) {
-  background: #aaf;
-} */
-.slide input {
-  display: none;
+  background: none;
 }
-.slide .bullet {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  text-align: center;
-  z-index: 10;
+@keyframes slide {
+  0% {
+    margin-left: 0;
+  } /* 0 ~ 10  : 정지 */
+  10% {
+    margin-left: 0;
+  } /* 10 ~ 25 : 변이 */
+  25% {
+    margin-left: -100%;
+  } /* 25 ~ 35 : 정지 */
+  /* 35 ~ 50 : 변이 */
+  50% {
+    margin-left: -200%;
+  }
+  60% {
+    margin-left: -200%;
+  }
+  75% {
+    margin-left: -300%;
+  }
+  85% {
+    margin-left: -300%;
+  }
+  100% {
+    margin-left: 0;
+  }
 }
-.slide .bullet label {
-  width: 15px;
-  height: 15px;
-  border-radius: 15px;
-  display: inline-block;
-  background: #aaa;
-  font-size: 0;
-  transition: 0.5s;
-  cursor: pointer;
-  margin: 10px;
-}
-/* 슬라이드 조작 */
-#pos1:checked ~ ul {
-  margin-left: 0;
-}
-#pos2:checked ~ ul {
-  margin-left: -100%;
-} /*
-#pos3:checked ~ ul {
-  margin-left: -200%;
-}
-#pos4:checked ~ ul {
-  margin-left: -300%;
-} */
-/* bullet 조작 */
-#pos1:checked ~ .bullet label:nth-child(1),
- #pos2:checked ~ .bullet label:nth-child(2)/*,
-#pos3:checked ~ .bullet label:nth-child(3),
-#pos4:checked ~ .bullet label:nth-child(4)  */ {
-  background: #ffb755;
-}
+
 li {
   display: flex;
   align-items: center;
@@ -87,7 +74,7 @@ li {
 .slide1 {
   background: rgba(0, 0, 0, 0.5);
   width: 94%;
-  height: 400px;
+  height: 300px;
   border-radius: 10px;
   font-size: 100px;
   color: #fff;
