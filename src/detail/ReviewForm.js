@@ -22,7 +22,7 @@ const formData = new FormData();
         review_id: '',
         product_id: id,
         user_sequence_id: 8, //로그인 한 user의 user_sequence_id넣기
-        //if review 안에 있는 user정보와 로그인된 user 정보 같으면
+        //if review 안에 있는 user정보와 로그인된 user 정보 같으면 중복 작성 안 됨.
         review: '',
         star: 0,
         review_picture: null,

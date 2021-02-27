@@ -150,29 +150,6 @@ function Review(props) {
               리뷰 작성
             </button>
           }<br/>
-          
-          {/* 별점별 리뷰 보기
-          <br/>
-          <select className="star">
-          <option value="all">
-            모든 리뷰
-          </option>
-          <option value="5">
-          ★★★★★ 5점
-          </option>
-            <option value="4">
-            ★★★★ 4점
-            </option>
-            <option value="3">
-            ★★★ 3점
-            </option>
-            <option value="2">
-            ★★ 2점
-            </option>
-            <option value="1">
-            ★ 1점
-            </option>
-          </select> */}
         </div>
       </div>
 
@@ -215,9 +192,15 @@ function Review(props) {
                   {review.review_date_created} 작성<br/>
                   {review.review}
                   {review.review_picture!=null ?
-                    <img src={review_img+1}/>: null
+                    <img src={review_img+review.review_id}/>: null
                   }
-                  
+                </div>
+             
+              
+                <div className="review__update_button">
+                  {/* review.user_sequence_id == user.user_sequence_id ? : null */}
+                  <button>수정하기</button>
+                  <button>삭제하기</button>
                 </div>
               </li>
             </div>
