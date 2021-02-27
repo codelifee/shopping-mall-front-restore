@@ -65,7 +65,9 @@ function App() {
             <Login />
           </Route>
           <Route path="/loginform">
+          <Header />
             <LoginForm />
+            <Footer />
           </Route>
           <Route path="/logout">
             <LoginForm />

@@ -2,13 +2,13 @@
   margin: 0;
   padding: 0;
 }
-ul,
-li {
+.slide_ul,
+.slide_li {
   list-style: none;
   height: 450px;
 }
 
-ul {
+.slide_ul {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,25 +17,25 @@ ul {
   height: 450px;
   overflow: hidden;
 }
-.slide ul {
+.slide .slide_ul {
   width: calc(100% * 4);
   display: flex;
   animation: slide 8s infinite;
 } /* slide를 8초동안 진행하며 무한반복 함 */
-.slide li {
+.slide .slide_li {
   width: calc(100% / 4);
   height: 300px;
 }
-.slide li:nth-child(1) {
+.slide .slide_li:nth-child(1) {
   background: none;
 }
-.slide li:nth-child(2) {
+.slide .slide_lii:nth-child(2) {
   background: none;
 }
-.slide li:nth-child(3) {
+.slide .slide_li:nth-child(3) {
   background: none;
 }
-.slide li:nth-child(4) {
+.slide .slide_li:nth-child(4) {
   background: none;
 }
 @keyframes slide {
@@ -66,7 +66,7 @@ ul {
   }
 }
 
-li {
+.slide_li {
   display: flex;
   align-items: center;
   justify-content: center;

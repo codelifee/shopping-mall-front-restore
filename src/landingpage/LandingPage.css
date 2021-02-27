@@ -258,8 +258,8 @@ header .hamburger-menu .menu-layer .wrapper .locations span:hover {
   }
   .menu-links ul li .link3 {
     position: absolute;
-    bottom: 140px;
-    left: 400px;
+    bottom: 250px;
+    left: 0;
     width: 300px;
     font-size: 10vw;
   }

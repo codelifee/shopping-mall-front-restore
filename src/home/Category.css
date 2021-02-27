@@ -129,8 +129,8 @@ a {
   .slide_item > .slide_item_ul > .slide_item_li > .link .screen {
     position: relative;
     overflow: hidden;
-    width: 140px;
-    height: 140px;
+    width: 130px;
+    height: 130px;
     border-radius: 10px;
   }
   .swiper_wrapper {
