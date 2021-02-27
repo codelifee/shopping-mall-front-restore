@@ -28,7 +28,7 @@ function Detail() {
   const product_img = `http://shoppingmall-env.eba-jac9afx7.us-east-1.elasticbeanstalk.com/products/showProductImage/${id}`;
   const [modal, setModal] = useState(false);
   const [quantity, setQuantity] = useState(1);
-  const [{basket}, dispatch] = useStateValue();
+  //const [{basket}, dispatch] = useStateValue();
   const history = useHistory();
   
   useEffect(()=>{
@@ -81,36 +81,36 @@ function Detail() {
           {modal==true ? <Modal/> : null}
           
             <button className="detail__keep" onClick={()=>{
-              if(modal==false){
-                dispatch(
-                  {type:'ADD_TO_BASKET',
-                   item: {
-                    id: products.product_id,
-                    title: products.product_name,
-                    image:product_img,
-                    description: products.product_description,
-                    price: products.product_price * quantity,
-                    rating: products.product_rating
-                  }}
-                );
-              }
-              setModal(!modal)
+              // if(modal==false){
+              //   dispatch(
+              //     {type:'ADD_TO_BASKET',
+              //      item: {
+              //       id: products.product_id,
+              //       title: products.product_name,
+              //       image:product_img,
+              //       description: products.product_description,
+              //       price: products.product_price * quantity,
+              //       rating: products.product_rating
+              //     }}
+              //   );
+              // }
+              // setModal(!modal)
             }}>장바구니</button>
           
           
           <button className="detail__order"  onClick={()=>{
-              dispatch(
-                {type:'ADD_TO_BASKET',
-                 item: {
-                  id: products.product_id,
-                  title: products.product_name,
-                  image:product_img,
-                  description: products.product_description,
-                  price: products.product_price * quantity,
-                  rating: products.product_rating
-                }}
-              )
-              history.push('/payment')
+              // dispatch(
+              //   {type:'ADD_TO_BASKET',
+              //    item: {
+              //     id: products.product_id,
+              //     title: products.product_name,
+              //     image:product_img,
+              //     description: products.product_description,
+              //     price: products.product_price * quantity,
+              //     rating: products.product_rating
+              //   }}
+              // )
+              // history.push('/payment')
             }}>주문하기</button>
           
         </div>
