@@ -45,8 +45,7 @@ a {
   align-items: center;
   width: 200px;
   border-radius: 10px;
-
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
 .header__searchInput {
@@ -151,7 +150,11 @@ a {
 }
 @media all and (max-width: 414px) {
   .header__logo {
-    display: none;
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    width: 45px;
+    height: 45px;
   }
   .header {
     display: flex;

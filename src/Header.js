@@ -6,8 +6,8 @@ import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import './header.css'
 import { Link } from 'react-router-dom';
 //import { useStateValue } from './StateProvider/StateProvider';
-import Sidebar from './sidebar/Sidebar'
-import AllProducts from './sidebar/Sidebar'
+ import Sidebar from './sidebar/Sidebar'
+
 //import {auth} from  './configuration/firebase';
 import {connect} from 'react-redux';
 import {logoutUser} from './services/index';
@@ -87,7 +87,7 @@ class Header extends Component{
         return (
             <div className='header_container'>
                 <div className='header'>
-                <Sidebar/>
+               < Sidebar/>
 
                 <div className="header__search">
                     <input 
