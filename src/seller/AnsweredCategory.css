@@ -1,10 +1,10 @@
-.AnsweYetProduct {
+.category {
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-.AnsweYetProduct__container {
+.category__container {
   /* background: rgb(182, 167, 167); */
   width: 80%;
   display: grid;
@@ -12,7 +12,7 @@
   grid-template-rows: 100px 100px 100px 1fr;
   margin-top: 100px;
   background-color: #fff;
-  color: #476600;
+  color: #333;
   margin-bottom: 100px;
 }
 
@@ -31,8 +31,6 @@
   height: 30px;
   width: 300px;
   border-radius: 5px;
-  background: rgba(255, 183, 85, 0.3);
-  border: 1px dotted #333;
 }
 
 .products__search {
@@ -99,56 +97,57 @@
   font-size: medium;
 }
 
-.AnsweYetProduct__table_bg {
+.category__table_bg {
   /* background: wheat; */
 
-  width: 1300px;
+  width: 100%;
   height: 600px;
 }
 
-.AnsweYetProduct__table {
-  width: 1300px;
+.category__table {
+  width: 70%;
+  justify-content: center;
+
   text-align: center;
   border-radius: 5px;
-  background-image: linear-gradient(to right, #faf4c0 0%, #f1d9f5 100%);
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 183, 85, 0.3) 0%,
+    rgba(251, 115, 185, 0.2) 100%
+  );
   border: 2px solid #f2cb61;
   color: #333;
 }
 
-.AnsweYetProduct__table thead {
+.category__table thead {
   background-color: #555;
   color: #ffffff;
 }
-.AnsweYetProduct__table th {
+.category__table th {
   border-radius: 5px;
 }
-.AnsweYetProduct__table th,
+.category__table th,
 td {
   padding: 12px 15px;
-  text-align: center;
 }
 
-.AnsweYetProduct__table tbody tr {
+.category__table tbody tr {
   border-bottom: 1px solid #c7c3c3;
 }
 
-.AnsweYetProduct__table tbody tr:nth-of-type(even) {
+.category__table tbody tr:nth-of-type(even) {
   background-color: #e0dede;
 }
 
-.AnsweYetProduct__table tbody tr:last-of-type {
+.category__table tbody tr:last-of-type {
   border-bottom: 2px solid #009879;
 }
 
-.AnsweYetProduct__table td span {
-  display: flex;
-  flex-direction: column;
+.category__table span {
   cursor: pointer;
-  font-weight: bold;
-  font-size: 20px;
 }
-
-.AnsweYetProduct__table td img {
-  width: 200px;
-  height: 150px;
+.answer__category {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './AnswerYetCategory.css';
+import './AnsweredCategory.css';
 import { FaSearch } from 'react-icons/fa';
 import DatePicker from 'react-datepicker';
 import axios from '../axios/axios';

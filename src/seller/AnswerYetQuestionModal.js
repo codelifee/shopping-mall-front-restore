@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from '../axios/axios';
 import './AnswerYetQuestionModal.css';
 
 function AnswerYetQuestionModal({ id }) {
   //question_id
+  const inputRef = useRef(); //ref 객체 생성.
 
   const [form, setForm] = useState({
     answer_id: '',
@@ -12,20 +13,30 @@ function AnswerYetQuestionModal({ id }) {
     answer_date_created: '',
   });
 
-  const handleChange = (e) => {
-    e.preventDefault();
+  const { answer } = form;
 
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
+  const onChangeInput = (e) => {
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+    inputRef.current.focus();
   };
 
-  console.log(form);
+  const onReset = () => {
+    setForm({ answer: '' });
+    inputRef.current.focus();
+  };
+
+  // const handleChange = (e) => {
+  //   e.preventDefault();
+
+  //   setForm({
+  //     ...form,
+  //     [e.target.name]: e.target.value,
+  //   });
+  // };
 
   const postAnswer = (e) => {
     e.preventDefault();
-
     axios
       .post(`answer`, form)
       .then((res) => console.log(res))
@@ -34,22 +45,20 @@ function AnswerYetQuestionModal({ id }) {
 
   return (
     <div>
-      <form
-        className="AnswerForm"
-        onSubmit={form.answer != '' ? postAnswer : null}
-      >
+      <form className="AnswerForm" onSubmit={answer != '' ? postAnswer : null}>
         <input
           className="AnswerInput"
           type="text"
           name="answer"
-          value={form.answer}
-          onChange={handleChange}
+          value={answer}
+          onChange={onChangeInput}
+          ref={inputRef} // 접근할 DOM에 ref 값 설정
         />
         <div className="answerButton">
           <button
             type="submit"
             onClick={() => {
-              form.answer == ''
+              answer == ''
                 ? alert('내용을 입력해주세요!')
                 : alert('내용이 입력됐습니다.');
               window.location.reload();
@@ -58,7 +67,9 @@ function AnswerYetQuestionModal({ id }) {
             Submit
           </button>
           <br />
-          <button type="reset">reset</button>
+          <button type="reset" onClick={onReset}>
+            Reset
+          </button>
         </div>
       </form>
     </div>

@@ -1,114 +1,110 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react';
 import Logo from './img/logo.png';
 import Log from './img/log.png';
 import SearchIcon from '@material-ui/icons/Search';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
-import './header.css'
+import './header.css';
 import { Link } from 'react-router-dom';
-//import { useStateValue } from './StateProvider/StateProvider';
-import Sidebar from './sidebar/Sidebar'
-import AllProducts from './sidebar/Sidebar'
-//import {auth} from  './configuration/firebase';
-import {connect} from 'react-redux';
-import {logoutUser} from './services/index';
+import { useStateValue } from './StateProvider/StateProvider';
+import Sidebar from './sidebar/Sidebar';
+import AllProducts from './sidebar/Sidebar';
+import { auth } from './configuration/firebase';
+//import { connect } from 'react-redux';
+import { logoutUser } from './services/index';
 
+class Header extends Component {
+  logout = () => {
+    this.props.logoutUser();
+  };
 
-class Header extends Component{
+  render() {
+    const [{ basket, user }, dispatch] = useStateValue();
 
-    logout = () => {
-        this.props.logoutUser();
-    };
+    // const handleAuthentication = () => {
+    //   if (user) {
+    //     auth.signOut();
+    //   }
+    // };
 
-    render() {
-        //const [{basket, user}, dispatch] = useStateValue();
+    const guestLinks = (
+      <>
+        <Link to="/loginForm">
+          <div className="header__option">
+            <span className="header__optionLineOne">Please</span>
+            <span className="header__optionLinetwo">Log In</span>
+          </div>
+        </Link>
+      </>
+    );
 
-        // const handleAuthentication = () => {
-        //     if (user) {
-        //     auth.signOut();
-        //     }
-        // }
+    const userLinks = (
+      <>
+        <Link to="/home" onClick={this.logout}>
+          <div className="header__option">
+            <span className="header__optionLineOne">Goodbye</span>
+            <span className="header__optionLinetwo">Log Out</span>
+          </div>
+        </Link>
 
-        const guestLinks = (
-            <>
-            <Link to="/loginForm">
-                <div className='header__option'>
-                    <span className='header__optionLineOne'>Please</span>
-                    <span className='header__optionLinetwo'>Log In</span>
-                </div>
-            </Link>  
-            </> 
-        );
+        <Link to="/seller">
+          <div className="header__option">
+            <span className="header__optionLineOne">Returns</span>
+            <span className="header__optionLinetwo">Orders</span>
+          </div>
+        </Link>
 
-        const userLinks = (
-            <>
-            <Link to="/home" onClick={this.logout}>
-                <div className='header__option'>
-                    <span className='header__optionLineOne'>Goodbye</span>
-                    <span className='header__optionLinetwo'>Log Out</span>
-                </div>
-            </Link> 
+        <Link to="/checkout">
+          <div className="header__optionBasket">
+            <ShoppingBasketIcon />
+            <span className="header__optionLineTwo header__basketCount">
+              {/* {basket?.length} */}
+            </span>
+          </div>
+        </Link>
+      </>
+    );
 
-            <Link to="/seller">
-                    <div className='header__option'>
-                        <span className='header__optionLineOne'>Returns</span>
-                        <span className='header__optionLinetwo'>Orders</span>
-                    </div>
-                    </Link>
+    const adminLinks = (
+      <>
+        <Link to="/home" onClick={this.logout}>
+          <div className="header__option">
+            <span className="header__optionLineOne">Goodbye</span>
+            <span className="header__optionLinetwo">Log Out</span>
+          </div>
+        </Link>
 
-            <Link to='/checkout'>
-                <div className="header__optionBasket">
-                    <ShoppingBasketIcon />
-                    <span className="header__optionLineTwo header__basketCount">
-                        {/* {basket?.length} */}
-                    </span>
-                </div>
+        <Link to="/seller">
+          <div className="header__option">
+            <span className="header__optionLineOne">seller</span>
+            <span className="header__optionLinetwo">Center</span>
+          </div>
+        </Link>
+      </>
+    );
+
+    return (
+      <div className="header_container">
+        <div className="header">
+          <Sidebar />
+
+          <div className="header__search">
+            <input className="header__searchInput" type="text" />
+            <SearchIcon className="header__searchIcon" />
+          </div>
+          <div className="log_name_wap">
+            <Link to="/home">
+              <img className="header__logo" src={Logo} alt="" />
             </Link>
-            </>
-        );
 
-        const adminLinks = (
-            <>
-                <Link to="/home" onClick={this.logout}>
-                    <div className='header__option'>
-                        <span className='header__optionLineOne'>Goodbye</span>
-                        <span className='header__optionLinetwo'>Log Out</span>
-                    </div>
-                </Link> 
-                    
-                    <Link to="/seller">
-                        <div className='header__option'>
-                            <span className='header__optionLineOne'>seller</span>
-                            <span className='header__optionLinetwo'>Center</span>
-                        </div>
-                    </Link>
-            </>
-        );
+            <Link to="/home">
+              <p className="logo_name">ChenJiYeon</p>
+            </Link>
+          </div>
 
-        return (
-            <div className='header_container'>
-                <div className='header'>
-                <Sidebar/>
+          <div className="header__nav">
+            {this.props.auth.isLoggedIn ? userLinks : guestLinks}
 
-                <div className="header__search">
-                    <input 
-                    className="header__searchInput" 
-                    type="text"/>
-                    <SearchIcon className="header__searchIcon" />
-                </div>
-                <div className="log_name_wap">
-                <Link to='/home'>
-                    <img
-                    className='header__logo'
-                    src={Logo} alt=""/>
-                </Link>
-
-                <Link to="/home"><p className="logo_name">ChenJiYeon</p></Link>
-                </div>
-
-                <div className="header__nav">  
-                    {this.props.auth.isLoggedIn ? userLinks:guestLinks}
-                    
-                    {/* <Link to={!user && '/login'}>
+            {/* <Link to={!user && '/login'}>
                         <div onClick={handleAuthentication} className='header__option'>
                             <span className='header__optionLineOne'>
                                 Hello {!user ? 'Guest' : user?.email}
@@ -117,24 +113,25 @@ class Header extends Component{
                                 {user ? 'Sign out' : 'Sign In'}
                             </span>
                         </div>
-                    </Link> */} 
-                    </div>
-                </div>
-            </div>
-        )
-    };
-};
+                    </Link> */}
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
 
-const mapStateProps = state => {
-    return {
-        auth:state.auth
-    }
-};
+// const mapStateProps = (state) => {
+//   return {
+//     auth: state.auth,
+//   };
+// };
 
-const mapDispatchToProps = dispatch => {
-    return {
-        logoutUser:() => dispatch(logoutUser())
-    };
-};
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     logoutUser: () => dispatch(logoutUser()),
+//   };
+// };
 
-export default connect(mapStateProps, mapDispatchToProps)(Header);
+export default Header;
+// connect(mapStateProps, mapDispatchToProps);

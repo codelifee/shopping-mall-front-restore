@@ -14,14 +14,9 @@ import AnswerCategory from './AnsweredCategory';
 function AnsweredProducts() {
   const [startDate, setStartDate] = useState(new Date());
   const [products, setProducts] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
-  const product_img = `http://shoppingmall-env.eba-jac9afx7.us-east-1.elasticbeanstalk.com/products/showProductImage/`;
   const { id } = useParams(); //category_id
-  const history = useHistory();
   const [modal, setModal] = useState(false);
   const [categories, setCategories] = useState([]);
-
-  let total = null; //답변 전 상품별 전체 질문
 
   useEffect(() => {
     async function fetchDate() {
@@ -113,6 +108,7 @@ function AnsweredProducts() {
               <th>질문생성일자</th>
               <th>답변</th>
               <th>답변생성일자</th>
+              <th>수정 및 삭제</th>
             </thead>
             <tbody>
               {question
@@ -138,24 +134,28 @@ function AnsweredProducts() {
                         <td>{val.user_id}</td>
                         <td>{val.question}</td>
                         <td>{val.question_date_created}</td>
+                        <td> {val.answer}</td>
+                        <td>{val.answer_date_created}</td>
                         <td>
-                          {' '}
                           <div
                             className="answer_button"
                             onClick={() => {
                               setModal(!modal);
                             }}
                           >
-                            {val.answer}
+                            수정 및 삭제
                           </div>
                         </td>
-                        <td>{val.answer_date_created}</td>
                       </tr>
                       {modal == true ? (
                         <tr>
                           <td>답변 작성</td>
                           <td colSpan="5">
-                            <AnsweredQuestionModal id={val.answer_id} />
+                            <AnsweredQuestionModal
+                              id={val.question_id}
+                              answer={val.answer}
+                              answer_date_created={val.answer_date_created}
+                            />
                           </td>
                         </tr>
                       ) : null}
