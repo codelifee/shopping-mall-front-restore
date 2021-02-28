@@ -104,11 +104,11 @@ class Header extends Component{
 
                 <Link to="/home"><p className="logo_name">ChenJiYeon</p></Link>
                 </div>
-
-                <div className="header__nav">  
-                    {this.props.auth.isLoggedIn ? userLinks:guestLinks}
+{/* 
+                 <div className="header__nav">  
+                    {this.props.auth.isLoggedIn ? userLinks:guestLinks} 
                     
-                    {/* <Link to={!user && '/login'}>
+                     <Link to={!user && '/login'}>
                         <div onClick={handleAuthentication} className='header__option'>
                             <span className='header__optionLineOne'>
                                 Hello {!user ? 'Guest' : user?.email}
@@ -117,8 +117,8 @@ class Header extends Component{
                                 {user ? 'Sign out' : 'Sign In'}
                             </span>
                         </div>
-                    </Link> */} 
-                    </div>
+                    </Link> 
+                    </div> */}
                 </div>
             </div>
         )
