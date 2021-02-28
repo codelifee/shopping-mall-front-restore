@@ -1,10 +1,10 @@
 import React from 'react'
-import './Withdrawal.css'
-import WithdrawalData from './WithdrawalData'
+import './DeleteProfile.css'
+import DeleteProfileData from './DeleteProfileData'
 
-function Withdrawal() {
+function DeleteProfile() {
 
-    const {handleChange, confirmDelete, user} = WithdrawalData();
+    const {handleChange, confirmDelete, user} = DeleteProfileData();
 
     return (
         <div className="delete">
@@ -43,7 +43,7 @@ function Withdrawal() {
                     </div>
                         <button 
                         type='submit'
-                        className="update"
+                        className="deleteBtn"
                         onClick={confirmDelete}>
                             Delete
                         </button>
@@ -53,4 +53,4 @@ function Withdrawal() {
     )
 }
 
-export default Withdrawal
+export default DeleteProfile;

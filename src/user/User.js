@@ -8,8 +8,7 @@ import OrdersData from './OrdersData';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import './User.css';
 import Login from'../authentication/Login';
-import Withdrawal from './Withdrawal';
-import Home from '../home/Home';
+import DeleteProfile from './DeleteProfile';
 
 function User() {
     const[isSubmittied, setIsSubmitted] = useState(false);
@@ -23,10 +22,7 @@ function User() {
             <div className="user">
                 <Switch>
 
-                    <Route path='/user/profile/:user_sequence_id'>
-                        <Navbar />
-                        <Profile />
-                    </Route>
+                    
                     <Route path='/user/signup'>
                         {!isSubmittied ? (<SignUp submitForm={submitForm}/>)
                         : (<Login/>)}
@@ -36,9 +32,13 @@ function User() {
                         {!isSubmittied ? (<UpdateProfile submitForm={submitForm}/>)
                         : (<Profile/>)} 
                     </Route>
-                    <Route path='/user/Withdrawal/:user_sequence_id'>
+                    <Route path='/user/deleteprofile/:user_sequence_id'>
                         <Navbar/>
-                        <Withdrawal/>
+                        <DeleteProfile/>
+                    </Route>
+                    <Route path='/user/:user_sequence_id'>
+                        <Navbar />
+                        <Profile />
                     </Route>
                     <Route path='/user/order/:id'>
                         <Navbar/>

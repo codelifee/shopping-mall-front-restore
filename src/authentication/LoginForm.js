@@ -67,7 +67,7 @@ class LoginForm extends Component {
                     </div>
                     {this.state.error && <p variant="danger">{error}</p>}
                 </form>
-                <Button type="button" variant="success" 
+                <Button type="button" className="Loginbutton" variant="success" 
                 disabled={this.state.user_id.length===0 && this.state.user_pwd.length===0}
                 onClick={this.validateUser}>
                     Login

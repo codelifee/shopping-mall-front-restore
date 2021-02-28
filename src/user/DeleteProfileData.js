@@ -4,7 +4,7 @@ import { useParams, useHistory} from 'react-router-dom';
 /* global history */
 /* eslint no-restricted-globals: ["off"] */
 
-const WithdrawalData = (callback) => {
+const DeleteProfileData = (callback) => {
 
     const [user, setUser] = useState([]);
     const [check, setCheck] = useState([]);
@@ -99,4 +99,4 @@ const WithdrawalData = (callback) => {
       return {handleChange, confirmDelete, user};
 
 }
-export default WithdrawalData;
+export default DeleteProfileData;

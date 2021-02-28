@@ -7,8 +7,8 @@ body {
   height: 100vh;
   display: flex;
   justify-content: center;
-  background-color: #eee;
-  color: #476600;
+  background-color: #fff;
+  color: #333;
 }
 
 .updateProfile__container {
@@ -23,17 +23,17 @@ body {
   border-image: linear-gradient(45deg, #f2cb61, #bce55c);
   border-image-slice: 1;
   background-color: #fff;
-  color: #476600;
+  color: #333;
 }
 .updateProfile__container__head h1 {
-  color: #6b9900;
+  color: #333;
 }
 .updateProfile__container__head {
   padding-left: 36px;
   padding-top: 20px;
 }
 .updateProfile__container__head p {
-  color: #6b9900;
+  color: #333;
 }
 .updateProfile__search {
   display: flex;
@@ -41,13 +41,16 @@ body {
   margin-left: 30px;
   margin-top: 30px;
   height: 430px;
-
   background: #fff;
 }
 
 .updateProfile__search  input {
   height: 30px;
   width: 300px;
+  background: rgba(255, 183, 85, 0.3);
+  border-radius: 5px;
+  border: 1px dotted #333;
+  width: 200px;
 }
 
 .updateProfile__search p{
@@ -56,7 +59,7 @@ body {
 }
 
 .update__i span{
-  color: #6b9900;
+  color: #333;
 }
 
 .update__id {
@@ -66,7 +69,7 @@ body {
 
 .update__id > label {
   margin-right: 70px;
-  color: #476600;
+  color: #333;
 }
 
 .update__password {
@@ -77,7 +80,7 @@ body {
   
 .update__password > label {
   margin-right: 10px;
-  color: #476600;
+  color: #333;
 }
 
 .update__password2 {
@@ -89,7 +92,7 @@ body {
 .update__password2 > label {
   margin-right: 10px;
   margin-right: 9px;
-  color: #476600;
+  color: #333;
 }
 
 .update__name {
@@ -100,7 +103,7 @@ body {
 
 .update__name > label {
   margin-right: 38px;
-  color: #476600;
+  color: #333;
 }
 
 .update__phone {
@@ -111,13 +114,16 @@ body {
   
 .update__phone > label {
   margin-right: 37px;
-  color: #476600;
+  color: #333;
 }
 
 .update__phone > button{
-  margin-left: 5px;
-  border: 1px dotted #6b9900;
-  background: #e4f7ba;
+  width: 60px;
+    margin-left: 5px;
+    border: 1px dotted #333;
+    background: #ffb755;
+    border-radius: 5px;
+    font-size: 10px;
 }
 
 .update__phone p{
@@ -132,14 +138,15 @@ body {
 .update__address > label {
 
   margin-right: 19px;
-  color: #476600;
+  color: #333;
 }
 
 .updateProfile__search > button {
   margin-top: 30px;
-  width: 200px;
-  margin-left: 165px;
-  border: 1px dotted #6b9900;
-  background: #e4f7ba;
+    width: 200px;
+    margin-left: 165px;
+    border: 1px dotted #333;
+    background: #ffb755;
+    border-radius: 5px;
 }
 
