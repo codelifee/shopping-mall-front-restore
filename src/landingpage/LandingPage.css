@@ -142,12 +142,15 @@ header .hamburger-menu .menu-layer .wrapper .menu-links nav {
 header .hamburger-menu .menu-layer .wrapper .menu-links nav ul {
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
 }
 header .hamburger-menu .menu-layer .wrapper .menu-links nav ul li {
   list-style: none;
-  font-size: 6vw;
+  font-size: 5vw;
   font-weight: 700;
-  height: 135px;
+  height: 200px;
+  width: 900px;
 
   position: relative;
 }
@@ -178,7 +181,7 @@ header .hamburger-menu .menu-layer .wrapper .menu-links .info p {
 header .hamburger-menu .menu-layer .wrapper .locations {
   color: #ffb755;
   text-shadow: 1px 1px 2px #333;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 1000;
 }
 header .hamburger-menu .menu-layer .wrapper .locations span {
@@ -229,5 +232,64 @@ header .hamburger-menu .menu-layer .wrapper .locations span:hover {
     text-shadow: 1px 1px 2px #333;
     font-size: 2vw;
     font-weight: 1000;
+  }
+}
+@media all and (max-width: 414px) {
+  .info h3 {
+    display: none;
+  }
+  .info p {
+    display: none;
+  }
+  .info {
+    display: none;
+  }
+  .locations span {
+    display: none;
+  }
+  .locations {
+    display: none;
+  }
+  .menu-links ul li .link1 {
+    display: none;
+  }
+  .menu-links ul li .link2 {
+    display: none;
+  }
+  .menu-links ul li .link3 {
+    position: absolute;
+    bottom: 250px;
+    left: 10px;
+    width: 300px;
+    font-size: 10vw;
+  }
+  header .hamburger-menu .menu-layer {
+    background: url(./images/pomegranate_main.jpg);
+    overflow-y: auto;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background-position: center;
+    perspective: -100px;
+    perspective-origin: 50% 50%;
+    animation: animation 100s linear infinite;
+  }
+  @keyframes backgroundEffect {
+    0% {
+      background-position: 0% 0%;
+    }
+    25% {
+      background-position: 40% 10%;
+    }
+    50% {
+      background-position: 0 10%;
+    }
+    75% {
+      background-position: 10% 40%;
+    }
+    100% {
+      background-position: 0% 0%;
+    }
   }
 }

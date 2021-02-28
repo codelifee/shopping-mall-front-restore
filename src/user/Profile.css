@@ -1,0 +1,102 @@
+body {
+    margin: 0;
+    padding: 0;
+  }
+  .profile {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+    color: #333;
+  }
+  
+  .profile__container {
+    width: 800px;
+    height: 80vh;
+    display: grid;
+    margin-top: 100px;
+    padding: 20px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 100px 100px auto;
+    border: 10px solid;
+    border-image: linear-gradient(45deg, #f2cb61, #bce55c);
+    border-image-slice: 1;
+    background-color: #fff;
+    color: #333;
+  }
+  .profile__container__head h1 {
+    color: #333;
+  }
+  .profile__container__head {
+    padding-left: 36px;
+    padding-top: 20px;
+  }
+  .profile__container__head p {
+    color: #333;
+  }
+  .profile__search {
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+    margin-top: 30px;
+    height: 400px;
+    background: #fff;
+  }
+  
+  .profile__search p {
+    color: #6b9900;
+  }  
+  
+  .profile__id {
+    display: flex;
+    margin: 40px 0 30px 50px;
+  }
+  
+  .profile__id > label {
+    margin-right: 70px;
+    color: #333;
+  }
+  
+  .profile__name {
+    display: flex;
+    margin-left: 50px;
+    margin-bottom: 30px;
+  }
+    
+  .profile__name > label {
+    margin-right: 38px;
+    color: #333;
+  }
+  
+  .profile__phone {
+    display: flex;
+    margin-left: 50px;
+    margin-bottom: 30px;
+  }
+    
+  .profile__phone > label {
+    margin-right: 37px;
+    color: #333;
+  }
+  
+  .profile__address {
+    display: flex;
+    margin-left: 51px;
+  }
+    
+  .profile__address > label {
+    margin-right: 19px;
+    color: #333;
+  }
+  
+  .update {
+    margin-top: 30px;
+    width: 200px;
+    margin-left: 165px;
+    border: 1px dotted #333;
+    background: #ffb755;
+    border-radius: 5px;
+  }
+  
+  

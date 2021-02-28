@@ -26,8 +26,10 @@ function Best(){
   let [best,bestChange] = useState(BestData);
   let [best2,bestChange2] = useState(BestData2);
 
-    return(
+    return(<>
+      
         <div className="home_container">
+        
         <p className="title">인기상품을 만나보세요</p>
         <div className="content">
           {
@@ -44,7 +46,8 @@ function Best(){
             })
         }
         </div>
-      </div> 
+        </div>
+      </> 
     )
 }
 
@@ -52,8 +55,11 @@ function BestItem(props){
   return(
     <div className="best_item">
       <div as={Link} to ='/'>
-      <img src={props.best.img}/>
+        <div className="ranking">{props.best.ranking}</div>
+      <img src={props.best.img}  className="best_item_img"/>
+      <h4 className="none">{props.best.decoration}</h4>
       <h4>{props.best.title}</h4>
+      <h4>{props.best.price}원</h4>
       </div>
     </div>
   )
@@ -62,8 +68,11 @@ function BestItem2(props){
   return(
     <div className="best_item">
       <div as={Link} to ='/'>
-      <img src={props.best2.img}/>
+      <div className="ranking">{props.best2.ranking}</div>
+      <img src={props.best2.img} className="best_item_img"/>
+      <h4 className="none">{props.best2.decoration}</h4>
       <h4>{props.best2.title}</h4>
+      <h4>{props.best2.price}원</h4>
       </div>
     </div>
   )

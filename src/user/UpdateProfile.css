@@ -1,0 +1,152 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+.updateProfile {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+  color: #333;
+}
+
+.updateProfile__container {
+  width: 850px;
+  height: 80vh;
+  display: grid;
+  margin-top: 100px;
+  padding: 20px;
+  grid-template-columns: 1fr;
+  grid-template-rows: 100px 100px auto;
+  border: 10px solid;
+  border-image: linear-gradient(45deg, #f2cb61, #bce55c);
+  border-image-slice: 1;
+  background-color: #fff;
+  color: #333;
+}
+.updateProfile__container__head h1 {
+  color: #333;
+}
+.updateProfile__container__head {
+  padding-left: 36px;
+  padding-top: 20px;
+}
+.updateProfile__container__head p {
+  color: #333;
+}
+.updateProfile__search {
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+  margin-top: 30px;
+  height: 430px;
+  background: #fff;
+}
+
+.updateProfile__search  input {
+  height: 30px;
+  width: 300px;
+  background: rgba(255, 183, 85, 0.3);
+  border-radius: 5px;
+  border: 1px dotted #333;
+  width: 200px;
+}
+
+.updateProfile__search p{
+  margin-left: 5px;
+  color: red;
+}
+
+.update__i span{
+  color: #333;
+}
+
+.update__id {
+  display: flex;
+  margin: 0 0 30px 40px;
+}
+
+.update__id > label {
+  margin-right: 70px;
+  color: #333;
+}
+
+.update__password {
+  display: flex;
+  margin-left: 40px;
+  margin-bottom: 30px;
+}
+  
+.update__password > label {
+  margin-right: 10px;
+  color: #333;
+}
+
+.update__password2 {
+  display: flex;
+  margin-left: 40px;
+  margin-bottom: 30px;
+}
+  
+.update__password2 > label {
+  margin-right: 10px;
+  margin-right: 9px;
+  color: #333;
+}
+
+.update__name {
+  display: flex;
+  margin-left: 40px;
+  margin-bottom: 30px;
+}
+
+.update__name > label {
+  margin-right: 38px;
+  color: #333;
+}
+
+.update__phone {
+  display: flex;
+  margin-left: 40px;
+  margin-bottom: 30px;
+}
+  
+.update__phone > label {
+  margin-right: 37px;
+  color: #333;
+}
+
+.update__phone > button{
+  width: 60px;
+    margin-left: 5px;
+    border: 1px dotted #333;
+    background: #ffb755;
+    border-radius: 5px;
+    font-size: 10px;
+}
+
+.update__phone p{
+  color: red;
+}
+
+.update__address {
+  display: flex;
+  margin-left: 41px;
+}
+
+.update__address > label {
+
+  margin-right: 19px;
+  color: #333;
+}
+
+.updateProfile__search > button {
+  margin-top: 30px;
+    width: 200px;
+    margin-left: 165px;
+    border: 1px dotted #333;
+    background: #ffb755;
+    border-radius: 5px;
+}
+

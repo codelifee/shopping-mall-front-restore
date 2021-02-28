@@ -28,7 +28,7 @@ function Detail() {
   const product_img = `http://shoppingmall-env.eba-jac9afx7.us-east-1.elasticbeanstalk.com/products/showProductImage/${id}`;
   const [modal, setModal] = useState(false);
   const [quantity, setQuantity] = useState(1);
-  const [{basket}, dispatch] = useStateValue();
+  //const [{basket}, dispatch] = useStateValue();
   const history = useHistory();
   
   useEffect(()=>{
@@ -66,51 +66,51 @@ function Detail() {
           <p className="detail__proudct_stock">
             재고 : {products.stock}
           </p>
-          
+          <div className="center">
           <p className="quantity">
-            {quantity > 1 ? (<button onClick={() => {setQuantity(quantity - 1);}}>-</button>) : (<button onClick={() => {setQuantity(quantity);}}>-</button>)}
+            {quantity > 1 ? (<button onClick={() => {setQuantity(quantity - 1);}} className="quantity_button">-</button>) : (<button onClick={() => {setQuantity(quantity);}}  className="quantity_button">-</button>)}
             구매수량 {quantity}
-            <button onClick={() => {setQuantity(quantity + 1);}}>+</button>
+            <button onClick={() => {setQuantity(quantity + 1);}} className="quantity_button">+</button>
           </p>
           <p className="detail__product_totalPrice">
             총 금액 {new Intl.NumberFormat().format(products.product_price * quantity)}원
           </p>
-
-        <div>
+          </div>
+        <div className="button_box">
 
           {modal==true ? <Modal/> : null}
           
             <button className="detail__keep" onClick={()=>{
-              if(modal==false){
-                dispatch(
-                  {type:'ADD_TO_BASKET',
-                   item: {
-                    id: products.product_id,
-                    title: products.product_name,
-                    image:product_img,
-                    description: products.product_description,
-                    price: products.product_price * quantity,
-                    rating: products.product_rating
-                  }}
-                );
-              }
-              setModal(!modal)
+              // if(modal==false){
+              //   dispatch(
+              //     {type:'ADD_TO_BASKET',
+              //      item: {
+              //       id: products.product_id,
+              //       title: products.product_name,
+              //       image:product_img,
+              //       description: products.product_description,
+              //       price: products.product_price * quantity,
+              //       rating: products.product_rating
+              //     }}
+              //   );
+              // }
+              // setModal(!modal)
             }}>장바구니</button>
           
           
           <button className="detail__order"  onClick={()=>{
-              dispatch(
-                {type:'ADD_TO_BASKET',
-                 item: {
-                  id: products.product_id,
-                  title: products.product_name,
-                  image:product_img,
-                  description: products.product_description,
-                  price: products.product_price * quantity,
-                  rating: products.product_rating
-                }}
-              )
-              history.push('/payment')
+              // dispatch(
+              //   {type:'ADD_TO_BASKET',
+              //    item: {
+              //     id: products.product_id,
+              //     title: products.product_name,
+              //     image:product_img,
+              //     description: products.product_description,
+              //     price: products.product_price * quantity,
+              //     rating: products.product_rating
+              //   }}
+              // )
+              // history.push('/payment')
             }}>주문하기</button>
           
         </div>

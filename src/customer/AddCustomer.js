@@ -114,29 +114,29 @@ function AddCustomer() {
         <form className="addCustomer__search" onSubmit={showForm}>
           <div className="id">
             <label htmlfor="">Id</label>
-            <input type="text" name="user_id" onChange={handleChange} />
+            <input type="text" name="user_id" onChange={handleChange} className="addCustomer__input" />
             <button type="button" onClick={checkId}>
               Check Id
             </button>
           </div>
           <div className="password">
             <label htmlfor="">Password</label>
-            <input type="password" name="user_pwd" onChange={handleChange} />
+            <input type="password" name="user_pwd" onChange={handleChange}  className="addCustomer__input" />
           </div>
           <div className="name">
             <label htmlfor="">Name</label>
-            <input type="text" name="user_name" onChange={handleChange} />
+            <input type="text" name="user_name" onChange={handleChange}  className="addCustomer__input" />
           </div>
           <div className="phone">
             <label htmlfor="">Phone</label>
-            <input type="text" name="user_phone" onChange={handleChange} />
+            <input type="text" name="user_phone" onChange={handleChange}  className="addCustomer__input" />
             <button type="button" onClick={checkPhone}>
               Check Phone
             </button>
           </div>
           <div className="address">
             <label htmlfor="">Address</label>
-            <input type="text" name="user_address" onChange={handleChange} />
+            <input type="text" name="user_address" onChange={handleChange}  className="addCustomer__input" />
           </div>
           <button type="submit" onClick={joinCheck}>
             Submit

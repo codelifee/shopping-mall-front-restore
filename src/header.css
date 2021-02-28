@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?amily=Gaegu&family=Gugi&family=Jua&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Monoton&display=swap");
 
 * {
   margin: 0;
@@ -9,30 +9,21 @@
 a {
   text-decoration: none;
 }
-
-.logo_name {
-  margin-right: 30px;
-  color: black;
-  font-family: "Gaegu", "Gugi", cursive, "Jua", sans-serif;
-  font-size: 40px;
-}
-
-.log_name_wap {
+.header_container {
+  height: 70px;
+  background-color: rgba(255, 255, 255, 0.8);
+  position: fixed;
+  z-index: 200;
+  width: 100%;
+  margin: 0 auto;
   display: flex;
-  flex: 10;
   align-items: center;
-  justify-content: center;
-  margin-left: 0;
-  margin-right: 0;
 }
-
 .header {
   height: 100px;
   display: flex;
   align-items: center;
-  background-color: #fff;
-  position: sticky;
-  top: 0;
+  position: fixed;
   z-index: 200;
   width: 100%;
   margin: 0 auto;
@@ -43,40 +34,39 @@ a {
   width: 60px;
   object-fit: contain;
   color: white;
-  background-color: #fff;
+  background-color: rgba(255, 183, 85, 0.1);
   border-radius: 50%;
-  margin: 10px 20px 0 20px;
+  margin: 10px 0 0 0px;
+  padding: 3px;
 }
 
 .header__search {
   display: flex;
   align-items: center;
-  width: 350px;
-  border-radius: 24px;
-  padding-left: 20px;
-  background-color: #fff;
+  width: 200px;
+  border-radius: 10px;
+  margin-left: 10px;
 }
 
 .header__searchInput {
   height: 30px;
   padding: 10px;
   border: 1px solid #eceff1;
-  width: 280px;
+  width: 200px;
   border-radius: 24px;
-  background-color: #fff;
+  background-color: #eee;
   color: #000;
+  margin-right: 5px;
 }
 
 .header__searchIcon {
   transition: all 0.3s;
   padding-right: 0px;
-  margin-left: 10px;
   height: 40px !important;
   font-size: 35px;
   color: #555;
-
-  border-radius: 25% 25% 25% 25%;
-  background-color: #fff;
+  border-radius: 10px;
+  margin-right: 5px;
 }
 
 .header__searchIcon:hover {
@@ -87,6 +77,7 @@ a {
   font-size: 10px;
   text-align: center;
   font-weight: 800;
+  margin-top: 10px;
 }
 
 .header__option .header__optionLinetwo {
@@ -103,7 +94,7 @@ a {
   display: flex;
   align-items: center;
   color: #555;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 .header__optionBasket:hover {
   color: #000;
@@ -120,7 +111,7 @@ a {
   justify-content: flex-end;
   color: white;
   padding-right: 50px;
-  margin-left: 50px;
+  margin-left: -10px;
 }
 
 .header__option {
@@ -129,4 +120,91 @@ a {
   margin-left: 15px;
   margin-right: 15px;
   color: #555;
+}
+
+.logo_name {
+  font-size: 30px;
+  margin-right: 30px;
+  color: #777;
+}
+.log_name_wap {
+  display: flex;
+  flex: 10;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.log {
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0;
+}
+
+.guest {
+  text-align: center;
+  width: 80px;
+}
+@media all and (max-width: 414px) {
+  .header__logo {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    width: 45px;
+    height: 45px;
+  }
+  .header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .header_container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .log_name_wap p {
+    display: none;
+  }
+  .header__optionLineOne {
+    display: none;
+  }
+  .header__option span {
+    width: 100px;
+  }
+
+  .header__optionBasket {
+    display: none;
+  }
+
+  .header__search {
+    display: flex;
+    align-items: center;
+    width: 200px;
+    border-radius: 10px;
+    background: none;
+  }
+
+  .header__searchInput {
+    height: 30px;
+    padding: 10px;
+    border: 1px solid #eceff1;
+    width: 150px;
+    border-radius: 24px;
+    background-color: #eee;
+    color: #000;
+  }
+  .header__searchIcon {
+    transition: all 0.3s;
+    padding-right: 0px;
+    height: 40px !important;
+    font-size: 35px;
+    color: #555;
+    border-radius: 10px;
+
+    background: none;
+  }
 }

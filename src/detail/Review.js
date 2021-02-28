@@ -13,11 +13,11 @@ function Review(props) {
   
   const { id } = useParams();
   
-  const [{ user }, dispatch] = useStateValue();
+  //const [{ user }, dispatch] = useStateValue();
   
   const history = useHistory();
   
-  const review_img = `http://shoppingmall-env.eba-jac9afx7.us-east-1.elasticbeanstalk.com/review/show/`;
+  const review_img = "http://shoppingmall-env.eba-jac9afx7.us-east-1.elasticbeanstalk.com/review/showReviewImage/";
   
   useEffect(() => {
     async function fetchDate() {
@@ -108,7 +108,7 @@ function Review(props) {
         <div className="review__score_avg">
           {reviews == null ? 0 : avg}
           <p>
-            <FaStar color={"#ffc107"} size={80} />
+            <FaStar color={"#ffc107"} size={60} />
           </p>
         </div>
         <div className="review__score_list">
@@ -120,11 +120,11 @@ function Review(props) {
             <li className="one" key={54}>1점</li>
           </div>
           <div className="review__score_graph">
-            <Graph5>{five_per}%</Graph5>
-            <Graph4>{four_per}%</Graph4>
-            <Graph3>{three_per}%</Graph3>
-            <Graph2>{two_per}%</Graph2>
-            <Graph1>{one_per}%</Graph1>
+            <Graph5>{five_per.toFixed(1)}%</Graph5>
+            <Graph4>{four_per.toFixed(1)}%</Graph4>
+            <Graph3>{three_per.toFixed(1)}%</Graph3>
+            <Graph2>{two_per.toFixed(1)}%</Graph2>
+            <Graph1>{one_per.toFixed(1)}%</Graph1>
           </div>
         </div>
         <div className="review__button_">
@@ -150,29 +150,6 @@ function Review(props) {
               리뷰 작성
             </button>
           }<br/>
-          
-          {/* 별점별 리뷰 보기
-          <br/>
-          <select className="star">
-          <option value="all">
-            모든 리뷰
-          </option>
-          <option value="5">
-          ★★★★★ 5점
-          </option>
-            <option value="4">
-            ★★★★ 4점
-            </option>
-            <option value="3">
-            ★★★ 3점
-            </option>
-            <option value="2">
-            ★★ 2점
-            </option>
-            <option value="1">
-            ★ 1점
-            </option>
-          </select> */}
         </div>
       </div>
 
@@ -217,7 +194,22 @@ function Review(props) {
                   {review.review_picture!=null ?
                     <img src={review_img+review.review_id}/>: null
                   }
-                  
+                </div>
+             
+              
+                <div className="review__update_button">
+                  {/* review.user_sequence_id == user.user_sequence_id ? : null */}
+                  <button className="review__update_button_"
+                    onClick={() => {
+                    window.open(
+                    `/reviewUpdate/${review.review_id}`,
+                     "reviewUpdateForm",
+                    "width=600,height=700,location=no,status=no,scrollbars=no"
+                   );
+                  }}>수정하기</button>
+                  <button onClick={()=>{
+                    alert('정말로 삭제하시겠습니까?');
+                  }}>삭제하기</button>
                 </div>
               </li>
             </div>

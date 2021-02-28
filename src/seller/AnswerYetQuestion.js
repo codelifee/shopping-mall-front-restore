@@ -25,6 +25,20 @@ function AnswerYetQuestion (){
         getQuestion();
         }, [])
 
+    const [products, setProducts] = useState([]);
+    useEffect(()=>{
+        async function getProducts() {
+            const request = await axios.get(`products/${id}`)
+            .then(response =>
+                setProducts(response.data))
+            .catch(error => console.log(error))
+    
+            return request;
+        }
+        getProducts();
+        }, [])
+        console.log(products)
+
     return(
         <div className="AnsweYetProduct">
             <div className="AnsweYetProduct__container">
@@ -49,7 +63,7 @@ function AnswerYetQuestion (){
                 </div>
                 
                 <div className="question__info">
-                    <h2>0 Questions</h2>
+                    <h2>{products.product_name}</h2>
                 </div>
                 <div className="AnsweYetProduct__table_bg">
                     <table className="AnsweYetProduct__table">

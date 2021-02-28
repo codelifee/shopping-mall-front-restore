@@ -1,6 +1,6 @@
 import "./App.css";
 import Header from "./Header";
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Home from "./home/Home";
 import Seller from "./seller/Seller";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -11,37 +11,41 @@ import { auth } from "./configuration/firebase";
 import { useStateValue } from "./StateProvider/StateProvider";
 import Payment from "./payment/Payment";
 import Footer from "./footer/Footer";
-import ImgSlide from "./slide/ImgSlide";
+// import ImgSlide from "./slide/ImgSlide";
+import Slide2 from "./slide2/Slide2";
 import LandingPage from "./landingpage/LandingPage";
 import ProductView from "./ProductView/ProductView";
 import ReviewForm from "./detail/ReviewForm";
+import ReviewPatchForm from "./detail/ReviewPatchForm";
 import "./App.css";
-import Customer from "./customer/Customer";
 import QnAForm from "./detail/QnAForm";
 import KakaoMap from "./Introduction/KakaoMap";
+import User from './user/User';
+import LoginForm from './authentication/LoginForm';
 
 function App() {
-  const [{}, dispatch] = useStateValue();
 
-  useEffect(() => {
-    auth.onAuthStateChanged(authUser => {
-      console.log("THE USER IS >>>", authUser);
+  // const [{}, dispatch] = useStateValue();
 
-      if (authUser) {
-        // the user logged in
-        dispatch({
-          type: "SET_USER",
-          user: authUser,
-        });
-      } else {
-        //the user is logged out
-        dispatch({
-          type: "SET_USER",
-          user: null,
-        });
-      }
-    });
-  }, []);
+  // useEffect(() => {
+  //   auth.onAuthStateChanged(authUser => {
+  //     console.log("THE USER IS >>>", authUser);
+
+  //     if (authUser) {
+  //       // the user logged in
+  //       dispatch({
+  //         type: "SET_USER",
+  //         user: authUser,
+  //       });
+  //     } else {
+  //       //the user is logged out
+  //       dispatch({
+  //         type: "SET_USER",
+  //         user: null,
+  //       });
+  //     }
+  //   });
+  // }, []);
 
   return (
     //BEM convention
@@ -49,19 +53,26 @@ function App() {
     <Router>
       <div className="app">
         <Switch>
-          {/* <Route path="/map">
+        {/* <Route path="/map">
             <Map />
           </Route> */}
           <Route path="/home">
             <Header />
-            <ImgSlide />
+            <Slide2 />
             <Home />
             <Footer />
           </Route>
           <Route path="/login">
             <Login />
           </Route>
-
+          <Route path="/loginform">
+          <Header />
+            <LoginForm />
+            <Footer />
+          </Route>
+          <Route path="/logout">
+            <LoginForm />
+          </Route>
           <Route path="/checkout">
             <Header />
             <Checkout />
@@ -81,6 +92,10 @@ function App() {
             <ReviewForm />
           </Route>
 
+          <Route path="/reviewUpdate/:id">
+            <ReviewPatchForm />
+          </Route>
+
           <Route path="/question/:id">
             <QnAForm />
           </Route>
@@ -98,13 +113,13 @@ function App() {
             <Seller />
           </Route>
 
-          <Route path="/customer">
-            <Customer />
-          </Route>
+          <Route path="/user">
+              <User />
+            </Route>
 
           <Route path="/introduction">
             <Header />
-
+            
             <KakaoMap />
             <Footer />
           </Route>
@@ -112,6 +127,7 @@ function App() {
           <Route path="/">
             <LandingPage />
           </Route>
+
         </Switch>
       </div>
     </Router>

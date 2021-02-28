@@ -8,7 +8,7 @@ function QnA() {
 
     const history = useHistory();
     const {id} = useParams();
-    const [{user}, dispatch] = useStateValue();
+    //const [{user}, dispatch] = useStateValue();
     const [question, setQuestion] = useState([]);
 
     useEffect(() => {

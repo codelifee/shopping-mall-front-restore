@@ -1,23 +1,17 @@
-.payment {
-  background: #eee;
-}
-
 .payment__container > h1 {
   text-align: center;
   padding: 15px;
   font-weight: 400;
-  border-bottom: 10px solid;
-  border-image: linear-gradient(45deg, #bce55c, #e5d85c);
-  border-image-slice: 1;
+  border-bottom: 10px solid #e6b797;
 }
 
 .payment__container h1 {
   background-color: #333;
-  color: #fff;
+  color: #e6b797;
 }
 .payment__container > h1 a {
   text-decoration: none;
-  color: #fff;
+  color: #e6b797;
   display: inline;
 }
 

@@ -75,6 +75,7 @@ function UpdateCustomer() {
                         type="text" 
                         name="user_id"
                         value={customer.user_id}
+                        className="updateCustomer__input"
                         />
                     </div>
                     <div className="password">
@@ -83,6 +84,7 @@ function UpdateCustomer() {
                         type="password" 
                         name="user_pwd"
                         onChange={handleChange}
+                        className="updateCustomer__input"
                         />
                     </div>
                     <div className="name">
@@ -92,6 +94,7 @@ function UpdateCustomer() {
                         name="user_name"
                         value={customer.user_name}
                         onChange={handleChange}
+                        className="updateCustomer__input"
                         />
                     </div>
                     <div className="phone">
@@ -101,6 +104,7 @@ function UpdateCustomer() {
                         name="user_phone"
                         placeholder={customer.user_phone}
                         onChange={handleChange}
+                        className="updateCustomer__input"
                         />
                     </div>
                     <div className="address">
@@ -110,6 +114,7 @@ function UpdateCustomer() {
                         name="user_address"
                         placeholder={customer.user_address}
                         onChange={handleChange}
+                        className="updateCustomer__input"
                         />
                     </div>
                     <button 

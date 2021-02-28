@@ -3,6 +3,11 @@ import axios from '../axios/axios'
 import OrdersDataDetails from './OrdersDataDetails'
 import { useParams } from 'react-router-dom';
 import "./OrderDetails.css";
+import CurrencyFormat from "react-currency-format";
+import { useHistory } from 'react-router-dom'
+import { useStateValue } from '../StateProvider/StateProvider';
+
+
 function OrderDetails() {
 
     const [customer, setCustomer] = useState([]);
@@ -42,8 +47,7 @@ function OrderDetails() {
     useEffect(() => {
       async function fetchDate() {
         const request = await axios
-          .get(`http://localhost:5000/orders/userid/${user_sequence_id}`)
-  
+          .get(`orders/userid/${user_sequence_id}`)  
           .then(response => setOrders(response.data))
           .catch(error => console.log(error));
   
@@ -52,8 +56,8 @@ function OrderDetails() {
   
       fetchDate();
     }, []); 
-
-
+   
+  
     return (
         <div className="orderDetails">
 
@@ -62,7 +66,7 @@ function OrderDetails() {
 
             <div className="orderDetails__container">
             <div className="orderDetails__container__head">
-                    <h3>주문상세</h3>
+                    <h3  className="orderDetails_title">주문상세</h3>
                 </div>
 {orders.map(order => (
             <OrdersDataDetails
@@ -73,31 +77,32 @@ function OrderDetails() {
               date={order.order_date_created}
               address={order.user_address}
               picture={img + order.product_id}
-              amount={order.product_price}
+              price={order.product_price}
+              amount={order.order_amount}
             />
           ))}
 
 <div className="orderDetails_table">
                 
-                <p>받는사람 정보</p>
-                <table className="orderDetails__info" style={{borderTop:'5px solid #777',borderBottom:'1px solid #eee'}}>
+                <p className="orderDetails_title">받는사람 정보</p>
+                <table className="orderDetails__info" style={{borderTop:'5px solid #e6b797',borderBottom:'1px solid #eee'}}>
                 <tr> 
                 
                     
-                    <td className="orderDetails_name" style={{width:'200px',textAlign:'left',paddingLeft:'50px',borderLeft: '1px solid #ffb755',borderLeft: '1px solid #ffb755',borderRight:'1px solid #ffb755',borderBottom:'1px solid #ffb755'}}>
+                    <td className="orderDetails_name" style={{width:'200px',textAlign:'left',paddingLeft:'50px',borderLeft: '1px solid #ccc',borderLeft: '1px solid #ccc',borderRight:'1px solid #ccc',borderBottom:'1px solid #ccc'}}>
                        받는사람
                         
                     </td>
                     
-                    <td style={{textAlign:'left',paddingLeft:'50px',borderRight:'1px solid #ffb755',borderBottom:'1px solid #ffb755'}}>
+                    <td style={{textAlign:'left',paddingLeft:'50px',borderRight:'1px solid #ccc',borderBottom:'1px solid #ccc'}}>
                         {customer.user_name}
                     </td>
                 </tr>
                 <tr>
-                    <td className="orderDetails_phone" style={{textAlign:'left',paddingLeft:'50px',border:'0px',borderLeft: '1px solid #ffb755',borderLeft: '1px solid #ffb755',borderRight:'1px solid #ffb755',borderBottom:'1px solid #ffb755'}}>
+                    <td className="orderDetails_phone" style={{textAlign:'left',paddingLeft:'50px',border:'0px',borderLeft: '1px solid #ccc',borderLeft: '1px solid #ccc',borderRight:'1px solid #ccc',borderBottom:'1px solid #ccc'}}>
                         연락처
                     </td>
-                    <td style={{textAlign:'left',paddingLeft:'50px',borderRight:'1px solid #ffb755',borderBottom:'1px solid #ffb755'}}>
+                    <td style={{textAlign:'left',paddingLeft:'50px',borderRight:'1px solid #ccc',borderBottom:'1px solid #ccc'}}>
                         {customer.user_phone}
                         
                         
@@ -105,10 +110,10 @@ function OrderDetails() {
                 </tr>
                 <tr>
                 
-                    <td className="orderDetails_address" style={{textAlign:'left',paddingLeft:'50px',borderLeft: '1px solid #ffb755',borderLeft: '1px solid #ffb755',borderRight:'1px solid #ffb755',borderBottom:'1px solid #ffb755'}}>
+                    <td className="orderDetails_address" style={{textAlign:'left',paddingLeft:'50px',borderLeft: '1px solid #ccc',borderLeft: '1px solid #ccc',borderRight:'1px solid #ccc',borderBottom:'1px solid #ccc'}}>
                        받는주소
                     </td>
-                    <td style={{textAlign:'left',paddingLeft:'50px',borderRight:'1px solid #ffb755',borderBottom:'1px solid #ffb755'}}>
+                    <td style={{textAlign:'left',paddingLeft:'50px',borderRight:'1px solid #ccc',borderBottom:'1px solid #ccc'}}>
                         {customer.user_address}
                     </td>
                 </tr>  
@@ -117,30 +122,35 @@ function OrderDetails() {
                 </div>
                 <div className="orderDetails_table">
                
-                <p>결제정보</p>
+                <p  className="orderDetails_title">결제정보</p>
                 
                 
                 
-                <table className="orderDetails__price"  style={{borderTop:'5px solid #777',borderBottom:'1px solid #eee'}}>
+                <table className="orderDetails__price"  style={{borderTop:'5px solid #e6b797',borderBottom:'1px solid #eee'}}>
                 <tr> 
                 
-                    
-                    <td className="orderDetails_amount"  style={{width:'200px',textAlign:'left',paddingLeft:'50px', borderLeft: '1px solid #ffb755',borderLeft: '1px solid #ffb755',borderRight:'1px solid #ffb755',borderBottom:'1px solid #ffb755'}}>
+                
+                    <td className="orderDetails_amount"  style={{width:'200px',textAlign:'left',paddingLeft:'50px', borderLeft: '1px solid #ccc',borderLeft: '1px solid #ccc',borderRight:'1px solid #ccc',borderBottom:'1px solid #ccc'}}>
                     총 상품 가격
                         
                     </td >
                     
-                    <td style={{textAlign:'left',paddingLeft:'50px',borderRight:'1px solid #ffb755',borderBottom:'1px solid #ffb755'}}>
-                        {customer.order_amount}
+                    <td style={{textAlign:'left',paddingLeft:'50px',borderRight:'1px solid #ccc',borderBottom:'1px solid #ccc'}}>
+                    
+                    
+                   
+                
+               
+                
                     </td>
                 </tr>
                 <tr>
-                    <td className="orderDetails_amount2" style={{textAlign:'left',paddingLeft:'50px',borderLeft: '1px solid #ffb755',borderLeft: '1px solid #ffb755',borderRight:'1px solid #ffb755',borderBottom:'1px solid #ffb755'}}>
+                    <td className="orderDetails_amount2" style={{textAlign:'left',paddingLeft:'50px',borderLeft: '1px solid #ccc',borderLeft: '1px solid #ccc',borderRight:'1px solid #ccc',borderBottom:'1px solid #ccc'}}>
                     총 결제금액
                     </td>
-                    <td style={{textAlign:'left',paddingLeft:'50px',borderRight:'1px solid #ffb755',borderBottom:'1px solid #ffb755' }}>
-                        {customer.order_amount}
-                        
+                    <td style={{textAlign:'left',paddingLeft:'50px',borderRight:'1px solid #ccc',borderBottom:'1px solid #ccc' }}>
+                   
+                     
                         
                     </td>
                 </tr>
@@ -152,4 +162,8 @@ function OrderDetails() {
     )
 }
 
-export default OrderDetails
+
+
+
+
+export default OrderDetails;
