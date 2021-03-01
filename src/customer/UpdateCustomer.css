@@ -1,0 +1,130 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+.updateCustomer {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+  color: #333;
+}
+
+.updateCustomer__container {
+  /* background: rgb(182, 167, 167); */
+  width: 1200px;
+  height: 87vh;
+  display: flex;
+  margin-top: 100px;
+  padding: 20px;
+  align-items: center;
+
+  flex-direction: column;
+  background-color: #fff;
+  color: #333;
+}
+.updateCustomer__container__head h1 {
+  color: #333;
+}
+.updateCustomer__container__head {
+  padding-left: 36px;
+  padding-top: 20px;
+}
+.updateCustomer__container__head p {
+  color: #333;
+}
+.updateCustomer__search {
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+  margin-top: 30px;
+  height: 450px;
+
+  background: #fff;
+}
+
+.updateCustomer__search > input {
+  height: 30px;
+  /* width: 450px; */
+}
+
+.id {
+  display: flex;
+  margin: 40px 0 30px 40px;
+}
+
+.id > label {
+  margin-right: 70px;
+  color: #333;
+}
+
+.password {
+  display: flex;
+  margin-left: 40px;
+  margin-bottom: 30px;
+}
+
+.password > label {
+  margin-right: 9px;
+  color: #333;
+}
+
+.name {
+  display: flex;
+  margin-left: 40px;
+  margin-bottom: 30px;
+}
+
+.name > label {
+  margin-right: 38px;
+  color: #333;
+}
+
+.phone {
+  display: flex;
+  margin-left: 40px;
+  margin-bottom: 30px;
+}
+
+.phone > label {
+  margin-right: 37px;
+  color: #333;
+}
+
+.phone > button {
+  margin-left: 5px;
+  border: 1px dotted #333;
+  background: #ffb755;
+}
+
+.address {
+  display: flex;
+  margin-left: 40px;
+}
+
+.address > label {
+  margin-right: 19px;
+  color: #333;
+}
+
+.updateCustomer__search > button {
+  margin-top: 30px;
+  width: 200px;
+  margin-left: 125px;
+  border: 1px dotted #333;
+  background: #ffb755;
+  border-radius: 5px;
+}
+
+/* input {
+  background: linear-gradient(45deg, #faf4c0, #e4f7ba);
+  border: 1px dotted #6b9900;
+} */
+.updateCustomer__input {
+  background: rgba(255, 183, 85, 0.3);
+  border-radius: 5px;
+  border: 1px dotted #333;
+  width: 200px;
+  padding: 0 5px;
+}

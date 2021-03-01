@@ -1,0 +1,13 @@
+.BasketItem__item {
+  margin: 10px;
+  display: flex;
+}
+
+.BasketItem__info {
+  margin-left: 20px;
+}
+
+.BasketItem__img {
+  width: 120px;
+  height: 150px;
+}

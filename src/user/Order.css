@@ -1,0 +1,147 @@
+.order {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  background-color: #eee;
+  color: #fff;
+}
+
+.order__container {
+  /* background: rgb(182, 167, 167); */
+  width: 1200px;
+  height: 80vh;
+  display: grid;
+  margin-top: 100px;
+  padding: 20px;
+  grid-template-columns: 1fr;
+  grid-template-rows: 100px 100px 100px 1fr;
+  border: 10px solid;
+  border-image: linear-gradient(45deg, #f2cb61, #bce55c);
+  border-image-slice: 1;
+  background-color: #fff;
+  color: #476600;
+}
+
+.order__searchbar {
+  width: 600px;
+  display: flex;
+  align-items: center;
+  color: #476600;
+}
+.date,
+.order__searchbar input {
+  padding: 0 5px;
+}
+.order__searchbar > input {
+  margin-right: 10px;
+}
+
+select {
+  height: 30px;
+}
+
+input {
+  height: 30px;
+  width: 350px;
+}
+
+.order__search {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin: 0 23px;
+  /* background: rgb(121, 112, 112); */
+}
+
+.order__category {
+  display: flex;
+  align-items: center;
+
+  position: relative;
+  width: 600px;
+  right: 35px;
+}
+
+.order__category > p {
+  margin-right: 10px;
+  color: #476600;
+}
+
+.order__button {
+  display: flex;
+  margin-left: 36px;
+  align-items: center;
+  color: #476600;
+}
+
+.search-button {
+  margin-right: 20px;
+  width: 100px;
+  height: 30px;
+  color: white;
+  background: rgb(200, 73, 73);
+}
+
+.reset-button {
+  width: 100px;
+  height: 30px;
+}
+
+.order__info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* background: purple; */
+  margin-left: 36px;
+  margin-right: 36px;
+  color: #6b9900;
+}
+
+.order__info > button {
+  width: 200px;
+  height: 30px;
+  color: aliceblue;
+  background: rgb(200, 73, 73);
+  font-size: medium;
+}
+
+.order__table {
+  /* background: wheat; */
+  margin-left: 36px;
+  width: 1130px;
+  height: 400px;
+  margin: 0 10px;
+  color: #476600;
+  text-align: center;
+}
+
+/* .table {
+  width: 1125px;
+  background-image: linear-gradient(to right, #faf4c0 0%, #f1d9f5 100%);
+  border: 2px solid #f2cb61;
+  color: #476600;
+} */
+
+.order__table thead {
+  background-color: #555;
+  color: #fff;
+}
+
+.order__table th,
+td {
+  padding: 12px 15px;
+}
+
+.order__table tbody tr {
+  border-bottom: 1px solid #c7c3c3;
+}
+
+.order__table tbody tr:nth-of-type(even) {
+  background-color: #e0dede;
+  color: #476600;
+}
+
+.order__table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}

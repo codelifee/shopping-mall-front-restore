@@ -1,0 +1,10 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+.seller {
+  display: flex;
+  min-width: 1441px;
+}

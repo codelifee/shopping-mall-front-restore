@@ -1,0 +1,33 @@
+.QnA__header {
+  display: flex;
+  border-bottom: solid 1px black;
+  padding-bottom: 20px;
+}
+
+.question__list {
+  display: flex;
+  flex-direction: row;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: solid 1px;
+}
+
+.question__list_user {
+  flex: 1;
+  margin-right: 50px;
+}
+
+.question__list_content {
+  flex: 1;
+}
+
+.question__list_date {
+  flex: 1;
+  margin-left: 50px;
+  text-align: right;
+}
+.QnA__button {
+  background-color: rgba(230, 125, 122, 0.3);
+  border: 1px solid rgba(230, 125, 122, 0.7);
+  padding: 2px 5px;
+}

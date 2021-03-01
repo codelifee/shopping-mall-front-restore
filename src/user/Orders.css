@@ -1,0 +1,103 @@
+.orders_bg {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+  color: #333;
+  margin-bottom: 100px;
+}
+
+.orders__container {
+  /* background: rgb(182, 167, 167); */
+  max-width: 1100px;
+  height: 80vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 100px 100px 100px 1fr;
+  margin-top: 100px;
+  background-color: #fff;
+  color: #333;
+}
+
+.orders__input {
+  height: 30px;
+  width: 350px;
+  margin: 0 15px 0 0;
+  border-radius: 5px;
+  padding-left: 5px;
+}
+.orders__category {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.orders__category_p {
+  color: #333;
+}
+
+.orders_date {
+  height: 30px;
+  padding-left: 5px;
+  margin: 0 5px 0 30px;
+  border-radius: 5px;
+}
+
+.orders__search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+}
+.orders__form {
+  display: flex;
+  padding: 0 30px;
+}
+.orders__searchbar {
+  display: flex;
+  margin-left: 20px;
+  margin-right: 80px;
+  align-items: center;
+  justify-content: center;
+}
+
+.orders__category {
+  display: flex;
+}
+
+.orders__button {
+  display: flex;
+
+  margin-left: 30px;
+  align-items: center;
+
+  /* background: blue; */
+}
+
+.orders__search-button {
+  margin-right: 10px;
+  width: 100px;
+  height: 30px;
+  color: white;
+  background: #777;
+  border: 1px solid #333;
+  border-radius: 5px;
+}
+
+.orders__reset-button {
+  width: 100px;
+  height: 30px;
+  background: #fff;
+  border: 1px solid #333;
+  border-radius: 5px;
+}
+
+.orders__info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* background: purple; */
+  margin-left: 36px;
+  margin-right: 36px;
+  color: #333;
+}
