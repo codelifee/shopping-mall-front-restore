@@ -55,6 +55,7 @@ function Detail() {
         </div>
         <div className="detail__product_info">
           <p className="detail__product_name">{products.product_name}</p>
+          <p className="detail__product_description">{products.product_description}</p><br/>
           <p className="detail__product_price">{new Intl.NumberFormat().format(products.product_price)}원</p>
           <p className="detail__product_delivery">
             배송정보 | 도서산간지역 제외 평균 2~3일 배송
