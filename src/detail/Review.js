@@ -102,6 +102,29 @@ function Review(props) {
     width: ${one_per}%;
   `;
 
+  const useConfirm = (message="", callback, rejection) =>{
+    const confirmAction= () => {
+      if (window.confirm(message)) {
+        callback();
+      }else {
+        rejection()
+      }
+    }
+    return confirmAction;
+  }
+
+  const deleteReview=()=>{
+    axios.delete(`/review/${reviews.review_id}`)
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+  }
+
+  const abort = () => {
+    return alert("삭제가 취소 되었습니다!");
+  }
+
+  const confirmDelete = useConfirm("are you sure?", deleteReview, abort)
+
   return (
     <div className="review">
       <div className="review__score">
@@ -145,7 +168,7 @@ function Review(props) {
                   "review_form",
                   "width=600,height=700,location=no,status=no,scrollbars=no"
                 );
-              }}
+              }} 
             >
               리뷰 작성
             </button>
@@ -207,9 +230,8 @@ function Review(props) {
                     "width=600,height=700,location=no,status=no,scrollbars=no"
                    );
                   }}>수정하기</button>
-                  <button onClick={()=>{
-                    alert('정말로 삭제하시겠습니까?');
-                  }}>삭제하기</button>
+                  <button onClick={confirmDelete
+                  }>삭제하기</button>
                 </div>
               </li>
             </div>

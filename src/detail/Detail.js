@@ -59,9 +59,9 @@ function Detail() {
           <p className="detail__product_delivery">
             배송정보 | 도서산간지역 제외 평균 2~3일 배송
           </p>
-          <p className="detail__product_deliveryPrice">배송료 정보</p>
+          {/* <p className="detail__product_deliveryPrice">배송료 정보</p> */}
           <p className="detail__product_deliveryPrice_">
-            일반지역 2,500원 / 도서산간지역 4,000원{" "}
+            {/* 일반지역 2,500원 / 도서산간지역 4,000원{" "} */}
           </p>
           <p className="detail__proudct_stock">
             재고 : {products.stock}
@@ -116,7 +116,9 @@ function Detail() {
         </div>
         </div>
       </div>
+     
       <Tabs/>
+     
     </div>
   );
 }

@@ -5,7 +5,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import './header.css'
 import { Link } from 'react-router-dom';
-//import { useStateValue } from './StateProvider/StateProvider';
+import { useStateValue } from './StateProvider/StateProvider';
  import Sidebar from './sidebar/Sidebar'
 
 //import {auth} from  './configuration/firebase';
@@ -106,7 +106,7 @@ class Header extends Component{
                 </div>
 
                 <div className="header__nav">  
-                    {this.props.auth.isLoggedIn ? userLinks:guestLinks}
+                    {/* {this.props.auth.isLoggedIn ? userLinks:guestLinks} */}
                     
                     {/* <Link to={!user && '/login'}>
                         <div onClick={handleAuthentication} className='header__option'>
@@ -137,4 +137,5 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateProps, mapDispatchToProps)(Header);
+//export default connect(mapStateProps, mapDispatchToProps)(Header);
+export default Header;

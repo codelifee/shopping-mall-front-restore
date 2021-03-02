@@ -23,7 +23,8 @@ function Tabs(){
             <label htmlFor="tab04">Q & A</label>
 
            
-            <div style={{width:'100%',borderTop:'2px solid rgba(230, 125, 122, 1)'}}>
+            <div style={{width:'100%',borderTop:'2px solid rgba(230, 125, 122, 1)',
+        display:'block'}}>
             </div> 
             <div className="conbox con1"><Data/></div>
             <div className="conbox con2"><Info/></div>
