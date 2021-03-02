@@ -25,7 +25,7 @@ function OrderItems({id, name, date, address, status}) {
             console.log(id)
             
             axios.patch(`/orders/${id}`, newStatus)
-            .then(res => console.log(res))
+            .then(res => alert("변경이 완료 되었습니다"))
             .catch(err => console.log(err))
     }
 
@@ -57,7 +57,6 @@ function OrderItems({id, name, date, address, status}) {
             </tr>
         </>
     )
-
 }
 
 export default OrderItems

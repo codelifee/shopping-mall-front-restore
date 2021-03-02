@@ -12,7 +12,7 @@ import { useStateValue } from "./StateProvider/StateProvider";
 import Payment from "./payment/Payment";
 import Footer from "./footer/Footer";
 // import ImgSlide from "./slide/ImgSlide";
-import Slide2 from "./slide2/Slide2";
+import Slider from "./slide2/Slide2";
 import LandingPage from "./landingpage/LandingPage";
 import ProductView from "./ProductView/ProductView";
 import ReviewForm from "./detail/ReviewForm";
@@ -58,7 +58,7 @@ function App() {
           </Route> */}
           <Route path="/home">
             <Header />
-            <Slide2 />
+            <Slider />
             <Home />
             <Footer />
           </Route>
