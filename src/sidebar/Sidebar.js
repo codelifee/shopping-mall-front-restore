@@ -44,9 +44,9 @@ function Sidebar() {
      
 
      {categories.map((category,i)=>{
-       return <li key={i} className="menu_link" onClick={()=>{
-         return history.push(`/products/${category.category_id}`)
-       }}>{category.category_name}</li>
+       return <a href={`/products/${category.category_id}`}>
+         <li key={i} className="menu_link">{category.category_name}</li>
+         </a>
      })}
     
       </ul>

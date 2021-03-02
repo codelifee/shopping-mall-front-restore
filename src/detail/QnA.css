@@ -6,19 +6,25 @@
 
 .question__list {
   display: flex;
-  flex-direction: row;
-  padding-top: 20px;
+  flex-direction: column;
   padding-bottom: 20px;
   border-bottom: solid 1px;
 }
 
 .question__list_user {
   flex: 1;
-  margin-right: 50px;
+  flex-direction: row;
+  background-color:  rgba(230, 125, 122, 1);
+  font-size: 17px;
+}
+
+.question__list_user_ {
+  font-weight: bold;
 }
 
 .question__list_content {
   flex: 1;
+  margin-top:20px;
 }
 
 .question__list_date {

@@ -105,9 +105,6 @@ function App() {
 
             <Payment />
           </Route>
-          <Route path="/seller">
-            <Seller />
-          </Route>
 
           <Route path="/seller">
             <Seller />

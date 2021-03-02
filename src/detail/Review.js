@@ -102,11 +102,34 @@ function Review(props) {
     width: ${one_per}%;
   `;
 
+  const useConfirm = (message="", callback, rejection) =>{
+    const confirmAction= () => {
+      if (window.confirm(message)) {
+        callback();
+      }else {
+        rejection()
+      }
+    }
+    return confirmAction;
+  }
+
+  const deleteReview=()=>{
+    axios.delete(`/review/${reviews.review_id}`)
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+  }
+
+  const abort = () => {
+    return alert("삭제가 취소 되었습니다!");
+  }
+
+  const confirmDelete = useConfirm("are you sure?", deleteReview, abort)
+
   return (
     <div className="review">
       <div className="review__score">
         <div className="review__score_avg">
-          {reviews == null ? 0 : avg}
+          {isNaN(avg) == true ? 0 : avg}
           <p>
             <FaStar color={"#ffc107"} size={60} />
           </p>
@@ -119,12 +142,14 @@ function Review(props) {
             <li className="two" key={53}>2점</li>
             <li className="one" key={54}>1점</li>
           </div>
+          
           <div className="review__score_graph">
-            <Graph5>{five_per.toFixed(1)}%</Graph5>
-            <Graph4>{four_per.toFixed(1)}%</Graph4>
-            <Graph3>{three_per.toFixed(1)}%</Graph3>
-            <Graph2>{two_per.toFixed(1)}%</Graph2>
-            <Graph1>{one_per.toFixed(1)}%</Graph1>
+
+            <Graph5>{isNaN(five_per) == true ? 0 : five_per.toFixed(0)}%</Graph5>
+            <Graph4>{isNaN(four_per) == true ? 0 : four_per.toFixed(0)}%</Graph4>
+            <Graph3>{isNaN(three_per) == true ? 0 : three_per.toFixed(0)}%</Graph3>
+            <Graph2>{isNaN(two_per) == true ? 0 : two_per.toFixed(0)}%</Graph2>
+            <Graph1>{isNaN(one_per) == true ? 0 : one_per.toFixed(0)}%</Graph1>
           </div>
         </div>
         <div className="review__button_">
@@ -145,7 +170,7 @@ function Review(props) {
                   "review_form",
                   "width=600,height=700,location=no,status=no,scrollbars=no"
                 );
-              }}
+              }} 
             >
               리뷰 작성
             </button>
@@ -179,15 +204,15 @@ function Review(props) {
              return <FaStar color={"#ffc107"} size={20} />
            }
          }
-          return (
-            
-            <div>
-              <li className="review__list" key={i}>
-                  
+         return (
+           
+           <div className="review__list" key={i}>
+                         
                 <div className="review__list_user">
                   {review.user_id} 님 {star()}
                 </div>
 
+              <div className="review__list_content_container">
                 <div className="review__list_content">
                   {review.review_date_created} 작성<br/>
                   {review.review}
@@ -197,9 +222,9 @@ function Review(props) {
                 </div>
              
               
-                <div className="review__update_button">
+                <div className="review__update_button_container">
                   {/* review.user_sequence_id == user.user_sequence_id ? : null */}
-                  <button className="review__update_button_"
+                  <button className="review__update_button"
                     onClick={() => {
                     window.open(
                     `/reviewUpdate/${review.review_id}`,
@@ -207,11 +232,11 @@ function Review(props) {
                     "width=600,height=700,location=no,status=no,scrollbars=no"
                    );
                   }}>수정하기</button>
-                  <button onClick={()=>{
-                    alert('정말로 삭제하시겠습니까?');
-                  }}>삭제하기</button>
+                  <button className="review__delete_button"
+                   onClick={confirmDelete
+                  }>삭제하기</button>
                 </div>
-              </li>
+              </div>
             </div>
           );
         })}

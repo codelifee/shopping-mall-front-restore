@@ -43,5 +43,6 @@
 }
 
 .tab_center {
+  white-space: nowrap;
   text-align: center;
 }
