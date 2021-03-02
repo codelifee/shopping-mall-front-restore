@@ -4,10 +4,9 @@ a {
 }
 .home_container {
   width: 80%;
-  margin: 80px auto 100px auto;
+  margin: 10px 0 100px 0;
 }
 .title {
-  margin: 16px 0;
   font-weight: 700;
   font-size: 23px;
 }
@@ -40,11 +39,9 @@ a {
   max-width: 180px;
   height: 180px;
   border-radius: 10px;
-  margin: 2px 15px 2px 5px;
+  margin-right: 10px;
 }
-.slide_item2 h4 {
-  margin: 16px 0;
-}
+
 @media all and (min-width: 320px) {
   .title {
     font-size: 18px;
@@ -64,11 +61,13 @@ a {
 .slide_item2_box {
   display: flex;
   margin: 30px 7px;
+  height: auto;
   width: 400px;
   border: 1px solid rgba(255, 183, 85, 0.7);
   border-radius: 10px;
-  padding: 10px;
+  padding: 7px;
   background: rgba(230, 183, 151, 0.3);
+  align-items: center;
 }
 
 @media all and (max-width: 414px) {

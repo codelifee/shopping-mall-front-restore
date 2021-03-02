@@ -36,11 +36,11 @@ function User() {
                         <Navbar/>
                         <DeleteProfile/>
                     </Route>
-                    <Route path='/user/:user_sequence_id'>
+                    <Route path='/user/profile/:user_sequence_id'>
                         <Navbar />
                         <Profile />
                     </Route>
-                    <Route path='/user/order/:id'>
+                    <Route path='/user/order/:user_sequence_id'>
                         <Navbar/>
                         <Orders/>
                     </Route>

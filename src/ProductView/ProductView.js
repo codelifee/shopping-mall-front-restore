@@ -13,8 +13,7 @@ function ProductView() {
   
   useEffect(() => {
     async function getProduct() {
-      const request = await axios
-        .get("products/all")
+      const request = await axios.get("products/all")
         .then(response => setProducts(response.data))
         .catch(error => console.log(error));
 
@@ -27,11 +26,9 @@ function ProductView() {
   const [categories, setCategories] = useState([]);
   useEffect(() => {
     async function getCategory() {
-      const request = await axios
-        .get(`categories/${id}`)
+      const request = await axios.get(`categories/${id}`)
         .then(response => setCategories(response.data))
         .catch(error => console.log(error));
-
       return request;
     }
 
@@ -41,8 +38,7 @@ function ProductView() {
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
     async function getReview() {
-      const request = await axios
-        .get(`review/all`)
+      const request = await axios.get(`review/all`)
         .then(response => setReviews(response.data))
         .catch(error => console.log(error));
 
@@ -54,9 +50,6 @@ function ProductView() {
 
   return (
     <div className="products">
-      <div className="products__category">
-        {categories.category_name}
-      </div>
       <div className="products__row">
         {products
           .filter(function (product) {
