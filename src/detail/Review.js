@@ -129,7 +129,7 @@ function Review(props) {
     <div className="review">
       <div className="review__score">
         <div className="review__score_avg">
-          {reviews == null ? 0 : avg}
+          {isNaN(avg) == true ? 0 : avg}
           <p>
             <FaStar color={"#ffc107"} size={60} />
           </p>
@@ -142,12 +142,14 @@ function Review(props) {
             <li className="two" key={53}>2점</li>
             <li className="one" key={54}>1점</li>
           </div>
+          
           <div className="review__score_graph">
-            <Graph5>{five_per.toFixed(0)}%</Graph5>
-            <Graph4>{four_per.toFixed(0)}%</Graph4>
-            <Graph3>{three_per.toFixed(0)}%</Graph3>
-            <Graph2>{two_per.toFixed(0)}%</Graph2>
-            <Graph1>{one_per.toFixed(0)}%</Graph1>
+
+            <Graph5>{isNaN(five_per) == true ? 0 : five_per.toFixed(0)}%</Graph5>
+            <Graph4>{isNaN(four_per) == true ? 0 : four_per.toFixed(0)}%</Graph4>
+            <Graph3>{isNaN(three_per) == true ? 0 : three_per.toFixed(0)}%</Graph3>
+            <Graph2>{isNaN(two_per) == true ? 0 : two_per.toFixed(0)}%</Graph2>
+            <Graph1>{isNaN(one_per) == true ? 0 : one_per.toFixed(0)}%</Graph1>
           </div>
         </div>
         <div className="review__button_">
