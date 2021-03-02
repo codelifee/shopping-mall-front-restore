@@ -4,7 +4,6 @@ import { FaStar } from 'react-icons/fa'
 import {useStateValue} from '../StateProvider/StateProvider';
 import axios from '../axios/axios';
 import {useHistory, useLocation, useParams} from 'react-router-dom';
-import qs from 'query-string';
 
  function ReviewForm(){
 
@@ -33,13 +32,10 @@ const formData = new FormData();
     formData.append('review_id', form.review_id)
     formData.append('product_id',form.product_id)
     formData.append('user_sequence_id',form.user_sequence_id)
-    formData.append('product_detail_id',form.product_detail_id)
     formData.append('review',form.review)
     formData.append('star',form.star)
     formData.append('review_picture', form.review_picture)
     formData.append('review_date_created',form.review_date_created)
-    formData.append('product_name',form.product_name)
-    formData.append('productDetailsList',form.productDetailsList)
 
     const config = {
         headers: {
@@ -77,7 +73,7 @@ const formData = new FormData();
         e.preventDefault();
         //삼항연산자로 사진이 null이면 글만 넘어가는 post로
         //null이 아니면 아래 post로 동작하게 만들기
-        if(form.review_picture!=null){
+        if(form.review_picture!==null){
             return axios.post('/review/upload', formData, config)
             .then(res => console.log(res))
             .catch(err => console.log(err))
@@ -119,7 +115,7 @@ const formData = new FormData();
 				})}
 		    </div>
 
-            <form className="review_form" onSubmit={form.review != '' ? showForm : null}> 
+            <form className="review_form" onSubmit={form.review !== '' ? showForm : null}> 
                 <label htmlFor="input">리뷰 작성</label>
               
                 <input 
