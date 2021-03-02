@@ -10,16 +10,16 @@ function Tabs(){
     return(
         
             <div className="tab_center">
-            <input type='radio' name="tabmenu" id="tab01" defaultChecked/>
+            <input type='radio' name="tabmenu" id="tab01" className="tab_input" defaultChecked/>
             <label htmlFor="tab01">상품상세</label>
 
-            <input type='radio' name="tabmenu" id="tab02"/>
+            <input type='radio' name="tabmenu" id="tab02" className="tab_input" />
             <label htmlFor="tab02">상품정보</label>
 
-            <input type='radio' name="tabmenu" id="tab03"/>
+            <input type='radio' name="tabmenu" id="tab03" className="tab_input" />
             <label htmlFor="tab03">리뷰</label>
 
-            <input type='radio' name="tabmenu" id="tab04"/>
+            <input type='radio' name="tabmenu" id="tab04" className="tab_input" />
             <label htmlFor="tab04">Q & A</label>
 
            

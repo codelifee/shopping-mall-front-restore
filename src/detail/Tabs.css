@@ -1,8 +1,8 @@
-input[type="radio"] {
+.inputtab_input[type="radio"] {
   display: none;
 }
 
-input[type="radio"] + label {
+.inputtab_input[type="radio"] + label {
   display: inline-block;
   padding: 20px;
   width: 200px;
@@ -15,7 +15,7 @@ input[type="radio"] + label {
   margin-top: 50px;
 }
 
-input[type="radio"]:checked + label {
+.inputtab_input[type="radio"]:checked + label {
   background: rgba(230, 125, 122, 1);
   color: #000;
 }
@@ -29,16 +29,16 @@ input[type="radio"]:checked + label {
   display: none;
 }
 
-input[id="tab01"]:checked ~ .con1 {
+.inputtab_input[id="tab01"]:checked ~ .con1 {
   display: block;
 }
-input[id="tab02"]:checked ~ .con2 {
+.inputtab_input[id="tab02"]:checked ~ .con2 {
   display: block;
 }
-input[id="tab03"]:checked ~ .con3 {
+.inputtab_input[id="tab03"]:checked ~ .con3 {
   display: block;
 }
-input[id="tab04"]:checked ~ .con4 {
+.inputtab_input[id="tab04"]:checked ~ .con4 {
   display: block;
 }
 

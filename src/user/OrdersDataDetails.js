@@ -36,7 +36,7 @@ function OrdersData({date, status, product, price, picture }) {
   useEffect(() => {
     async function fetchDate() {
       const request = await axios
-        .get(`http://localhost:5000/orders/userid/${user_sequence_id}`)
+        .get(`/orders/userid/${user_sequence_id}`)
 
         .then(response => setOrders(response.data))
         .catch(error => console.log(error));

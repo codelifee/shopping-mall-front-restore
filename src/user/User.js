@@ -4,6 +4,8 @@ import SignUp from './SignUp';
 import UpdateProfile from './UpdateProfile';
 import Profile from './Profile';
 import Orders from './Orders';
+import Return from './Return';
+import OrderDetails from './OrderDetails';
 import OrdersData from './OrdersData';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import './User.css';
@@ -47,6 +49,14 @@ function User() {
                     <Route path='/user/orderdata/:id'>
                         <Navbar/>
                         <OrdersData/>
+                    </Route>
+                    <Route path='/user/orderdetails/:user_sequence_id'>
+                        <Navbar/>
+                        <OrderDetails/>
+                    </Route>
+                    <Route path='/user/return'>
+                        <Navbar/>
+                        <Return/>
                     </Route>
                 </Switch>
             </div>
