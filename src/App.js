@@ -12,6 +12,7 @@ import { useStateValue } from './StateProvider/StateProvider';
 import Payment from './payment/Payment';
 import Footer from './footer/Footer';
 // import ImgSlide from "./slide/ImgSlide";
+<<<<<<< HEAD
 import Slide2 from './slide2/Slide2';
 import LandingPage from './landingpage/LandingPage';
 import ProductView from './ProductView/ProductView';
@@ -20,6 +21,16 @@ import ReviewPatchForm from './detail/ReviewPatchForm';
 import './App.css';
 import QnAForm from './detail/QnAForm';
 import KakaoMap from './Introduction/KakaoMap';
+=======
+import Slider from "./slide2/Slide2";
+import LandingPage from "./landingpage/LandingPage";
+import ProductView from "./ProductView/ProductView";
+import ReviewForm from "./detail/ReviewForm";
+import ReviewPatchForm from "./detail/ReviewPatchForm";
+import "./App.css";
+import QnAForm from "./detail/QnAForm";
+import KakaoMap from "./Introduction/KakaoMap";
+>>>>>>> 0aea035492151bd980dc74a1f932cbd4f28076c4
 import User from './user/User';
 import LoginForm from './authentication/LoginForm';
 
@@ -57,7 +68,7 @@ function App() {
           </Route> */}
           <Route path="/home">
             <Header />
-            <Slide2 />
+            <Slider />
             <Home />
             <Footer />
           </Route>

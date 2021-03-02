@@ -17,41 +17,42 @@ function User() {
     setIsSubmitted(true);
   }
 
-  return (
-    <Router>
-      <div className="user">
-        <Switch>
-          <Route path="/user/signup">
-            {!isSubmittied ? <SignUp submitForm={submitForm} /> : <Login />}
-          </Route>
-          <Route path="/user/profile/updateprofile/:user_sequence_id">
-            <Navbar />
-            {!isSubmittied ? (
-              <UpdateProfile submitForm={submitForm} />
-            ) : (
-              <Profile />
-            )}
-          </Route>
-          <Route path="/user/profile/deleteprofile/:user_sequence_id">
-            <Navbar />
-            <DeleteProfile />
-          </Route>
-          <Route path="/user/:user_sequence_id">
-            <Navbar />
-            <Profile />
-          </Route>
-          <Route path="/user/order/:id">
-            <Navbar />
-            <Orders />
-          </Route>
-          <Route path="/user/orderdata/:id">
-            <Navbar />
-            <OrdersData />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
-  );
+    return (
+        <Router>
+            <div className="user">
+                <Switch>
+
+                    
+                    <Route path='/user/signup'>
+                        {!isSubmittied ? (<SignUp submitForm={submitForm}/>)
+                        : (<Login/>)}
+                    </Route>
+                    <Route path='/user/updateprofile/:user_sequence_id'>
+                        <Navbar/>
+                        {!isSubmittied ? (<UpdateProfile submitForm={submitForm}/>)
+                        : (<Profile/>)} 
+                    </Route>
+                    <Route path='/user/deleteprofile/:user_sequence_id'>
+                        <Navbar/>
+                        <DeleteProfile/>
+                    </Route>
+                    <Route path='/user/profile/:user_sequence_id'>
+                        <Navbar />
+                        <Profile />
+                    </Route>
+                    <Route path='/user/order/:user_sequence_id'>
+                        <Navbar/>
+                        <Orders/>
+                    </Route>
+                    <Route path='/user/orderdata/:id'>
+                        <Navbar/>
+                        <OrdersData/>
+                    </Route>
+                </Switch>
+            </div>
+        </Router>
+        
+    )
 }
 
 export default User;

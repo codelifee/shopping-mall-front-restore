@@ -43,9 +43,7 @@
   margin: 30px 0;
   list-style: none;
   text-align: center;
-}
-.nav-text a:hover {
-  background-color: #1a83ff;
+  cursor: pointer;
 }
 
 .nav-menu-items {

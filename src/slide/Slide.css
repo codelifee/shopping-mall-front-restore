@@ -271,3 +271,10 @@ body {
   height: 620px;
   margin-bottom: 30px;
 }
+
+.textbox_imgbox {
+  width: 90%;
+  height: 400px;
+  border-radius: 10px;
+  overflow: hidden;
+}

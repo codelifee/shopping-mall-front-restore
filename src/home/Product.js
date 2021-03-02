@@ -1,14 +1,14 @@
 import React from 'react'
 import fire from '../img/fire.svg';
 import './Product.css';
-import {useStateValue} from "../StateProvider/StateProvider"
+import {useValue} from "../StateProvider/StateProvider"
 import {Link, useHistory} from "react-router-dom";
 
 
 function Product({ id, title, image, description//, price, rating
 }) {
     //dispatch -> how we manipulate with data
-    const [{basket}, dispatch] = useStateValue();
+    const [{basket}, dispatch] = useValue();
 
     const addToBasket = () => {
         //dispatch the item into the data layer
