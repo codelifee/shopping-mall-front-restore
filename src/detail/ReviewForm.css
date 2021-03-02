@@ -62,7 +62,7 @@ input [type="radio"]{
       height: 60px;
       border-radius: 50px;
       border: none;
-      background-color: #b0e96f;
+      background-color: rgba(230, 125, 122, 0.7);
       cursor: pointer;
       margin: 0 auto;
       margin-bottom: 100px;

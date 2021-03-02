@@ -43,6 +43,6 @@ input[id="tab04"]:checked ~ .con4 {
 }
 
 .tab_center {
-  text-align: center;
   white-space: nowrap;
+  text-align: center;
 }

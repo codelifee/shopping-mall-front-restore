@@ -143,11 +143,11 @@ function Review(props) {
             <li className="one" key={54}>1점</li>
           </div>
           <div className="review__score_graph">
-            <Graph5>{five_per.toFixed(1)}%</Graph5>
-            <Graph4>{four_per.toFixed(1)}%</Graph4>
-            <Graph3>{three_per.toFixed(1)}%</Graph3>
-            <Graph2>{two_per.toFixed(1)}%</Graph2>
-            <Graph1>{one_per.toFixed(1)}%</Graph1>
+            <Graph5>{five_per.toFixed(0)}%</Graph5>
+            <Graph4>{four_per.toFixed(0)}%</Graph4>
+            <Graph3>{three_per.toFixed(0)}%</Graph3>
+            <Graph2>{two_per.toFixed(0)}%</Graph2>
+            <Graph1>{one_per.toFixed(0)}%</Graph1>
           </div>
         </div>
         <div className="review__button_">
@@ -202,15 +202,15 @@ function Review(props) {
              return <FaStar color={"#ffc107"} size={20} />
            }
          }
-          return (
-            
-            <div>
-              <li className="review__list" key={i}>
-                  
+         return (
+           
+           <div className="review__list" key={i}>
+                         
                 <div className="review__list_user">
                   {review.user_id} 님 {star()}
                 </div>
 
+              <div className="review__list_content_container">
                 <div className="review__list_content">
                   {review.review_date_created} 작성<br/>
                   {review.review}
@@ -220,9 +220,9 @@ function Review(props) {
                 </div>
              
               
-                <div className="review__update_button">
+                <div className="review__update_button_container">
                   {/* review.user_sequence_id == user.user_sequence_id ? : null */}
-                  <button className="review__update_button_"
+                  <button className="review__update_button"
                     onClick={() => {
                     window.open(
                     `/reviewUpdate/${review.review_id}`,
@@ -230,10 +230,11 @@ function Review(props) {
                     "width=600,height=700,location=no,status=no,scrollbars=no"
                    );
                   }}>수정하기</button>
-                  <button onClick={confirmDelete
+                  <button className="review__delete_button"
+                   onClick={confirmDelete
                   }>삭제하기</button>
                 </div>
-              </li>
+              </div>
             </div>
           );
         })}
