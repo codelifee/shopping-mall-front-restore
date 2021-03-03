@@ -3,9 +3,9 @@ import './UpdateProfile.css'
 import UpdateProfileData from './UpdateProfileData';
 import Validate from './ValidateInfo';
 
-function UpdateProfile({submitForm}) {
+function UpdateProfile({submitForm2}) {
 
-    const {handleChange, form, handleSubmit, errors, checkPhone2} = UpdateProfileData(submitForm,Validate);
+    const {handleChange, form, handleSubmit2, errors, checkPhone2} = UpdateProfileData(submitForm2,Validate);
 
     return (
         <div className="updateProfile">
@@ -13,14 +13,15 @@ function UpdateProfile({submitForm}) {
                 <div className="updateProfile__container__head">
                     <h1>Update {form.user_name}'s Profile</h1>
                 </div>
-                <form className="updateProfile__search" onSubmit={handleSubmit}>
+                <form className="updateProfile__search" onSubmit={handleSubmit2}>
                     <div className="update__id">
-                        <label>Id</label>
+                        <label htmlFor="">Id</label>
                         <span>{form.user_id}</span>
                     </div>
                     <div className="update__password">
-                        <label>Password</label>
+                        <label htmlFor="">Password</label>
                         <input 
+                        id="user_pwd"
                         type="password" 
                         name="user_pwd"
                         defaultValue={form.user_pwd}
@@ -34,15 +35,15 @@ function UpdateProfile({submitForm}) {
                             id="user_pwd2"
                             type="password" 
                             name="user_pwd2"
-                            placeholder="Enter your password again"
                             defaultValue={form.user_pwd2}
                             onChange={handleChange}
                         />
                         {errors.user_pwd2 && <p>{errors.user_pwd2}</p>}
                     </div>
                     <div className="update__name">
-                        <label>Name</label>
+                        <label htmlFor="">Name</label>
                         <input 
+                        id="user_name"
                         type="text" 
                         name="user_name"
                         defaultValue={form.user_name}
@@ -51,8 +52,9 @@ function UpdateProfile({submitForm}) {
                         {errors.user_name && <p>{errors.user_name}</p>}
                     </div>
                     <div className="update__phone">
-                        <label>Phone</label>
+                        <label htmlFor="">Phone</label>
                         <input 
+                        id="user_phone"
                         type="text" 
                         name="user_phone"
                         defaultValue={form.user_phone}
@@ -67,8 +69,9 @@ function UpdateProfile({submitForm}) {
                         {errors.user_phone && <p>{errors.user_phone}</p>}
                     </div>
                     <div className="update__address">
-                        <label>Address</label>
+                        <label htmlFor="">Address</label>
                         <input 
+                        id="user_address"
                         type="text" 
                         name="user_address"
                         defaultValue={form.user_address}
@@ -76,9 +79,7 @@ function UpdateProfile({submitForm}) {
                         />
                         {errors.user_address && <p>{errors.user_address}</p>}
                     </div>
-                    <button 
-                    type="submit"
-                    >Update</button>
+                    <button type="button">Update</button>
                 </form>
             </div>
         </div>

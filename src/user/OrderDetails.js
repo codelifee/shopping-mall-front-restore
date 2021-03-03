@@ -37,10 +37,7 @@ function OrderDetails() {
     })
 
     const [startDate, setStartDate] = useState(new Date());
-    const [orders, setOrders] = useState([{}]);
-  
-  
-  
+    const [orders, setOrders] = useState([{}]);  
    
     const img = `http://shoppingmall-env.eba-jac9afx7.us-east-1.elasticbeanstalk.com/products/showProductImage/`;
   
@@ -60,10 +57,6 @@ function OrderDetails() {
   
     return (
         <div className="orderDetails">
-
-
-
-
             <div className="orderDetails__container">
             <div className="orderDetails__container__head">
                     <h3  className="orderDetails_title">주문상세</h3>

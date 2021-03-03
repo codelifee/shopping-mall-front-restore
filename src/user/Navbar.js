@@ -30,7 +30,7 @@ function Navbar() {
                         </h2>
                         <div>
                             {order &&
-                                <Link to={`/user/orders/${user_sequence_id}`}>
+                                <Link to={`/user/order/${user_sequence_id}`}>
                                 <p>My Orders</p>
                                 </Link>
                             }

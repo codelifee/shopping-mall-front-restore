@@ -1,52 +1,49 @@
 import {React,useState} from 'react';
 import Navbar from './Navbar';
-import SignUp from './SignUp';
 import UpdateProfile from './UpdateProfile';
 import Profile from './Profile';
 import Orders from './Orders';
 import OrdersData from './OrdersData';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import './User.css';
-import Login from'../authentication/Login';
 import DeleteProfile from './DeleteProfile';
+import OrderDetails from './OrderDetails';
 
 function User() {
-    const[isSubmittied, setIsSubmitted] = useState(false);
+    const[isSubmittied2, setIsSubmitted2] = useState(false);
 
-    function submitForm(){
-        setIsSubmitted(true);
+    function submitForm2(){
+        setIsSubmitted2(true);
     }
 
     return (
         <Router>
             <div className="user">
-                <Switch>
-
-                    
-                    <Route path='/user/signup'>
-                        {!isSubmittied ? (<SignUp submitForm={submitForm}/>)
-                        : (<Login/>)}
-                    </Route>
+                <Switch>                    
                     <Route path='/user/updateprofile/:user_sequence_id'>
                         <Navbar/>
-                        {!isSubmittied ? (<UpdateProfile submitForm={submitForm}/>)
-                        : (<Profile/>)} 
+                        {!isSubmittied2 ? (<UpdateProfile submitForm2={submitForm2}/>)
+                        : (window.location.href="/user/:user_sequence_id")} 
                     </Route>
                     <Route path='/user/deleteprofile/:user_sequence_id'>
                         <Navbar/>
                         <DeleteProfile/>
                     </Route>
-                    <Route path='/user/:user_sequence_id'>
+                    <Route exact path='/user/:user_sequence_id'>
                         <Navbar />
                         <Profile />
                     </Route>
-                    <Route path='/user/order/:id'>
+                    <Route path='/user/order/:user_sequence_id'>
                         <Navbar/>
                         <Orders/>
                     </Route>
-                    <Route path='/user/orderdata/:id'>
+                    <Route path='/user/orderdata/:user_sequence_id'>
                         <Navbar/>
                         <OrdersData/>
+                    </Route>
+                    <Route path='/user/orderdetail/:user_sequence_id'>
+                        <Navbar/>
+                        <OrderDetails/>
                     </Route>
                 </Switch>
             </div>

@@ -11,7 +11,6 @@ import { auth } from "./configuration/firebase";
 import { useStateValue } from "./StateProvider/StateProvider";
 import Payment from "./payment/Payment";
 import Footer from "./footer/Footer";
-// import ImgSlide from "./slide/ImgSlide";
 import Slide2 from "./slide2/Slide2";
 import LandingPage from "./landingpage/LandingPage";
 import ProductView from "./ProductView/ProductView";
@@ -20,21 +19,25 @@ import "./App.css";
 import QnAForm from "./detail/QnAForm";
 import KakaoMap from "./Introduction/KakaoMap";
 import User from './user/User';
-import LoginForm from './authentication/LoginForm';
+// import LoginForm from './authentication/LoginForm';
+// import Login2 from './authentication/Login2';
+import SignUp from './authentication/SignUp';
 
 function App() {
 
-  // const [{}, dispatch] = useStateValue();
+  const [{}, dispatch] = useStateValue();
+
+  // const loggedIn = Login();
 
   // useEffect(() => {
-  //   auth.onAuthStateChanged(authUser => {
-  //     console.log("THE USER IS >>>", authUser);
+  //   const checkAuth = (loggedIn => {
+  //     console.log("THE USER IS >>>", loggedIn);
 
-  //     if (authUser) {
+  //     if (!(loggedIn==null)) {
   //       // the user logged in
   //       dispatch({
   //         type: "SET_USER",
-  //         user: authUser,
+  //         user: loggedIn,
   //       });
   //     } else {
   //       //the user is logged out
@@ -44,32 +47,42 @@ function App() {
   //       });
   //     }
   //   });
+  //   return checkAuth;
   // }, []);
+
+  const[isSubmittied, setIsSubmitted] = useState(false);
+
+    function submitForm(){
+        setIsSubmitted(true);
+    }
 
   return (
     //BEM convention
-
     <Router>
       <div className="app">
         <Switch>
-        {/* <Route path="/map">
-            <Map />
-          </Route> */}
           <Route path="/home">
             <Header />
             <Slide2 />
             <Home />
             <Footer />
           </Route>
+          <Route path='/signup'>
+            {!isSubmittied ? (<SignUp submitForm={submitForm}/>)
+              : (window.location.href="/login")}
+          </Route>
           <Route path="/login">
             <Login />
           </Route>
-          <Route path="/loginform">
+          {/* <Route path="/loginform">
             <LoginForm />
+          </Route>
+          <Route path="/login2">
+            <Login2 />
           </Route>
           <Route path="/logout">
             <LoginForm />
-          </Route>
+          </Route> */}
           <Route path="/checkout">
             <Header />
             <Checkout />
