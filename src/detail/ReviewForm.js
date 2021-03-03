@@ -148,7 +148,12 @@ const formData = new FormData();
             <button type="submit" onClick={()=>{
                 
                     form.review == '' ? alert("내용을 입력해주세요!") : alert("내용이 입력됐습니다.");
-                    /* window.close()*/} 
+                
+                    window.opener.parent.location.reload();
+                    window.self.close();
+                } 
+
+                    
                 
                 }>Submit</button>
                 
