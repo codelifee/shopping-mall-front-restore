@@ -1,11 +1,12 @@
-import React,{useState} from 'react';
-import './ReviewForm.css';
+import React,{useState, useEffect} from 'react';
+import './ReviewPatchDeleteForm.css';
 import { FaStar } from 'react-icons/fa'
 import {useStateValue} from '../StateProvider/StateProvider';
 import axios from '../axios/axios';
 import {useHistory, useLocation, useParams} from 'react-router-dom';
 
- function ReviewForm(){
+function ReviewPatchDeleteForm(){
+
 
 const history = useHistory();
 
@@ -13,29 +14,26 @@ const [rating, setRating] = useState(null);
 	
 const [hover, setHover] = useState(null);
 
-const {id} = useParams();
+const {id} = useParams(); //review_id
+
+const [reviews, setReviews] = useState([]);
+
+useEffect(() => {
+    async function fetchDate() {
+      const request = await axios
+      .get(`review/${id}`)
+      .then((response) => setReviews(response.data))
+      .catch((error) => console.log(error));
+      
+      return request;
+    }
+    
+    fetchDate();
+  }, []);
 
 const formData = new FormData();
 
-    const [form, setForm] = useState({
-        review_id: '',
-        product_id: id,
-        user_sequence_id: 8, //로그인 한 user의 user_sequence_id넣기
-        //if review 안에 있는 user정보와 로그인된 user 정보 같으면 중복 작성 안 됨.
-        review: '',
-        star: 0,
-        review_picture: null,
-        review_date_created: ''
-        }
-    )
-
-    formData.append('review_id', form.review_id)
-    formData.append('product_id',form.product_id)
-    formData.append('user_sequence_id',form.user_sequence_id)
-    formData.append('review',form.review)
-    formData.append('star',form.star)
-    formData.append('review_picture', form.review_picture)
-    formData.append('review_date_created',form.review_date_created)
+    formData.append('review_picture', reviews.review_picture)
 
     const config = {
         headers: {
@@ -47,13 +45,13 @@ const formData = new FormData();
         e.preventDefault()
 
         if (e.target.name == "star") {
-            setForm({
-                ...form,
+            setReviews({
+                ...reviews,
                 [e.target.name]: parseInt(e.target.value) 
             })
         } else {
-            setForm({
-                ...form,
+            setReviews({
+                ...reviews,
                 [e.target.name]: e.target.value 
             })
         }
@@ -63,31 +61,44 @@ const formData = new FormData();
     const handleFileChange = e => {
         e.preventDefault()
 
-        setForm({
-            ...form,
+        setReviews({
+            ...reviews,
             [e.target.name]: e.target.files[0]
         })
     }
 
-    const showForm = (e) => {
+    const updateForm = (e) => {
         e.preventDefault();
-        //삼항연산자로 사진이 null이면 글만 넘어가는 post로
-        //null이 아니면 아래 post로 동작하게 만들기
-        if(form.review_picture!==null){
-            return axios.post('/review/upload', formData, config)
+        
+        if(reviews.review_picture!=null){
+            return (axios.patch(`/review/image/${id}`, formData, config)
+            .then(res => console.log(res))
+            .catch(err => console.log(err)))&&
+            (axios.patch(`/review/${id}`, {review:reviews.review,
+                star: reviews.star
+            })
             .then(res => console.log(res))
             .catch(err => console.log(err))
+            )
         }else{
-            axios.post('/review', form)
+            axios.patch(`/review/${id}`, reviews)
             .then(res => console.log(res))
             .catch(err => console.log(err))
         }
     }
 
+    const deleteReview=(e)=>{
+        e.preventDefault();
+
+        axios.delete(`/review/${id}`)
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
+      }
+
 
      return(
-         <div className="ReviewForm">
-    
+         <div className="ReviewUpdateForm">
+
              <div className="stars">
 			{
 				[...Array(5)].map((star,i) => {
@@ -99,7 +110,7 @@ const formData = new FormData();
 								type="radio" 
 								name="rating" 
 								value={ratingValue}
-								onClick={()=>form.star=ratingValue}              
+								onClick={()=>reviews.star=ratingValue}              
 							/>
 							<FaStar 
 								className="star" 
@@ -115,45 +126,47 @@ const formData = new FormData();
 				})}
 		    </div>
 
-            <form className="review_form" onSubmit={form.review !== '' ? showForm : null}> 
+            <form className="review_update_form" onSubmit={reviews.review !== '' ? updateForm : null}> 
                 <label htmlFor="input">리뷰 작성</label>
               
                 <input 
                 id="input"
                 type="text" 
                 name="review"
-                value={form.review}
+                value={reviews.review}
                 onChange={handleChange}
                 />
 
                 <div className="file_upload">
                    
-                    <input 
+                <input 
                     type="file" 
                     id="file_upload"
                     name="review_picture" 
-                    file={form.review_picture} 
+                    file={reviews.review_picture} 
                     multiple onChange={handleFileChange}/>
                     
                 </div>    
             
-            
-
-                {console.log(form)}
+                {console.log(reviews)}
 
             <div className="button">
                 
             <button type="submit" onClick={()=>{
                 
-                    form.review == '' ? alert("내용을 입력해주세요!") : alert("내용이 입력됐습니다.");
+                reviews.review == '' ? alert("내용을 입력해주세요!") : alert("내용이 입력됐습니다.");
                     /* window.close()*/} 
                 
-                }>Submit</button>
+                }>수정</button> &nbsp;
+            <button onClick={deleteReview}>삭제</button>
                 
             </div>
+            
+            
             </form>
+            
          </div>
      );
  }
 
- export default ReviewForm;
+ export default ReviewPatchDeleteForm;

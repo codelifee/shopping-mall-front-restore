@@ -2,110 +2,240 @@
   margin: 0;
   padding: 0;
 }
-ul,
-li {
-  list-style: none;
-}
-.slide {
-  height: 500px;
-  overflow: hidden;
-  position: relative;
-}
-.slide ul {
-  width: calc(100% * 4);
-  display: flex;
-  transition: 1s;
-}
-.slide li {
-  width: calc(100% / 4);
-  height: 500px;
-}
-.slide li:nth-child(1) {
-  /* background: url("../img/pomegranate_slide.jpg");
-  background-position: center;
-  background-size: cover;
-*/
-}
-.slide li:nth-child(2) {
-  /* background: url("../img/pumpkin_slide.jpg");
-  background-position: center;
-  background-size: cover; */
-}
-/* .slide li:nth-child(3) {
-  background: #afa;
-}
-.slide li:nth-child(4) {
-  background: #aaf;
-} */
-.slide input {
+.section input[id*="slide"] {
   display: none;
 }
-.slide .bullet {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  text-align: center;
-  z-index: 10;
+.section .slidewrap {
+  max-width: 100%;
+  margin: 0 auto;
+  padding-top: 70px;
+  height: 370px;
 }
-.slide .bullet label {
-  width: 15px;
-  height: 15px;
-  border-radius: 15px;
-  display: inline-block;
-  background: #aaa;
+.section .slidelist {
+  white-space: nowrap;
   font-size: 0;
-  transition: 0.5s;
-  cursor: pointer;
-  margin: 10px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
 }
-/* 슬라이드 조작 */
-#pos1:checked ~ ul {
-  margin-left: 0;
-}
-#pos2:checked ~ ul {
-  margin-left: -100%;
-} /*
-#pos3:checked ~ ul {
-  margin-left: -200%;
-}
-#pos4:checked ~ ul {
-  margin-left: -300%;
-} */
-/* bullet 조작 */
-#pos1:checked ~ .bullet label:nth-child(1),
- #pos2:checked ~ .bullet label:nth-child(2)/*,
-#pos3:checked ~ .bullet label:nth-child(3),
-#pos4:checked ~ .bullet label:nth-child(4)  */ {
-  background: #ffb755;
-}
-li {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.slide1 {
-  background: rgba(0, 0, 0, 0.5);
-  width: 94%;
-  height: 400px;
-  border-radius: 10px;
-  font-size: 100px;
-  color: #fff;
+.section .slidelist > .slideitem {
+  display: inline-block;
+  vertical-align: middle;
+  transition: all 0.5s;
+  width: 100%;
+  height: 300px;
 }
 
-.slide_bg1 {
-  background: url("../img/pumpkin_slide.jpg");
-  background-position: center;
+.slideitem_img1 {
+  background: url("../img/pumpkin_slide.jpg") center center;
   background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  height: 300px;
 }
-.slide_bg2 {
-  background: url("../img/pomegranate_slide.jpg");
-  background-position: center;
+.slideitem_img2 {
+  background: url("../img/pomegranate_slide.jpg") center center;
   background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  height: 300px;
+}
+.slideitem_img3 {
+  background: url("../img/pumpkin_slide.jpg") center center;
+  background-size: cover;
+  width: 100%;
+  height: 300px;
+}
+
+.section .slidelist > .slideitem > Link {
+  display: block;
+  position: relative;
+}
+
+.section .slidelist label {
+  position: absolute;
+  z-index: 10;
+  top: 150px;
+  transform: translateY(-50%);
+  padding: 50px;
+  cursor: pointer;
+}
+.section .slidelist .textbox {
+  position: absolute;
+  z-index: 1;
+  top: 150px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1.6;
+  text-align: center;
+}
+.section .slidelist .textbox .textbox_h3 {
+  font-size: 36px;
+  color: #fff;
+  transform: translateY(30px);
+  transition: all 0.5s;
+}
+.section .slidelist .textbox .slideitem_p {
+  font-size: 16px;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.5s;
+}
+
+/* input에 체크되면 슬라이드 효과 */
+.section input[id="slide01"]:checked ~ .slidewrap .slidelist > .slideitem {
+  transform: translateX(0%);
+}
+.section input[id="slide02"]:checked ~ .slidewrap .slidelist > .slideitem {
+  transform: translateX(-100%);
+}
+.section input[id="slide03"]:checked ~ .slidewrap .slidelist > .slideitem {
+  transform: translateX(-200%);
+}
+
+/* input에 체크되면 텍스트 효과 */
+.section
+  input[id="slide01"]:checked
+  ~ .slidewrap
+  li:nth-child(1)
+  .textbox
+  .textbox_h3 {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.2s;
+}
+.section
+  input[id="slide01"]:checked
+  ~ .slidewrap
+  li:nth-child(1)
+  .textbox
+  .slideitem_p {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.4s;
+}
+.section
+  input[id="slide02"]:checked
+  ~ .slidewrap
+  li:nth-child(2)
+  .textbox
+  .textbox_h3 {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.2s;
+}
+.section
+  input[id="slide02"]:checked
+  ~ .slidewrap
+  li:nth-child(2)
+  .textbox
+  .slideitem_p {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.4s;
+}
+.section
+  input[id="slide03"]:checked
+  ~ .slidewrap
+  li:nth-child(3)
+  .textbox
+  .textbox_h3 {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.2s;
+}
+.section
+  input[id="slide03"]:checked
+  ~ .slidewrap
+  li:nth-child(3)
+  .textbox
+  .slideitem_p {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.4s;
+}
+
+/* 좌,우 슬라이드 버튼 */
+.slide-control > div {
+  display: none;
+}
+.section .left {
+  left: 30px;
+  background: url("../img/left.png") center center / 100% no-repeat;
+}
+.section .right {
+  right: 30px;
+  background: url("../img/right.png") center center / 100% no-repeat;
+}
+.section
+  input[id="slide01"]:checked
+  ~ .slidewrap
+  .slide-control
+  > div:nth-child(1) {
+  display: block;
+}
+.section
+  input[id="slide02"]:checked
+  ~ .slidewrap
+  .slide-control
+  > div:nth-child(2) {
+  display: block;
+}
+.section
+  input[id="slide03"]:checked
+  ~ .slidewrap
+  .slide-control
+  > div:nth-child(3) {
+  display: block;
+}
+
+/* 페이징 */
+.slide-pagelist {
+  text-align: center;
+  padding: 20px;
+}
+.slide-pagelist > .slideitem {
+  display: inline-block;
+  vertical-align: middle;
+}
+.slide-pagelist > .slideitem > label {
+  display: block;
+  padding: 8px 30px;
+  border-radius: 30px;
+  background: #ccc;
+  margin: 20px 10px;
+  cursor: pointer;
+}
+.section
+  input[id="slide01"]:checked
+  ~ .slidewrap
+  .slide-pagelist
+  > .slideitem:nth-child(1)
+  > label {
+  background: #999;
+}
+.section
+  input[id="slide02"]:checked
+  ~ .slidewrap
+  .slide-pagelist
+  > .slideitem:nth-child(2)
+  > label {
+  background: #999;
+}
+.section
+  input[id="slide03"]:checked
+  ~ .slidewrap
+  .slide-pagelist
+  > .slideitem:nth-child(3)
+  > label {
+  background: #999;
+}
+@media all and (max-width: 414px) {
+  .section .left {
+    left: -20px;
+    background: url("../img/left.png") center center / 100% no-repeat;
+  }
+  .section .right {
+    right: -20px;
+    background: url("../img/right.png") center center / 100% no-repeat;
+  }
 }

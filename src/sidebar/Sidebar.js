@@ -2,11 +2,15 @@ import React, {useEffect, useState} from "react";
 import './Sidebar.css'
 import { Link, useHistory } from 'react-router-dom';
 import axios from '../axios/axios';
+import * as FaIcons from 'react-icons/fa';
+import * as AiIcons from 'react-icons/ai';
+import { IconContext } from 'react-icons';
 
 
 
 function Sidebar() {
-
+  const [sidebar, setSidebar] = useState(false);
+  const showSidebar = () => setSidebar(!sidebar);
   const [categories, setCategories] = useState([]);
   const history = useHistory();
   
@@ -23,41 +27,34 @@ function Sidebar() {
 }, [])
 
     return (
-    <div>
-     <div className="menu_botton">
-
- <input type="checkbox" id="menuicon" className="menu"/>
-  <label for="menuicon">
-    <span></span>
-    <span></span>
-    <span></span>
-    </label>
+      <IconContext.Provider value={{ color: '#333' }}>
    
-    <div  className="sidebar" >
+   
+          
+            <div style={{color:'#333',fontSize:'25px',marginLeft:'15px',marginTop:'10px'}}> <FaIcons.FaBars onClick={showSidebar}/></div>
+          
+        
+        <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+          <ul className='nav-menu-items' onClick={showSidebar}    >  
+            <li className='navbar-toggle'>
+              <Link to='#' className='menu-bars'>
+                <AiIcons.AiOutlineClose />
+              </Link>
+            </li>
      
 
-      <ul className="menu_list">
-     {/* <li><Link to='/' className="menu_link">Home smart</Link></li>
-     <li><Link to='/' className="menu_link">Furniture</Link></li>
-     <li><Link to='/' className="menu_link">Beds & mattresses</Link></li>
-     <li><Link to='/' className="menu_link">Storage & organisation</Link></li>
-     <li><Link to='/' className="menu_link">Kitchen & appliances</Link></li>
-     <li><Link to='/' className="menu_link">Decoration</Link></li>
-     <li><Link to='/' className="menu_link">Lighting</Link></li>
-     <li><Link to='/' className="menu_link">Rugs, mats & flooring</Link></li>
-     <li><Link to='/' className="menu_link">Home improvement</Link></li> */}
-
      {categories.map((category,i)=>{
-       return <li key={i} className="menu_link" onClick={()=>{
-         return history.push(`/products/${category.category_id}`)
-       }}
-       >{category.category_name}</li>
+       return <a href={`/products/${category.category_id}`}>
+         <li key={i} className="menu_link">{category.category_name}</li>
+         </a>
      })}
     
       </ul>
-      </div>   
-     </div>
-     </div>
+      </nav>
+     
+     
+     
+     </IconContext.Provider>
     );
   }
   

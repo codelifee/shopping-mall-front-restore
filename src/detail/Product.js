@@ -11,7 +11,7 @@ function Product(props) {
     const [{basket}, dispatch] = useStateValue();
     const image = "http://shoppingmall-env.eba-jac9afx7.us-east-1.elasticbeanstalk.com/products/showProductImage/";
     
-    let history = useHistory();
+   
     
     const addToBasket = () => {
         //dispatch the item into the data layer
@@ -27,7 +27,7 @@ function Product(props) {
             },
         })
     }
-
+    let history = useHistory();
     return (
         <div className='product2'>
            

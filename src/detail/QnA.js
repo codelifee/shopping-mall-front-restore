@@ -8,7 +8,7 @@ function QnA() {
 
     const history = useHistory();
     const {id} = useParams();
-    const [{user}, dispatch] = useStateValue();
+    //const [{user}, dispatch] = useStateValue();
     const [question, setQuestion] = useState([]);
 
     useEffect(() => {
@@ -58,19 +58,18 @@ function QnA() {
             })
             .map((qus, i) => {
               return (
-                <div key={i}>
-                  <li className="question__list">
-                    <div className="question__list_user">{qus.user_id}</div>
+                <div className="question__list" key={i}>
+                    <div className="question__list_user">
+                      <span className="question__list_user_">
+                      {qus.user_id} 님 &nbsp;&nbsp;&nbsp;&nbsp;
+                      </span>
+                      {qus.question_date_created} 작성
+                    </div>
 
                     <div className="question__list_content">
                       <p>Q: {qus.question}</p>
                       <p>A: {qus.answer}</p>
                     </div>
-
-                    <div className="question__list_date">
-                      <p>{qus.question_date_created}</p>
-                    </div>
-                  </li>
                 </div>
               );
             })}

@@ -11,10 +11,12 @@ import { auth } from "./configuration/firebase";
 import { useStateValue } from "./StateProvider/StateProvider";
 import Payment from "./payment/Payment";
 import Footer from "./footer/Footer";
-import Slide2 from "./slide2/Slide2";
+// import ImgSlide from "./slide/ImgSlide";
+import Slider from "./slide2/Slide2";
 import LandingPage from "./landingpage/LandingPage";
 import ProductView from "./ProductView/ProductView";
 import ReviewForm from "./detail/ReviewForm";
+import ReviewPatchDeleteForm from "./detail/ReviewPatchDeleteForm";
 import "./App.css";
 import QnAForm from "./detail/QnAForm";
 import KakaoMap from "./Introduction/KakaoMap";
@@ -63,7 +65,7 @@ function App() {
         <Switch>
           <Route path="/home">
             <Header />
-            <Slide2 />
+            <Slider />
             <Home />
             <Footer />
           </Route>
@@ -75,14 +77,16 @@ function App() {
             <Login />
           </Route>
           {/* <Route path="/loginform">
+          <Header />
             <LoginForm />
+            <Footer />
           </Route>
           <Route path="/login2">
             <Login2 />
           </Route>
           <Route path="/logout">
             <LoginForm />
-          </Route> */}
+          </Route>  */}
           <Route path="/checkout">
             <Header />
             <Checkout />
@@ -102,6 +106,10 @@ function App() {
             <ReviewForm />
           </Route>
 
+          <Route path="/reviewUpdate/:id">
+            <ReviewPatchDeleteForm />
+          </Route>
+
           <Route path="/question/:id">
             <QnAForm />
           </Route>
@@ -110,9 +118,6 @@ function App() {
             <Header />
 
             <Payment />
-          </Route>
-          <Route path="/seller">
-            <Seller />
           </Route>
 
           <Route path="/seller">

@@ -2,7 +2,7 @@
     margin: auto 0;
 }
 
-.ReviewForm{
+.ReviewUpdateForm{
     background-color: #f3f3f3;
 }
 
@@ -22,13 +22,13 @@ input [type="radio"]{
     transition: color 200ms;
 }
 
-.review_form {
+.review_update_form {
     display: flex;
     flex-direction: column;
     margin: auto 0;
   }
   
-  .review_form > label {
+  .review_update_form > label {
     text-align: center;
     font-size: 30px;
     font-family: sans-serif;
