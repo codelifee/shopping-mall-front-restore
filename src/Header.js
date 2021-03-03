@@ -7,25 +7,28 @@ import './header.css'
 import { Link } from 'react-router-dom';
 import { useStateValue } from './StateProvider/StateProvider';
 import Sidebar from './sidebar/Sidebar'
-//import {auth} from  './configuration/firebase';
+import AllProducts from './sidebar/Sidebar'
+import {auth} from  './configuration/firebase';
 import {connect} from 'react-redux';
 import {logoutUser} from './services/index';
+import Login from './authentication/Login';
 
+//class Header extends Component{
+function Header() {
+    // logout = () => {
+    //     this.props.logoutUser();
+    // };
 
-class Header extends Component{
+    //render() {
+        const [{basket, user}, dispatch] = useStateValue();
 
-    logout = () => {
-        this.props.logoutUser();
-    };
+        const {loggedIn, values, signOut} = Login();
 
-    render() {
-        //const [{basket, user}, dispatch] = useStateValue();
-
-        // const handleAuthentication = () => {
-        //     if (user) {
-        //     auth.signOut();
-        //     }
-        // }
+        const handleAuthentication = () => {
+            if (!(loggedIn==null)) {
+                signOut();
+            }
+        }
 
         const guestLinks = (
             <>
@@ -40,12 +43,12 @@ class Header extends Component{
 
         const userLinks = (
             <>
-            <Link to="/home" onClick={this.logout}>
+            {/* <Link to="/home" onClick={this.logout}>
                 <div className='header__option'>
                     <span className='header__optionLineOne'>Goodbye</span>
                     <span className='header__optionLinetwo'>Log Out</span>
                 </div>
-            </Link> 
+            </Link>  */}
 
             <Link to="/seller">
                     <div className='header__option'>
@@ -67,12 +70,12 @@ class Header extends Component{
 
         const adminLinks = (
             <>
-                <Link to="/home" onClick={this.logout}>
+                {/* <Link to="/home" onClick={this.logout}>
                     <div className='header__option'>
                         <span className='header__optionLineOne'>Goodbye</span>
                         <span className='header__optionLinetwo'>Log Out</span>
                     </div>
-                </Link> 
+                </Link>  */}
                     
                     <Link to="/seller">
                         <div className='header__option'>
@@ -107,35 +110,48 @@ class Header extends Component{
                 <div className="header__nav">  
                     {/* {this.props.auth.isLoggedIn ? userLinks:guestLinks} */}
                     
-                    {/* <Link to={!user && '/login'}>
+                    <Link to={!values && '/login'}>
                         <div onClick={handleAuthentication} className='header__option'>
                             <span className='header__optionLineOne'>
-                                Hello {!user ? 'Guest' : user?.email}
+                                Hello {!values ? 'Guest' : values?.user_id}
                             </span>
                             <span className='header__optionLinetwo'>
-                                {user ? 'Sign out' : 'Sign In'}
+                                {values ? 'Sign out' : 'Sign In'}
                             </span>
                         </div>
-                    </Link> */} 
+                    </Link> 
+                    <Link to="/seller">
+                        <div className='header__option'>
+                            <span className='header__optionLineOne'>seller</span>
+                            <span className='header__optionLinetwo'>Center</span>
+                        </div>
+                    </Link>
+                    <Link to='/checkout'>
+                    <div className="header__optionBasket">
+                        <ShoppingBasketIcon />
+                        <span className="header__optionLineTwo header__basketCount">
+                            {/* {basket?.length} */}
+                        </span>
+                    </div>
+                    </Link>
                     </div>
                 </div>
             </div>
         )
     };
-};
+//};
 
-const mapStateProps = state => {
-    return {
-        auth:state.auth
-    }
-};
+// const mapStateProps = state => {
+//     return {
+//         auth:state.auth
+//     }
+// };
 
-const mapDispatchToProps = dispatch => {
-    return {
-        logoutUser:() => dispatch(logoutUser())
-    };
-};
+// const mapDispatchToProps = dispatch => {
+//     return {
+//         logoutUser:() => dispatch(logoutUser())
+//     };
+// };
 
-//export default connect(mapStateProps, mapDispatchToProps)(Header);
+// export default connect(mapStateProps, mapDispatchToProps)(Header);
 export default Header;
-

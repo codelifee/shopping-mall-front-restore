@@ -1,35 +1,63 @@
-import React, { useState } from 'react'
-import './Login.css'
-import {Link, useHistory} from "react-router-dom";
-import logo from '../img/logo.png'
-import { auth } from '../configuration/firebase'
+import React, { useState, useEffect } from 'react';
+import './Login.css';
+import {Link,useHistory} from "react-router-dom";
+import logo from '../img/logo.png';
+import axios from '../axios/axios';
 
 function Login() {
     const history = useHistory();
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [users, setUsers] = useState({
+        user_sequence_id: 0,
+        user_id: '', 
+        user_pwd: ''
+    });
+    useEffect(() => {
+        async function fetchData() {
+            const request = await axios.get(`users/all`)
+            .then(response => setUsers(response.data))
+            .catch(error => console.log(error))
+           
+            return request;
+        }
+        fetchData();
+    }, []);
+    const [values, setValues] = useState({
+        user_sequence_id: 0,
+        user_id: '', 
+        user_pwd: '',
+    });
+    const handleChange = e => {
+        const {name, value} = e.target
+        setValues({
+            ...values,
+            [name]: value
+        });
+    };
 
-    const signIn = e => {
-        e.preventDefault();
+    let loggedIn = null;
+    let id = 0;
 
-        auth.signInWithEmailAndPassword(email, password)
-        .then(auth => {
-            history.push('/')
-        })
-        .catch(error => alert(error.message))
+    const signIn = () => { 
+            if(values.user_id == 'admin' && values.user_pwd == "adminpwd"){
+                loggedIn="admin";
+            }else{
+                users.map((data, i) => {
+                    if(values.user_id === users[i].user_id){
+                        if(values.user_pwd === users[i].user_pwd){
+                            loggedIn = "user";
+                        }
+                    }else{
+                        return alert('아이디와 비밀번호를 다시 입력하세요');
+                    }
+                }) 
+            }
+        if(!(loggedIn==null)){
+            return history.push=('/home');
+        }
     }
 
-    const register = e => {
-        e.preventDefault();
-
-        auth.createUserWithEmailAndPassword(email, password)
-        .then((auth) => {
-            console.log(auth)
-            if (auth) {
-                history.push('/')
-            }
-        })
-        .catch(error => alert(error.message))
+    const signOut = () => {
+        setValues(null);
     }
 
     return (
@@ -41,16 +69,17 @@ function Login() {
             <div className='login__container'>
                 <h1>Sign in</h1>
                 <form>
-                    <h5>E-mail</h5>
+                    <h5>Id</h5>
                     <input 
                     type='text' 
-                    value={email}
-                    onChange={e => setEmail(e.target.value)}
+                    defaultValue={values.user_id}
+                    onChange={handleChange}
                     />
 
                     <h5>Password</h5>
-                    <input type='password' value={password}
-                    onChange={e => setPassword(e.target.value)}
+                    <input type='password' 
+                    defaultValue={values.user_pwd}
+                    onChange={handleChange}
                     />
 
                     <button
@@ -59,13 +88,14 @@ function Login() {
                     className='login__signInButton'>Sign In</button>
                 </form>
 
-                <button 
-                onClick={register}
-                className='login__registerButton'>Create Account</button>
-                
+                <Link to ="/signup">
+                    <button className='login__registerButton'>Create Account</button>
+                </Link>
+            
             </div>
         </div>
     )
+    return {loggedIn, values, signOut};
 }
 
-export default Login
+export default Login;

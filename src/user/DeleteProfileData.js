@@ -1,8 +1,6 @@
 import {useState, useEffect} from 'react';
 import axios from '../axios/axios';
-import { useParams, useHistory} from 'react-router-dom';
-/* global history */
-/* eslint no-restricted-globals: ["off"] */
+import { useParams} from 'react-router-dom';
 
 const DeleteProfileData = (callback) => {
 
@@ -11,12 +9,6 @@ const DeleteProfileData = (callback) => {
     const {user_sequence_id} = useParams();
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [errors, setErrors] = useState({});
-
-    const history = useHistory();
-
-    const goHome = () => {
-      history.push('/home');
-    };
 
     useEffect(() => {
         async function fetchData() {
@@ -85,7 +77,7 @@ const DeleteProfileData = (callback) => {
             axios.delete(`http://localhost:5000/users/${user_sequence_id}`, user)
             .then(alert("탈퇴가 완료되었습니다."))
             .catch(err => console.log(err))
-            history.push('/');
+            window.location.href="/home";
         }
         setIsSubmitting(true);
     };
