@@ -107,7 +107,7 @@ class Header extends Component{
                 <div className="header__nav">  
                     {/* {this.props.auth.isLoggedIn ? userLinks:guestLinks} */}
                     
-                    {/* <Link to={!user && '/login'}>
+                    {<Link to={!user && '/login'}>
                         <div onClick={handleAuthentication} className='header__option'>
                             <span className='header__optionLineOne'>
                                 Hello {!user ? 'Guest' : user?.email}
@@ -116,7 +116,7 @@ class Header extends Component{
                                 {user ? 'Sign out' : 'Sign In'}
                             </span>
                         </div>
-                    </Link> */} 
+                    </Link> } 
                     </div>
                 </div>
             </div>
@@ -124,17 +124,17 @@ class Header extends Component{
     };
 };
 
-const mapStateProps = state => {
-    return {
-        auth:state.auth
-    }
-};
+// const mapStateProps = state => {
+//     return {
+//         auth:state.auth
+//     }
+// };
 
-const mapDispatchToProps = dispatch => {
-    return {
-        logoutUser:() => dispatch(logoutUser())
-    };
-};
+// const mapDispatchToProps = dispatch => {
+//     return {
+//         logoutUser:() => dispatch(logoutUser())
+//     };
+// };
 
 //export default connect(mapStateProps, mapDispatchToProps)(Header);
 export default Header;

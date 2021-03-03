@@ -1,7 +1,7 @@
 import React from 'react';
 import './SignUp.css';
 import SignUpData from './SignUpData';
-import Validate from './ValidateInfo';
+import Validate from '../user/ValidateInfo';
 
 function SignUp({submitForm}) {
 
