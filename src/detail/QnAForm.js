@@ -61,7 +61,7 @@ function QnAForm(){
                 
                 form.question == '' ? alert("내용을 입력해주세요!") : alert("내용이 입력됐습니다.");
                 window.opener.parent.location.reload();
-                window.self.close();
+                setTimeout("self.close()", 2000 );
                 
             }}>Submit</button>
             </div>

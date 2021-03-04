@@ -155,7 +155,7 @@ const formData = new FormData();
                 reviews.review == '' ? alert("내용을 입력해주세요!") : alert("내용이 입력됐습니다.");
 
                 window.opener.parent.location.reload();
-                window.self.close();
+                setTimeout("self.close()", 2000 )
           } 
                 
                 }>수정</button> &nbsp;
@@ -164,7 +164,7 @@ const formData = new FormData();
             </form>
             
             <button onClick={()=>{
-                return deleteReview(), window.opener.parent.location.reload(), window.self.close(); 
+                return deleteReview(), window.opener.parent.location.reload(),setTimeout("self.close()", 2000 ); 
             }}>삭제</button>
 
          </div>
