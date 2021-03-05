@@ -148,24 +148,24 @@ const formData = new FormData();
             
                 {console.log(reviews)}
 
-            <div className="button">
+                <div className="button">
                 
-            <button type="submit" onClick={()=>{
-                
-                reviews.review == '' ? alert("내용을 입력해주세요!") : alert("내용이 입력됐습니다.");
+                    <button className="reviewPatchSubmit" type="submit" onClick={()=>{
+                        
+                        reviews.review == '' ? alert("내용을 입력해주세요!") : alert("내용이 입력됐습니다.");
 
-                window.opener.parent.location.reload();
-                setTimeout("self.close()", 2000 )
-          } 
+                        window.opener.parent.location.reload();
+                        setTimeout("self.close()", 2000 )
+                } 
+                        
+                        }>수정</button> &nbsp;
                 
-                }>수정</button> &nbsp;
-                
-            </div>
+                    <button className="reviewDelete" onClick={()=>{
+                        return deleteReview(), window.opener.parent.location.reload(),setTimeout("self.close()", 2000 ); 
+                    }}>삭제</button>
+                </div>
             </form>
             
-            <button onClick={()=>{
-                return deleteReview(), window.opener.parent.location.reload(),setTimeout("self.close()", 2000 ); 
-            }}>삭제</button>
 
          </div>
      );
