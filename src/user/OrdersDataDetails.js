@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import axios from "../axios/axios";
 import "./OrdersData.css";
 import { useParams } from "react-router-dom";
-
-function OrdersData({date, status, product, price, picture }) {
+import {  useHistory } from 'react-router-dom';
+function OrdersData({date, status, product, price, picture,props, id, img} ) {
  
    
   const [customer, setCustomer] = useState([]);
   const {user_sequence_id} = useParams();
-
+  const history = useHistory();
   useEffect(() => {
       async function fetchData() {
           const request = await axios.get(`users/${user_sequence_id}`)
@@ -27,11 +27,12 @@ function OrdersData({date, status, product, price, picture }) {
  
   const [startDate, setStartDate] = useState(new Date());
   const [orders, setOrders] = useState([{}]);
-
+  const [products, setProducts] = useState([]);
+  
 
 
  
-  const img = `http://shoppingmall-env.eba-jac9afx7.us-east-1.elasticbeanstalk.com/products/showProductImage/`;
+  
 
   useEffect(() => {
     async function fetchDate() {
@@ -46,6 +47,7 @@ function OrdersData({date, status, product, price, picture }) {
 
     fetchDate();
   }, []); 
+ 
 
   return (
     <div>
@@ -68,7 +70,7 @@ function OrdersData({date, status, product, price, picture }) {
 
       <div className="orders">
         
-        <img src={picture} className="orderImg" alt="제품사진" />
+        <img src={img} className="orderImg" alt="제품사진" />
         <div className="orderWrp">
           <div className="orderProduct">{product}</div>
           <div className="orderPrice">{price}원</div>
@@ -77,9 +79,15 @@ function OrdersData({date, status, product, price, picture }) {
         {/* <button className="order_Product_btn">제품상세보기</button> */}
         <div className="order_Button">
           
-          <button className="order_btn">반품신청</button>
-          <button className="order_btn">교환신청</button>
-          <button className="order_btn">구매후기</button>
+          <button className="order_btn"  onClick={()=>{
+         history.push(`/user/return/${user_sequence_id}`)
+       }}>반품신청</button>
+          <button className="order_btn"   onClick={()=>{
+         history.push(`/user/exchange/${user_sequence_id}`)
+       }}>교환신청</button>
+          <button className="order_btn" onClick={()=>{
+         history.push(`/review/${id}`)
+       }}>구매후기</button>
         </div>
       </div>
       {/* <div className="Name">{name} </div> */}

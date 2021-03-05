@@ -1,10 +1,10 @@
-.return {
+.exchange {
   width: 80%;
 }
-.return__container {
+.exchange__container {
   width: 100%;
 }
-.return_radio {
+.exchange_radio {
   display: inline-block;
 
   width: 20px;
@@ -13,12 +13,12 @@
   top: 9px;
   margin-left: 20px;
 }
-.return_table {
+.exchange_table {
   width: 100%;
   margin-top: 50px;
 }
 
-.return_input {
+.exchange_input {
   width: 100%;
   height: 100px;
   padding: 20px;
@@ -26,24 +26,23 @@
 
   border: 1px dotted #aaa;
 }
-.return__info {
+.exchange__info {
   width: 100%;
 }
-.return__add {
+.exchange__add {
   width: 100%;
   height: 100px;
   margin-top: 20px;
 }
-.return2_table {
+.exchange2_table {
   width: 100%;
   margin-top: 50px;
 }
-.return_Notice {
+.exchange_Notice {
   font-size: 12px;
   color: #f00;
 }
-
-.return_button {
+.exchange_button {
   padding: 5px;
   border-radius: 20px;
   margin-left: 10px;

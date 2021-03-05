@@ -81,7 +81,7 @@ const UpdateProfileData = (callback,Validate) => {
     }
 
     const putForm = () => {        
-        axios.put(`http://localhost:5000/users/${user_sequence_id}`, form)
+        axios.put(`http://localhost:5000/users/${user_sequence_id}`)
         .then(alert("수정이 완료되었습니다."))
         .catch(err => console.log(err))
     }
@@ -89,9 +89,9 @@ const UpdateProfileData = (callback,Validate) => {
     const checkPhone2 = () => {
         check.map((data,i)=>{
             if(form.user_phone === check[i].user_phone){
-                errors.user_phone = "사용가능한 전화번호입니다.";
-            }else{
                 errors.user_phone = "사용불가능한 전화번호입니다.";
+            }else{
+                errors.user_phone = "사용가능한 전화번호입니다.";
             }
             return errors;
         })

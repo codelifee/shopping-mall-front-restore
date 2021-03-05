@@ -13,7 +13,7 @@ function UpdateProfile({submitForm}) {
                 <div className="updateProfile__container__head">
                     <h1>Update {form.user_name}'s Profile</h1>
                 </div>
-                <form className="updateProfile__search" onSubmit={handleSubmit}>
+                <form className="updateProfile__search"onSubmit={handleSubmit} noValidate>
                     <div className="update__id">
                         <label>Id</label>
                         <span>{form.user_id}</span>
@@ -77,7 +77,8 @@ function UpdateProfile({submitForm}) {
                         {errors.user_address && <p>{errors.user_address}</p>}
                     </div>
                     <button 
-                    type="submit"
+                     type="submit" value="Submit"
+                    
                     >Update</button>
                 </form>
             </div>

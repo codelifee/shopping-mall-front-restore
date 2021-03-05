@@ -4,7 +4,7 @@ import "./OrdersData.css";
 import { useParams } from "react-router-dom";
 import { Link, useHistory } from 'react-router-dom';
 
-function OrdersData({  date, status, product, price, picture }) {
+function OrdersData({  date, status, product, price, picture, id }) {
   const [orders, setOrders] = useState([]);
   const history = useHistory();
   const {user_sequence_id} = useParams();
@@ -20,7 +20,6 @@ function OrdersData({  date, status, product, price, picture }) {
     fetchDate();
 }, [])
 
-   
   return (
     <div>
       <div className="order_title">
@@ -59,9 +58,15 @@ function OrdersData({  date, status, product, price, picture }) {
         {/* <button className="order_Product_btn">제품상세보기</button> */}
         <div className="order_Button">
           
-          <button className="order_btn">반품신청</button>
-          <button className="order_btn">교환신청</button>
-          <button className="order_btn">구매후기</button>
+          <button className="order_btn" onClick={()=>{
+         history.push(`/user/return/${user_sequence_id}`)
+       }}>반품신청</button>
+          <button className="order_btn" onClick={()=>{
+         history.push(`/user/exchange/${user_sequence_id}`)
+       }}>교환신청</button>
+          <button className="order_btn" onClick={()=>{
+         history.push(`/review/${id}`)
+       }}>구매후기</button>
         </div>
       </div>
       {/* <div className="Name">{name} </div> */}

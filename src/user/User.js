@@ -1,9 +1,13 @@
 import {React,useState} from 'react';
+
 import Navbar from './Navbar';
 import SignUp from './SignUp';
 import UpdateProfile from './UpdateProfile';
+
 import Profile from './Profile';
 import Orders from './Orders';
+import Exchange from './Exchange';
+import ReviewForm from '../detail/ReviewForm';
 import Return from './Return';
 import OrderDetails from './OrderDetails';
 import OrdersData from './OrdersData';
@@ -13,6 +17,7 @@ import Login from'../authentication/Login';
 import DeleteProfile from './DeleteProfile';
 
 function User() {
+    
     const[isSubmittied, setIsSubmitted] = useState(false);
 
     function submitForm(){
@@ -25,15 +30,15 @@ function User() {
                 <Switch>
 
                     
-                    <Route path='/user/signup'>
+                     <Route path='/user/signup'>
                         {!isSubmittied ? (<SignUp submitForm={submitForm}/>)
                         : (<Login/>)}
-                    </Route>
-                    <Route path='/user/updateprofile/:user_sequence_id'>
+                    </Route> 
+                     <Route path='/user/updateprofile/:user_sequence_id'>
                         <Navbar/>
                         {!isSubmittied ? (<UpdateProfile submitForm={submitForm}/>)
                         : (<Profile/>)} 
-                    </Route>
+                    </Route> 
                     <Route path='/user/deleteprofile/:user_sequence_id'>
                         <Navbar/>
                         <DeleteProfile/>
@@ -42,6 +47,8 @@ function User() {
                         <Navbar />
                         <Profile />
                     </Route>
+                    
+                   
                     <Route path='/user/order/:user_sequence_id'>
                         <Navbar/>
                         <Orders/>
@@ -54,10 +61,18 @@ function User() {
                         <Navbar/>
                         <OrderDetails/>
                     </Route>
-                    <Route path='/user/return'>
+                    <Route path='/user/return/:user_sequence_id'>
                         <Navbar/>
                         <Return/>
                     </Route>
+                   
+                        
+                    
+                    <Route path='/user/exchange/:user_sequence_id'>
+                        <Navbar/>
+                        <Exchange/>
+                    </Route>
+                    
                 </Switch>
             </div>
         </Router>
