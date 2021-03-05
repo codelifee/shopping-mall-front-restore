@@ -83,6 +83,18 @@ const UpdateProfileData = (callback,Validate) => {
             }
             return errors;
         })
+        // let re = -1; 
+        // axios({
+        //     url: `/users/checkPhone`,
+        //     method: 'post',
+        //     data:{
+        //         user_phone : values.user_phone,
+        //         user_id : values.user_id
+        //     }
+        // })
+        // .then(res => re = res.data)
+        // .catch(err => console.log(err))  
+        // (re==1? errors.user_id = "사용가능한 전화번호입니다." : errors.user_id = "사용불가능한 전화번호입니다.")
     }
 
     return {handleChange, form, handleSubmit, errors, checkPhone2};

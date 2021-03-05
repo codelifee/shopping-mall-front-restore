@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from '../axios/axios';
 import './AnswerYetQuestionModal.css';
 
@@ -18,6 +18,15 @@ function AnswerYetQuestionModal({ id }) {
     setForm({
       ...form,
       [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleDelete = (e) => {
+    e.preventDefault();
+
+    setForm({
+      ...form,
+      answer: '',
     });
   };
 
@@ -58,7 +67,7 @@ function AnswerYetQuestionModal({ id }) {
             Submit
           </button>
           <br />
-          <button type="reset">reset</button>
+          <button onClick={handleDelete}>reset</button>
         </div>
       </form>
     </div>

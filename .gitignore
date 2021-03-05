@@ -6,8 +6,7 @@
 .pnp.js
 
 # eslint
-.eslintcache
-.eslintcache~4cba4f01580cbfd4a21768081f55e4eecde8633c
+.eslintcache*
 
 # testing
 /coverage

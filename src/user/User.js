@@ -4,13 +4,14 @@ import UpdateProfile from './UpdateProfile';
 import Profile from './Profile';
 import Orders from './Orders';
 import OrdersData from './OrdersData';
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import {BrowserRouter as Router, Switch, Route, useParams} from "react-router-dom";
 import './User.css';
 import DeleteProfile from './DeleteProfile';
 import OrderDetails from './OrderDetails';
 
 function User() {
     const[isSubmittied, setIsSubmitted] = useState(false);
+    const user_sequence_id = useParams();
 
     function submitForm(){
         setIsSubmitted(true);
@@ -23,7 +24,7 @@ function User() {
                     <Route path='/user/updateprofile/:user_sequence_id'>
                         <Navbar/>
                         {!isSubmittied ? (<UpdateProfile submitForm={submitForm}/>)
-                        : (window.location.href="/user/:user_sequence_id")} 
+                        : (window.location.href="/home")} 
                     </Route>
                     <Route path='/user/deleteprofile/:user_sequence_id'>
                         <Navbar/>
