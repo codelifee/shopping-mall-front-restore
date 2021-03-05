@@ -26,16 +26,21 @@ import Slider from "./slide2/Slide2";
 import LandingPage from "./landingpage/LandingPage";
 import ProductView from "./ProductView/ProductView";
 import ReviewForm from "./detail/ReviewForm";
-import ReviewPatchForm from "./detail/ReviewPatchForm";
+import ReviewPatchDeleteForm from "./detail/ReviewPatchDeleteForm";
 import "./App.css";
 import QnAForm from "./detail/QnAForm";
 import KakaoMap from "./Introduction/KakaoMap";
 >>>>>>> 0aea035492151bd980dc74a1f932cbd4f28076c4
 import User from './user/User';
-import LoginForm from './authentication/LoginForm';
+import SignUp from './authentication/SignUp';
 
 function App() {
+<<<<<<< HEAD
   // const [{}, dispatch] = useStateValue();
+=======
+
+  const [{}, dispatch] = useStateValue();
+>>>>>>> 66cabdd201344513c5dcc4afc348645df2291b8d
 
   // useEffect(() => {
   //   auth.onAuthStateChanged(authUser => {
@@ -57,24 +62,37 @@ function App() {
   //   });
   // }, []);
 
+  const[isSubmittied, setIsSubmitted] = useState(false);
+
+    function submitForm(){
+        setIsSubmitted(true);
+    }
+
   return (
     //BEM convention
-
     <Router>
       <div className="app">
         <Switch>
+<<<<<<< HEAD
           {/* <Route path="/map">
             <Map />
           </Route> */}
+=======
+>>>>>>> 66cabdd201344513c5dcc4afc348645df2291b8d
           <Route path="/home">
             <Header />
             <Slider />
             <Home />
             <Footer />
           </Route>
+          <Route path='/signup'>
+            {!isSubmittied ? (<SignUp submitForm={submitForm}/>)
+              : (window.location.href="/login")}
+          </Route>
           <Route path="/login">
             <Login />
           </Route>
+<<<<<<< HEAD
           <Route path="/loginform">
             <Header />
             <LoginForm />
@@ -83,6 +101,8 @@ function App() {
           <Route path="/logout">
             <LoginForm />
           </Route>
+=======
+>>>>>>> 66cabdd201344513c5dcc4afc348645df2291b8d
           <Route path="/checkout">
             <Header />
             <Checkout />
@@ -103,9 +123,9 @@ function App() {
           <Route path="/review/:id">
             <ReviewForm />
           </Route>
-
+          
           <Route path="/reviewUpdate/:id">
-            <ReviewPatchForm />
+            <ReviewPatchDeleteForm />
           </Route>
 
           <Route path="/question/:id">
@@ -116,9 +136,6 @@ function App() {
             <Header />
 
             <Payment />
-          </Route>
-          <Route path="/seller">
-            <Seller />
           </Route>
 
           <Route path="/seller">

@@ -37,10 +37,7 @@ function OrderDetails() {
     })
 
     const [startDate, setStartDate] = useState(new Date());
-    const [orders, setOrders] = useState([{}]);
-  
-  
-  
+    const [orders, setOrders] = useState([{}]);  
    
     const img = `http://shoppingmall-env.eba-jac9afx7.us-east-1.elasticbeanstalk.com/products/showProductImage/`;
   
@@ -60,10 +57,6 @@ function OrderDetails() {
   
     return (
         <div className="orderDetails">
-
-
-
-
             <div className="orderDetails__container">
             <div className="orderDetails__container__head">
                     <h3  className="orderDetails_title">주문상세</h3>
@@ -73,6 +66,7 @@ function OrderDetails() {
               status={order.order_status}
               key={order.order_id}
               name={order.user_id}
+              id={order.product_id}
               product={order.product_name}
               date={order.order_date_created}
               address={order.user_address}
@@ -89,20 +83,20 @@ function OrderDetails() {
                 <tr> 
                 
                     
-                    <td className="orderDetails_name" style={{width:'200px',textAlign:'left',paddingLeft:'50px',borderLeft: '1px solid #ccc',borderLeft: '1px solid #ccc',borderRight:'1px solid #ccc',borderBottom:'1px solid #ccc'}}>
+                    <td className="orderDetails_name" style={{width:'150px',textAlign:'left',paddingLeft:'30px',borderLeft: '1px solid #ccc',borderLeft: '1px solid #ccc',borderRight:'1px solid #ccc',borderBottom:'1px solid #ccc'}}>
                        받는사람
                         
                     </td>
                     
-                    <td style={{textAlign:'left',paddingLeft:'50px',borderRight:'1px solid #ccc',borderBottom:'1px solid #ccc'}}>
+                    <td style={{textAlign:'left',paddingLeft:'30px',borderRight:'1px solid #ccc',borderBottom:'1px solid #ccc'}}>
                         {customer.user_name}
                     </td>
                 </tr>
                 <tr>
-                    <td className="orderDetails_phone" style={{textAlign:'left',paddingLeft:'50px',border:'0px',borderLeft: '1px solid #ccc',borderLeft: '1px solid #ccc',borderRight:'1px solid #ccc',borderBottom:'1px solid #ccc'}}>
+                    <td className="orderDetails_phone" style={{textAlign:'left',paddingLeft:'30px',border:'0px',borderLeft: '1px solid #ccc',borderLeft: '1px solid #ccc',borderRight:'1px solid #ccc',borderBottom:'1px solid #ccc'}}>
                         연락처
                     </td>
-                    <td style={{textAlign:'left',paddingLeft:'50px',borderRight:'1px solid #ccc',borderBottom:'1px solid #ccc'}}>
+                    <td style={{textAlign:'left',paddingLeft:'30px',borderRight:'1px solid #ccc',borderBottom:'1px solid #ccc'}}>
                         {customer.user_phone}
                         
                         
@@ -110,52 +104,18 @@ function OrderDetails() {
                 </tr>
                 <tr>
                 
-                    <td className="orderDetails_address" style={{textAlign:'left',paddingLeft:'50px',borderLeft: '1px solid #ccc',borderLeft: '1px solid #ccc',borderRight:'1px solid #ccc',borderBottom:'1px solid #ccc'}}>
+                    <td className="orderDetails_address" style={{textAlign:'left',paddingLeft:'30px',borderLeft: '1px solid #ccc',borderLeft: '1px solid #ccc',borderRight:'1px solid #ccc',borderBottom:'1px solid #ccc'}}>
                        받는주소
                     </td>
-                    <td style={{textAlign:'left',paddingLeft:'50px',borderRight:'1px solid #ccc',borderBottom:'1px solid #ccc'}}>
+                    <td style={{textAlign:'left',paddingLeft:'30px',borderRight:'1px solid #ccc',borderBottom:'1px solid #ccc'}}>
                         {customer.user_address}
                     </td>
                 </tr>  
                 </table>
                
-                </div>
-                <div className="orderDetails_table">
-               
-                <p  className="orderDetails_title">결제정보</p>
                 
                 
                 
-                <table className="orderDetails__price"  style={{borderTop:'5px solid #e6b797',borderBottom:'1px solid #eee'}}>
-                <tr> 
-                
-                
-                    <td className="orderDetails_amount"  style={{width:'200px',textAlign:'left',paddingLeft:'50px', borderLeft: '1px solid #ccc',borderLeft: '1px solid #ccc',borderRight:'1px solid #ccc',borderBottom:'1px solid #ccc'}}>
-                    총 상품 가격
-                        
-                    </td >
-                    
-                    <td style={{textAlign:'left',paddingLeft:'50px',borderRight:'1px solid #ccc',borderBottom:'1px solid #ccc'}}>
-                    
-                    
-                   
-                
-               
-                
-                    </td>
-                </tr>
-                <tr>
-                    <td className="orderDetails_amount2" style={{textAlign:'left',paddingLeft:'50px',borderLeft: '1px solid #ccc',borderLeft: '1px solid #ccc',borderRight:'1px solid #ccc',borderBottom:'1px solid #ccc'}}>
-                    총 결제금액
-                    </td>
-                    <td style={{textAlign:'left',paddingLeft:'50px',borderRight:'1px solid #ccc',borderBottom:'1px solid #ccc' }}>
-                   
-                     
-                        
-                    </td>
-                </tr>
-                
-                </table>
                 </div>
             </div>
         </div>

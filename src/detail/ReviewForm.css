@@ -1,69 +1,69 @@
-*{
-    margin: auto 0;
+* {
+  margin: auto 0;
 }
 
-.ReviewForm{
-    background-color: #f3f3f3;
+.ReviewForm {
+  background-color: #f3f3f3;
 }
 
-.stars{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 300px;
+.stars {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
 }
 
-input [type="radio"]{
-    display: none;
+.input_radio {
+  display: none;
 }
 
 .star {
-    cursor: pointer;
-    transition: color 200ms;
+  cursor: pointer;
+  transition: color 200ms;
 }
 
 .review_form {
-    display: flex;
-    flex-direction: column;
-    margin: auto 0;
-  }
-  
-  .review_form > label {
-    text-align: center;
-    font-size: 30px;
-    font-family: sans-serif;
-    margin-bottom: 15px;
-  }
+  display: flex;
+  flex-direction: column;
+  margin: auto 0;
+}
 
-  .stars_score{
-      text-align: center;
-  }
-  
-  #input {
-    height: 300px;
-    width: 700px;
-    margin: 0 auto;
-    background-color: white;
-    border: none;
-  }
+.review_form > label {
+  text-align: center;
+  font-size: 30px;
+  font-family: sans-serif;
+  margin-bottom: 15px;
+}
 
-  .file_upload{
-      margin: 0 auto;
-      margin-top: 20px;
-      margin-bottom: 20px;
-  }
+.stars_score {
+  text-align: center;
+}
 
-  #file_upload{
-      border: none;
-  }
+#input {
+  height: 300px;
+  width: 700px;
+  margin: 0 auto;
+  background-color: white;
+  border: none;
+}
 
-  .button > button{
-      width: 200px;
-      height: 60px;
-      border-radius: 50px;
-      border: none;
-      background-color: #b0e96f;
-      cursor: pointer;
-      margin: 0 auto;
-      margin-bottom: 100px;
-  }
+.file_upload {
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#file_upload {
+  border: none;
+}
+
+.button > button {
+  width: 200px;
+  height: 60px;
+  border-radius: 50px;
+  border: none;
+  background-color: rgba(230, 125, 122, 0.7);
+  cursor: pointer;
+  margin: 0 auto;
+  margin-bottom: 100px;
+}

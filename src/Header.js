@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Logo from './img/logo.png';
 import Log from './img/log.png';
 import SearchIcon from '@material-ui/icons/Search';
@@ -66,7 +66,7 @@ function Header() {
 
   const adminLinks = (
     <>
-      <Link to="/home" >
+      <Link to="/home">
         <div className="header__option">
           <span className="header__optionLineOne">Goodbye</span>
           <span className="header__optionLinetwo">Log Out</span>

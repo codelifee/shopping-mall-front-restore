@@ -12,11 +12,12 @@
   box-sizing: border-box;
 }
 .products {
-  display: grid;
+  display: block;
   grid-template-columns: auto;
   background-color: #fff;
   text-align: center;
   height: 100%;
+  padding-top: 70px;
 }
 
 .products__category{

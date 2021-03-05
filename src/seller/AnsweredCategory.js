@@ -5,6 +5,8 @@ import DatePicker from 'react-datepicker';
 import axios from '../axios/axios';
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 import 'react-datepicker/dist/react-datepicker.css';
 import { Category } from '@material-ui/icons';
@@ -77,15 +79,18 @@ function AnsweredCategory() {
             />
           </div>
         </div>
-
+        
         <div className="question__info">
-          <h2>{totalQuestion.length} Questions</h2>
+       <p className="answer_page">답변완료 페이지</p>
+         <p className="answer_page1">{totalQuestion.length} Questions</p>
+         
         </div>
-        <div className="category__table_bg">
+       <div className="category__table_bg">
           <table className="category__table">
             <thead>
               <th>카테고리명</th>
               <th>답변완료된 질문개수</th>
+              <th>답변하기</th>
             </thead>
             <tbody>
               {categories.map((category) => {
@@ -102,6 +107,7 @@ function AnsweredCategory() {
                   });
                 return (
                   <tr key={category.category_id}>
+<<<<<<< HEAD
                     <td>
                       <span>{category.category_name} </span>
                     </td>
@@ -112,6 +118,19 @@ function AnsweredCategory() {
                         {categoryQuestion.length}
                       </Link>
                     </td>
+=======
+                    
+                      <td>
+                        <span>{category.category_name} </span>
+                      </td>
+                    
+
+                    <td>{categoryQuestion.length}</td>
+                    <td>
+                      <Link to={`/seller/answeredProducts/${category.category_id}`}
+                  ><i class="fas fa-pencil-ruler"></i></Link></td>
+                  
+>>>>>>> 66cabdd201344513c5dcc4afc348645df2291b8d
                   </tr>
                 );
               })}

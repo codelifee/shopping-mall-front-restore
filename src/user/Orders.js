@@ -74,6 +74,7 @@ function Orders() {
             <OrdersData
               status={order.order_status}
               key={order.order_id}
+              id={order.product_id}
               name={order.user_id}
               product={order.product_name}
               date={order.order_date_created}
