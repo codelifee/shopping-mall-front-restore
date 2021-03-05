@@ -9,7 +9,7 @@ function AddCustomer() {
   useEffect(() => {
     async function fetchData() {
       const request = await axios
-        .get(`http://localhost:5000/users/all`)
+        .get(`/users/all`)
         .then(response => setCustomer(response.data))
         .catch(error => console.log(error));
 
@@ -100,7 +100,7 @@ function AddCustomer() {
     e.preventDefault();
 
     axios
-      .post(`http://localhost:5000/users`, form)
+      .post(`/users`, form)
       .then(alert("가입이 완료되었습니다."))
       .catch(err => console.log(err));
   };
