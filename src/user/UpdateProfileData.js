@@ -7,12 +7,17 @@ const UpdateProfileData = (callback,Validate) => {
     const {user_sequence_id} = useParams();
     const [errors, setErrors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
+
     const [check, setCheck] = useState({
-        user_phone:''
+        user_id:'',
+        user_pwd:'',
+        user_pwd2:'',
+        user_name:'',
+        user_phone:'',
+        user_address:''
     });
     
     const[form, setForm] = useState({
-        user_id:'',
         user_pwd:'',
         user_pwd2:'',
         user_name:'',
@@ -35,9 +40,9 @@ const UpdateProfileData = (callback,Validate) => {
         });
     };
     console.log(form);
-    const handleSubmit2 = e =>{
+    const handleSubmit = e =>{
         e.preventDefault();
-
+        
         setErrors(Validate(form));
         setIsSubmitting(true);
     };
@@ -80,7 +85,7 @@ const UpdateProfileData = (callback,Validate) => {
         })
     }
 
-    return {handleChange, form, handleSubmit2, errors, checkPhone2};
+    return {handleChange, form, handleSubmit, errors, checkPhone2};
 }
 
 export default UpdateProfileData;

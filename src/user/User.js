@@ -10,10 +10,10 @@ import DeleteProfile from './DeleteProfile';
 import OrderDetails from './OrderDetails';
 
 function User() {
-    const[isSubmittied2, setIsSubmitted2] = useState(false);
+    const[isSubmittied, setIsSubmitted] = useState(false);
 
-    function submitForm2(){
-        setIsSubmitted2(true);
+    function submitForm(){
+        setIsSubmitted(true);
     }
 
     return (
@@ -22,7 +22,7 @@ function User() {
                 <Switch>                    
                     <Route path='/user/updateprofile/:user_sequence_id'>
                         <Navbar/>
-                        {!isSubmittied2 ? (<UpdateProfile submitForm2={submitForm2}/>)
+                        {!isSubmittied ? (<UpdateProfile submitForm={submitForm}/>)
                         : (window.location.href="/user/:user_sequence_id")} 
                     </Route>
                     <Route path='/user/deleteprofile/:user_sequence_id'>

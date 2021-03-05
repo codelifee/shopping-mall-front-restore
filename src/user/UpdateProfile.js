@@ -3,9 +3,9 @@ import './UpdateProfile.css'
 import UpdateProfileData from './UpdateProfileData';
 import Validate from './ValidateInfo';
 
-function UpdateProfile({submitForm2}) {
+function UpdateProfile({submitForm}) {
 
-    const {handleChange, form, handleSubmit2, errors, checkPhone2} = UpdateProfileData(submitForm2,Validate);
+    const {handleChange, form, handleSubmit, errors, checkPhone2} = UpdateProfileData(submitForm,Validate);
 
     return (
         <div className="updateProfile">
@@ -13,7 +13,7 @@ function UpdateProfile({submitForm2}) {
                 <div className="updateProfile__container__head">
                     <h1>Update {form.user_name}'s Profile</h1>
                 </div>
-                <form className="updateProfile__search" onSubmit={handleSubmit2}>
+                <form className="updateProfile__search" onSubmit={handleSubmit}>
                     <div className="update__id">
                         <label htmlFor="">Id</label>
                         <span>{form.user_id}</span>
@@ -79,7 +79,7 @@ function UpdateProfile({submitForm2}) {
                         />
                         {errors.user_address && <p>{errors.user_address}</p>}
                     </div>
-                    <button type="button">Update</button>
+                    <button type="submit">Update</button>
                 </form>
             </div>
         </div>

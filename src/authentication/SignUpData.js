@@ -61,22 +61,47 @@ const SignUpData = (callback,Validate) => {
 
     const checkId = () => {
         customer.map((data,i)=>{
-            if(values.user_id === customer[i].user_id){
-                return errors.user_id = "사용불가능한 아이디입니다.";
+            if(values.user_id != customer[i].user_id){
+                errors.user_id = "사용가능한 아이디입니다.";
+                return false;
             }else{
-                return errors.user_id = "사용가능한 아이디입니다.";
+                errors.user_id = "사용불가능한 아이디입니다.";
             }
-        })  
+        })
+        // let re = -1;
+        // axios({
+        //     url: `/users/checkId`,
+        //     method: 'post',
+        //     data:{
+        //         user_id : values.user_id
+        //     }
+        // })
+        // .then(res => re = res.data)
+        // .catch(err => console.log(err))  
+        // (re==1? errors.user_id = "사용가능한 아이디입니다." : errors.user_id = "사용불가능한 아이디입니다.")
     }
     
     const checkPhone = () => {
         customer.map((data,i)=>{
-            if(values.user_phone === customer[i].user_phone){
-                return errors.user_phone = "사용불가능한 전화번호입니다.";
+            if(values.user_phone != customer[i].user_phone){
+                errors.user_phone = "사용가능한 전화번호입니다.";
+                return false;
             }else{
-                return errors.user_phone = "사용가능한 전화번호입니다.";
+                errors.user_phone = "사용불가능한 전화번호입니다.";
             }
-        }) 
+        })
+        // let re = -1; 
+        // axios({
+        //     url: `/users/checkPhone`,
+        //     method: 'post',
+        //     data:{
+        //         user_phone : values.user_phone,
+        //         user_id : values.user_id
+        //     }
+        // })
+        // .then(res => re = res.data)
+        // .catch(err => console.log(err))  
+        // (re==1? errors.user_id = "사용가능한 전화번호입니다." : errors.user_id = "사용불가능한 전화번호입니다.")
     }
 
     return {handleChange, values, handleSubmit, errors, checkId, checkPhone};

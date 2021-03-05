@@ -21,25 +21,21 @@ import "./App.css";
 import QnAForm from "./detail/QnAForm";
 import KakaoMap from "./Introduction/KakaoMap";
 import User from './user/User';
-// import LoginForm from './authentication/LoginForm';
-// import Login2 from './authentication/Login2';
 import SignUp from './authentication/SignUp';
 
 function App() {
 
   const [{}, dispatch] = useStateValue();
 
-  // const loggedIn = Login();
-
   // useEffect(() => {
-  //   const checkAuth = (loggedIn => {
-  //     console.log("THE USER IS >>>", loggedIn);
+  //   auth.onAuthStateChanged(authUser => {
+  //     console.log("THE USER IS >>>", authUser);
 
-  //     if (!(loggedIn==null)) {
+  //     if (authUser) {
   //       // the user logged in
   //       dispatch({
   //         type: "SET_USER",
-  //         user: loggedIn,
+  //         user: authUser,
   //       });
   //     } else {
   //       //the user is logged out
@@ -49,7 +45,6 @@ function App() {
   //       });
   //     }
   //   });
-  //   return checkAuth;
   // }, []);
 
   const[isSubmittied, setIsSubmitted] = useState(false);
@@ -76,17 +71,6 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
-          {/* <Route path="/loginform">
-          <Header />
-            <LoginForm />
-            <Footer />
-          </Route>
-          <Route path="/login2">
-            <Login2 />
-          </Route>
-          <Route path="/logout">
-            <LoginForm />
-          </Route>  */}
           <Route path="/checkout">
             <Header />
             <Checkout />
