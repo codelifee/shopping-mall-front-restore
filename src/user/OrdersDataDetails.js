@@ -28,11 +28,6 @@ function OrdersData({date, status, product, price, picture,props, id, img} ) {
   const [startDate, setStartDate] = useState(new Date());
   const [orders, setOrders] = useState([{}]);
   const [products, setProducts] = useState([]);
-  
-
-
- 
-  
 
   useEffect(() => {
     async function fetchDate() {
@@ -85,9 +80,7 @@ function OrdersData({date, status, product, price, picture,props, id, img} ) {
           <button className="order_btn"   onClick={()=>{
          history.push(`/user/exchange/${user_sequence_id}`)
        }}>교환신청</button>
-          <button className="order_btn" onClick={()=>{
-         history.push(`/review/${id}`)
-       }}>구매후기</button>
+          <a href={`/review/${id}`}><button className="order_btn">구매후기</button></a>
         </div>
       </div>
       {/* <div className="Name">{name} </div> */}

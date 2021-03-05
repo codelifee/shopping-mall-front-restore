@@ -64,9 +64,7 @@ function OrdersData({  date, status, product, price, picture, id }) {
           <button className="order_btn" onClick={()=>{
          history.push(`/user/exchange/${user_sequence_id}`)
        }}>교환신청</button>
-          <button className="order_btn" onClick={()=>{
-         history.push(`/review/${id}`)
-       }}>구매후기</button>
+           <a href={`/review/${id}`}><button className="order_btn">구매후기</button></a>
         </div>
       </div>
       {/* <div className="Name">{name} </div> */}

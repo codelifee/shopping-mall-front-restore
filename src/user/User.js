@@ -64,10 +64,7 @@ function User() {
                     <Route path='/user/return/:user_sequence_id'>
                         <Navbar/>
                         <Return/>
-                    </Route>
-                   
-                        
-                    
+                    </Route>         
                     <Route path='/user/exchange/:user_sequence_id'>
                         <Navbar/>
                         <Exchange/>
