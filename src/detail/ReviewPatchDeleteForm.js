@@ -3,7 +3,7 @@ import './ReviewPatchDeleteForm.css';
 import { FaStar } from 'react-icons/fa'
 import {useStateValue} from '../StateProvider/StateProvider';
 import axios from '../axios/axios';
-import {useHistory, useLocation, useParams} from 'react-router-dom';
+import {useHistory, useParams} from 'react-router-dom';
 
 function ReviewPatchDeleteForm(){
 
@@ -87,9 +87,7 @@ const formData = new FormData();
         }
     }
 
-    const deleteReview=(e)=>{
-        e.preventDefault();
-
+    const deleteReview=()=>{
         axios.delete(`/review/${id}`)
         .then(res => console.log(res))
         .catch(err => console.log(err))
@@ -150,21 +148,25 @@ const formData = new FormData();
             
                 {console.log(reviews)}
 
-            <div className="button">
+                <div className="button">
                 
-            <button type="submit" onClick={()=>{
+                    <button className="reviewPatchSubmit" type="submit" onClick={()=>{
+                        
+                        reviews.review == '' ? alert("내용을 입력해주세요!") : alert("내용이 입력됐습니다.");
+
+                        window.opener.parent.location.reload();
+                        setTimeout("self.close()", 2000 )
+                } 
+                        
+                        }>수정</button> &nbsp;
                 
-                reviews.review == '' ? alert("내용을 입력해주세요!") : alert("내용이 입력됐습니다.");
-                    /* window.close()*/} 
-                
-                }>수정</button> &nbsp;
-            <button onClick={deleteReview}>삭제</button>
-                
-            </div>
-            
-            
+                    <button className="reviewDelete" onClick={()=>{
+                        return deleteReview(), window.opener.parent.location.reload(),setTimeout("self.close()", 2000 ); 
+                    }}>삭제</button>
+                </div>
             </form>
             
+
          </div>
      );
  }
