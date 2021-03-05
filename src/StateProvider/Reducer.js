@@ -1,13 +1,10 @@
 export const initialState = {
     basket: [],
-    user: {
-        user_sequence_id:0, user_id:'',user_pwd:'',loggedIn:null
-    }
+    user: {user_sequence_id:0, user_id:'', user_pwd:'', loggedIn:''}
 };
 
 export const getBasketTotal = (basket) =>
     basket?.reduce((amount, item) => item.price + amount, 0);
-
 
 const reducer = (state, action) => {
 
