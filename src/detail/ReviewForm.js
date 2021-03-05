@@ -3,8 +3,7 @@ import './ReviewForm.css';
 import { FaStar } from 'react-icons/fa'
 import {useStateValue} from '../StateProvider/StateProvider';
 import axios from '../axios/axios';
-import {useHistory, useLocation, useParams} from 'react-router-dom';
-import qs from 'query-string';
+import {useHistory, useParams} from 'react-router-dom';
 
  function ReviewForm(){
 
@@ -21,25 +20,24 @@ const formData = new FormData();
     const [form, setForm] = useState({
         review_id: '',
         product_id: id,
-        user_sequence_id: 8, //로그인 한 user의 user_sequence_id넣기
+        user_sequence_id: 6, //로그인 한 user의 user_sequence_id넣기
         //if review 안에 있는 user정보와 로그인된 user 정보 같으면 중복 작성 안 됨.
         review: '',
         star: 0,
         review_picture: null,
-        review_date_created: ''
+        review_date_created: '',
+        user_id:''
         }
     )
 
     formData.append('review_id', form.review_id)
     formData.append('product_id',form.product_id)
     formData.append('user_sequence_id',form.user_sequence_id)
-    formData.append('product_detail_id',form.product_detail_id)
     formData.append('review',form.review)
     formData.append('star',form.star)
     formData.append('review_picture', form.review_picture)
     formData.append('review_date_created',form.review_date_created)
-    formData.append('product_name',form.product_name)
-    formData.append('productDetailsList',form.productDetailsList)
+    formData.append('user_id', form.user_id)
 
     const config = {
         headers: {
@@ -77,7 +75,7 @@ const formData = new FormData();
         e.preventDefault();
         //삼항연산자로 사진이 null이면 글만 넘어가는 post로
         //null이 아니면 아래 post로 동작하게 만들기
-        if(form.review_picture!=null){
+        if(form.review_picture!==null){
             return axios.post('/review/upload', formData, config)
             .then(res => console.log(res))
             .catch(err => console.log(err))
@@ -120,7 +118,7 @@ const formData = new FormData();
 				})}
 		    </div>
 
-            <form className="review_form" onSubmit={form.review != '' ? showForm : null}> 
+            <form className="review_form" onSubmit={form.review !== '' ? showForm : null}> 
                 <label htmlFor="input">리뷰 작성</label>
               
                 <input 
@@ -151,7 +149,12 @@ const formData = new FormData();
             <button type="submit" onClick={()=>{
                 
                     form.review == '' ? alert("내용을 입력해주세요!") : alert("내용이 입력됐습니다.");
-                    /* window.close()*/} 
+                
+                    window.opener.parent.location.reload();
+                    setTimeout("self.close()", 2000 );
+                } 
+
+                    
                 
                 }>Submit</button>
                 

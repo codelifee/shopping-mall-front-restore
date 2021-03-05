@@ -30,7 +30,7 @@ function OrdersData({  date, status, product, price, picture, id }) {
     <span className="orderTitle2">
     
      <div  className="order_details" onClick={()=>{
-         history.push(`/user/orderDetails/${user_sequence_id}`)
+         history.push(`/user/orderdetail/${user_sequence_id}`)
        }}
        >주문상세보기 &gt;&gt;</div>
     

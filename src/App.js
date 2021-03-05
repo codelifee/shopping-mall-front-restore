@@ -16,16 +16,16 @@ import Slider from "./slide2/Slide2";
 import LandingPage from "./landingpage/LandingPage";
 import ProductView from "./ProductView/ProductView";
 import ReviewForm from "./detail/ReviewForm";
-import ReviewPatchForm from "./detail/ReviewPatchForm";
+import ReviewPatchDeleteForm from "./detail/ReviewPatchDeleteForm";
 import "./App.css";
 import QnAForm from "./detail/QnAForm";
 import KakaoMap from "./Introduction/KakaoMap";
 import User from './user/User';
-import LoginForm from './authentication/LoginForm';
+import SignUp from './authentication/SignUp';
 
 function App() {
 
-  // const [{}, dispatch] = useStateValue();
+  const [{}, dispatch] = useStateValue();
 
   // useEffect(() => {
   //   auth.onAuthStateChanged(authUser => {
@@ -47,31 +47,29 @@ function App() {
   //   });
   // }, []);
 
+  const[isSubmittied, setIsSubmitted] = useState(false);
+
+    function submitForm(){
+        setIsSubmitted(true);
+    }
+
   return (
     //BEM convention
-
     <Router>
       <div className="app">
         <Switch>
-        {/* <Route path="/map">
-            <Map />
-          </Route> */}
           <Route path="/home">
             <Header />
             <Slider />
             <Home />
             <Footer />
           </Route>
+          <Route path='/signup'>
+            {!isSubmittied ? (<SignUp submitForm={submitForm}/>)
+              : (window.location.href="/login")}
+          </Route>
           <Route path="/login">
             <Login />
-          </Route>
-          <Route path="/loginform">
-          <Header />
-            <LoginForm />
-            <Footer />
-          </Route>
-          <Route path="/logout">
-            <LoginForm />
           </Route>
           <Route path="/checkout">
             <Header />
@@ -93,7 +91,7 @@ function App() {
           </Route>
           
           <Route path="/reviewUpdate/:id">
-            <ReviewPatchForm />
+            <ReviewPatchDeleteForm />
           </Route>
 
           <Route path="/question/:id">

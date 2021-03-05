@@ -12,7 +12,7 @@ a {
 .header_container {
   height: 70px;
   background-color: rgba(255, 255, 255, 0.8);
-  position: sticky;
+  position: fixed;
   z-index: 200;
   width: 100%;
   margin: 0 auto;

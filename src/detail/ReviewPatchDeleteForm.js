@@ -1,11 +1,12 @@
 import React,{useState, useEffect} from 'react';
-import './ReviewForm.css';
+import './ReviewPatchDeleteForm.css';
 import { FaStar } from 'react-icons/fa'
 import {useStateValue} from '../StateProvider/StateProvider';
 import axios from '../axios/axios';
-import {useHistory, useLocation, useParams} from 'react-router-dom';
+import {useHistory, useParams} from 'react-router-dom';
 
-function ReviewForm(){
+function ReviewPatchDeleteForm(){
+
 
 const history = useHistory();
 
@@ -68,8 +69,7 @@ const formData = new FormData();
 
     const updateForm = (e) => {
         e.preventDefault();
-        //삼항연산자로 사진이 null이면 글만 넘어가는 post로
-        //null이 아니면 아래 post로 동작하게 만들기
+        
         if(reviews.review_picture!=null){
             return (axios.patch(`/review/image/${id}`, formData, config)
             .then(res => console.log(res))
@@ -87,10 +87,16 @@ const formData = new FormData();
         }
     }
 
+    const deleteReview=()=>{
+        axios.delete(`/review/${id}`)
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
+      }
+
 
      return(
-         <div className="ReviewForm">
-    
+         <div className="ReviewUpdateForm">
+
              <div className="stars">
 			{
 				[...Array(5)].map((star,i) => {
@@ -118,7 +124,7 @@ const formData = new FormData();
 				})}
 		    </div>
 
-            <form className="review_form" onSubmit={reviews.review != '' ? updateForm : null}> 
+            <form className="review_update_form" onSubmit={reviews.review !== '' ? updateForm : null}> 
                 <label htmlFor="input">리뷰 작성</label>
               
                 <input 
@@ -131,7 +137,7 @@ const formData = new FormData();
 
                 <div className="file_upload">
                    
-                    <input 
+                <input 
                     type="file" 
                     id="file_upload"
                     name="review_picture" 
@@ -142,19 +148,27 @@ const formData = new FormData();
             
                 {console.log(reviews)}
 
-            <div className="button">
+                <div className="button">
                 
-            <button type="submit" onClick={()=>{
+                    <button className="reviewPatchSubmit" type="submit" onClick={()=>{
+                        
+                        reviews.review == '' ? alert("내용을 입력해주세요!") : alert("내용이 입력됐습니다.");
+
+                        window.opener.parent.location.reload();
+                        setTimeout("self.close()", 2000 )
+                } 
+                        
+                        }>수정</button> &nbsp;
                 
-                reviews.review == '' ? alert("내용을 입력해주세요!") : alert("내용이 입력됐습니다.");
-                    /* window.close()*/} 
-                
-                }>Submit</button>
-                
-            </div>
+                    <button className="reviewDelete" onClick={()=>{
+                        return deleteReview(), window.opener.parent.location.reload(),setTimeout("self.close()", 2000 ); 
+                    }}>삭제</button>
+                </div>
             </form>
+            
+
          </div>
      );
  }
 
- export default ReviewForm;
+ export default ReviewPatchDeleteForm;

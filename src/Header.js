@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import Logo from './img/logo.png';
 import Log from './img/log.png';
 import SearchIcon from '@material-ui/icons/Search';
@@ -7,81 +7,18 @@ import './header.css'
 import { Link } from 'react-router-dom';
 import { useStateValue } from './StateProvider/StateProvider';
 import Sidebar from './sidebar/Sidebar'
+import AllProducts from './sidebar/Sidebar'
 import {auth} from  './configuration/firebase';
-import {connect} from 'react-redux';
-import {logoutUser} from './services/index';
+import Login from './authentication/Login';
 
-
-//class Header extends Component{
-function Header(){
-    // logout = () => {
-    //     this.props.logoutUser();
-    // };
-
-    //render() {
+function Header() {
         const [{basket, user}, dispatch] = useStateValue();
 
         const handleAuthentication = () => {
-            if (user) {
-            auth.signOut();
+            if (user.loggedIn != '') {
+                dispatch({type: "SET_USER",user: {}});
             }
         }
-
-        // const guestLinks = (
-        //     <>
-        //     <Link to="/loginForm">
-        //         <div className='header__option'>
-        //             <span className='header__optionLineOne'>Please</span>
-        //             <span className='header__optionLinetwo'>Log In</span>
-        //         </div>
-        //     </Link>  
-        //     </> 
-        // );
-
-        // const userLinks = (
-        //     <>
-        //     <Link to="/home" onClick={this.logout}>
-        //         <div className='header__option'>
-        //             <span className='header__optionLineOne'>Goodbye</span>
-        //             <span className='header__optionLinetwo'>Log Out</span>
-        //         </div>
-        //     </Link> 
-
-        //     <Link to="/seller">
-        //             <div className='header__option'>
-        //                 <span className='header__optionLineOne'>Returns</span>
-        //                 <span className='header__optionLinetwo'>Orders</span>
-        //             </div>
-        //             </Link>
-
-        //     <Link to='/checkout'>
-        //         <div className="header__optionBasket">
-        //             <ShoppingBasketIcon />
-        //             <span className="header__optionLineTwo header__basketCount">
-        //                 {/* {basket?.length} */}
-        //             </span>
-        //         </div>
-        //     </Link>
-        //     </>
-        // );
-
-        // const adminLinks = (
-        //     <>
-        //         <Link to="/home" onClick={this.logout}>
-        //             <div className='header__option'>
-        //                 <span className='header__optionLineOne'>Goodbye</span>
-        //                 <span className='header__optionLinetwo'>Log Out</span>
-        //             </div>
-        //         </Link> 
-                    
-        //             <Link to="/seller">
-        //                 <div className='header__option'>
-        //                     <span className='header__optionLineOne'>seller</span>
-        //                     <span className='header__optionLinetwo'>Center</span>
-        //                 </div>
-        //             </Link>
-        //     </>
-        // );
 
         return (
             <div className='header_container'>
@@ -104,38 +41,43 @@ function Header(){
                 <Link to="/home"><p className="logo_name">ChenJiYeon</p></Link>
                 </div>
 
-                <div className="header__nav">  
-                    {/* {this.props.auth.isLoggedIn ? userLinks:guestLinks} */}
-                    
-                    <Link to={!user && '/login'}>
+                <div className="header__nav">                      
+                    <Link to={'/login'}>
                         <div onClick={handleAuthentication} className='header__option'>
                             <span className='header__optionLineOne'>
-                                Hello {!user ? 'Guest' : user?.email}
+                                Hello {user.loggedIn == '' ? 'Guest' : (user.loggedIn == 'user' ? user?.user_id : 'Admin')}
                             </span>
                             <span className='header__optionLinetwo'>
-                                {user ? 'Sign out' : 'Sign In'}
+                                {user.loggedIn == ''  ? 'Sign In' : 'Sign Out'}
                             </span>
                         </div>
+                    </Link> 
+                    
+                    <Link to="/seller">
+                        <div className='header__option'>
+                            <span className='header__optionLineOne'>Seller</span>
+                            <span className='header__optionLinetwo'>Center</span>
+                        </div>
+                    </Link>
+
+                    <Link to="/user">
+                    <div className='header__option'>
+                        <span className='header__optionLineOne'>Returns</span>
+                        <span className='header__optionLinetwo'>Orders</span>
+                    </div>
+                    </Link>
+                    <Link to='/checkout'>
+                    <div className="header__optionBasket">
+                        <ShoppingBasketIcon />
+                        <span className="header__optionLineTwo header__basketCount">
+                            {/* {basket?.length} */}
+                        </span>
+                    </div>
                     </Link>
                     </div>
                 </div>
             </div>
         )
-    //};
-};
-
-// const mapStateProps = state => {
-//     return {
-//         auth:state.auth
-//     }
-// };
-
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         logoutUser:() => dispatch(logoutUser())
-//     };
-// };
-
-//export default connect(mapStateProps, mapDispatchToProps)(Header);
+    };
 export default Header;
 
