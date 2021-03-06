@@ -115,7 +115,7 @@ function Answered() {
                     <td>{categoryQuestion.length}</td>
                     <td>
                       <Link to={`/seller/answeredProducts/${category.category_id}`}
-                  ><i class="fas fa-pencil-ruler"></i></Link></td>
+                  ><i class="fas fa-pencil-alt"></i></Link></td>
                   
                   </tr>
                 );

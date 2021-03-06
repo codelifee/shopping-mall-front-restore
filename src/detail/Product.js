@@ -3,13 +3,14 @@ import './Product.css';
 import {useStateValue} from "../StateProvider/StateProvider"
 import {useHistory, useParams} from "react-router-dom";
 import {FaComment, FaShoppingCart} from 'react-icons/fa';
+import {ImageData} from '../axios/urlData';
 
 
 function Product(props) {
-    
+    let image = ImageData.image1
+
     //dispatch -> how we manipulate with data
     const [{basket}, dispatch] = useStateValue();
-    const image = "http://shoppingmall-env.eba-jac9afx7.us-east-1.elasticbeanstalk.com/products/showProductImage/";
     
    
     

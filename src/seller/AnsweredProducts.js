@@ -5,18 +5,20 @@ import DatePicker from 'react-datepicker';
 import { FaSearch } from 'react-icons/fa';
 import { useHistory, Link } from 'react-router-dom';
 import './AnswerYetProducts.css';
+import {ImageData} from '../axios/urlData';
+
 
 import 'react-datepicker/dist/react-datepicker.css';
 import { Category } from '@material-ui/icons';
 
 function AnsweredProducts() {
+  
+
   const [startDate, setStartDate] = useState(new Date());
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const product_img = `http://shoppingmall-env.eba-jac9afx7.us-east-1.elasticbeanstalk.com/products/showProductImage/`;
   const { id } = useParams();
   const history = useHistory();
-
   let total = null; //답변 전 상품별 전체 질문
 
   useEffect(() => {
@@ -81,6 +83,7 @@ function AnsweredProducts() {
           <table className="AnsweYetProduct__table">
             <thead>
               <th>Product Name</th>
+              <th>Picture</th>
               <th>Questions</th>
               <th>Answer</th>
             </thead>
@@ -102,10 +105,12 @@ function AnsweredProducts() {
                       return prd.product_name;
                     });
                   console.log(i, name);
+                  let image = ImageData.image1+val.product_id;
 
                   return (
                     <tr>
                       <td>{name}</td>
+                      <td><img src={image} alt="image"/></td>
                       <td>{val.question}</td>
                       <td>{val.answer}</td>
                     </tr>
