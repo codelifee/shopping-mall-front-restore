@@ -26,7 +26,11 @@ function Detail() {
   
   const [products, setProducts] = useState([]);
   const {id} = useParams();
+<<<<<<< HEAD
   let image1 = ImageData.image1 + id
+=======
+  const product_img = `https://api.xn--vx3b30no7b.com/products/showProductImage/${id}`;
+>>>>>>> a4924981a210fd8fdcfecd3db8851529160c6e0c
   const [modal, setModal] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const [{basket}, dispatch] = useStateValue();
@@ -35,10 +39,8 @@ function Detail() {
   useEffect(()=>{
     async function fetchDate() {
       const request = await axios.get(`products/${id}`)
-      .then(response =>
-            setProducts(response.data)
-            )
-            .catch(error => console.log(error))
+      .then(response => setProducts(response.data))
+      .catch(error => console.log(error))
             
             return request;
           }

@@ -98,6 +98,7 @@ const formData = new FormData();
 					return (
 						<label key={i}>
 							<input 
+                            className="input_radio"
 								type="radio" 
 								name="rating" 
 								value={ratingValue}

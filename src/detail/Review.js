@@ -19,6 +19,10 @@ function Review(props) {
   
   const history = useHistory();
   
+<<<<<<< HEAD
+=======
+  const review_img = "https://api.xn--vx3b30no7b.com/review/showReviewImage/";
+>>>>>>> a4924981a210fd8fdcfecd3db8851529160c6e0c
 
   useEffect(() => {
     async function fetchDate() {

@@ -9,7 +9,7 @@
 
 .orders__container {
   /* background: rgb(182, 167, 167); */
-  max-width: 1100px;
+  max-width: 100%;
   height: 80vh;
   display: grid;
   grid-template-columns: 1fr;
@@ -100,4 +100,41 @@
   margin-left: 36px;
   margin-right: 36px;
   color: #333;
+}
+@media all and (max-width: 414px) {
+  .orders__table {
+    width: 360px;
+  }
+  .orders__input,
+  .orders__category,
+  .orders__category_p,
+  .orders_date,
+  .orders__form,
+  .orders__category,
+  .orders__search-button,
+  .orders__reset-button,
+  search-icon,
+  .orders__searchbar {
+    display: none;
+  }
+  .orders_bg {
+    width: 100%;
+
+    background-color: #fff;
+    color: #333;
+    margin-bottom: 100px;
+    margin-top: 30px;
+  }
+  .orders__container {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    color: #333;
+  }
+  .orders__table {
+    margin-top: 50px;
+  }
 }

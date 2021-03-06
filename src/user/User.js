@@ -1,19 +1,27 @@
 import {React,useState} from 'react';
+
 import Navbar from './Navbar';
 import UpdateProfile from './UpdateProfile';
+
 import Profile from './Profile';
 import Orders from './Orders';
+import Exchange from './Exchange';
+import ReviewForm from '../detail/ReviewForm';
+import Return from './Return';
+import OrderDetails from './OrderDetails';
 import OrdersData from './OrdersData';
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import {BrowserRouter as Router, Switch, Route, useParams} from "react-router-dom";
 import './User.css';
 import DeleteProfile from './DeleteProfile';
 import OrderDetails from './OrderDetails';
 
 function User() {
-    const[isSubmittied2, setIsSubmitted2] = useState(false);
+    
+    const[isSubmittied, setIsSubmitted] = useState(false);
+    const user_sequence_id = useParams();
 
-    function submitForm2(){
-        setIsSubmitted2(true);
+    function submitForm(){
+        setIsSubmitted(true);
     }
 
     return (
@@ -22,8 +30,8 @@ function User() {
                 <Switch>                    
                     <Route path='/user/updateprofile/:user_sequence_id'>
                         <Navbar/>
-                        {!isSubmittied2 ? (<UpdateProfile submitForm2={submitForm2}/>)
-                        : (window.location.href="/user/:user_sequence_id")} 
+                        {!isSubmittied ? (<UpdateProfile submitForm={submitForm}/>)
+                        : (window.location.href="/home")} 
                     </Route>
                     <Route path='/user/deleteprofile/:user_sequence_id'>
                         <Navbar/>
@@ -33,6 +41,8 @@ function User() {
                         <Navbar />
                         <Profile />
                     </Route>
+                    
+                   
                     <Route path='/user/order/:user_sequence_id'>
                         <Navbar/>
                         <Orders/>

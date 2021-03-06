@@ -7,17 +7,25 @@ const UpdateProfileData = (callback,Validate) => {
     const {user_sequence_id} = useParams();
     const [errors, setErrors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
+
     const [check, setCheck] = useState({
-        user_phone:''
-    });
-    
-    const[form, setForm] = useState({
         user_id:'',
         user_pwd:'',
         user_pwd2:'',
         user_name:'',
         user_phone:'',
         user_address:''
+    });
+    
+    const[form, setForm] = useState({
+        user_pwd:'',
+        user_pwd2:'',
+        user_name:'',
+        user_phone:'',
+        user_address:'',
+        user_return:'',
+        user_exchange:''
+
     });
     console.log(form);
 
@@ -35,9 +43,9 @@ const UpdateProfileData = (callback,Validate) => {
         });
     };
     console.log(form);
-    const handleSubmit2 = e =>{
+    const handleSubmit = e =>{
         e.preventDefault();
-
+        
         setErrors(Validate(form));
         setIsSubmitting(true);
     };
@@ -78,9 +86,21 @@ const UpdateProfileData = (callback,Validate) => {
             }
             return errors;
         })
+        // let re = -1; 
+        // axios({
+        //     url: `/users/checkPhone`,
+        //     method: 'post',
+        //     data:{
+        //         user_phone : values.user_phone,
+        //         user_id : values.user_id
+        //     }
+        // })
+        // .then(res => re = res.data)
+        // .catch(err => console.log(err))  
+        // (re==1? errors.user_id = "사용가능한 전화번호입니다." : errors.user_id = "사용불가능한 전화번호입니다.")
     }
 
-    return {handleChange, form, handleSubmit2, errors, checkPhone2};
+    return {handleChange, form, handleSubmit, errors, checkPhone2};
 }
 
 export default UpdateProfileData;

@@ -73,7 +73,6 @@ function ProductView() {
                 id={product.product_id}
                 title={product.product_name}
                 status={product.status}
-                image={product.product_picture}
                 description={product.product_description}
                 price={product.product_price}
                 comment={reviewLength.length}
