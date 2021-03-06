@@ -18,64 +18,75 @@ function Header() {
 
         const [products, setProducts] = useState([]);
 
+        
         useEffect(()=>{
             async function getSearchItem() {
             const request = await axios.get(`products/all`)
             .then(response =>
-                    setProducts(response.data)
-                    )
-                    .catch(error => console.log(error))
-                    
-                    return request;
-                }
+                setProducts(response.data)
+                )
+                .catch(error => console.log(error))
                 
-                getSearchItem();
-            }, [])
-
+                return request;
+            }
+            
+            getSearchItem();
+        }, [])
+        
         const [{basket, user}, dispatch] = useStateValue();
-
-        const [keyword, setKeyword] = useState('');
-
+        
+        const [{keyword}, keyword_dispatch] = useStateValue();
+        
+        const [search, setSearch] = useState('');
+        
         const history = useHistory();
-
+        
         const handleAuthentication = () => {
             if (user.loggedIn != '') {
                 dispatch({type: "SET_USER",user: {}});
             }
         }
         
-        const result = products.filter((items)=>{
-            return items.product_name.indexOf(keyword) > -1;
-        }).map(
-            (items)=>{
-                <SearchResult item={items.product_name} />
-            }
-        )
-
+        console.log(search)
+        
         return (
             <div className='header_container'>
                 <div className='header'>
                < Sidebar/>
-                <form>
+                
                     <div className="header__search">
                         <input 
                         className="header__searchInput" 
                         type="text"
                         placeholder="검색"
+                        value={search}
                         onChange={(e) => {
-                            setKeyword(e.target.value);
+                            setSearch(e.target.value);
                         }}
                         onKeyPress={(e) => {
                             if (e.key === 'Enter') {
+                                keyword_dispatch({
+                                    type: 'SEARCH',
+                                    item: {word: search}
+                                })
                                 history.push('/searchResult')
                             }
                         }}
                         />
-                        <SearchIcon className="header__searchIcon" onClick={
-                            ()=>{result && history.push('/searchResult')}
-                        }/>
+                        
+                     
+                        <SearchIcon className="header__searchIcon" onClick={()=>{
+                            keyword_dispatch({
+                                type: 'SEARCH',
+                                item: {word: search}
+                            })
+
+                            history.push('/searchResult')
+                        }}/>
+                      
+                        
                     </div>
-                </form>
+               
                 <div className="log_name_wap">
                 <Link to='/home'>
                     <img

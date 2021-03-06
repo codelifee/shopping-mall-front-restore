@@ -67,6 +67,7 @@ function App() {
           </Route>
 
           <Route path="/searchResult">
+            <Header />
             <SearchResult/>
           </Route>
 

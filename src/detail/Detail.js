@@ -34,10 +34,8 @@ function Detail() {
   useEffect(()=>{
     async function fetchDate() {
       const request = await axios.get(`products/${id}`)
-      .then(response =>
-            setProducts(response.data)
-            )
-            .catch(error => console.log(error))
+      .then(response => setProducts(response.data))
+      .catch(error => console.log(error))
             
             return request;
           }
