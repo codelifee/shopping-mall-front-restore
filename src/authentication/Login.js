@@ -9,23 +9,22 @@ function Login() {
     
     const [{basket, user}, dispatch] = useStateValue();
     
-
-    // const [users, setUsers] = useState({
-    //     user_sequence_id: 0,
-    //     user_id: '', 
-    //     user_pwd: ''
-    // });
-    // useEffect(() => {
-    //     async function fetchData() {
-    //         const request = await axios.get(`users/`)
-    //         .then(response => setUsers(response.data))
-    //         .catch(error => console.log(error))
+    const [users, setUsers] = useState({
+        user_sequence_id: 0,
+        user_id: '', 
+        user_pwd: ''
+    });
+    useEffect(() => {
+        async function fetchData() {
+            const request = await axios.get(`users/all`)
+            .then(response => setUsers(response.data))
+            .catch(error => console.log(error))
            
-    //         return request;
-    //     }
-    //     fetchData();
-    // }, []);
-    // console.log(users);
+            return request;
+        }
+        fetchData();
+    }, []);
+    console.log(users);
 
     const [values, setValues] = useState({
         user_sequence_id: 0,
@@ -41,25 +40,21 @@ function Login() {
             ...values,
             [name]: value
         });
-        // body = {values.user_id, values}
-    };
+    }
     console.log(values);
 
     const signIn = () => {
         if(values.user_id == 'admin' && values.user_pwd == "adminpwd"){
             setValues(values.loggedIn = "admin");
         }else{
-            // users.map((data, i) => {
-            //     if(values.user_id === users[i].user_id){
-            //         if(values.user_pwd === users[i].user_pwd){
-            //             setValues(values.loggedIn = "user");
-            //             setValues(values.user_sequence_id = users[i].user_sequence_id);
-            //         }
-            //     }
-            // }) 
-            // axios.post(`users/checklogin`,credentials)
-            // .then(res => console.log(res.data))
-            // .catch(err => console.log(error))
+            users.map((data, i) => {
+                if(values.user_id === users[i].user_id){
+                    if(values.user_pwd === users[i].user_pwd){
+                        setValues(values.loggedIn = "user");
+                        setValues(values.user_sequence_id = users[i].user_sequence_id);
+                    }
+                }
+            }) 
         }
         console.log(user);
         if(values.loggedIn==''){
@@ -109,6 +104,5 @@ function Login() {
         </div>
     )
 }
-
 export default Login;
 

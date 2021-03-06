@@ -38,7 +38,7 @@ function Slide2() {
 					
 					<div class="textbox">
 						<h3 class="textbox_h3">건강한 챌린지</h3>
-						<p class="slideitem_p">건강해 지는 습관.</p>
+						<p class="slideitem_p">마시면 건강해 지는 습관.</p>
 					</div>
 					<div  class="slideitem_img3"></div>
           </Link>

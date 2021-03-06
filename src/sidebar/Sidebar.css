@@ -8,6 +8,7 @@
   top: 0;
   left: -414px;
   transition: 850ms;
+  z-index: 100000;
 }
 
 .nav-menu.active {
