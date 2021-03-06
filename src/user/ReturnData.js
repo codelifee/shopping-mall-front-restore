@@ -25,28 +25,28 @@ const ReturnData = () => {
         }
         fetchData();
     }, [])
-    useEffect(() => {
-        async function fetchData() {
-            const request = await axios.get(`orders/userid/${user_sequence_id}`)
-            .then(response => setForm(response.data))
-            .catch(error => console.log(error))
+    // useEffect(() => {
+    //     async function fetchData() {
+    //         const request = await axios.get(`orders/userid/${user_sequence_id}`)
+    //         .then(response => setForm(response.data))
+    //         .catch(error => console.log(error))
            
-            return request;
-        }
-        fetchData();
-    }, [])
+    //         return request;
+    //     }
+    //     fetchData();
+    // }, [])
     
-    const putForm = () => {
-        setForm({
-            ...form,
-            order_return:'exchange'});  
-        let id = form.order_id;
-        axios.patch(`orders/${id}`, {order_return:form.order_return})
-        .then(alert("완료되었습니다."))
-        .catch(err => console.log(err))
-    }
+    // const putForm = () => {
+    //     setForm({
+    //         ...form,
+    //         order_return:'exchange'});  
+    //     let id = form.order_id;
+    //     axios.patch(`orders/${id}`, {order_return:form.order_return})
+    //     .then(alert("완료되었습니다."))
+    //     .catch(err => console.log(err))
+    // }
    
-    return {putForm,user }
+    // return {putForm,user }
 }
 
 export default ReturnData;

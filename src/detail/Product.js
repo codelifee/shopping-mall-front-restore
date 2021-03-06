@@ -9,7 +9,7 @@ function Product(props) {
     
     //dispatch -> how we manipulate with data
     const [{basket}, dispatch] = useStateValue();
-    const image = "http://shoppingmall-env.eba-jac9afx7.us-east-1.elasticbeanstalk.com/products/showProductImage/";
+    const image = "https://api.xn--vx3b30no7b.com/products/showProductImage/";
     
    
     

@@ -25,7 +25,7 @@ function Detail() {
   
   const [products, setProducts] = useState([]);
   const {id} = useParams();
-  const product_img = `http://shoppingmall-env.eba-jac9afx7.us-east-1.elasticbeanstalk.com/products/showProductImage/${id}`;
+  const product_img = `https://api.xn--vx3b30no7b.com/products/showProductImage/${id}`;
   const [modal, setModal] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const [{basket}, dispatch] = useStateValue();

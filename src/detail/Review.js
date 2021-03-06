@@ -16,7 +16,7 @@ function Review(props) {
   
   const history = useHistory();
   
-  const review_img = "http://shoppingmall-env.eba-jac9afx7.us-east-1.elasticbeanstalk.com/review/showReviewImage/";
+  const review_img = "https://api.xn--vx3b30no7b.com/review/showReviewImage/";
 
   useEffect(() => {
     async function fetchDate() {

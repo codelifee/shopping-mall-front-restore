@@ -6,12 +6,31 @@ import CurrencyFormat from "react-currency-format";
 import { useHistory } from 'react-router-dom'
 import { useStateValue } from '../StateProvider/StateProvider';
 import ReturnData from './ReturnData';
-function Return() {
+import Returnitem from './Returnitem';
 
+
+function Return() {
+    const {order_id} = useParams();
     const {putForm,user} = ReturnData();
   
     const history = useHistory();
-    
+    const [orders, setOrders] = useState([]);
+
+    useEffect(() => {
+        async function fetchDate() {
+            const request = await axios.get(`orders/${order_id}`)
+            .then(response => 
+                setOrders(response.data)
+            )
+            .catch(error => console.log(error))
+            
+            return request;
+        }
+
+        console.log(orders)
+
+        fetchDate();
+    }, [])
     return (
         <div className="return">
             <div className="return__container">
@@ -89,6 +108,13 @@ function Return() {
                 </div>
                 </form>
                 <button className="return_btn" onClick={putForm}>반품신청</button>
+                
+                
+                                <Returnitem 
+                                
+                                status={orders.order_return}
+                                />
+                            
             </div>
         </div>
     )

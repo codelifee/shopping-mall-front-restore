@@ -13,7 +13,7 @@ import OrdersData from './OrdersData';
 import {BrowserRouter as Router, Switch, Route, useParams} from "react-router-dom";
 import './User.css';
 import DeleteProfile from './DeleteProfile';
-import OrderDetails from './OrderDetails';
+
 
 function User() {
     

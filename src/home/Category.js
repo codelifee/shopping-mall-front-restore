@@ -1,6 +1,5 @@
 import React,{useState,useEffect} from 'react'
 import './Category.css';
-import CategoryData from './CategoryData';
 import {Link, useHistory} from 'react-router-dom';
 import axios from '../axios/axios.js';
 import fruits from './images/fruits.jpg';
@@ -60,9 +59,7 @@ return(
       history.push(`/products/${props.category.category_id}`)
     }}>
       <div className="screen">
-      <div className="top">{props.category.category_name}</div>
-        <div className="bottom">데코글이 있었으면 좋겠습니다~</div>
-      
+      <div className="top">{props.category.category_name}</div>      
         
       <img src={props.picture}/>
       
