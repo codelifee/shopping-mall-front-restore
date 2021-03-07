@@ -9,6 +9,8 @@ import {ImageData} from '../axios/urlData';
 
 function OrdersData({ date, status, address, product, price, picture, order_id, o_return, product_id, quantity }) {
 
+
+
   let image = ImageData.image1 + product_id
 
   console.log(date);
@@ -18,15 +20,16 @@ function OrdersData({ date, status, address, product, price, picture, order_id, 
   console.log(order_id);
   console.log(o_return);
   console.log(product_id);
-  const style = {
-    borderBottom: '1px solid red'
+
+
+  const style11 = {
+    borderTop: '1px solid red'
   };
   const history = useHistory();
 
   const [orders, setOrders] = useState({
     order_return: "기본",
   })
-
 
   const handleStatus = e => {
     e.preventDefault();
@@ -58,39 +61,28 @@ function OrdersData({ date, status, address, product, price, picture, order_id, 
 
 
   return (    
-  <div className="order_overall">
-
-    <table className="order_table" style={{
-      border: '1px solid black'
-    }}>
-      
-      <tr style={style}>
-        <th style={style} className="order_td">날짜</th>
-        <th style={style} className="order_td">상품정보</th>
-        <th style={style} className="order_td">상태</th>
-        <th style={style} className="order_td">교환/환불신청</th>
-        <th style={style} className="order_td">리뷰작성</th>
-      </tr>
-      <tr style={style}>
-        <td className="order_tdtd">{date}</td>
-        <td style={{display:"flex", flexDecoration:"column", alignItems:"center", justifyContent:"center"}} className="order_tdtd">        
+    <>
+      <tr style={style11}>
+        <td style={style11} >{date}</td>
+        <td style={{display:"flex", flexDecoration:"column", alignItems:"center", justifyContent:"center", borderTop:'1px solid red'}} className="order_tdtd">        
       <img src={image} alt="img" style={{width:"80px", position:"relative", left:"-20px"}}/>
           <div className="product">
             <ul style={{listStyle:"none", textAlign:"left"}}>
 
             <li>{product}</li>
-            <li> {price}원</li>
-            <li>{quantity}개</li></ul></div>
+            <li style={{fontSize:"10px"}}>수량: {quantity}개 / 주문번호 : {order_id} </li>
+            <li style={{fontSize:"20px", fontWeight:"1000"}}> ₩{new Intl.NumberFormat().format(price)}</li>
+            </ul></div>
         </td>
-        <td className="order_tdtd">{status}</td>
-        <td><select value={orders.order_return} id={order_id} onChange={handleStatus}>
+        <td className="order_tdtd" style={style11}>{status}</td>
+        <td style={style11}><select value={orders.order_return} id={order_id} onChange={handleStatus}>
           <option value="교환">교환</option>
           <option value="반품">반품</option>
         </select>
         <button id={order_id} onClick={patchOrderStatus}>변경하기</button>
         </td>
 
-        <td className="order_td"><button
+        <td className="order_td" style={style11}><button
               className="review__button"
               onClick={() => {
                 window.open(
@@ -103,8 +95,7 @@ function OrdersData({ date, status, address, product, price, picture, order_id, 
               리뷰 작성
             </button></td>
       </tr>
-    </table >
-    </div>
+  </>
   );
 }
 

@@ -16,6 +16,7 @@ function Orders() {
 
   const { user_sequence_id } = useParams();
 
+
   useEffect(() => {
     async function fetchDate() {
       const request = await axios
@@ -71,7 +72,18 @@ function Orders() {
         <div className="orders__table">
 
           {orders.order_status}
-
+          <table className="order_table" style={{
+      border: '1px solid black', width:"100%"
+    }}>
+      
+     <thead>
+        <th  className="order_td">날짜</th>
+        <th  className="order_td">상품정보</th>
+        <th  className="order_td">상태</th>
+        <th  className="order_td">교환/환불신청</th>
+        <th className="order_td">리뷰작성</th>
+        </thead>
+        <tbody>
           {orders.map(order => (
             <OrdersData
               status={order.order_status}
@@ -88,9 +100,12 @@ function Orders() {
               o_return={order.order_return}
             />
           ))}
+          </tbody>
+          </table>
         </div>
       </div>
     </div>
+
   );
 }
 export default Orders;
