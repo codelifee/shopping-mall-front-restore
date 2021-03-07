@@ -6,7 +6,7 @@ export default [
     {
         id:0,
         title: "포도즙",
-        img: grape,
+        name: grape,
         price:1000,
         decoration:"상큼한 포도즙 X 30봉"
 
@@ -14,7 +14,7 @@ export default [
     {
         id:1,
         title: "토마토즙",
-        img: tomato,
+        name: tomato,
         price:1000,
         decoration:"신선한 토마토즙 X 30봉"
 
@@ -22,7 +22,7 @@ export default [
     {
         id:2,
         title: "매실즙",
-        img: plum,
+        name: plum,
         price:1000,
         decoration:"소화를 돋는 매실즙 X 30봉"
 

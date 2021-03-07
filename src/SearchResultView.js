@@ -1,19 +1,16 @@
 import React, {useState, useContext, useEffect} from 'react'
-import './Product.css';
-import {useStateValue} from "../StateProvider/StateProvider"
+import './detail/Product.css';
+import {useStateValue} from "./StateProvider/StateProvider"
 import {useHistory, useParams} from "react-router-dom";
 import {FaComment, FaShoppingCart} from 'react-icons/fa';
-import {ImageData} from '../axios/urlData';
+import axios from './axios/axios';
 
 
-function Product(props) {
-    let image = ImageData.image1
-
+function SearchResultView(props) {
+    
     //dispatch -> how we manipulate with data
     const [{basket}, dispatch] = useStateValue();
-    
-   
-    
+
     const addToBasket = () => {
         //dispatch the item into the data layer
         dispatch({
@@ -21,7 +18,7 @@ function Product(props) {
             item: {
                 id: props.id,
                 title: props.title,
-                image: image+props.id,
+                image: props.image,
                 description: props.description,
                 price: props.price
                 //rating: props.product_rating
@@ -32,7 +29,7 @@ function Product(props) {
     return (
         <div className='product2'>
            
-             <img className="product2__img" src={image+props.id} alt="" onClick={()=>{
+             <img className="product2__img" src={props.image} alt="" onClick={()=>{
                 history.push(`/detail/${props.id}`);
             }}/> 
              <div className="icons">
@@ -68,4 +65,4 @@ function Product(props) {
     )
 }
 
-export default Product;
+export default SearchResultView;

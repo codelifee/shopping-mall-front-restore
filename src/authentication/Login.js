@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 import './Login.css';
-import {Link,useHistory} from "react-router-dom";
+import {Link} from "react-router-dom";
 import logo from '../img/logo.png';
 import axios from '../axios/axios';
+import { useStateValue } from '../StateProvider/StateProvider';
 
 function Login() {
-    const history = useHistory();
+    
+    const [{basket, user}, dispatch] = useStateValue();
+    
     const [users, setUsers] = useState({
         user_sequence_id: 0,
         user_id: '', 
@@ -27,40 +30,39 @@ function Login() {
         user_sequence_id: 0,
         user_id: '', 
         user_pwd: '',
+        loggedIn: ''
     });
 
     const handleChange = e => {
+        e.preventDefault();
         const {name, value} = e.target
         setValues({
             ...values,
             [name]: value
         });
-    };
-
-    let loggedIn = null;
-    let id = 0;
-
-    const signIn = () => { 
-            if(values.user_id == 'admin' && values.user_pwd == "adminpwd"){
-                loggedIn="admin";
-            }else{
-                users.map((data, i) => {
-                    if(values.user_id === users[i].user_id){
-                        if(values.user_pwd === users[i].user_pwd){
-                            loggedIn = "user";
-                        }
-                    }else{
-                        return alert('아이디와 비밀번호를 다시 입력하세요');
-                    }
-                }) 
-            }
-        if(!(loggedIn==null)){
-            return history.push=('/home');
-        }
     }
+    console.log(values);
 
-    const signOut = () => {
-        setValues(null);
+    const signIn = () => {
+        if(values.user_id == 'admin' && values.user_pwd == "adminpwd"){
+            setValues(values.loggedIn = "admin");
+        }else{
+            users.map((data, i) => {
+                if(values.user_id === users[i].user_id){
+                    if(values.user_pwd === users[i].user_pwd){
+                        setValues(values.loggedIn = "user");
+                        setValues(values.user_sequence_id = users[i].user_sequence_id);
+                    }
+                }
+            }) 
+        }
+        console.log(user);
+        if(values.loggedIn==''){
+            alert('존재하지 않는 아이디나 비밀번호입니다.');
+        }else{
+            dispatch({type: "SET_USER",user: values});
+            window.location.href="/home";
+        }
     }
 
     return (
@@ -75,12 +77,16 @@ function Login() {
                     <h5>Id</h5>
                     <input 
                     type='text' 
+                    id="user_id"
+                    name="user_id"
                     defaultValue={values.user_id}
                     onChange={handleChange}
                     />
 
                     <h5>Password</h5>
                     <input type='password' 
+                    id="user_pwd"
+                    name="user_pwd"
                     defaultValue={values.user_pwd}
                     onChange={handleChange}
                     />
@@ -96,11 +102,9 @@ function Login() {
                 <Link to ="/signup">
                     <button className='login__registerButton'>Create Account</button>
                 </Link>
-            
             </div>
         </div>
     )
-    return {loggedIn, values, signOut};
 }
-
 export default Login;
+

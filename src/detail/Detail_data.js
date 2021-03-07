@@ -2,11 +2,12 @@ import React, {useState, useEffect} from 'react';
 import {useParams} from 'react-router-dom';
 import axios from '../axios/axios';
 import './Detail_data.css';
+import {ImageData} from '../axios/urlData';
 
  function Detail_data(){
 
    const {id} = useParams();
-    const info_img = `http://shoppingmall-env.eba-jac9afx7.us-east-1.elasticbeanstalk.com/products/showInfoImage/${id}`;
+   let image = ImageData.image2 + id
      const [products, setProducts] = useState([]);
      useEffect(()=>{
           async function fetchDate() {
@@ -23,7 +24,7 @@ import './Detail_data.css';
               }, [])
      return (
          <div>
-              <img src={info_img} alt="디테일" className="detail_img"/>
+              <img src={image} alt="" className="detail_img"/>
          </div>
      )
  }
