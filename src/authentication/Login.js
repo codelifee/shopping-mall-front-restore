@@ -11,6 +11,7 @@ function Login() {
         user_id: '', 
         user_pwd: ''
     });
+
     useEffect(() => {
         async function fetchData() {
             const request = await axios.get(`users/all`)
@@ -21,11 +22,13 @@ function Login() {
         }
         fetchData();
     }, []);
+
     const [values, setValues] = useState({
         user_sequence_id: 0,
         user_id: '', 
         user_pwd: '',
     });
+
     const handleChange = e => {
         const {name, value} = e.target
         setValues({
@@ -85,7 +88,9 @@ function Login() {
                     <button
                     type='submit'
                     onClick={signIn}
-                    className='login__signInButton'>Sign In</button>
+                    className='login__signInButton'>
+                    Sign In
+                    </button>
                 </form>
 
                 <Link to ="/signup">
