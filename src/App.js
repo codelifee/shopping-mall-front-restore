@@ -17,6 +17,8 @@ import Slider from "./slide2/Slide2";
 import LandingPage from "./landingpage/LandingPage";
 import ProductView from "./ProductView/ProductView";
 import ReviewForm from "./detail/ReviewForm";
+import ReviewForm1 from "./user/ReviewForm1";
+
 import ReviewPatchDeleteForm from "./detail/ReviewPatchDeleteForm";
 import "./App.css";
 import QnAForm from "./detail/QnAForm";
@@ -95,6 +97,11 @@ function App() {
 
           <Route path="/review/:id">
             <ReviewForm />
+          </Route>
+
+          
+          <Route path="/review1/:id">
+            <ReviewForm1 />
           </Route>
           
           <Route path="/reviewUpdate/:id">

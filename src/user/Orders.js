@@ -69,6 +69,7 @@ function Orders() {
           <h2>{orders?.length} Orders</h2>
         </div>
         <div className="orders__table">
+
           {orders.order_status}
 
           {orders.map(order => (
@@ -83,6 +84,7 @@ function Orders() {
               address={order.user_address}
               picture={image + order.product_id}
               price={order.product_price}
+              quantity={order.quantity}
               o_return={order.order_return}
             />
           ))}
