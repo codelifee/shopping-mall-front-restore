@@ -5,11 +5,12 @@ import { useParams } from 'react-router-dom';
 import CurrencyFormat from "react-currency-format";
 import { useHistory } from 'react-router-dom'
 import { useStateValue } from '../StateProvider/StateProvider';
-import ReturnData from './ReturnData';
+import OrdersData from './OrdersData';
+
 function Exchange() {
     
-    const {putForm,user} = ReturnData();
-  
+    const {patchReturnStatus,orders} = OrdersData();
+
     const history = useHistory();
            
     return (
@@ -61,7 +62,7 @@ function Exchange() {
                     </td>
                     
                     <td style={{textAlign:'left',paddingLeft:'30px',borderRight:'1px solid #ccc',borderBottom:'1px solid #ccc'}}>
-                        {user.user_name}
+                        {orders.user_name}
                     </td>
                 </tr>
                 <tr>
@@ -69,7 +70,7 @@ function Exchange() {
                         연락처
                     </td>
                     <td style={{textAlign:'left',paddingLeft:'30px',borderRight:'1px solid #ccc',borderBottom:'1px solid #ccc'}}>
-                        {user.user_phone}
+                        {orders.user_phone}
                         
                         
                     </td>
@@ -80,12 +81,12 @@ function Exchange() {
                        받는주소
                     </td>
                     <td style={{textAlign:'left',paddingLeft:'30px',borderRight:'1px solid #ccc',borderBottom:'1px solid #ccc'}}>
-                        {user.user_address}
+                        {orders.user_address}
                     </td>
                 </tr>  
                 </table>
                 
-                <button className="exchange_btn" onClick={putForm}>교환신청</button>
+                <button className="exchange_btn" onClick={patchReturnStatus}>교환신청</button>
    
                 
            

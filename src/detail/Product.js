@@ -11,10 +11,6 @@ function Product(props) {
 
     //dispatch -> how we manipulate with data
     const [{basket}, dispatch] = useStateValue();
-<<<<<<< HEAD
-=======
-    const image = "https://api.xn--vx3b30no7b.com/products/showProductImage/";
->>>>>>> a4924981a210fd8fdcfecd3db8851529160c6e0c
     
    
     

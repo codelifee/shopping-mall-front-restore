@@ -1,5 +1,5 @@
-import {React,useState} from 'react';
-
+import {React,useState,useEffect} from 'react';
+import Axios from 'axios';
 import Navbar from './Navbar';
 import UpdateProfile from './UpdateProfile';
 
@@ -13,7 +13,6 @@ import OrdersData from './OrdersData';
 import {BrowserRouter as Router, Switch, Route, useParams} from "react-router-dom";
 import './User.css';
 import DeleteProfile from './DeleteProfile';
-import OrderDetails from './OrderDetails';
 
 function User() {
     
@@ -54,6 +53,17 @@ function User() {
                     <Route path='/user/orderdetail/:user_sequence_id'>
                         <Navbar/>
                         <OrderDetails/>
+                    </Route>
+                    
+                    <Route path='/user/return/:order_id'>
+                        <Navbar/>
+                        <Return/>
+
+                    </Route>
+                    <Route path='/user/exchange/:order_id'>
+                        <Navbar/>
+                        <Exchange/>
+
                     </Route>
                 </Switch>
             </div>

@@ -5,15 +5,16 @@ import OrdersData from "./OrdersData";
 import axios from "../axios/axios";
 import { useHistory, useParams } from "react-router-dom";
 import "./Orders.css";
+import {ImageData} from '../axios/urlData';
 
 function Orders() {
   const [startDate, setStartDate] = useState(new Date());
   const [orders, setOrders] = useState([{}]);
+  let image = ImageData.image1
 
   let history = useHistory();
 
   const { user_sequence_id } = useParams();
-  const img = `http://shoppingmall-env.eba-jac9afx7.us-east-1.elasticbeanstalk.com/products/showProductImage/`;
 
   useEffect(() => {
     async function fetchDate() {
@@ -74,13 +75,15 @@ function Orders() {
             <OrdersData
               status={order.order_status}
               key={order.order_id}
-              id={order.product_id}
+              order_id={order.order_id}
+              product_id={order.product_id}
               name={order.user_id}
               product={order.product_name}
               date={order.order_date_created}
               address={order.user_address}
-              picture={img + order.product_id}
+              picture={image + order.product_id}
               price={order.product_price}
+              o_return={order.order_return}
             />
           ))}
         </div>
