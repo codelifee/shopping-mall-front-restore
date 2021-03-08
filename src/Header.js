@@ -17,19 +17,6 @@ import axios from './axios/axios';
 function Header() {
   const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    async function getSearchItem() {
-      const request = await axios
-        .get(`products/all`)
-        .then((response) => setProducts(response.data))
-        .catch((error) => console.log(error));
-
-      return request;
-    }
-
-    getSearchItem();
-  }, []);
-
   const [{ basket, user }, dispatch] = useStateValue();
 
   const [{ keyword }, keyword_dispatch] = useStateValue();
