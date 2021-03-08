@@ -10,8 +10,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import 'react-datepicker/dist/react-datepicker.css';
 import { Category } from '@material-ui/icons';
+import AnsweredProducts from './AnsweredProducts';
 
-function Answered() {
+function AnsweredCategory() {
   const [startDate, setStartDate] = useState(new Date());
   const [products, setProducts] = useState([]);
 
@@ -128,4 +129,4 @@ function Answered() {
   );
 }
 
-export default Answered;
+export default AnsweredCategory;

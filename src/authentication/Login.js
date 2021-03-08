@@ -37,11 +37,9 @@ function Login() {
             user: res.data
         }))
         .catch(err => console.log(err));
-
-        history.push("/home")
     }
 
-    console.log(user)
+    console.log(loginUser)
 
     return (
         <div className='login'>

@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react";
-import Navbar from "./Navbar";
-import SellerProducts from "./SellerProducts";
-import Order from "./Order";
-import User from "./User";
-import AddProduct from "./AddProduct";
-import UpdateProduct from "./UpdateProduct";
-import AnswerYetCategory from "./AnswerYetCategory";
-import AnswerYetProducts from "./AnswerYetProducts";
-import AnswerYetQuestions from "./AnswerYetQuestion";
-import AnsweredCategory from "./AnsweredCategory";
-import AnsweredProducts from "./AnsweredProducts";
-
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import "./Seller.css";
+import React, { useEffect, useState } from 'react';
+import Navbar from './Navbar';
+import SellerProducts from './SellerProducts';
+import Order from './Order';
+import User from './User';
+import AddProduct from './AddProduct';
+import UpdateProduct from './UpdateProduct';
+import AnswerYetCategory from './AnswerYetCategory';
+import AnswerYetProducts from './AnswerYetProducts';
+import AnswerYetQuestions from './AnswerYetQuestion';
+import AnsweredCategory from './AnsweredCategory';
+import AnsweredProducts from './AnsweredProducts';
+import AnsweredQuestionModal from './AnsweredQuestionModal';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import './Seller.css';
 
 function Seller() {
   return (
@@ -44,12 +44,12 @@ function Seller() {
             <AnswerYetCategory />
           </Route>
           <Route path="/seller/answerYetProducts/:id">
-            <Navbar/>
-            <AnswerYetProducts/>
+            <Navbar />
+            <AnswerYetProducts />
           </Route>
           <Route path="/seller/answerYetQuestions/:id">
-            <Navbar/>
-            <AnswerYetQuestions/>
+            <Navbar />
+            <AnswerYetQuestions />
           </Route>
           <Route path="/seller/answeredCategory">
             <Navbar />
@@ -58,6 +58,10 @@ function Seller() {
           <Route path="/seller/answeredProducts/:id">
             <Navbar />
             <AnsweredProducts />
+          </Route>
+          <Route path="/seller/answeredQuestions/:id">
+            <Navbar />
+            <AnsweredQuestionModal />
           </Route>
           <Route path="/seller">
             <Navbar />

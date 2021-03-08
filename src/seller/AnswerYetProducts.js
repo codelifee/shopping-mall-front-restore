@@ -44,7 +44,6 @@ function AnswerYetProducts() {
     getQuestion();
   }, []);
 
-
   return (
     <div className="AnsweYetProduct">
       <div className="AnsweYetProduct__container">
@@ -64,7 +63,7 @@ function AnswerYetProducts() {
             <FaSearch className="search-icon" />
           </form>
           <div className="answer__category">
-            <p>Answer Creation Date</p>
+            <p>답변생성일자</p>
             <DatePicker
               className="datepicker_date"
               selected={startDate}
@@ -117,7 +116,6 @@ function AnswerYetProducts() {
                       key={product.product_id}
                       id={product.product_id}
                       name={product.product_name}
-                      description={product.product_description}
                       question={wait.length}
                     />
                   );

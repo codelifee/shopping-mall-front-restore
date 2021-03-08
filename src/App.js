@@ -1,27 +1,27 @@
-import "./App.css";
-import Header from "./Header";
-import React, { useState, useEffect } from "react";
-import Home from "./home/Home";
-import SearchResult from "./SearchResult";
-import Seller from "./seller/Seller";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Checkout from "./checkout/Checkout";
-import Detail from "./detail/Detail";
-import Login from "./authentication/Login";
-import { auth } from "./configuration/firebase";
-import { useStateValue } from "./StateProvider/StateProvider";
-import Payment from "./payment/Payment";
-import Footer from "./footer/Footer";
+import './App.css';
+import Header from './Header';
+import React, { useState, useEffect } from 'react';
+import Home from './home/Home';
+import SearchResult from './SearchResult';
+import Seller from './seller/Seller';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Checkout from './checkout/Checkout';
+import Detail from './detail/Detail';
+import Login from './authentication/Login';
+import { auth } from './configuration/firebase';
+import { useStateValue } from './StateProvider/StateProvider';
+import Payment from './payment/Payment';
+import Footer from './footer/Footer';
 // import ImgSlide from "./slide/ImgSlide";
-import Slider from "./slide2/Slide2";
-import LandingPage from "./landingpage/LandingPage";
-import ProductView from "./ProductView/ProductView";
-import ReviewForm from "./detail/ReviewForm";
+import Slider from './slide2/Slide2';
+import LandingPage from './landingpage/LandingPage';
+import ProductView from './ProductView/ProductView';
+import ReviewForm from './detail/ReviewForm';
 
-import ReviewPatchDeleteForm from "./detail/ReviewPatchDeleteForm";
-import "./App.css";
-import QnAForm from "./detail/QnAForm";
-import KakaoMap from "./Introduction/KakaoMap";
+import ReviewPatchDeleteForm from './detail/ReviewPatchDeleteForm';
+import './App.css';
+import QnAForm from './detail/QnAForm';
+import KakaoMap from './Introduction/KakaoMap';
 import User from './user/User';
 import SignUp from './authentication/SignUp';
 
@@ -48,11 +48,11 @@ function App() {
   //   });
   // }, []);
 
-  const[isSubmittied, setIsSubmitted] = useState(false);
+  const [isSubmittied, setIsSubmitted] = useState(false);
 
-    function submitForm(){
-        setIsSubmitted(true);
-    }
+  function submitForm() {
+    setIsSubmitted(true);
+  }
 
   return (
     //BEM convention
@@ -68,12 +68,15 @@ function App() {
 
           <Route path="/searchResult">
             <Header />
-            <SearchResult/>
+            <SearchResult />
           </Route>
 
-          <Route path='/signup'>
-            {!isSubmittied ? (<SignUp submitForm={submitForm}/>)
-              : (window.location.href="/login")}
+          <Route path="/signup">
+            {!isSubmittied ? (
+              <SignUp submitForm={submitForm} />
+            ) : (
+              (window.location.href = '/login')
+            )}
           </Route>
           <Route path="/login">
             <Login />
@@ -97,9 +100,6 @@ function App() {
             <ReviewForm />
           </Route>
 
-          
-        
-          
           <Route path="/reviewUpdate/:id">
             <ReviewPatchDeleteForm />
           </Route>
@@ -119,12 +119,12 @@ function App() {
           </Route>
 
           <Route path="/user">
-              <User />
-            </Route>
+            <User />
+          </Route>
 
           <Route path="/introduction">
             <Header />
-            
+
             <KakaoMap />
             <Footer />
           </Route>
@@ -132,7 +132,6 @@ function App() {
           <Route path="/">
             <LandingPage />
           </Route>
-
         </Switch>
       </div>
     </Router>
