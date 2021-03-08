@@ -4,9 +4,9 @@ import axios from '../axios/axios';
 import DatePicker from 'react-datepicker';
 import { FaSearch } from 'react-icons/fa';
 import { useHistory, Link } from 'react-router-dom';
-import './AnsweredProducts.css';
-import AnsweredProductsView from './AnswerYetProductsView';
-import AnsweredQuestionModal from './AnsweredQuestionModal';
+import './AnswerYetProducts.css';
+import { ImageData } from '../axios/urlData';
+
 import 'react-datepicker/dist/react-datepicker.css';
 import { Category } from '@material-ui/icons';
 import AnswerCategory from './AnsweredCategory';
@@ -14,9 +14,10 @@ import AnswerCategory from './AnsweredCategory';
 function AnsweredProducts() {
   const [startDate, setStartDate] = useState(new Date());
   const [products, setProducts] = useState([]);
-  const { id } = useParams(); //category_id
-  const [modal, setModal] = useState(false);
-  const [categories, setCategories] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const { id } = useParams();
+  const history = useHistory();
+  let total = null; //답변 전 상품별 전체 질문
 
   useEffect(() => {
     async function fetchDate() {
@@ -102,13 +103,10 @@ function AnsweredProducts() {
         <div className="AnsweYetProduct__table_bg">
           <table className="AnsweYetProduct__table">
             <thead>
-              <th>상품명</th>
-              <th>질문자</th>
-              <th>질문</th>
-              <th>질문생성일자</th>
-              <th>답변</th>
-              <th>답변생성일자</th>
-              <th>수정 및 삭제</th>
+              <th>Product Name</th>
+              <th>Picture</th>
+              <th>Questions</th>
+              <th>Answer</th>
             </thead>
             <tbody>
               {question
@@ -126,40 +124,17 @@ function AnsweredProducts() {
                       return prd.product_name;
                     });
                   console.log(i, name);
+                  let image = ImageData.image1 + val.product_id;
 
                   return (
-                    <>
-                      <tr>
-                        <td>{name}</td>
-                        <td>{val.user_id}</td>
-                        <td>{val.question}</td>
-                        <td>{val.question_date_created}</td>
-                        <td> {val.answer}</td>
-                        <td>{val.answer_date_created}</td>
-                        <td>
-                          <div
-                            className="answer_button"
-                            onClick={() => {
-                              setModal(!modal);
-                            }}
-                          >
-                            수정 및 삭제
-                          </div>
-                        </td>
-                      </tr>
-                      {modal == true ? (
-                        <tr>
-                          <td>답변 작성</td>
-                          <td colSpan="5">
-                            <AnsweredQuestionModal
-                              id={val.question_id}
-                              answer={val.answer}
-                              answer_date_created={val.answer_date_created}
-                            />
-                          </td>
-                        </tr>
-                      ) : null}
-                    </>
+                    <tr>
+                      <td>{name}</td>
+                      <td>
+                        <img src={image} alt="image" />
+                      </td>
+                      <td>{val.question}</td>
+                      <td>{val.answer}</td>
+                    </tr>
                   );
                 })}
             </tbody>

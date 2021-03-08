@@ -6,6 +6,8 @@ import "./OrderDetails.css";
 import CurrencyFormat from "react-currency-format";
 import { useHistory } from 'react-router-dom'
 import { useStateValue } from '../StateProvider/StateProvider';
+import {ImageData} from '../axios/urlData';
+
 
 
 function OrderDetails() {
@@ -39,7 +41,7 @@ function OrderDetails() {
     const [startDate, setStartDate] = useState(new Date());
     const [orders, setOrders] = useState([{}]);  
    
-    const img = `http://shoppingmall-env.eba-jac9afx7.us-east-1.elasticbeanstalk.com/products/showProductImage/`;
+    let image = ImageData.image1
   
     useEffect(() => {
       async function fetchDate() {
@@ -70,7 +72,7 @@ function OrderDetails() {
               product={order.product_name}
               date={order.order_date_created}
               address={order.user_address}
-              picture={img + order.product_id}
+              picture={image+ order.product_id}
               price={order.product_price}
               amount={order.order_amount}
             />

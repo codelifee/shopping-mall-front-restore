@@ -6,7 +6,6 @@ import { FaSearch } from 'react-icons/fa';
 import { useHistory, Link } from 'react-router-dom';
 import './AnswerYetProducts.css';
 import AnswerYetProductsView from './AnswerYetProductsView';
-
 import 'react-datepicker/dist/react-datepicker.css';
 import { Category } from '@material-ui/icons';
 
@@ -14,10 +13,8 @@ function AnswerYetProducts() {
   const [startDate, setStartDate] = useState(new Date());
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const product_img = `http://shoppingmall-env.eba-jac9afx7.us-east-1.elasticbeanstalk.com/products/showProductImage/`;
   const { id } = useParams();
   const history = useHistory();
-
   let total = null; //답변 전 상품별 전체 질문
 
   useEffect(() => {
@@ -81,8 +78,10 @@ function AnswerYetProducts() {
         <div className="AnsweYetProduct__table_bg">
           <table className="AnsweYetProduct__table">
             <thead>
-              <th>상품명</th>
-              <th>답변대기중인 질문개수</th>
+              <th>Picture</th>
+              <th>Product Name</th>
+              <th>Product Description</th>
+              <th>Wating answer questions</th>
             </thead>
             <tbody>
               {products

@@ -26,16 +26,6 @@ function AnswerYetQuestionModal({ id }) {
     inputRef.current.focus();
   };
 
-<<<<<<< HEAD
-  // const handleChange = (e) => {
-  //   e.preventDefault();
-
-  //   setForm({
-  //     ...form,
-  //     [e.target.name]: e.target.value,
-  //   });
-  // };
-=======
   const handleDelete = (e) => {
     e.preventDefault();
 
@@ -46,7 +36,6 @@ function AnswerYetQuestionModal({ id }) {
   };
 
   console.log(form);
->>>>>>> 66cabdd201344513c5dcc4afc348645df2291b8d
 
   const postAnswer = (e) => {
     e.preventDefault();
@@ -80,13 +69,7 @@ function AnswerYetQuestionModal({ id }) {
             Submit
           </button>
           <br />
-<<<<<<< HEAD
-          <button type="reset" onClick={onReset}>
-            Reset
-          </button>
-=======
           <button onClick={handleDelete}>reset</button>
->>>>>>> 66cabdd201344513c5dcc4afc348645df2291b8d
         </div>
       </form>
     </div>
