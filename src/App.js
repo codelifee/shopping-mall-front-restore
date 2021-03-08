@@ -26,6 +26,8 @@ import Slider from './slide2/Slide2';
 import ReviewPatchDeleteForm from './detail/ReviewPatchDeleteForm';
 
 function App() {
+  const [auth, setAuth] = useState(false);
+
   const [{}, dispatch] = useStateValue();
 
   // useEffect(() => {

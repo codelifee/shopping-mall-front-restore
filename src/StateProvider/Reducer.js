@@ -1,7 +1,10 @@
 export const initialState = {
     basket: [],
-    user: {user_sequence_id:0, user_id:'', user_pwd:'', loggedIn:''},
-    keyword: ""
+    user: {
+        id: "",
+        name: "",
+        password: ""
+    }
 };
 
 export const getBasketTotal = (basket) =>
