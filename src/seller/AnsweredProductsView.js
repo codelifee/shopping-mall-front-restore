@@ -3,7 +3,7 @@ import axios from '../axios/axios';
 import './SellerProduct.css';
 import { Link, useHistory } from 'react-router-dom';
 
-function AnsweredProductSearch({ name, question, answer }) {
+function AnsweredProductSearch({ id, name, question, answer }) {
   const history = useHistory();
   return (
     <>
@@ -11,8 +11,6 @@ function AnsweredProductSearch({ name, question, answer }) {
         <td>{name}</td>
         <td>
           <span
-
-          
             onClick={() => {
               history.push(`/seller/answeredQuestions/${id}`);
             }}

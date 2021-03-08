@@ -13,21 +13,19 @@ import { useStateValue } from './StateProvider/StateProvider';
 import Payment from './payment/Payment';
 import Footer from './footer/Footer';
 // import ImgSlide from "./slide/ImgSlide";
-import Slide2 from './slide2/Slide2';
+import Slider from './slide2/Slide2';
 import LandingPage from './landingpage/LandingPage';
 import ProductView from './ProductView/ProductView';
 import ReviewForm from './detail/ReviewForm';
+
+import ReviewPatchDeleteForm from './detail/ReviewPatchDeleteForm';
 import './App.css';
 import QnAForm from './detail/QnAForm';
 import KakaoMap from './Introduction/KakaoMap';
 import User from './user/User';
 import SignUp from './authentication/SignUp';
-import Slider from './slide2/Slide2';
-import ReviewPatchDeleteForm from './detail/ReviewPatchDeleteForm';
 
 function App() {
-  const [auth, setAuth] = useState(false);
-
   const [{}, dispatch] = useStateValue();
 
   // useEffect(() => {
@@ -57,10 +55,11 @@ function App() {
   }
 
   return (
+    //BEM convention
     <Router>
       <div className="app">
         <Switch>
-          <Route>
+          <Route path="/home">
             <Header />
             <Slider />
             <Home />
@@ -82,7 +81,6 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
-
           <Route path="/checkout">
             <Header />
             <Checkout />
@@ -91,13 +89,11 @@ function App() {
           <Route path="/products/:id">
             <Header />
             <ProductView />
-            <Footer />
           </Route>
 
           <Route path="/detail/:id">
             <Header />
             <Detail />
-            <Footer />
           </Route>
 
           <Route path="/review/:id">

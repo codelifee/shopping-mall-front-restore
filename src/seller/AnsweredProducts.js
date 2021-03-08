@@ -9,7 +9,6 @@ import { ImageData } from '../axios/urlData';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import { Category } from '@material-ui/icons';
-import AnswerCategory from './AnsweredCategory';
 
 function AnsweredProducts() {
   const [startDate, setStartDate] = useState(new Date());
@@ -18,6 +17,7 @@ function AnsweredProducts() {
   const { id } = useParams();
   const history = useHistory();
   let total = null; //답변 전 상품별 전체 질문
+  let image1 = ImageData.image1 + id;
 
   useEffect(() => {
     async function fetchDate() {
@@ -45,26 +45,6 @@ function AnsweredProducts() {
     }
     getQuestion();
   }, []);
-
-  useEffect(() => {
-    async function getCategories() {
-      const request = await axios
-        .get(`categories/${id}`)
-        .then((response) => setCategories(response.data))
-        .catch((error) => console.log(error));
-
-      return request;
-    }
-    getCategories();
-  }, []);
-
-  let wait = question
-    .filter((ques) => {
-      return ques.answer !== null && ques.category_id == id;
-    })
-    .map((ques) => {
-      return ques.answer;
-    });
 
   return (
     <div className="AnsweYetProduct">
@@ -94,12 +74,9 @@ function AnsweredProducts() {
           </div>
         </div>
         <br />
-        <div className="question__info">
-          <h2>{categories.category_name}</h2>
-        </div>
-        <div className="question__info2">
-          <h2>Question count: {wait.length} </h2>
-        </div>
+        {/* <div className="question__info">
+                    <h2>0 Questions</h2>
+                </div> */}
         <div className="AnsweYetProduct__table_bg">
           <table className="AnsweYetProduct__table">
             <thead>
@@ -130,7 +107,7 @@ function AnsweredProducts() {
                     <tr>
                       <td>{name}</td>
                       <td>
-                        <img src={image} alt="image" />
+                        <img src={image1} alt="product" />
                       </td>
                       <td>{val.question}</td>
                       <td>{val.answer}</td>

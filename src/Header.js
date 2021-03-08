@@ -89,10 +89,47 @@ function Header() {
             <img className="header__logo" src={Logo} alt="" />
           </Link>
 
+          <Link to="/home">
+            <p className="logo_name">ChenJiYeon</p>
+          </Link>
+        </div>
+
+        <div className="header__nav">
+          <Link to={'/login'}>
+            <div onClick={handleAuthentication} className="header__option">
+              <span className="header__optionLineOne">
+                Hello{' '}
+                {user.loggedIn == ''
+                  ? 'Guest'
+                  : user.loggedIn == 'user'
+                  ? user?.user_id
+                  : 'Admin'}
+              </span>
+              <span className="header__optionLinetwo">
+                {user.loggedIn == '' ? 'Sign In' : 'Sign Out'}
+              </span>
+            </div>
+          </Link>
+
           <Link to="/seller">
             <div className="header__option">
-              <span className="header__optionLineOne">seller</span>
+              <span className="header__optionLineOne">Seller</span>
               <span className="header__optionLinetwo">Center</span>
+            </div>
+          </Link>
+
+          <Link to="/user">
+            <div className="header__option">
+              <span className="header__optionLineOne">Returns</span>
+              <span className="header__optionLinetwo">Orders</span>
+            </div>
+          </Link>
+          <Link to="/checkout">
+            <div className="header__optionBasket">
+              <ShoppingBasketIcon />
+              <span className="header__optionLineTwo header__basketCount">
+                {/* {basket?.length} */}
+              </span>
             </div>
           </Link>
         </div>
@@ -101,4 +138,3 @@ function Header() {
   );
 }
 export default Header;
-// connect(mapStateProps, mapDispatchToProps);
