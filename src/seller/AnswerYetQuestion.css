@@ -1,17 +1,13 @@
-.answer_button {
-  cursor: pointer;
-  font-weight: bold;
+.answer_button{
+    cursor: pointer;
+    font-weight: bold;
 }
 
-.AnsweYetProduct__table td {
-  text-align: center;
+.AnsweYetProduct__table td{
+    text-align: center;
 }
 
-.question__info > h2 {
-  margin-left: 50px;
-  margin-top: 50px;
-}
-.question__info2 > h2 {
-  margin-left: 50px;
-  margin-bottom: 20px;
+.question__info > h2{
+    margin-left: 50px;
+    margin-top: 50px;
 }

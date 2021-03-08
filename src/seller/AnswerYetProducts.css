@@ -1,12 +1,12 @@
 .AnsweYetProduct {
-  width: 75%;
+  width: 100%;
   display: flex;
   justify-content: center;
 }
 
 .AnsweYetProduct__container {
   /* background: rgb(182, 167, 167); */
-  width: 500px;
+  width: 1200px;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 100px 100px 100px 1fr;
@@ -107,7 +107,7 @@
 }
 
 .AnsweYetProduct__table {
-  width: 800px;
+  width: 1125px;
   text-align: center;
   border-radius: 5px;
   background-image: linear-gradient(to right, #faf4c0 0%, #f1d9f5 100%);
@@ -146,4 +146,9 @@ td {
   cursor: pointer;
   font-weight: bold;
   font-size: 20px;
+}
+
+.AnsweYetProduct__table td img {
+  width: 200px;
+  height: 150px;
 }

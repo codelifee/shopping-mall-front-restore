@@ -1,64 +1,70 @@
-import React, { useState, useEffect } from 'react';
-import './AnswerYetCategory.css';
-import { FaSearch } from 'react-icons/fa';
-import DatePicker from 'react-datepicker';
-import axios from '../axios/axios';
-import { useHistory } from 'react-router-dom';
+import React, {useState, useEffect} from "react";
+import './AnswerYetCategory.css'
+import {FaSearch} from 'react-icons/fa';
+import DatePicker from "react-datepicker";
+import axios from '../axios/axios'
+import {useHistory} from 'react-router-dom';
 
-import 'react-datepicker/dist/react-datepicker.css';
+import "react-datepicker/dist/react-datepicker.css";
 import { Category } from '@material-ui/icons';
 
 function AnswerYetCategory() {
-  const [startDate, setStartDate] = useState(new Date());
 
-  //카테고리 정보 저장 state
-  const [categories, setCategories] = useState([]);
+    const [startDate, setStartDate] = useState(new Date());
 
-  //페이지 이동
-  const history = useHistory();
+    //카테고리 정보 저장 state
+    const [categories, setCategories] = useState([]);
 
-  useEffect(() => {
-    async function fetchDate() {
-      const request = await axios
-        .get('categories/all')
-        .then((response) => setCategories(response.data))
-        .catch((error) => console.log(error));
+    //페이지 이동
+    const history = useHistory();
 
-      return request;
-    }
+    useEffect(() => {
+        async function fetchDate() {
+            const request = await axios.get('categories/all')
+            .then(response => 
+                setCategories(response.data)
+            )
+            .catch(error => console.log(error))
+            
+            return request;
+        }
 
-    fetchDate();
-  }, []);
+        fetchDate();
+    }, [])
 
-  const [question, setQuestion] = useState([]);
+    const [question, setQuestion] = useState([]);
 
-  useEffect(() => {
-    async function getQuestion() {
-      const request = await axios
-        .get('question/all')
-        .then((response) => setQuestion(response.data))
-        .catch((error) => console.log(error));
+    useEffect(()=>{
+        async function getQuestion() {
+            const request = await axios.get('question/all')
+            .then(response =>
+                setQuestion(response.data))
+            .catch(error => console.log(error))
+    
+            return request;
+        }
+        getQuestion();
+        }, [])
 
-      return request;
-    }
-    getQuestion();
-  }, []);
+        console.log(question);
+    
+        const totalQuestion = 
+        question
+        .filter((ques)=>{
+            return ques.answer==null;
+        }) 
+        .map(
+            (ques)=>{
+                return ques.product_id;
+            }
+        )  
 
-  console.log(question);
-
-  const totalQuestion = question
-    .filter((ques) => {
-      return ques.answer == null;
-    })
-    .map((ques) => {
-      return ques.product_id;
-    });
-
-  return (
-    <div className="category">
-      <div className="category__container">
-        <div className="products__search">
-          {/* <div className="products__button">
+        
+    return (
+        <div className="category">
+            <div className="category__container">
+                <div className="products__search">
+                {/* <div className="products__button">
                     <button className="products__search-button">Search</button>
                     <button className="products__reset-button">Reset</button>
                 </div>
@@ -66,71 +72,69 @@ function AnswerYetCategory() {
                         <input type="text" className="products__input" />
                         <FaSearch className="search-icon"/>
                     </form> */}
-          <div className="answer__category">
-            <p>Answer Creation Date</p>
-            <DatePicker
-              className="datepicker_date"
-              selected={startDate}
-              onChange={(date) => setStartDate(date)}
-            />
-          </div>
+                    <div className="answer__category">
+                        <p>Answer Creation Date</p>
+                        <DatePicker
+                        className="datepicker_date"
+                        selected={startDate} 
+                        onChange={date => setStartDate(date)} />
+                    </div>
+                </div>
+                
+                <div className="question__info">
+                    <h2>{totalQuestion.length} Questions</h2>
+                </div>
+                <div className="category__table_bg">
+                    <table className="category__table">
+                        <thead>
+                            <th>Category Name</th>
+                            <th>Answer Wating Questions</th>
+                        </thead>
+                        <tbody>
+                            {categories.map((category)=>{
+                                let categoryQuestion = null;
+                                categoryQuestion = question.filter((val)=>{
+                                    return val.category_id == category.category_id && val.answer==null;
+                                })
+                                .map(
+                                    (val)=>{
+                                        return val.question_id
+                                    }
+                                )
+                                return(
+                                    <tr key={category.category_id}>
+                                        <td>
+                                            <span onClick={
+                                                ()=>{
+                                                    history.push(
+                                                        `/seller/answerYetProducts/${category.category_id}`
+                                                    )
+                                                }
+                                            }>
+                                                {category.category_name}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span  onClick={
+                                                ()=>{
+                                                    history.push(
+                                                        `/seller/answerYetProducts/${category.category_id}`
+                                                    )
+                                                }
+                                            }>
+                                                {categoryQuestion.length}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                )
+                            })}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-
-        <div className="question__info">
-          <h2>{totalQuestion.length} Questions</h2>
-        </div>
-        <div className="category__table_bg">
-          <table className="category__table">
-            <thead>
-              <th>Category Name</th>
-              <th>Answer Wating Questions</th>
-            </thead>
-            <tbody>
-              {categories.map((category) => {
-                let categoryQuestion = null;
-                categoryQuestion = question
-                  .filter((val) => {
-                    return (
-                      val.category_id == category.category_id &&
-                      val.answer == null
-                    );
-                  })
-                  .map((val) => {
-                    return val.question_id;
-                  });
-                return (
-                  <tr key={category.category_id}>
-                    <td>
-                      <span
-                        onClick={() => {
-                          history.push(
-                            `/seller/answerYetProducts/${category.category_id}`,
-                          );
-                        }}
-                      >
-                        {category.category_name}
-                      </span>
-                    </td>
-                    <td>
-                      <span
-                        onClick={() => {
-                          history.push(
-                            `/seller/answerYetProducts/${category.category_id}`,
-                          );
-                        }}
-                      >
-                        {categoryQuestion.length}
-                      </span>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  );
+    )
 }
+
 
 export default AnswerYetCategory;

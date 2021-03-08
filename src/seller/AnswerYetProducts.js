@@ -6,6 +6,7 @@ import { FaSearch } from 'react-icons/fa';
 import { useHistory, Link } from 'react-router-dom';
 import './AnswerYetProducts.css';
 import AnswerYetProductsView from './AnswerYetProductsView';
+
 import 'react-datepicker/dist/react-datepicker.css';
 import { Category } from '@material-ui/icons';
 
@@ -13,8 +14,10 @@ function AnswerYetProducts() {
   const [startDate, setStartDate] = useState(new Date());
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const product_img = `http://shoppingmall-env.eba-jac9afx7.us-east-1.elasticbeanstalk.com/products/showProductImage/`;
   const { id } = useParams();
   const history = useHistory();
+
   let total = null; //답변 전 상품별 전체 질문
 
   useEffect(() => {
@@ -63,7 +66,7 @@ function AnswerYetProducts() {
             <FaSearch className="search-icon" />
           </form>
           <div className="answer__category">
-            <p>답변생성일자</p>
+            <p>Answer Creation Date</p>
             <DatePicker
               className="datepicker_date"
               selected={startDate}
@@ -78,7 +81,6 @@ function AnswerYetProducts() {
         <div className="AnsweYetProduct__table_bg">
           <table className="AnsweYetProduct__table">
             <thead>
-              <th>Picture</th>
               <th>Product Name</th>
               <th>Product Description</th>
               <th>Wating answer questions</th>
@@ -115,7 +117,14 @@ function AnswerYetProducts() {
                     <AnswerYetProductsView
                       key={product.product_id}
                       id={product.product_id}
+                      picture={
+                        <img
+                          src={product_img + product.product_id}
+                          alt="사진"
+                        />
+                      }
                       name={product.product_name}
+                      description={product.product_description}
                       question={wait.length}
                     />
                   );
