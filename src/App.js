@@ -26,14 +26,7 @@ import User from './user/User';
 import SignUp from './authentication/SignUp';
 
 function App() {
-
-<<<<<<< HEAD
-  const [auth, setAuth] = useState(false);
-
-  // const [{}, dispatch] = useStateValue();
-=======
   const [{}, dispatch] = useStateValue();
->>>>>>> 11c58c473f9239577fc5b76d0a0d0e7d52fa268c
 
   // useEffect(() => {
   //   auth.onAuthStateChanged(authUser => {

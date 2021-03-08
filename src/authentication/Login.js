@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useState } from 'react'
 import './Login.css'
 import {Link, useHistory} from "react-router-dom";
@@ -12,18 +11,37 @@ function Login() {
     const history = useHistory();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
+    const [loginUser, setLoginUser] = useState();
 
     const [{user}, dispatch] = useStateValue();
 
-
-    // const signIn = e => {
-    //     e.preventDefault();
-
-    //     axios.get('/users/all')
-    //     .then(res => {
-    //         if()
+    // const removeFromBasket = () => {
+    //     dispatch({
+    //         type: 'REMOVE_FROM_BASKET',
+    //         id: id,
     //     })
     // }
+
+
+    const signIn = e => {
+        e.preventDefault();
+
+        axios.get('/users/login', {
+            params: {
+                user_id: email,
+                user_pwd: password
+            }
+        })
+        .then(res => dispatch({
+            type: 'SET_USER',
+            user: res.data
+        }))
+        .catch(err => console.log(err));
+
+        history.push("/home")
+    }
+
+    console.log(user)
 
     return (
         <div className='login'>
@@ -51,7 +69,7 @@ function Login() {
 
                     <button
                     type='submit'
-                    // onClick={signIn}
+                    onClick={signIn}
                     className='login__signInButton'>Sign In</button>
                 </form>
 
