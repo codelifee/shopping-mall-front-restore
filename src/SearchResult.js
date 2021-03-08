@@ -3,11 +3,13 @@ import { useStateValue } from './StateProvider/StateProvider';
 import SearchResultView from './SearchResultView';
 import './SearchResult.css';
 import axios from './axios/axios';
+import {useHistory} from "react-router-dom";
 
 function SearchResult(){
 
     const [{keyword}, dispatch] = useStateValue(); 
     const [products, setProducts] = useState([]);
+    const history = useHistory();
     const image = "https://api.xn--vx3b30no7b.com/products/showProductImage/";
 
     useEffect(()=>{
@@ -54,11 +56,16 @@ function SearchResult(){
     console.log(products);
     console.log(keyword.word)
     return (
-        <div clsassName="search_result">
+        <div className="search_result">
             <div className="search_result_items">
                 {
                     products.filter((item)=>{
-                        return item.product_name.includes(`${keyword.word}`);
+                        if(item.product_name.includes(`${keyword.word}`)){
+                          return item
+                        }else {
+                          alert("검색하신 상품은 없는 상품입니다.")
+                          history.push('/home');
+                        }
                     })
                     .map((product, i) => {
 
@@ -68,14 +75,9 @@ function SearchResult(){
                           return review.review_id;
                         })
 
-                        let category = categories.filter((category)=>{
-                          return category.category_id==product.category_id;
-                        }).map((category)=>{
-                          return category;
-                        })
-
                         return (
                           <div>
+                            {console.log(product)}
                           <br/>
                           {categories.filter((category)=>{
                             return category.category_id==product.category_id;

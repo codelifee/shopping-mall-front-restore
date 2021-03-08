@@ -93,6 +93,7 @@ function OrdersData({
             </ul>
           </div>
         </td>
+
         <td className="order_tdtd" style={style11}>
           {status}
         </td>
@@ -104,6 +105,7 @@ function OrdersData({
           <button id={order_id} onClick={patchOrderStatus}>
             변경하기
           </button>
+
         </td>
 
         <td className="order_td" style={style11}>
