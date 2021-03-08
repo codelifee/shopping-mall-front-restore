@@ -25,6 +25,8 @@ import LoginForm from './authentication/LoginForm';
 
 function App() {
 
+  const [auth, setAuth] = useState(false);
+
   // const [{}, dispatch] = useStateValue();
 
   // useEffect(() => {
@@ -49,7 +51,6 @@ function App() {
 
   return (
     //BEM convention
-
     <Router>
       <div className="app">
         <Switch>

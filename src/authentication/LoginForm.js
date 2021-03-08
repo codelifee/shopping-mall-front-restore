@@ -31,7 +31,7 @@ class LoginForm extends Component {
                 this.setState(() => this.initialState);
                 this.setState({"error":"Invaild id and password"});
             }
-        },500);
+        },500); 
     };
 
     render() {

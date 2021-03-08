@@ -3,34 +3,26 @@ import './Login.css'
 import {Link, useHistory} from "react-router-dom";
 import logo from '../img/logo.png'
 import { auth } from '../configuration/firebase'
+import axios from '../axios/axios'
+import {useStateValue} from '../StateProvider/StateProvider'
+
 
 function Login() {
     const history = useHistory();
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
 
-    const signIn = e => {
-        e.preventDefault();
+    const [{user}, dispatch] = useStateValue();
 
-        auth.signInWithEmailAndPassword(email, password)
-        .then(auth => {
-            history.push('/')
-        })
-        .catch(error => alert(error.message))
-    }
 
-    const register = e => {
-        e.preventDefault();
+    // const signIn = e => {
+    //     e.preventDefault();
 
-        auth.createUserWithEmailAndPassword(email, password)
-        .then((auth) => {
-            console.log(auth)
-            if (auth) {
-                history.push('/')
-            }
-        })
-        .catch(error => alert(error.message))
-    }
+    //     axios.get('/users/all')
+    //     .then(res => {
+    //         if()
+    //     })
+    // }
 
     return (
         <div className='login'>
@@ -43,25 +35,27 @@ function Login() {
                 <form>
                     <h5>E-mail</h5>
                     <input 
+                    name="email"
                     type='text' 
-                    value={email}
                     onChange={e => setEmail(e.target.value)}
                     />
 
                     <h5>Password</h5>
-                    <input type='password' value={password}
+                    <input 
+                    name="password"
+                    type='password'
                     onChange={e => setPassword(e.target.value)}
                     />
 
                     <button
                     type='submit'
-                    onClick={signIn}
+                    // onClick={signIn}
                     className='login__signInButton'>Sign In</button>
                 </form>
 
-                <button 
+                {/* <button 
                 onClick={register}
-                className='login__registerButton'>Create Account</button>
+                className='login__registerButton'>Create Account</button> */}
                 
             </div>
         </div>
