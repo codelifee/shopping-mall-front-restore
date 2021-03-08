@@ -20,25 +20,31 @@ function OrdersData({ date, status, address, product, price, picture, order_id, 
   console.log(order_id);
   console.log(o_return);
   console.log(product_id);
-
-
+  
+  
   const style11 = {
     borderTop: '1px solid red'
   };
   const history = useHistory();
 
-  const [orders, setOrders] = useState({
-    order_return: "기본",
-  })
-
+  
+  const [orders, setOrders] = useState([])
+  
+  useEffect(() => {
+    setOrders({
+      order_return: o_return
+    })
+  }, setOrders)
+  
+  
   const handleStatus = e => {
     e.preventDefault();
+ 
     //let order_id = e.target.order_id;
-    setOrders({
-      order_return: "교환"
-    })
-    //console.log(orders)
+    setOrders(e.target.value)
+
   }
+  console.log(orders)
 
 
   const patchOrderStatus = (e) => {
@@ -46,18 +52,12 @@ function OrdersData({ date, status, address, product, price, picture, order_id, 
 
     //console.log(id)
 
-    axios.patch(`/orders/${order_id}`, orders)
+    axios.patch(`/orders/${order_id}`, {order_return: orders})
       .then(res => alert("변경이 완료 되었습니다"))
       .catch(err => console.log(err))
   }
 
-  useEffect(() => {
-    setOrders({
-      order_return: o_return
-    })
-  }, setOrders)
 
-  console.log(setOrders + "결과")
 
 
   return (    
@@ -75,7 +75,7 @@ function OrdersData({ date, status, address, product, price, picture, order_id, 
             </ul></div>
         </td>
         <td className="order_tdtd" style={style11}>{status}</td>
-        <td style={style11}><select value={orders.order_return} id={order_id} onChange={handleStatus}>
+        <td style={style11}><select id={order_id} onChange={handleStatus}>
           <option value="교환">교환</option>
           <option value="반품">반품</option>
         </select>
