@@ -24,6 +24,7 @@
     "firebase": "^8.2.9",
     "firebase-tools": "^9.4.0",
     "gsap": "^3.6.0",
+    "http-proxy-middleware": "^1.0.6",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",
     "query-string": "^6.14.0",

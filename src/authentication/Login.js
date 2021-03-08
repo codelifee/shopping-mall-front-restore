@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from 'react'
 import './Login.css'
 import {Link, useHistory} from "react-router-dom";
@@ -33,7 +34,7 @@ function Login() {
             <div className='login__container'>
                 <h1>Sign in</h1>
                 <form>
-                    <h5>E-mail</h5>
+                    <h5>Id</h5>
                     <input 
                     name="email"
                     type='text' 
@@ -45,6 +46,7 @@ function Login() {
                     name="password"
                     type='password'
                     onChange={e => setPassword(e.target.value)}
+
                     />
 
                     <button
@@ -56,10 +58,10 @@ function Login() {
                 {/* <button 
                 onClick={register}
                 className='login__registerButton'>Create Account</button> */}
-                
+
             </div>
         </div>
     )
 }
+export default Login;
 
-export default Login

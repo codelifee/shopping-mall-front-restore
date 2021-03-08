@@ -5,20 +5,21 @@ import { useStateValue } from "../StateProvider/StateProvider";
 import { useHistory, useParams, useLocation } from "react-router-dom";
 import { FaStar, FaStarHalf } from "react-icons/fa";
 import axios from "../axios/axios";
-
+import {ImageData} from '../axios/urlData';
 
 function Review(props) {
-  
+
+  const image = ImageData.image4
+
   const [reviews, setReviews] = useState([]);
-  
+
   const { id } = useParams();
   
   //const [{ user }, dispatch] = useStateValue();
   
   const history = useHistory();
   
-  const review_img = "http://shoppingmall-env.eba-jac9afx7.us-east-1.elasticbeanstalk.com/review/showReviewImage/";
-  
+
   useEffect(() => {
     async function fetchDate() {
       const request = await axios
@@ -31,6 +32,7 @@ function Review(props) {
     
     fetchDate();
   }, []);
+
 
   //해당삼품의 리뷰 별점 배열
   const col = reviews
@@ -87,7 +89,7 @@ function Review(props) {
   `;
   const Graph4 = styled.div`
     background: #ffc107;
-    width: ${four_per};
+    width: ${four_per}%;
   `;
   const Graph3 = styled.div`
     background: #ffc107;
@@ -101,29 +103,6 @@ function Review(props) {
     background: #ffc107;
     width: ${one_per}%;
   `;
-
-  const useConfirm = (message="", callback, rejection) =>{
-    const confirmAction= () => {
-      if (window.confirm(message)) {
-        callback();
-      }else {
-        rejection()
-      }
-    }
-    return confirmAction;
-  }
-
-  const deleteReview=()=>{
-    axios.delete(`/review/${reviews.review_id}`)
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
-  }
-
-  const abort = () => {
-    return alert("삭제가 취소 되었습니다!");
-  }
-
-  const confirmDelete = useConfirm("are you sure?", deleteReview, abort)
 
   return (
     <div className="review">
@@ -183,6 +162,7 @@ function Review(props) {
            return review.product_id == id;
         })
         .map((review, i) => { 
+
           function star(){//user_id옆 별점 표시
            if(review.star==5){
              return [...Array(5)].map((k)=>{
@@ -204,24 +184,23 @@ function Review(props) {
              return <FaStar color={"#ffc107"} size={20} />
            }
          }
+                   console.log({image});
          return (
-           
+ 
            <div className="review__list" key={i}>
                          
                 <div className="review__list_user">
                   {review.user_id} 님 {star()}
                 </div>
-
               <div className="review__list_content_container">
                 <div className="review__list_content">
                   {review.review_date_created} 작성<br/>
                   {review.review}
                   {review.review_picture!=null ?
-                    <img src={review_img+review.review_id}/>: null
+                    <img src={image+review.review_id}/>: null
                   }
                 </div>
-             
-              
+                
                 <div className="review__update_button_container">
                   {/* review.user_sequence_id == user.user_sequence_id ? : null */}
                   <button className="review__update_button"
@@ -231,10 +210,8 @@ function Review(props) {
                      "reviewUpdateForm",
                     "width=600,height=700,location=no,status=no,scrollbars=no"
                    );
-                  }}>수정하기</button>
-                  <button className="review__delete_button"
-                   onClick={confirmDelete
-                  }>삭제하기</button>
+                  }}>수정 / 삭제</button>
+                  
                 </div>
               </div>
             </div>

@@ -1,14 +1,22 @@
 import React, {useState, useEffect} from 'react'
-import axios from '../axios/axios'
 import './SellerProduct.css'
 import {Link, useHistory} from 'react-router-dom';
+import {ImageData} from '../axios/urlData';
 
 function AnswerYetProductsSearch({picture, name, description, question, id}) {
+
+    
+    let image = ImageData.image1 + id
+    
+    // console.log(ImageData)
+
     const history = useHistory();
     return (
         <>
+        
         <tr>
-            <td>{name}<br/>{picture}</td>
+            <td><img src={image} alt="image"/></td>
+            <td>{name}</td>
             <td>{description}</td>
             <td>
                 <span onClick={()=>{

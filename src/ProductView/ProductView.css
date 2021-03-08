@@ -17,6 +17,7 @@
   background-color: #fff;
   text-align: center;
   height: 100%;
+  padding-top: 70px;
 }
 
 .products__category{
@@ -31,9 +32,4 @@
   justify-items: center;
 }
 
-.home__img {
-  width: 100%;
-  margin-top: 30px;
-  /* mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)); */
-  height: 340px;
-}
+

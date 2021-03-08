@@ -79,3 +79,5 @@ p {
 .navbar__link > p {
   margin-left: 20px;
 }
+@media all and (max-height: 736px) {
+}

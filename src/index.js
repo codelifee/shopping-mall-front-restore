@@ -6,9 +6,6 @@ import reportWebVitals from "./reportWebVitals";
 import * as serviceWorker from "./serviceWorker";
 import reducer, { initialState } from "./StateProvider/Reducer";
 import { StateProvider } from "./StateProvider/StateProvider";
-import KakaoMap from "./Introduction/KakaoMap";
-import {Provider} from 'react-redux';
-import store from './services/store';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -17,7 +14,6 @@ ReactDOM.render(
     </StateProvider>
   </React.StrictMode>,
   document.getElementById("root")
-  //<Provider store={store}><App /></Provider>, document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

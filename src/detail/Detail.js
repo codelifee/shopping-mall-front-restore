@@ -5,6 +5,7 @@ import "./Detail.css";
 import {useStateValue} from "../StateProvider/StateProvider";
 import axios from '../axios/axios';
 import './Modal.css';
+import {ImageData} from '../axios/urlData';
 
 function Modal(){
   const history = useHistory();
@@ -25,19 +26,18 @@ function Detail() {
   
   const [products, setProducts] = useState([]);
   const {id} = useParams();
-  const product_img = `http://shoppingmall-env.eba-jac9afx7.us-east-1.elasticbeanstalk.com/products/showProductImage/${id}`;
+
+  let image1 = ImageData.image1 + id
   const [modal, setModal] = useState(false);
   const [quantity, setQuantity] = useState(1);
-  //const [{basket}, dispatch] = useStateValue();
+  const [{basket}, dispatch] = useStateValue();
   const history = useHistory();
   
   useEffect(()=>{
     async function fetchDate() {
       const request = await axios.get(`products/${id}`)
-      .then(response =>
-            setProducts(response.data)
-            )
-            .catch(error => console.log(error))
+      .then(response => setProducts(response.data))
+      .catch(error => console.log(error))
             
             return request;
           }
@@ -51,10 +51,11 @@ function Detail() {
           <div className="detail">
       <div className="detail__product">
         <div className="detail__product_img">
-          <img src={product_img} className="img" alt=""/>
+          <img src={image1} className="img" alt=""/>
         </div>
         <div className="detail__product_info">
           <p className="detail__product_name">{products.product_name}</p>
+          <p className="detail__product_description">{products.product_description}</p><br/>
           <p className="detail__product_price">{new Intl.NumberFormat().format(products.product_price)}원</p>
           <p className="detail__product_delivery">
             배송정보 | 도서산간지역 제외 평균 2~3일 배송
@@ -81,36 +82,36 @@ function Detail() {
           {modal==true ? <Modal/> : null}
           
             <button className="detail__keep" onClick={()=>{
-              // if(modal==false){
-              //   dispatch(
-              //     {type:'ADD_TO_BASKET',
-              //      item: {
-              //       id: products.product_id,
-              //       title: products.product_name,
-              //       image:product_img,
-              //       description: products.product_description,
-              //       price: products.product_price * quantity,
-              //       rating: products.product_rating
-              //     }}
-              //   );
-              // }
-              // setModal(!modal)
+              if(modal==false){
+                dispatch(
+                  {type:'ADD_TO_BASKET',
+                   item: {
+                    id: products.product_id,
+                    title: products.product_name,
+                    image:image1,
+                    description: products.product_description,
+                    price: products.product_price * quantity,
+                    rating: products.product_rating
+                  }}
+                );
+              }
+              setModal(!modal)
             }}>장바구니</button>
           
           
           <button className="detail__order"  onClick={()=>{
-              // dispatch(
-              //   {type:'ADD_TO_BASKET',
-              //    item: {
-              //     id: products.product_id,
-              //     title: products.product_name,
-              //     image:product_img,
-              //     description: products.product_description,
-              //     price: products.product_price * quantity,
-              //     rating: products.product_rating
-              //   }}
-              // )
-              // history.push('/payment')
+              dispatch(
+                {type:'ADD_TO_BASKET',
+                 item: {
+                  id: products.product_id,
+                  title: products.product_name,
+                  image:image1,
+                  description: products.product_description,
+                  price: products.product_price * quantity,
+                  rating: products.product_rating
+                }}
+              )
+              history.push('/payment')
             }}>주문하기</button>
           
         </div>

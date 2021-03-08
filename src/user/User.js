@@ -1,17 +1,23 @@
-import {React,useState} from 'react';
+import {React,useState,useEffect} from 'react';
+import Axios from 'axios';
 import Navbar from './Navbar';
-import SignUp from './SignUp';
 import UpdateProfile from './UpdateProfile';
+
 import Profile from './Profile';
 import Orders from './Orders';
+import Exchange from './Exchange';
+import ReviewForm from '../detail/ReviewForm';
+import Return from './Return';
+import OrderDetails from './OrderDetails';
 import OrdersData from './OrdersData';
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import {BrowserRouter as Router, Switch, Route, useParams} from "react-router-dom";
 import './User.css';
-import Login from'../authentication/Login';
 import DeleteProfile from './DeleteProfile';
 
 function User() {
+    
     const[isSubmittied, setIsSubmitted] = useState(false);
+    const user_sequence_id = useParams();
 
     function submitForm(){
         setIsSubmitted(true);
@@ -20,33 +26,44 @@ function User() {
     return (
         <Router>
             <div className="user">
-                <Switch>
-
-                    
-                    <Route path='/user/signup'>
-                        {!isSubmittied ? (<SignUp submitForm={submitForm}/>)
-                        : (<Login/>)}
-                    </Route>
+                <Switch>                    
                     <Route path='/user/updateprofile/:user_sequence_id'>
                         <Navbar/>
                         {!isSubmittied ? (<UpdateProfile submitForm={submitForm}/>)
-                        : (<Profile/>)} 
+                        : (window.location.href="/home")} 
                     </Route>
                     <Route path='/user/deleteprofile/:user_sequence_id'>
                         <Navbar/>
                         <DeleteProfile/>
                     </Route>
-                    <Route path='/user/profile/:user_sequence_id'>
+                    <Route exact path='/user/:user_sequence_id'>
                         <Navbar />
                         <Profile />
                     </Route>
+                    
+                   
                     <Route path='/user/order/:user_sequence_id'>
                         <Navbar/>
                         <Orders/>
                     </Route>
-                    <Route path='/user/orderdata/:id'>
+                    <Route path='/user/orderdata/:user_sequence_id'>
                         <Navbar/>
                         <OrdersData/>
+                    </Route>
+                    <Route path='/user/orderdetail/:user_sequence_id'>
+                        <Navbar/>
+                        <OrderDetails/>
+                    </Route>
+                    
+                    <Route path='/user/return/:order_id'>
+                        <Navbar/>
+                        <Return/>
+
+                    </Route>
+                    <Route path='/user/exchange/:order_id'>
+                        <Navbar/>
+                        <Exchange/>
+
                     </Route>
                 </Switch>
             </div>
