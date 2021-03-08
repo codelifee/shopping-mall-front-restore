@@ -1,64 +1,83 @@
-import React, { useState } from 'react';
-import './Login.css';
-import { Link, useHistory } from 'react-router-dom';
-import logo from '../img/logo.png';
-import { auth } from '../configuration/firebase';
-import axios from '../axios/axios';
-import { useStateValue } from '../StateProvider/StateProvider';
+import React, { useState } from 'react'
+import './Login.css'
+import {Link, useHistory} from "react-router-dom";
+import logo from '../img/logo.png'
+import { auth } from '../configuration/firebase'
+import axios from '../axios/axios'
+import {useStateValue} from '../StateProvider/StateProvider'
+
 
 function Login() {
-  const history = useHistory();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+    const history = useHistory();
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
+    const [loginUser, setLoginUser] = useState();
 
-  const [{ user }, dispatch] = useStateValue();
+    const [{user}, dispatch] = useStateValue();
 
-  // const signIn = e => {
-  //     e.preventDefault();
+    // const removeFromBasket = () => {
+    //     dispatch({
+    //         type: 'REMOVE_FROM_BASKET',
+    //         id: id,
+    //     })
+    // }
 
-  //     axios.get('/users/all')
-  //     .then(res => {
-  //         if()
-  //     })
-  // }
 
-  return (
-    <div className="">
-      <Link to="/home">
-        <img className="__logo" src={logo} />
-      </Link>
+    const signIn = e => {
+        e.preventDefault();
 
-      <div className="__container">
-        <h1>Sign in</h1>
-        <form>
-          <h5>Id</h5>
-          <input
-            name="email"
-            type="text"
-            onChange={(e) => setEmail(e.target.value)}
-          />
+        axios.get('/users/login', {
+            params: {
+                user_id: email,
+                user_pwd: password
+            }
+        })
+        .then(res => dispatch({
+            type: 'SET_USER',
+            user: res.data
+        }))
+        .catch(err => console.log(err));
+    }
 
-          <h5>Password</h5>
-          <input
-            name="password"
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
+    console.log(loginUser)
 
-          <button
-            type="submit"
-            // onClick={signIn}
-            className="__signInButton"
-          >
-            Sign In
-          </button>
-        </form>
+    return (
+        <div className='login'>
+            <Link to='/home'>
+            <img className="login__logo" src={logo} />
+            </Link>
+            
+            <div className='login__container'>
+                <h1>Sign in</h1>
+                <form>
+                    <h5>Id</h5>
+                    <input 
+                    name="email"
+                    type='text' 
+                    onChange={e => setEmail(e.target.value)}
+                    />
 
-        {/* <button 
+                    <h5>Password</h5>
+                    <input 
+                    name="password"
+                    type='password'
+                    onChange={e => setPassword(e.target.value)}
+
+                    />
+
+                    <button
+                    type='submit'
+                    onClick={signIn}
+                    className='login__signInButton'>Sign In</button>
+                </form>
+
+                {/* <button 
                 onClick={register}
-                className='__registerButton'>Create Account</button> */}
-      </div>
-    </div>
-  );
+                className='login__registerButton'>Create Account</button> */}
+
+            </div>
+        </div>
+    )
 }
 export default Login;
+
