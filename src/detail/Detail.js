@@ -5,6 +5,7 @@ import "./Detail.css";
 import {useStateValue} from "../StateProvider/StateProvider";
 import axios from '../axios/axios';
 import './Modal.css';
+import {ImageData} from '../axios/urlData';
 
 function Modal(){
   const history = useHistory();
@@ -25,7 +26,8 @@ function Detail() {
   
   const [products, setProducts] = useState([]);
   const {id} = useParams();
-  const product_img = `http://shoppingmall-env.eba-jac9afx7.us-east-1.elasticbeanstalk.com/products/showProductImage/${id}`;
+
+  let image1 = ImageData.image1 + id
   const [modal, setModal] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const [{basket}, dispatch] = useStateValue();
@@ -34,10 +36,8 @@ function Detail() {
   useEffect(()=>{
     async function fetchDate() {
       const request = await axios.get(`products/${id}`)
-      .then(response =>
-            setProducts(response.data)
-            )
-            .catch(error => console.log(error))
+      .then(response => setProducts(response.data))
+      .catch(error => console.log(error))
             
             return request;
           }
@@ -51,7 +51,7 @@ function Detail() {
           <div className="detail">
       <div className="detail__product">
         <div className="detail__product_img">
-          <img src={product_img} className="img" alt=""/>
+          <img src={image1} className="img" alt=""/>
         </div>
         <div className="detail__product_info">
           <p className="detail__product_name">{products.product_name}</p>
@@ -88,7 +88,7 @@ function Detail() {
                    item: {
                     id: products.product_id,
                     title: products.product_name,
-                    image:product_img,
+                    image:image1,
                     description: products.product_description,
                     price: products.product_price * quantity,
                     rating: products.product_rating
@@ -105,7 +105,7 @@ function Detail() {
                  item: {
                   id: products.product_id,
                   title: products.product_name,
-                  image:product_img,
+                  image:image1,
                   description: products.product_description,
                   price: products.product_price * quantity,
                   rating: products.product_rating

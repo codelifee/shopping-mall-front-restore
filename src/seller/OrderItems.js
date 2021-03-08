@@ -15,14 +15,14 @@ function OrderItems({id, name, date, address, status}) {
                 order_status: e.target.value
             })
 
-            console.log(newStatus)
+       //     console.log(newStatus)
 
     }
 
     const patchOrderStatus = (e) => {
             let id = e.target.id;
 
-            console.log(id)
+          //  console.log(id)
             
             axios.patch(`/orders/${id}`, newStatus)
             .then(res => alert("변경이 완료 되었습니다"))
@@ -35,7 +35,7 @@ function OrderItems({id, name, date, address, status}) {
         })        
     }, newStatus)
 
-    console.log(newStatus)
+    console.log(newStatus+".")
 
     return(
         <>

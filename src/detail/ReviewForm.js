@@ -77,11 +77,11 @@ const formData = new FormData();
         //null이 아니면 아래 post로 동작하게 만들기
         if(form.review_picture!==null){
             return axios.post('/review/upload', formData, config)
-            .then(res => console.log(res))
+            .then(res => console.log(res), window.opener.parent.location.reload())
             .catch(err => console.log(err))
         }else{
             axios.post('/review', form)
-            .then(res => console.log(res))
+            .then(res => console.log(res), window.opener.parent.location.reload())
             .catch(err => console.log(err))
         }
     }
@@ -98,6 +98,7 @@ const formData = new FormData();
 					return (
 						<label key={i}>
 							<input 
+                            className="input_radio"
 								type="radio" 
 								name="rating" 
 								value={ratingValue}
@@ -149,8 +150,8 @@ const formData = new FormData();
                 
                     form.review == '' ? alert("내용을 입력해주세요!") : alert("내용이 입력됐습니다.");
                 
-                    window.opener.parent.location.reload();
-                    setTimeout("self.close()", 2000 );
+                
+                   setTimeout("self.close()", 2000 );
                 } 
 
                     

@@ -13,7 +13,7 @@ function UpdateProfile({submitForm}) {
                 <div className="updateProfile__container__head">
                     <h1>Update {form.user_name}'s Profile</h1>
                 </div>
-                <form className="updateProfile__search" onSubmit={handleSubmit}>
+                <form className="updateProfile__search"onSubmit={handleSubmit} noValidate>
                     <div className="update__id">
                         <label htmlFor="">Id</label>
                         <span>{form.user_id}</span>

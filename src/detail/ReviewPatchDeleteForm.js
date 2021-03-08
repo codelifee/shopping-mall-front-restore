@@ -72,24 +72,24 @@ const formData = new FormData();
         
         if(reviews.review_picture!=null){
             return (axios.patch(`/review/image/${id}`, formData, config)
-            .then(res => console.log(res))
+            .then(res => console.log(res), window.opener.parent.location.reload())
             .catch(err => console.log(err)))&&
             (axios.patch(`/review/${id}`, {review:reviews.review,
                 star: reviews.star
             })
-            .then(res => console.log(res))
+            .then(res => console.log(res), window.opener.parent.location.reload())
             .catch(err => console.log(err))
             )
         }else{
             axios.patch(`/review/${id}`, reviews)
-            .then(res => console.log(res))
+            .then(res => console.log(res), window.opener.parent.location.reload())
             .catch(err => console.log(err))
         }
     }
 
     const deleteReview=()=>{
         axios.delete(`/review/${id}`)
-        .then(res => console.log(res))
+        .then(res => console.log(res), window.opener.parent.location.reload())
         .catch(err => console.log(err))
       }
 
@@ -106,6 +106,7 @@ const formData = new FormData();
 						<label key={i}>
 							<input 
 								type="radio" 
+                                className="rating_star"
 								name="rating" 
 								value={ratingValue}
 								onClick={()=>reviews.star=ratingValue}              
@@ -154,14 +155,14 @@ const formData = new FormData();
                         
                         reviews.review == '' ? alert("내용을 입력해주세요!") : alert("내용이 입력됐습니다.");
 
-                        window.opener.parent.location.reload();
+                        
                         setTimeout("self.close()", 2000 )
                 } 
                         
                         }>수정</button> &nbsp;
                 
                     <button className="reviewDelete" onClick={()=>{
-                        return deleteReview(), window.opener.parent.location.reload(),setTimeout("self.close()", 2000 ); 
+                        return deleteReview(),setTimeout("self.close()", 2000 ); 
                     }}>삭제</button>
                 </div>
             </form>

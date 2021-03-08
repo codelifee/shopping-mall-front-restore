@@ -22,7 +22,10 @@ const UpdateProfileData = (callback,Validate) => {
         user_pwd2:'',
         user_name:'',
         user_phone:'',
-        user_address:''
+        user_address:'',
+        user_return:'',
+        user_exchange:''
+
     });
     console.log(form);
 

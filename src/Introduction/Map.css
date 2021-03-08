@@ -27,6 +27,16 @@
 .map_name_container {
   width: 700px;
 }
+
+.map_title {
+  font-weight: 1000;
+  font-size: 35px;
+  margin-left: 50px;
+}
+
+hr.map_line {
+  border: 5px double #ffb755;
+}
 .destination_name {
   width: 100px;
   color: #fff;
