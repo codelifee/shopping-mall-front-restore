@@ -1,7 +1,7 @@
 export const initialState = {
     basket: [],
     user: {},
-    keyword: {}
+    keyword: JSON.parse(localStorage.getItem("keyword")) || {}
 };
 
 export const getBasketTotal = (basket) =>
@@ -41,6 +41,7 @@ const reducer = (state, action) => {
       };
 
     case 'SEARCH':
+      localStorage.setItem("keyword", JSON.stringify(action.item));
       return {
         ...state,
         keyword: action.item,

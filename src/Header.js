@@ -15,7 +15,6 @@ import { useHistory } from 'react-router-dom';
 import axios from './axios/axios';
 
 function Header() {
-  const [products, setProducts] = useState([]);
 
   const [{ basket, user }, dispatch] = useStateValue();
 
@@ -53,7 +52,7 @@ function Header() {
                   type: 'SEARCH',
                   item: { word: search },
                 });
-                history.push('/searchResult');
+                history.push(`/searchResult/${search}`);
               }
             }}
           />
@@ -66,7 +65,7 @@ function Header() {
                 item: { word: search },
               });
 
-              history.push('/searchResult');
+              history.push(`/searchResult/${search}`);
             }}
           />
         </div>

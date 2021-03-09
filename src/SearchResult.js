@@ -3,26 +3,27 @@ import { useStateValue } from './StateProvider/StateProvider';
 import SearchResultView from './SearchResultView';
 import './SearchResult.css';
 import axios from './axios/axios';
-import { useHistory } from 'react-router-dom';
+//import { useParams } from 'react-router-dom';
 
 function SearchResult() {
   const [{ keyword }, dispatch] = useStateValue();
   const [products, setProducts] = useState([]);
-  const history = useHistory();
+  //const {search} = useParams();
+ 
   const image = 'https://api.xn--vx3b30no7b.com/products/showProductImage/';
 
-  useEffect(() => {
-    async function getProducts() {
-      const request = await axios
-        .get('products/all')
-        .then((response) => setProducts(response.data))
-        .catch((error) => console.log(error));
+  // useEffect(() => {
+  //   async function getProducts() {
+  //     const request = await axios
+  //       .get('products/all')
+  //       .then((response) => setProducts(response.data))
+  //       .catch((error) => console.log(error));
 
-      return request;
-    }
+  //     return request;
+  //   }
 
-    getProducts();
-  }, []);
+  //   getProducts();
+  // }, []);
 
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
@@ -66,14 +67,16 @@ function SearchResult() {
 
   console.log(products);
   console.log(keyword.word);
+
   return (
     <div className="search_result">
       <div className="search_result_items">
         {products
-          .filter((item) => {
-            return item.product_name.includes(`${keyword.word}`);
-          })
+          // .filter((item) => {
+          //   return item.product_name.includes(`${keyword.word}`);
+          // })
           .map((product, i) => {
+
             let reviewLength = reviews
               .filter((review) => {
                 return review.product_id == product.product_id;
