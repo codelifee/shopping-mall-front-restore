@@ -12,7 +12,7 @@ function QnA() {
     const [question, setQuestion] = useState([]);
 
     useEffect(() => {
-        async function fetchDate() { //http://localhost:5000/question/all
+        async function fetchDate() { 
           const request = await axios.get(`question/all`)
             .then((response) => setQuestion(response.data))
             .catch((error) => console.log(error));

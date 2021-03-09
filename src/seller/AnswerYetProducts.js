@@ -6,7 +6,7 @@ import { FaSearch } from 'react-icons/fa';
 import { useHistory, Link } from 'react-router-dom';
 import './AnswerYetProducts.css';
 import AnswerYetProductsView from './AnswerYetProductsView';
-
+import {ImageData} from '../axios/urlData';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Category } from '@material-ui/icons';
 
@@ -14,7 +14,7 @@ function AnswerYetProducts() {
   const [startDate, setStartDate] = useState(new Date());
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const product_img = `http://shoppingmall-env.eba-jac9afx7.us-east-1.elasticbeanstalk.com/products/showProductImage/`;
+  let image = ImageData.image1; 
   const { id } = useParams();
   const history = useHistory();
 
@@ -117,18 +117,14 @@ function AnswerYetProducts() {
                     <AnswerYetProductsView
                       key={product.product_id}
                       id={product.product_id}
-                      picture={
-                        <img
-                          src={product_img + product.product_id}
-                          alt="사진"
-                        />
-                      }
+                      picture={<img src={image + product.product_id}/>}
                       name={product.product_name}
                       description={product.product_description}
                       question={wait.length}
                     />
-                  );
+                  ) 
                 })}
+                
             </tbody>
           </table>
         </div>

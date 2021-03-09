@@ -3,28 +3,16 @@ import { useStateValue } from './StateProvider/StateProvider';
 import SearchResultView from './SearchResultView';
 import './SearchResult.css';
 import axios from './axios/axios';
+import {ImageData} from './axios/urlData';
 //import { useParams } from 'react-router-dom';
 
 function SearchResult() {
+
+  const image = ImageData.image1
   const [{ keyword }, dispatch] = useStateValue();
   const [products, setProducts] = useState([]);
   //const {search} = useParams();
  
-  const image = 'https://api.xn--vx3b30no7b.com/products/showProductImage/';
-
-  // useEffect(() => {
-  //   async function getProducts() {
-  //     const request = await axios
-  //       .get('products/all')
-  //       .then((response) => setProducts(response.data))
-  //       .catch((error) => console.log(error));
-
-  //     return request;
-  //   }
-
-  //   getProducts();
-  // }, []);
-
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
     async function getReview() {
@@ -108,7 +96,7 @@ function SearchResult() {
                   id={product.product_id}
                   title={product.product_name}
                   status={product.status}
-                  image={image + product.product_id}
+                  image={<img className="product2__img" src={image+product.product_id} alt="사진"/>}
                   description={product.product_description}
                   price={product.product_price}
                   comment={reviewLength.length}
