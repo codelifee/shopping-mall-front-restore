@@ -117,12 +117,6 @@ function AnswerYetProducts() {
                     <AnswerYetProductsView
                       key={product.product_id}
                       id={product.product_id}
-                      picture={
-                        <img
-                          src={product_img + product.product_id}
-                          alt="사진"
-                        />
-                      }
                       name={product.product_name}
                       description={product.product_description}
                       question={wait.length}
