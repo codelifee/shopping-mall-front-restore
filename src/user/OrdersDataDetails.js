@@ -78,9 +78,20 @@ function OrdersData({date, status, product, price, picture,props, id, img} ) {
          history.push(`/user/return/${user_sequence_id}`)
        }}>반품신청</button>
           <button className="order_btn"   onClick={()=>{
-         history.push(`/user/exchange/${user_sequence_id}`)
+         history.push(`/user/order/${user_sequence_id}`)
        }}>교환신청</button>
-          <a href={`/review/${id}`}><button className="order_btn">구매후기</button></a>
+          <button
+              className="review__button"
+              onClick={() => {
+                window.open(
+                  `/review/${id}`,
+                  "review_form",
+                  "width=600,height=700,location=no,status=no,scrollbars=no"
+                );
+              }} 
+            >
+              리뷰 작성
+            </button>
         </div>
       </div>
       {/* <div className="Name">{name} </div> */}

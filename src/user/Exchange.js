@@ -8,9 +8,34 @@ import { useStateValue } from '../StateProvider/StateProvider';
 import ReturnData from './ReturnData';
 function Exchange() {
     
-    const {putForm,user} = ReturnData();
   
-    const history = useHistory();
+    const [customer, setCustomer] = useState([]);
+    const {user_sequence_id} = useParams();
+
+    useEffect(() => {
+        async function fetchData() {
+            const request = await axios.get(`users/${user_sequence_id}`)
+            .then(response => 
+                setCustomer(response.data)
+            )
+            .catch(error => console.log(error))
+           
+            return request;
+        }
+        fetchData();
+    }, [])
+    console.log(user_sequence_id)
+    console.log(customer)
+
+    const [table, setTable] = useState({
+        user_id : customer.user_id,
+        user_name : customer.user_name,
+        user_phone : customer.user_phone,
+        user_address: customer.user_address,
+        order_amount: customer.order_amount  
+    })
+
+    
            
     return (
         <div className="exchange">
@@ -61,7 +86,7 @@ function Exchange() {
                     </td>
                     
                     <td style={{textAlign:'left',paddingLeft:'30px',borderRight:'1px solid #ccc',borderBottom:'1px solid #ccc'}}>
-                        {user.user_name}
+                        {customer.user_name}
                     </td>
                 </tr>
                 <tr>
@@ -69,7 +94,7 @@ function Exchange() {
                         연락처
                     </td>
                     <td style={{textAlign:'left',paddingLeft:'30px',borderRight:'1px solid #ccc',borderBottom:'1px solid #ccc'}}>
-                        {user.user_phone}
+                        {customer.user_phone}
                         
                         
                     </td>
@@ -80,12 +105,12 @@ function Exchange() {
                        받는주소
                     </td>
                     <td style={{textAlign:'left',paddingLeft:'30px',borderRight:'1px solid #ccc',borderBottom:'1px solid #ccc'}}>
-                        {user.user_address}
+                        {customer.user_address}
                     </td>
                 </tr>  
                 </table>
                 
-                <button className="exchange_btn" onClick={putForm}>교환신청</button>
+                <button className="exchange_btn">교환신청</button>
    
                 
            

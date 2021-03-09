@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap");
-.products {
+.search_result {
   font-family: "Noto Sans KR", sans-serif;
   font-size: 16px;
   font-weight: 300;
@@ -11,25 +11,18 @@
   padding: 0;
   box-sizing: border-box;
 }
-.products {
+.search_result {
   display: block;
   grid-template-columns: auto;
   background-color: #fff;
   text-align: center;
   height: 100%;
-  padding-top: 70px;
 }
 
-.products__category{
-  font-size: 25px;
-  font-weight: bold;
+.search_result_items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    margin: 20px;
+    justify-items: center;
+    padding-top: 70px;
 }
-
-.products__row {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  margin: 20px;
-  justify-items: center;
-}
-
-

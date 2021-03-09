@@ -55,6 +55,14 @@ function User() {
                         <Navbar/>
                         <OrderDetails/>
                     </Route>
+                    <Route path='/user/return/:order_id'>
+                        <Navbar/>
+                        <Return/>
+                    </Route>
+                    <Route path='/user/exchange/:user_sequence_id'>
+                        <Navbar/>
+                        <Exchange/>
+                    </Route>
                 </Switch>
             </div>
         </Router>

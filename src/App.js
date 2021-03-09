@@ -2,6 +2,7 @@ import "./App.css";
 import Header from "./Header";
 import React, { useState, useEffect } from "react";
 import Home from "./home/Home";
+import SearchResult from "./SearchResult";
 import Seller from "./seller/Seller";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Checkout from "./checkout/Checkout";
@@ -64,6 +65,12 @@ function App() {
             <Home />
             <Footer />
           </Route>
+
+          <Route path="/searchResult">
+            <Header />
+            <SearchResult/>
+          </Route>
+
           <Route path='/signup'>
             {!isSubmittied ? (<SignUp submitForm={submitForm}/>)
               : (window.location.href="/login")}

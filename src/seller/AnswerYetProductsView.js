@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react'
-import axios from '../axios/axios'
 import './SellerProduct.css'
-import {Link, useHistory} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 
 function AnswerYetProductsSearch({picture, name, description, question, id}) {
     const history = useHistory();
