@@ -12,17 +12,17 @@ function SearchResult(){
     const history = useHistory();
     const image = "https://api.xn--vx3b30no7b.com/products/showProductImage/";
 
-    useEffect(()=>{
-        async function getProducts() {
-            const request = await axios.get('products/all')
-            .then(response => setProducts(response.data))
-            .catch(error => console.log(error))
+    // useEffect(()=>{
+    //     async function getProducts() {
+    //         const request = await axios.get('products/all')
+    //         .then(response => setProducts(response.data))
+    //         .catch(error => console.log(error))
 
-            return request;
-        }
+    //         return request;
+    //     }
 
-        getProducts();
-    }, [])
+    //     getProducts();
+    // }, [])
 
 
     const [reviews, setReviews] = useState([]);
