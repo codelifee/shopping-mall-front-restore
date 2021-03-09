@@ -60,13 +60,13 @@ const UpdateProfileData = (callback,Validate) => {
     );
 
     const getForm = () => {
-        axios.get(`users/${user_sequence_id}`, form)
+        axios.get(`users/${user_sequence_id}`)
         .then(res => setForm(res.data))
         .catch(err => console.log(err))
     }
 
     const getAll = () => {
-        axios.get(`users/all`, form)
+        axios.get(`users/all`)
         .then(res => setCheck(res.data))
         .catch(err => console.log(err))
     }
@@ -78,26 +78,16 @@ const UpdateProfileData = (callback,Validate) => {
     }
 
     const checkPhone2 = () => {
-        check.map((data,i)=>{
-            if(form.user_phone == check[i].user_phone){
-                errors.user_phone = "사용불가능한 전화번호입니다.";
+        let error = {};
+        for(let i=0;i<check.length;i++){
+            if(form.user_phone != check[i].user_phone){
+                error.user_phone = "사용가능한 전화번호입니다.";
             }else{
-                errors.user_phone = "사용가능한 전화번호입니다.";
+                error.user_phone = "사용불가능한 전화번호입니다.";
+                break;
             }
-            return errors;
-        })
-        // let re = -1; 
-        // axios({
-        //     url: `/users/checkPhone`,
-        //     method: 'post',
-        //     data:{
-        //         user_phone : values.user_phone,
-        //         user_id : values.user_id
-        //     }
-        // })
-        // .then(res => re = res.data)
-        // .catch(err => console.log(err))  
-        // (re==1? errors.user_id = "사용가능한 전화번호입니다." : errors.user_id = "사용불가능한 전화번호입니다.")
+        }
+        setErrors(error);
     }
 
     return {handleChange, form, handleSubmit, errors, checkPhone2};
