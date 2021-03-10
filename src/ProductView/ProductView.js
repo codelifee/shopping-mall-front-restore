@@ -10,6 +10,8 @@ import { useParams } from "react-router-dom";
 function ProductView() {
   const [products, setProducts] = useState([]);
   const { id } = useParams();
+  const [categories, setCategories]=useState([]);
+
   
   useEffect(() => {
     async function getProduct() {
@@ -22,22 +24,37 @@ function ProductView() {
     }
 
     getProduct();
+  }, [id]);
+
+  useEffect(() => {
+    async function getCategory() {
+      const request = await axios
+        .get(`categories/${id}`)
+        .then(response => setCategories(response.data))
+        .catch(error => console.log(error));
+
+      return request;
+    }
+
+    getCategory();
   }, []);
 
-  // const [categories, setCategories] = useState([]);
-  // useEffect(() => {
-  //   async function getCategory() {
-  //     const request = await axios
-  //       .get(`categories/${id}`)
-  //       .then(response => setCategories(response.data))
-  //       .catch(error => console.log(error));
 
-  //     return request;
-  //   }
+  useEffect(() => {
+    async function getProduct() {
+      const request = await axios
+        .get(`products/category/${id}`)
+        .then(response => setProducts(response.data))
+        .catch(error => console.log(error));
 
-  //   getCategory();
-  // }, []);
+      return request;
+    }
 
+    getProduct();
+  }, [id]);
+
+ const result=products.category_name;
+ console.log(result);
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
     async function getReview() {
@@ -55,8 +72,8 @@ function ProductView() {
   return (
     <div className="products">
       <div className="products__category">
-        {categories.category_name}
-      </div>
+    {categories.category_name}
+            </div>  
       <div className="products__row">
         {products
           // .filter(function (product) {

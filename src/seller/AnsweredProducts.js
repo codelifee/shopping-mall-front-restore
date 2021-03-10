@@ -81,9 +81,9 @@ function AnsweredProducts() {
           <table className="AnsweYetProduct__table">
             <thead>
               <th>Product Name</th>
-              <th>Picture</th>
               <th>Questions</th>
               <th>Answer</th>
+              <th>update/delete</th>
             </thead>
             <tbody>
               {question
@@ -106,11 +106,10 @@ function AnsweredProducts() {
                   return (
                     <tr>
                       <td>{name}</td>
-                      <td>
-                        <img src={image1} alt="product" />
-                      </td>
+            
                       <td>{val.question}</td>
                       <td>{val.answer}</td>
+                      <td>update/delete</td>
                     </tr>
                   );
                 })}
