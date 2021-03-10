@@ -39,19 +39,19 @@ function ProductView() {
     getCategory();
   }, []);
 
-
+  const [categories, setCategories] = useState([]);
   useEffect(() => {
-    async function getProduct() {
+    async function getCategory() {
       const request = await axios
-        .get(`products/category/${id}`)
-        .then(response => setProducts(response.data))
+        .get(`categories/${id}`)
+        .then(response => setCategories(response.data))
         .catch(error => console.log(error));
 
       return request;
     }
 
-    getProduct();
-  }, [id]);
+    getCategory();
+  }, []);
 
  const result=products.category_name;
  console.log(result);
