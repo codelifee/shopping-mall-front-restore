@@ -96,7 +96,7 @@ function SearchResult() {
                   id={product.product_id}
                   title={product.product_name}
                   status={product.status}
-                  image={<img className="product2__img" src={image+product.product_id} alt="사진"/>}
+                  image={image + product.product_id}
                   description={product.product_description}
                   price={product.product_price}
                   comment={reviewLength.length}

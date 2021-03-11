@@ -8,6 +8,7 @@ import UpdateProduct from './UpdateProduct';
 import AnswerYetCategory from './AnswerYetCategory';
 import AnswerYetProducts from './AnswerYetProducts';
 import AnswerYetQuestions from './AnswerYetQuestion';
+import AnsweredQuestion from './AnswerYetQuestion'
 import AnsweredCategory from './AnsweredCategory';
 import AnsweredProducts from './AnsweredProducts';
 import AnsweredQuestionModal from './AnsweredQuestionModal';
@@ -43,26 +44,32 @@ function Seller() {
             <Navbar />
             <AnswerYetCategory />
           </Route>
+
           <Route path="/seller/answerYetProducts/:id">
             <Navbar />
             <AnswerYetProducts />
           </Route>
+
           <Route path="/seller/answerYetQuestions/:id">
             <Navbar />
             <AnswerYetQuestions />
           </Route>
+
           <Route path="/seller/answeredCategory">
             <Navbar />
             <AnsweredCategory />
           </Route>
+
           <Route path="/seller/answeredProducts/:id">
             <Navbar />
             <AnsweredProducts />
           </Route>
+
           <Route path="/seller/answeredQuestions/:id">
-            <Navbar />
-            <AnsweredQuestionModal />
+            <Navbar /> {/* */}
+            <AnsweredQuestion/>
           </Route>
+
           <Route path="/seller">
             <Navbar />
             <SellerProducts />
