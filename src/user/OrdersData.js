@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../axios/axios';
-import { useParams } from 'react-router-dom';
-import { Link, useHistory } from 'react-router-dom';
-import UpdateProfile from './UpdateProfile';
-import { OmitProps } from 'antd/lib/transfer/ListBody';
-import { blacklistedBrowsers } from 'dropzone';
+import { useHistory } from 'react-router-dom';
 import { ImageData } from '../axios/urlData';
 
 function OrdersData({

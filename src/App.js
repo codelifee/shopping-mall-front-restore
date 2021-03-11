@@ -24,29 +24,10 @@ import QnAForm from './detail/QnAForm';
 import KakaoMap from './Introduction/KakaoMap';
 import User from './user/User';
 import SignUp from './authentication/SignUp';
+import KakaoPay from './kakaopay/KakaoPay';
 
 function App() {
   const [{}, dispatch] = useStateValue();
-
-  // useEffect(() => {
-  //   auth.onAuthStateChanged(authUser => {
-  //     console.log("THE USER IS >>>", authUser);
-
-  //     if (authUser) {
-  //       // the user logged in
-  //       dispatch({
-  //         type: "SET_USER",
-  //         user: authUser,
-  //       });
-  //     } else {
-  //       //the user is logged out
-  //       dispatch({
-  //         type: "SET_USER",
-  //         user: null,
-  //       });
-  //     }
-  //   });
-  // }, []);
 
   const [isSubmittied, setIsSubmitted] = useState(false);
 
@@ -110,8 +91,11 @@ function App() {
 
           <Route path="/payment">
             <Header />
-
             <Payment />
+          </Route>
+
+          <Route path="/kakaopay">
+              <KakaoPay/>
           </Route>
 
           <Route path="/seller">
