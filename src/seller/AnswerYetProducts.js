@@ -6,15 +6,17 @@ import { FaSearch } from 'react-icons/fa';
 import { useHistory, Link } from 'react-router-dom';
 import './AnswerYetProducts.css';
 import AnswerYetProductsView from './AnswerYetProductsView';
-import {ImageData} from '../axios/urlData';
+import { ImageData } from '../axios/urlData';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Category } from '@material-ui/icons';
 
 function AnswerYetProducts() {
   const [startDate, setStartDate] = useState(new Date());
   const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
+
   const [searchTerm, setSearchTerm] = useState('');
-  let image = ImageData.image1; 
+  let image = ImageData.image1;
   const { id } = useParams();
   const history = useHistory();
 
@@ -40,6 +42,18 @@ function AnswerYetProducts() {
       const request = await axios
         .get('question/all')
         .then((response) => setQuestion(response.data))
+        .catch((error) => console.log(error));
+
+      return request;
+    }
+    getQuestion();
+  }, []);
+
+  useEffect(() => {
+    async function getQuestion() {
+      const request = await axios
+        .get(`categories/${id}`)
+        .then((response) => setCategories(response.data))
         .catch((error) => console.log(error));
 
       return request;
@@ -78,6 +92,10 @@ function AnswerYetProducts() {
         {/* <div className="question__info">
                     <h2>0 Questions</h2>
                 </div> */}
+        <span className="answer_span1">
+          카테고리: {categories.category_name}
+        </span>
+
         <div className="AnsweYetProduct__table_bg">
           <table className="AnsweYetProduct__table">
             <thead>
@@ -93,7 +111,9 @@ function AnswerYetProducts() {
                   } else if (
                     product.product_name
                       .toLowerCase()
-                      .includes(searchTerm.toLowerCase()) /*&&
+                      .includes(
+                        searchTerm.toLowerCase(),
+                      ) /*&&
                     product.category_id == id*/
                   ) {
                     return product;
@@ -121,9 +141,8 @@ function AnswerYetProducts() {
                       description={product.product_description}
                       question={wait.length}
                     />
-                  ) 
+                  );
                 })}
-                
             </tbody>
           </table>
         </div>

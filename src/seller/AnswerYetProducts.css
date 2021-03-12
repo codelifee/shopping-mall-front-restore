@@ -151,3 +151,8 @@ td {
   width: 200px;
   height: 150px;
 }
+
+.answer_span1 {
+  font-weight: bold;
+  font-size: 25px;
+}
