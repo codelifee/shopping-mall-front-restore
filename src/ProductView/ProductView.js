@@ -38,7 +38,6 @@ function ProductView() {
     getCategory();
   }, []);
 
-  const [categories, setCategories] = useState([]);
 
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
