@@ -40,19 +40,6 @@ function ProductView() {
 
   const [categories, setCategories] = useState([]);
 
-  useEffect(() => {
-    async function getCategory() {
-      const request = await axios
-        .get(`categories/${id}`)
-        .then(response => setCategories(response.data))
-        .catch(error => console.log(error));
-
-      return request;
-    }
-
-    getCategory();
-  }, []);
-
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
     async function getReview() {
