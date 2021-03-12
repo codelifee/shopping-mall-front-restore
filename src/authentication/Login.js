@@ -4,6 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import logo from '../img/logo.png';
 import { auth } from '../configuration/firebase';
 import axios from '../axios/axios';
+import kakao from '../img/kakao.png';
 import { useStateValue } from '../StateProvider/StateProvider';
 
 function Login() {
@@ -20,6 +21,19 @@ function Login() {
   //         id: id,
   //     })
   // }
+
+  // const [code, setCode] = useState([])
+
+  //   async function getCode() {
+  //     const request = await axios
+  //       .get("user/auth/kakao/callback")
+  //       .then(response => window.location.href = response)
+  //       .catch(error => console.log(error));
+
+  //     return request;
+  //   }
+  //   getCode();
+
 
   const signIn = (e) => {
     e.preventDefault();
@@ -73,6 +87,11 @@ function Login() {
             Sign In
           </button>
         </form>
+
+        <a href="https://kauth.kakao.com/oauth/authorize?client_id=6fb58fe9599789c28415a8e5f541acbb&redirect_uri=http://localhost:5000/auth/kakao/callback&response_type=code">
+            <img className="KakaoLogin" src={kakao} alt="카카오 로그인 버튼"/>
+        </a>
+
 
         {/* <button 
                 onClick={register}
