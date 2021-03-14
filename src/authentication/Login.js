@@ -1,27 +1,40 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './Login.css'
 import {Link, useHistory} from "react-router-dom";
 import logo from '../img/logo.png'
 import { auth } from '../configuration/firebase'
 import axios from '../axios/axios'
 import {useStateValue} from '../StateProvider/StateProvider'
+import Cookies from 'js-cookie'
+import { HistoryOutlined } from '@material-ui/icons';
 
 
 function Login() {
     const history = useHistory();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
-    const [loginUser, setLoginUser] = useState();
 
-    const [{user}, dispatch] = useStateValue();
+    const [{auth}, dispatch] = useStateValue();
 
-    // const removeFromBasket = () => {
-    //     dispatch({
-    //         type: 'REMOVE_FROM_BASKET',
-    //         id: id,
-    //     })
-    // }
+    const setUser = (res) => {
 
+        if(res.data == "") {
+            alert("이메일이나 비밀번호가 일치하지 않습니다")
+        } else {
+            return new Promise((resolve, reject) => {
+                resolve( dispatch({
+                    type: 'SET_USER',
+                    user: res.data
+                }))
+    
+                console.log(res)
+                Cookies.set("user", res.data.user_sequence_id);
+
+                history.push("/home");
+            })
+        }
+        
+    }
 
     const signIn = e => {
         e.preventDefault();
@@ -32,14 +45,23 @@ function Login() {
                 user_pwd: password
             }
         })
-        .then(res => dispatch({
-            type: 'SET_USER',
-            user: res.data
-        }))
+        .then(res => {
+            setUser(res)
+        }
+        ).then(res => console.log(res))
         .catch(err => console.log(err));
     }
 
-    console.log(loginUser)
+
+    // useEffect(() => {
+    //     if(Object.keys(user).length === 0) {
+    //         history.push('/home')
+    //     } else {
+    //         alert("아이디나 비밀번호가 일치하지 않습니다")
+    //     }
+    // }, [user]) 
+
+    console.log(Cookies.get("user"));
 
     return (
         <div className='login'>
@@ -62,7 +84,6 @@ function Login() {
                     name="password"
                     type='password'
                     onChange={e => setPassword(e.target.value)}
-
                     />
 
                     <button
@@ -71,10 +92,10 @@ function Login() {
                     className='login__signInButton'>Sign In</button>
                 </form>
 
-                {/* <button 
-                onClick={register}
-                className='login__registerButton'>Create Account</button> */}
-
+                <Link to="/signup">
+                <button 
+                className='login__registerButton'>Create Account</button>
+                </Link>
             </div>
         </div>
     )

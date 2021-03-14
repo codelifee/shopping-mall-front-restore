@@ -28,26 +28,6 @@ import SignUp from './authentication/SignUp';
 function App() {
   const [{}, dispatch] = useStateValue();
 
-  // useEffect(() => {
-  //   auth.onAuthStateChanged(authUser => {
-  //     console.log("THE USER IS >>>", authUser);
-
-  //     if (authUser) {
-  //       // the user logged in
-  //       dispatch({
-  //         type: "SET_USER",
-  //         user: authUser,
-  //       });
-  //     } else {
-  //       //the user is logged out
-  //       dispatch({
-  //         type: "SET_USER",
-  //         user: null,
-  //       });
-  //     }
-  //   });
-  // }, []);
-
   const [isSubmittied, setIsSubmitted] = useState(false);
 
   function submitForm() {
@@ -129,7 +109,7 @@ function App() {
             <Footer />
           </Route>
 
-          <Route path="/">
+          <Route exact path="/">
             <LandingPage />
           </Route>
         </Switch>

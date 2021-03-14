@@ -1,6 +1,6 @@
 export const initialState = {
     basket: [],
-    user: {}
+    auth : false,
 };
 
 export const getBasketTotal = (basket) =>
@@ -35,9 +35,9 @@ const reducer = (state, action) => {
                 basket: newBasket
             }
 
-        case 'SET_USER':
+        case 'SET_AUTH':
             return {
-                user: action.user
+                auth: action.auth
             }
 
         case 'SEARCH':
