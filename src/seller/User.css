@@ -2,6 +2,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  
 }
 
 .user__container {
@@ -81,7 +82,12 @@
 }
 
 .overall_user_table {
+  display: flex;
+
   height: 900px;
+  align-items: center;
+
+
 }
 .user__info {
   display: flex;

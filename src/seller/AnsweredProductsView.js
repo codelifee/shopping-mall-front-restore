@@ -52,15 +52,18 @@ function AnsweredProductsView({ id, answer_id, name, question, answer }) {
               setModal(!modal);
             }}
           >
-            Update
+            수정하기 
+            {modal==true? (<p>창을 닫으려면⇧</p>):null }
           </span>{' '}
-          <span onClick={confirmDelete}>Delete</span>
+          </td>
+          <td>
+          <span onClick={confirmDelete}>삭제하기</span>
         </td>
       </tr>
       {modal == true ? (
         <tr>
           <td>답변 수정</td>
-          <td colSpan="3">
+          <td colSpan="6">
             <UpdateAnswer id={answer_id} answer1={answer} />
           </td>
         </tr>

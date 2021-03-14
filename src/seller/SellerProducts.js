@@ -64,7 +64,7 @@ function SellerProducts() {
                     </form>
                 </div>
                 <div className="sellerProduct__info">
-                    <h2>0 Product</h2>
+                    <h2> {products.length} Product</h2>
                     <Link to="/seller/addProduct">
                     <button className="Button">+ Add a New Product</button>
                     </Link>

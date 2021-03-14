@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Logo from './img/logo.png';
-import Log from './img/log.png';
 import SearchIcon from '@material-ui/icons/Search';
 import SearchResult from './SearchResult';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';

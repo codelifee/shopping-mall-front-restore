@@ -90,11 +90,15 @@ function AnsweredProducts() {
         {/* <div className="question__info">
                     <h2>0 Questions</h2>
                 </div> */}
-        <h1>{categories.category_name}</h1>
+        <p className="answer_page">답변완료 페이지</p>
+        <h1>&nbsp;&nbsp;&nbsp;카테고리 : {categories.category_name}</h1>
 
-        <div className="AnsweYetProduct__table_bg">
-          <table className="AnsweYetProduct__table">
-            {/* {question.filter((val) => {
+
+        <div className="overall_answerYet">
+
+          <div className="AnsweYetProduct__table_bg">
+            <table className="AnsweYetProduct__table">
+              {/* {question.filter((val) => {
               //question의 category_id == id && question의 answer !=null 일때
               return val.category_id == id && val.answer != null;
             })
@@ -106,52 +110,54 @@ function AnsweredProducts() {
                 )
               })} */}
 
-            <thead>
-              <th>Product Name</th>
-              <th>Questions</th>
-              <th>Answer</th>
-              <th>update/delete</th>
-            </thead>
-            <tbody>
-              {question
-                .filter(
-                  (val) => {
-                    if (searchTerm == '') {
-                      return val.category_id == id && val.answer != null;
-                    } else if (
-                      val.product_name
-                        .toLowerCase()
-                        .includes(searchTerm.toLowerCase())
-                    ) {
-                      return val;
-                    }
-                  },
+              <thead>
+                <th>Product Name</th>
+                <th>Questions</th>
+                <th>Answer</th>
+                <th>update</th>
+                <th>delete</th>
+              </thead>
+              <tbody>
+                {question
+                  .filter(
+                    (val) => {
+                      if (searchTerm == '') {
+                        return val.category_id == id && val.answer != null;
+                      } else if (
+                        val.product_name
+                          .toLowerCase()
+                          .includes(searchTerm.toLowerCase())
+                      ) {
+                        return val;
+                      }
+                    },
 
-                  //question의 category_id == id && question의 answer !=null 일때
-                )
-                .map((val, i) => {
-                  //위에서 한차례 필터링된 question의 product_id랑 product.product_id 같을 때 product_name 출력
-                  const name = products
-                    .filter((prd) => {
-                      return prd.product_id == val.product_id;
-                    })
-                    .map((prd) => {
-                      return prd.product_id;
-                    });
-                  console.log(i, name);
-                  return (
-                    <AnsweredProductsView
-                      key={val.question_id}
-                      id={val.question_id}
-                      answer_id={val.answer_id}
-                      name={val.product_name}
-                      question={val.question}
-                      answer={val.answer}
-                    />
-                  );
-                })}
-            </tbody>
-          </table>
+                    //question의 category_id == id && question의 answer !=null 일때
+                  )
+                  .map((val, i) => {
+                    //위에서 한차례 필터링된 question의 product_id랑 product.product_id 같을 때 product_name 출력
+                    const name = products
+                      .filter((prd) => {
+                        return prd.product_id == val.product_id;
+                      })
+                      .map((prd) => {
+                        return prd.product_id;
+                      });
+                    console.log(i, name);
+                    return (
+                      <AnsweredProductsView
+                        key={val.question_id}
+                        id={val.question_id}
+                        answer_id={val.answer_id}
+                        name={val.product_name}
+                        question={val.question}
+                        answer={val.answer}
+                      />
+                    );
+                  })}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
