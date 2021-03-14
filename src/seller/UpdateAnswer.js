@@ -2,28 +2,39 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from '../axios/axios';
 import './AnswerYetQuestionModal.css';
 
-function AnswerYetQuestionModal({ id }) {
+function UpdateAnswer({ id, answer1}) {
   //question_id
 
-  const [form, setForm] = useState({
-    answer_id: '',
-    answer: '',
-    question_id: id,
-    answer_date_created: '',
+  const [form, setForm] = useState({});
+
+//   useEffect(() => {
+//     async function fetchData() {
+//         const request = await axios.get(`answer/${id}`)
+//         .then(response => 
+//             setForm(response.data)
+//         )
+//         .catch(error => console.log(error))
+       
+//         return request;
+//     }
+//     fetchData();
+// }, [])
+
+
+useEffect(() => {
+  setForm({
+    answer: answer1
   });
+}, setForm);
 
   const handleChange = (e) => {
     e.preventDefault();
 
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
+    setForm(e.target.value);
   };
 
   const handleDelete = (e) => {
     e.preventDefault();
-
     setForm({
       ...form,
       answer: '',
@@ -32,11 +43,11 @@ function AnswerYetQuestionModal({ id }) {
 
   console.log(form);
 
-  const postAnswer = (e) => {
+  const patchAnswer = (e) => {
     e.preventDefault();
 
     axios
-      .post(`answer`, form)
+      .patch(`answer/${id}`, {answer:form})
       .then((res) => console.log(res),window.location.reload())
       .catch((err) => console.log(err));
   };
@@ -45,20 +56,20 @@ function AnswerYetQuestionModal({ id }) {
     <div>
       <form
         className="AnswerForm"
-        onSubmit={form.answer != '' ? postAnswer : null}
+        onSubmit={answer1 != '' ? patchAnswer : null}
       >
         <input
           className="AnswerInput"
           type="text"
           name="answer"
-          value={form.answer}
+          defaultValue={answer1}
           onChange={handleChange}
         />
         <div className="answerButton">
           <button
             type="submit"
             onClick={() => {
-              form.answer == ''
+              answer1 == ''
                 ? alert('내용을 입력해주세요!')
                 : alert('내용이 입력됐습니다.');
               
@@ -74,4 +85,4 @@ function AnswerYetQuestionModal({ id }) {
   );
 }
 
-export default AnswerYetQuestionModal;
+export default UpdateAnswer;

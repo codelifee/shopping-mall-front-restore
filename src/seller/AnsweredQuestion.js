@@ -61,6 +61,7 @@ function AnswerYetQuestion (){
                         onChange={date => setStartDate(date)} />
                     </div>
                 </div>
+                
                 <div className="question__info">
                     <h2>{products.product_name}</h2>
                 </div>
@@ -72,12 +73,13 @@ function AnswerYetQuestion (){
                             <th>Answer</th>
                             <th>date</th>
                         </thead>
-                        <tbody>   
+                        <tbody>
+                            
                            {
                                question
                                .filter(
                                    (val)=>{
-                                       return val.product_id == id && val.answer==null;
+                                       return val.product_id == id && val.answer!==null;
                                    })
                                .map(
                                    (val)=>{
@@ -92,13 +94,13 @@ function AnswerYetQuestion (){
                                                 onClick={()=>{
                                                     setModal(!modal);
                                                 }}>
-                                                    답변하기
+                                                   수정하기
                                                 </div>
                                             </td>
                                         </tr>
                                         {modal == true ? 
                                             <tr><td>답변 작성</td>
-                                            <td colSpan="3"><AnswerYetQuestionModal id={val.question_id}
+                                            <td colSpan="3"><AnsweredQuestionModal id={val.product_id}
                                             /></td></tr>
                                             :null
                                         }

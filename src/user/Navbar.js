@@ -22,7 +22,7 @@ function Navbar() {
                     <div className="navbar__link">
                         <h2>
                         <FaShoppingBag />
-                            Order
+                            주문내역
                             <FaCaretDown 
                         onClick={()=>setOrder(!order)}
                         className={order ? "icon-active" : "icon"}
@@ -31,7 +31,7 @@ function Navbar() {
                         <div>
                             {order &&
                                 <Link to={`/user/order/${user_sequence_id}`}>
-                                <p>My Orders</p>
+                                <p>나의 주문내역</p>
                                 </Link>
                             }
                         </div>
@@ -40,7 +40,7 @@ function Navbar() {
                     <div className="navbar__link">
                         <h2>
                             <FaUserCog />
-                            User
+                            회원
                             <FaCaretDown 
                         onClick={()=>setUser(!user)}
                         className={user ? "icon-active" : "icon"}
@@ -50,10 +50,10 @@ function Navbar() {
                             {user && 
                                 <div>
                                     <Link to={`/user/updateprofile/${user_sequence_id}`}>
-                                    <p>Update Profile</p>
+                                    <p>회원 정보 수정</p>
                                     </Link>
                                     <Link to={`/user/deleteprofile/${user_sequence_id}`}>
-                                    <p>Delete Profile</p>
+                                    <p>회원 탈퇴</p>
                                     </Link>
                                 </div>
                             }

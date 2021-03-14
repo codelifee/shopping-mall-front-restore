@@ -1,27 +1,22 @@
-import { React, useState, useEffect } from 'react';
-import Axios from 'axios';
+import { React, useState} from 'react';
 import Navbar from './Navbar';
 import UpdateProfile from './UpdateProfile';
-
 import Profile from './Profile';
 import Orders from './Orders';
 import Exchange from './Exchange';
-import ReviewForm from '../detail/ReviewForm';
 import Return from './Return';
 import OrderDetails from './OrderDetails';
 import OrdersData from './OrdersData';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  useParams,
+  Route
 } from 'react-router-dom';
 import './User.css';
 import DeleteProfile from './DeleteProfile';
 
 function User() {
   const [isSubmittied, setIsSubmitted] = useState(false);
-  const user_sequence_id = useParams();
 
   function submitForm() {
     setIsSubmitted(true);

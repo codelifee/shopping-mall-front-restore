@@ -61,7 +61,6 @@ return(
     }}>
       <div className="screen">
       <div className="top">{props.category.category_name}</div>
-        <div className="bottom">데코글이 있었으면 좋겠습니다~</div>
       
         
       <img src={props.picture}/>

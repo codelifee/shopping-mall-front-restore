@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router';
 import axios from '../axios/axios';
 
 function KakaoPaySuccess() {
+
+    const pg_token = useParams();
 
     const [success, setSuccess] = useState({
         approved_at:'',
@@ -13,7 +16,7 @@ function KakaoPaySuccess() {
     
     useEffect(() => {
         async function fetchData() {
-            const request = await axios.get(`/kakaoPaySuccess`)
+            const request = await axios.get(`/kakaoPaySuccess`,pg_token)
             .then(response => 
                 setUser(response.data)
             )

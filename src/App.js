@@ -7,7 +7,6 @@ import Seller from './seller/Seller';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Checkout from './checkout/Checkout';
 import Detail from './detail/Detail';
-import Login from './authentication/Login';
 import { auth } from './configuration/firebase';
 import { useStateValue } from './StateProvider/StateProvider';
 import Payment from './payment/Payment';
@@ -17,13 +16,13 @@ import Slider from './slide2/Slide2';
 import LandingPage from './landingpage/LandingPage';
 import ProductView from './ProductView/ProductView';
 import ReviewForm from './detail/ReviewForm';
-
 import ReviewPatchDeleteForm from './detail/ReviewPatchDeleteForm';
 import './App.css';
 import QnAForm from './detail/QnAForm';
 import KakaoMap from './Introduction/KakaoMap';
 import User from './user/User';
 import SignUp from './authentication/SignUp';
+import SignIn from './authentication/SignIn';
 import KakaoPay from './kakaopay/KakaoPay';
 
 function App() {
@@ -47,7 +46,7 @@ function App() {
             <Footer />
           </Route>
 
-          <Route path="/searchResult">
+          <Route path="/searchResult/:search">
             <Header />
             <SearchResult />
           </Route>
@@ -56,11 +55,11 @@ function App() {
             {!isSubmittied ? (
               <SignUp submitForm={submitForm} />
             ) : (
-              (window.location.href = '/login')
+              (window.location.href = '/home')
             )}
           </Route>
           <Route path="/login">
-            <Login />
+              <SignIn/>
           </Route>
           <Route path="/checkout">
             <Header />

@@ -35,10 +35,7 @@ function Product(props) {
              <img className="product2__img" src={image+props.id} alt="" onClick={()=>{
                 history.push(`/detail/${props.id}`);
             }}/> 
-             <div className="icons">
-                <button onClick={addToBasket}><FaShoppingCart className="product__cartIcon"/></button>
-            <div className="tok"><FaComment/>{props.comment}</div>
-            </div> 
+            
             <div className="product2__info"  onClick={()=>{
                     history.push(`/detail/${props.id}`);
                 }}>
@@ -50,6 +47,10 @@ function Product(props) {
                     <small>{props.description}</small>
                     
                 </p>
+                <div className="icons">
+                <button onClick={addToBasket}><FaShoppingCart className="product__cartIcon"/></button>
+            <div className="tok"><FaComment/>{props.comment}</div>
+            </div> 
                 <div className="product2__rating">
                     {//Array(props.product_rating)
                     //.fill()

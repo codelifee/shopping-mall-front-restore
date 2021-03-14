@@ -10,11 +10,12 @@ import { useParams } from "react-router-dom";
 function ProductView() {
   const [products, setProducts] = useState([]);
   const { id } = useParams();
+
   
   useEffect(() => {
     async function getProduct() {
       const request = await axios
-        .get("products/all")
+        .get(`products/category/${id}`)
         .then(response => setProducts(response.data))
         .catch(error => console.log(error));
 
@@ -22,9 +23,23 @@ function ProductView() {
     }
 
     getProduct();
+  }, [id]);
+
+  useEffect(() => {
+    async function getCategory() {
+      const request = await axios
+        .get(`categories/${id}`)
+        .then(response => setCategories(response.data))
+        .catch(error => console.log(error));
+
+      return request;
+    }
+
+    getCategory();
   }, []);
 
   const [categories, setCategories] = useState([]);
+
   useEffect(() => {
     async function getCategory() {
       const request = await axios
@@ -55,13 +70,13 @@ function ProductView() {
   return (
     <div className="products">
       <div className="products__category">
-        {categories.category_name}
-      </div>
+    {categories.category_name}
+            </div>  
       <div className="products__row">
         {products
-          .filter(function (product) {
-            return product.category_id == id;
-          })
+          // .filter(function (product) {
+          //   return product.category_id == id;
+          // })
           .map((product, i) => {
             let reviewLength = reviews.filter((review)=>{
               return review.product_id==product.product_id;

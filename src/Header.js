@@ -10,25 +10,11 @@ import { useStateValue } from './StateProvider/StateProvider';
 import Sidebar from './sidebar/Sidebar';
 import AllProducts from './sidebar/Sidebar';
 import { auth } from './configuration/firebase';
-import Login from './authentication/Login';
+import SignIn from './authentication/SignIn';
 import { useHistory } from 'react-router-dom';
 import axios from './axios/axios';
 
 function Header() {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    async function getSearchItem() {
-      const request = await axios
-        .get(`products/all`)
-        .then((response) => setProducts(response.data))
-        .catch((error) => console.log(error));
-
-      return request;
-    }
-
-    getSearchItem();
-  }, []);
 
   const [{ basket, user }, dispatch] = useStateValue();
 
@@ -66,7 +52,7 @@ function Header() {
                   type: 'SEARCH',
                   item: { word: search },
                 });
-                history.push('/searchResult');
+                history.push(`/searchResult/${search}`);
               }
             }}
           />
@@ -79,7 +65,7 @@ function Header() {
                 item: { word: search },
               });
 
-              history.push('/searchResult');
+              history.push(`/searchResult/${search}`);
             }}
           />
         </div>
@@ -128,7 +114,7 @@ function Header() {
             <div className="header__optionBasket">
               <ShoppingBasketIcon />
               <span className="header__optionLineTwo header__basketCount">
-                {/* {basket?.length} */}
+                {basket?.length}
               </span>
             </div>
           </Link>
