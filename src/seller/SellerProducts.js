@@ -70,6 +70,7 @@ function SellerProducts() {
                     </Link>
                     
                 </div>
+                <div className="overall_sellerProduct">
                 <div className="sellerProduct__table_bg">
                     <table className="sellerProduct__table">
                             <thead>
@@ -108,6 +109,7 @@ function SellerProducts() {
 
                 </div>
             </div>
+        </div>
         </div>
     )
 }

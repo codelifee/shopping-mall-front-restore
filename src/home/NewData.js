@@ -17,7 +17,6 @@ export default [
         name: tomato,
         price:1000,
         decoration:"신선한 토마토즙 X 30봉"
-
     },
     {
         id:2,

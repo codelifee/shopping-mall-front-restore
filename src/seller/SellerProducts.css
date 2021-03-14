@@ -125,6 +125,14 @@
   overflow-x: hidden;
 }
 
+
+
+.overall_sellerProduct{
+  display: flex;
+  height: 900px;
+  align-items: center;
+}
+
 .sellerProduct__table {
   width: 1125px;
   border-radius: 5px;

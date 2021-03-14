@@ -17,6 +17,8 @@ import Cookies from "js-cookie";
 
 
 function Header() {
+
+
   const [products, setProducts] = useState([]);
   const [{ basket, user }, dispatch] = useStateValue();
 
@@ -141,7 +143,7 @@ function Header() {
           </Link>
           
           :
-          <Link to="/user">
+          <Link to={`/user/${cookie}`}>
             <div className="header__option">
               <span className="header__optionLineOne">Users</span>
               <span className="header__optionLinetwo">Orders</span>
