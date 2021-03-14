@@ -6,21 +6,26 @@ import { FaSearch } from 'react-icons/fa';
 import { useHistory, Link } from 'react-router-dom';
 import './AnswerYetProducts.css';
 import AnswerYetProductsView from './AnswerYetProductsView';
+import { ImageData } from '../axios/urlData';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Category } from '@material-ui/icons';
 
 function AnswerYetProducts() {
   const [startDate, setStartDate] = useState(new Date());
   const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
+
   const [searchTerm, setSearchTerm] = useState('');
+  let image = ImageData.image1;
   const { id } = useParams();
   const history = useHistory();
+
   let total = null; //답변 전 상품별 전체 질문
 
   useEffect(() => {
     async function fetchDate() {
       const request = await axios
-        .get('products/all')
+        .get(`products/category/${id}`)
         .then((response) => setProducts(response.data))
         .catch((error) => console.log(error));
 
@@ -37,6 +42,18 @@ function AnswerYetProducts() {
       const request = await axios
         .get('question/all')
         .then((response) => setQuestion(response.data))
+        .catch((error) => console.log(error));
+
+      return request;
+    }
+    getQuestion();
+  }, []);
+
+  useEffect(() => {
+    async function getQuestion() {
+      const request = await axios
+        .get(`categories/${id}`)
+        .then((response) => setCategories(response.data))
         .catch((error) => console.log(error));
 
       return request;
@@ -63,7 +80,7 @@ function AnswerYetProducts() {
             <FaSearch className="search-icon" />
           </form>
           <div className="answer__category">
-            <p>답변생성일자</p>
+            <p>Answer Creation Date</p>
             <DatePicker
               className="datepicker_date"
               selected={startDate}
@@ -75,10 +92,13 @@ function AnswerYetProducts() {
         {/* <div className="question__info">
                     <h2>0 Questions</h2>
                 </div> */}
+        <span className="answer_span1">
+          카테고리: {categories.category_name}
+        </span>
+
         <div className="AnsweYetProduct__table_bg">
           <table className="AnsweYetProduct__table">
             <thead>
-              <th>Picture</th>
               <th>Product Name</th>
               <th>Product Description</th>
               <th>Wating answer questions</th>
@@ -86,13 +106,15 @@ function AnswerYetProducts() {
             <tbody>
               {products
                 .filter((product) => {
-                  if (searchTerm == '' && product.category_id == id) {
+                  if (searchTerm == '' /*&& product.category_id == id*/) {
                     return product;
                   } else if (
                     product.product_name
                       .toLowerCase()
-                      .includes(searchTerm.toLowerCase()) &&
-                    product.category_id == id
+                      .includes(
+                        searchTerm.toLowerCase(),
+                      ) /*&&
+                    product.category_id == id*/
                   ) {
                     return product;
                   }
@@ -116,6 +138,7 @@ function AnswerYetProducts() {
                       key={product.product_id}
                       id={product.product_id}
                       name={product.product_name}
+                      description={product.product_description}
                       question={wait.length}
                     />
                   );

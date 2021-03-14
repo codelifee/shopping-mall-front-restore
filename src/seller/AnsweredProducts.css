@@ -103,7 +103,9 @@
   /* background: wheat; */
 
   width: 1300px;
-  height: 600px;
+  height: 500px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .AnsweYetProduct__table {
@@ -146,9 +148,4 @@ td {
   cursor: pointer;
   font-weight: bold;
   font-size: 20px;
-}
-
-.AnsweYetProduct__table td img {
-  width: 200px;
-  height: 150px;
 }

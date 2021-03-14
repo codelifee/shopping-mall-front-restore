@@ -46,7 +46,7 @@ function App() {
             <Footer />
           </Route>
 
-          <Route path="/searchResult">
+          <Route path="/searchResult/:search">
             <Header />
             <SearchResult />
           </Route>

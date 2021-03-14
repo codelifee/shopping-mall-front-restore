@@ -5,9 +5,6 @@ import axios from '../axios/axios'
 import {Link} from 'react-router-dom'
 
 function SellerProducts() {
-    
-
-    
 
     const [products, setProducts] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');

@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import Product from "../detail/Product";
-import axios from "../axios/axios";
-import "./ProductView.css";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import Product from '../detail/Product';
+import axios from '../axios/axios';
+import './ProductView.css';
+import { useParams } from 'react-router-dom';
 //import Recommendation from '../home/Recommendation';
 
 //카테고리 id에 맞게 출력될 것
@@ -10,27 +10,27 @@ import { useParams } from "react-router-dom";
 function ProductView() {
   const [products, setProducts] = useState([]);
   const { id } = useParams();
-  
+  const [categories, setCategories] = useState([]);
+
   useEffect(() => {
     async function getProduct() {
       const request = await axios
-        .get("products/all")
-        .then(response => setProducts(response.data))
-        .catch(error => console.log(error));
+        .get(`products/category/${id}`)
+        .then((response) => setProducts(response.data))
+        .catch((error) => console.log(error));
 
       return request;
     }
 
     getProduct();
-  }, []);
+  }, [id]);
 
-  const [categories, setCategories] = useState([]);
   useEffect(() => {
     async function getCategory() {
       const request = await axios
         .get(`categories/${id}`)
-        .then(response => setCategories(response.data))
-        .catch(error => console.log(error));
+        .then((response) => setCategories(response.data))
+        .catch((error) => console.log(error));
 
       return request;
     }
@@ -43,8 +43,8 @@ function ProductView() {
     async function getReview() {
       const request = await axios
         .get(`review/all`)
-        .then(response => setReviews(response.data))
-        .catch(error => console.log(error));
+        .then((response) => setReviews(response.data))
+        .catch((error) => console.log(error));
 
       return request;
     }
@@ -54,20 +54,20 @@ function ProductView() {
 
   return (
     <div className="products">
-      <div className="products__category">
-        {categories.category_name}
-      </div>
+      <div className="products__category">{categories.category_name}</div>
       <div className="products__row">
         {products
-          .filter(function (product) {
-            return product.category_id == id;
-          })
+          // .filter(function (product) {
+          //   return product.category_id == id;
+          // })
           .map((product, i) => {
-            let reviewLength = reviews.filter((review)=>{
-              return review.product_id==product.product_id;
-            }).map((review)=>{
-              return review.review_id;
-            })
+            let reviewLength = reviews
+              .filter((review) => {
+                return review.product_id == product.product_id;
+              })
+              .map((review) => {
+                return review.review_id;
+              });
             return (
               <Product
                 id={product.product_id}

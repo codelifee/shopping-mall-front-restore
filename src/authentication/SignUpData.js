@@ -60,48 +60,29 @@ const SignUpData = (callback,Validate) => {
     }
 
     const checkId = () => {
-        customer.map((data,i)=>{
-            if(values.user_id != customer[i].user_id){
-                errors.user_id = "사용가능한 아이디입니다.";
-                return false;
-            }else{
-                errors.user_id = "사용불가능한 아이디입니다.";
+        let error = {};            
+            for(let i=0;i<customer.length;i++){
+                if(values.user_id != customer[i].user_id){
+                    error.user_id = "사용가능한 아이디입니다.";
+                }else{
+                    error.user_id = "사용불가능한 아이디입니다.";
+                    break;
+                }
             }
-        })
-        // let re = -1;
-        // axios({
-        //     url: `/users/checkId`,
-        //     method: 'post',
-        //     data:{
-        //         user_id : values.user_id
-        //     }
-        // })
-        // .then(res => re = res.data)
-        // .catch(err => console.log(err))  
-        // (re==1? errors.user_id = "사용가능한 아이디입니다." : errors.user_id = "사용불가능한 아이디입니다.")
+        setErrors(error);
     }
     
     const checkPhone = () => {
-        customer.map((data,i)=>{
+        let error = {};
+        for(let i=0;i<customer.length;i++){
             if(values.user_phone != customer[i].user_phone){
-                errors.user_phone = "사용가능한 전화번호입니다.";
-                return false;
+                error.user_phone = "사용가능한 전화번호입니다.";
             }else{
-                errors.user_phone = "사용불가능한 전화번호입니다.";
+                error.user_phone = "사용불가능한 전화번호입니다.";
+                break;
             }
-        })
-        // let re = -1; 
-        // axios({
-        //     url: `/users/checkPhone`,
-        //     method: 'post',
-        //     data:{
-        //         user_phone : values.user_phone,
-        //         user_id : values.user_id
-        //     }
-        // })
-        // .then(res => re = res.data)
-        // .catch(err => console.log(err))  
-        // (re==1? errors.user_id = "사용가능한 전화번호입니다." : errors.user_id = "사용불가능한 전화번호입니다.")
+        }
+        setErrors(error);
     }
 
     return {handleChange, values, handleSubmit, errors, checkId, checkPhone};

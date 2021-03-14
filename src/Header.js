@@ -18,8 +18,8 @@ import Cookies from "js-cookie";
 
 
 function Header() {
-  const [{basket, user}, dispatch] = useStateValue();
   const [products, setProducts] = useState([]);
+  const [{ basket, user }, dispatch] = useStateValue();
 
   const [{ keyword }, keyword_dispatch] = useStateValue();
   const [cookie, setCookie] = useState();
@@ -51,6 +51,7 @@ function Header() {
 
     getSearchItem();
 
+  
   }, []);
 
   
@@ -84,7 +85,7 @@ function Header() {
                   type: 'SEARCH',
                   item: { word: search },
                 });
-                history.push('/searchResult');
+                history.push(`/searchResult/${search}`);
               }
             }}
           />
@@ -96,7 +97,8 @@ function Header() {
                 type: 'SEARCH',
                 item: { word: search },
               });
-              history.push('/searchResult');
+
+              history.push(`/searchResult/${search}`);
             }}
           />
         </div>
@@ -150,12 +152,12 @@ function Header() {
           }
 
           <Link to="/checkout">
-          <div className="header__optionBasket">
-            <ShoppingBasketIcon />
-            <span className="header__optionLineTwo header__basketCount">
-              {basket?.length}
-            </span>
-          </div>
+            <div className="header__optionBasket">
+              <ShoppingBasketIcon />
+              <span className="header__optionLineTwo header__basketCount">
+                {basket?.length}
+              </span>
+            </div>
           </Link>
           
 

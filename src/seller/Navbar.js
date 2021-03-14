@@ -65,7 +65,7 @@ function Navbar() {
           <div>
             {order && (
               <Link to="/seller/order">
-                <p>My Orders</p>
+                <p>주문 내역 관리</p>
               </Link>
             )}
           </div>
