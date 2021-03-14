@@ -49,7 +49,7 @@ function Login() {
             setUser(res)
         }
         ).then(res => console.log(res))
-        .catch(err => console.log(err));
+        .catch(err => alert("이메일이나 비밀번호를 입력해주세요"));
     }
 
 
