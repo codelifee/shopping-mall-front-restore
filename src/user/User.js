@@ -32,9 +32,7 @@ function User() {
  
   const getCookie = () => {
     const cookie = Cookies.get("user");
-
     console.log(cookie);
-
     setCookie(cookie);
   }
 

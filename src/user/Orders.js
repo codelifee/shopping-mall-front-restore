@@ -9,6 +9,8 @@ import {ImageData} from '../axios/urlData';
 
 function Orders() {
   const [startDate, setStartDate] = useState(new Date());
+  const [searchTerm, setSearchTerm] = useState('');
+
   const [orders, setOrders] = useState([{}]);
   let image = ImageData.image1
 
@@ -31,6 +33,10 @@ function Orders() {
     fetchDate();
   }, []);
 
+
+  const handleButtonClick=(e)=>{
+    e.input.focus();
+  }
   return (
     <div className="orders_bg">
       {/* <p
@@ -45,14 +51,18 @@ function Orders() {
         <div className="orders__search">
           <div className="orders__button">
             <button className="orders__search-button">Search</button>
-            <button className="orders__reset-button">Reset</button>
+            <button className="orders__reset-button" onClick={handleButtonClick}>Reset</button>
           </div>
           <form className="orders__searchbar">
             <input
+            ref={(ref)=>this.input=ref}
               name="keyword"
               placeholder="Search"
               type="text"
               className="orders__input"
+              onChange={(e) => {
+                setSearchTerm(e.target.value);
+              }}
             />
             <FaSearch className="search-icon" />
           </form>
@@ -84,7 +94,21 @@ function Orders() {
         <th className="order_td">리뷰작성</th>
         </thead>
         <tbody>
-          {orders.map(order => (
+          {orders
+                .filter((order) => {
+                  if (searchTerm == '' /*&& product.category_id == id*/) {
+                    return order;
+                  } else if (
+                    order.product_name
+                      .toLowerCase()
+                      .includes(
+                        searchTerm.toLowerCase(),
+                      ) /*&&
+                    product.category_id == id*/
+                  ) {
+                    return order;
+                  }
+                }).map(order => (
             <OrdersData
               status={order.order_status}
               key={order.order_id}
