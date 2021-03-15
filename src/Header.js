@@ -12,6 +12,7 @@ import AllProducts from './sidebar/Sidebar';
 import { auth } from './configuration/firebase';
 import Login from './authentication/Login';
 import { useHistory } from 'react-router-dom';
+import kakao from './img/kakao.png';
 import axios from './axios/axios';
 
 function Header() {
@@ -119,6 +120,9 @@ function Header() {
             </div>
           </Link>
         </div>
+        <a href="https://kauth.kakao.com/oauth/authorize?client_id=6fb58fe9599789c28415a8e5f541acbb&redirect_uri=http://localhost:5000/auth/kakao/callback&response_type=code">
+            <img className="KakaoLogin" src={kakao} alt="카카오 로그인 버튼"/>
+        </a>
       </div>
     </div>
   );
