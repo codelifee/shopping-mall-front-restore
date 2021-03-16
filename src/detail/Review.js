@@ -6,6 +6,7 @@ import { useHistory, useParams, useLocation } from "react-router-dom";
 import { FaStar, FaStarHalf } from "react-icons/fa";
 import axios from "../axios/axios";
 import {ImageData} from '../axios/urlData';
+import Cookies from 'js-cookie';
 
 function Review(props) {
 
@@ -14,14 +15,16 @@ function Review(props) {
   const [reviews, setReviews] = useState([]);
 
   const { id } = useParams();
-  
+
+  const cookie = Cookies.get("user");
+    console.log(cookie);
+
   //const [{ user }, dispatch] = useStateValue();
   
   const history = useHistory();
-  
 
   useEffect(() => {
-    async function fetchDate() {
+    async function getReviews() {
       const request = await axios
       .get(`review/all`)
       .then((response) => setReviews(response.data))
@@ -30,9 +33,27 @@ function Review(props) {
       return request;
     }
     
-    fetchDate();
+    getReviews();
   }, []);
 
+  const [orders, setOrders] = useState([]);
+  useEffect(() => {
+    async function getOrders() {
+      const request = await axios
+      .get(`orders/all`)
+      .then((response) => setOrders(response.data))
+      .catch((error) => console.log(error));
+      
+      return request;
+    }
+    
+    getOrders();
+  }, []);
+
+//주문내역 중 로그인 된 사람의 현재 상품에 대한 주문내역만 가져오기
+  const orderedUser = orders.filter((val)=>{return val.product_id==id && val.user_sequence_id==cookie})
+  .map((val)=>{return console.log(val)});
+  console.log(orderedUser)
 
   //해당삼품의 리뷰 별점 배열
   const col = reviews
@@ -134,14 +155,8 @@ function Review(props) {
         <div className="review__button_">
           <p>리뷰를 작성해보세요</p>
           {
-            //   user == null ?
-            //   <button className="review__button" onClick={()=>{
-            //     history.push('/login');
-            //   }}>리뷰 작성</button> :
-            //   //db에서 구매했던 목록중 현재 페이지 상품과 동일한 것이 있다면
-            //   //이라는 조건 추가.
-
-            <button
+            orderedUser.length !== 0 ?
+               <button
               className="review__button"
               onClick={() => {
                 window.open(
@@ -152,8 +167,11 @@ function Review(props) {
               }} 
             >
               리뷰 작성
-            </button>
-          }<br/>
+            </button> : 
+               <button className="review__button" onClick={()=>{
+                 alert("물건을 구매하신 후 작성하실 수 있습니다.")
+               }}>리뷰 작성</button> }
+          <br/>
         </div>
       </div>
 
@@ -184,7 +202,7 @@ function Review(props) {
              return <FaStar color={"#ffc107"} size={20} />
            }
          }
-                   console.log({image});
+         
          return (
  
            <div className="review__list" key={i}>
@@ -202,8 +220,10 @@ function Review(props) {
                 </div>
                 
                 <div className="review__update_button_container">
-                  {/* review.user_sequence_id == user.user_sequence_id ? : null */}
-                  <button className="review__update_button"
+      
+                 { review.user_sequence_id == cookie ? 
+                 
+                 <button className="review__update_button"
                     onClick={() => {
                     window.open(
                     `/reviewUpdate/${review.review_id}`,
@@ -211,6 +231,8 @@ function Review(props) {
                     "width=600,height=700,location=no,status=no,scrollbars=no"
                    );
                   }}>수정 / 삭제</button>
+                 
+                 : null}
                   
                 </div>
               </div>

@@ -1,13 +1,13 @@
 import React,{useState} from 'react';
 import './ReviewForm.css';
 import { FaStar } from 'react-icons/fa'
-import {useStateValue} from '../StateProvider/StateProvider';
 import axios from '../axios/axios';
 import {useHistory, useParams} from 'react-router-dom';
+import Cookies from 'js-cookie';
 
  function ReviewForm(){
 
-const history = useHistory();
+const [cookie, setCookie] = useState();
 
 const [rating, setRating] = useState(null);
 	
@@ -16,11 +16,16 @@ const [hover, setHover] = useState(null);
 const {id} = useParams();
 
 const formData = new FormData();
+const getCookie = () => {
+    const cookie = Cookies.get("user");
+    console.log(cookie);
+    setCookie(cookie);
+  }
 
     const [form, setForm] = useState({
         review_id: '',
         product_id: id,
-        user_sequence_id: 6, //로그인 한 user의 user_sequence_id넣기
+        user_sequence_id:cookie, //로그인 한 user의 user_sequence_id넣기
         //if review 안에 있는 user정보와 로그인된 user 정보 같으면 중복 작성 안 됨.
         review: '',
         star: 0,
@@ -29,6 +34,8 @@ const formData = new FormData();
         user_id:''
         }
     )
+
+
 
     formData.append('review_id', form.review_id)
     formData.append('product_id',form.product_id)

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from '../axios/axios';
-import './AnswerYetQuestionModal.css';
+import './UpdateAnswer.css';
 
 function UpdateAnswer({ id, answer1}) {
   //question_id

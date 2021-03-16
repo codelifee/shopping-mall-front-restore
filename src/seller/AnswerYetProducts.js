@@ -14,6 +14,7 @@ function AnswerYetProducts() {
   const [startDate, setStartDate] = useState(new Date());
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [complete, setComplete] = useState(false);
 
   const [searchTerm, setSearchTerm] = useState('');
   let image = ImageData.image1;
@@ -92,16 +93,19 @@ function AnswerYetProducts() {
         {/* <div className="question__info">
                     <h2>0 Questions</h2>
                 </div> */}
-        <span className="answer_span1">
-          카테고리: {categories.category_name}
+       
+        <p className="question_length1">답변 미완료 페이지</p>
+        <span className="answer_span1">&nbsp;&nbsp;&nbsp;&nbsp;카테고리: {categories.category_name}
         </span>
-
+<div className="overall_AnsweYet">
         <div className="AnsweYetProduct__table_bg">
           <table className="AnsweYetProduct__table">
             <thead>
-              <th>Product Name</th>
-              <th>Product Description</th>
-              <th>Wating answer questions</th>
+              <th>상품명</th>
+              <th>상품설명</th>
+              <th>답변 대기 질문 개수</th>
+              <th>답변작성</th>
+
             </thead>
             <tbody>
               {products
@@ -147,6 +151,7 @@ function AnswerYetProducts() {
           </table>
         </div>
       </div>
+    </div>
     </div>
   );
 }

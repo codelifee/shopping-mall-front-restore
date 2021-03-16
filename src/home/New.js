@@ -43,7 +43,7 @@ function NewItem(props){
   return(
     <div className="new_item">
       <div as={Link} to ='/'className="new_item_box">
-        <img src={props.new_.img}/>
+        <img src={props.new_.name}/>
         <div className="new_item_h4">
         <h4>{props.new_.decoration}</h4>
         <h4>{props.new_.title}</h4>
