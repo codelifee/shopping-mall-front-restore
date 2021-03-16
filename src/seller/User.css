@@ -83,12 +83,10 @@
 
 .overall_user_table {
   display: flex;
-
   height: 900px;
   align-items: center;
-
-
 }
+
 .user__info {
   display: flex;
   align-items: center;

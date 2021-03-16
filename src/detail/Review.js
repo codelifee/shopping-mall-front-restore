@@ -11,17 +11,19 @@ import Cookies from 'js-cookie';
 function Review(props) {
 
   const image = ImageData.image4
+  //const [cookie, setCookie] = useState();
 
   const [reviews, setReviews] = useState([]);
 
   const { id } = useParams();
 
   const cookie = Cookies.get("user");
-    console.log(cookie);
+  console.log(cookie);
 
   //const [{ user }, dispatch] = useStateValue();
   
   const history = useHistory();
+
 
   useEffect(() => {
     async function getReviews() {
@@ -228,7 +230,7 @@ function Review(props) {
                     window.open(
                     `/reviewUpdate/${review.review_id}`,
                      "reviewUpdateForm",
-                    "width=600,height=700,location=no,status=no,scrollbars=no"
+                    "width=600,height=500,location=no,status=no,scrollbars=no"
                    );
                   }}>수정 / 삭제</button>
                  

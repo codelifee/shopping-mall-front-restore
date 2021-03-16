@@ -17,6 +17,7 @@ import Slider from './slide2/Slide2';
 import LandingPage from './landingpage/LandingPage';
 import ProductView from './ProductView/ProductView';
 import ReviewForm from './detail/ReviewForm';
+import Cookies from 'js-cookie'
 
 import ReviewPatchDeleteForm from './detail/ReviewPatchDeleteForm';
 import './App.css';
@@ -27,11 +28,18 @@ import SignUp from './authentication/SignUp';
 
 function App() {
   const [{}, dispatch] = useStateValue();
+  const [cookie, setCookie] = useState();
 
   const [isSubmittied, setIsSubmitted] = useState(false);
 
   function submitForm() {
     setIsSubmitted(true);
+  }
+
+  const getCookie = () => {
+    const cookie = Cookies.get("user");
+    console.log(cookie);
+    setCookie(cookie);
   }
 
   return (
@@ -77,7 +85,7 @@ function App() {
           </Route>
 
           <Route path="/review/:id">
-            <ReviewForm />
+            <ReviewForm/>
           </Route>
 
           <Route path="/reviewUpdate/:id">

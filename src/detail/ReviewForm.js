@@ -1,13 +1,17 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import './ReviewForm.css';
 import { FaStar } from 'react-icons/fa'
 import axios from '../axios/axios';
 import {useHistory, useParams} from 'react-router-dom';
 import Cookies from 'js-cookie';
 
- function ReviewForm(){
+ function ReviewForm({user_id}){
+
 
 const [cookie, setCookie] = useState();
+
+console.log(user_id);
+const history = useHistory();
 
 const [rating, setRating] = useState(null);
 	
@@ -16,16 +20,12 @@ const [hover, setHover] = useState(null);
 const {id} = useParams();
 
 const formData = new FormData();
-const getCookie = () => {
-    const cookie = Cookies.get("user");
-    console.log(cookie);
-    setCookie(cookie);
-  }
+
 
     const [form, setForm] = useState({
         review_id: '',
         product_id: id,
-        user_sequence_id:cookie, //로그인 한 user의 user_sequence_id넣기
+        user_sequence_id: Cookies.get("user"), //로그인 한 user의 user_sequence_id넣기
         //if review 안에 있는 user정보와 로그인된 user 정보 같으면 중복 작성 안 됨.
         review: '',
         star: 0,
@@ -69,6 +69,8 @@ const getCookie = () => {
 
     }
 
+    
+
     const handleFileChange = e => {
         e.preventDefault()
 
@@ -78,7 +80,10 @@ const getCookie = () => {
         })
     }
 
+
     const showForm = (e) => {
+        
+    
         e.preventDefault();
         //삼항연산자로 사진이 null이면 글만 넘어가는 post로
         //null이 아니면 아래 post로 동작하게 만들기
