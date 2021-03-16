@@ -5,18 +5,20 @@ import { useStateValue } from "../StateProvider/StateProvider";
 import { useHistory, useParams, useLocation } from "react-router-dom";
 import { FaStar, FaStarHalf } from "react-icons/fa";
 import axios from "../axios/axios";
+import {ImageData} from '../axios/urlData';
 
 function Review(props) {
-  
+
+  const image = ImageData.image4
+
   const [reviews, setReviews] = useState([]);
-  
+
   const { id } = useParams();
   
   //const [{ user }, dispatch] = useStateValue();
   
   const history = useHistory();
   
-  const review_img = "https://api.xn--vx3b30no7b.com/review/showReviewImage/";
 
   useEffect(() => {
     async function fetchDate() {
@@ -30,6 +32,7 @@ function Review(props) {
     
     fetchDate();
   }, []);
+
 
   //해당삼품의 리뷰 별점 배열
   const col = reviews
@@ -181,20 +184,20 @@ function Review(props) {
              return <FaStar color={"#ffc107"} size={20} />
            }
          }
+                   console.log({image});
          return (
-           
+ 
            <div className="review__list" key={i}>
                          
                 <div className="review__list_user">
                   {review.user_id} 님 {star()}
                 </div>
-
               <div className="review__list_content_container">
                 <div className="review__list_content">
                   {review.review_date_created} 작성<br/>
                   {review.review}
                   {review.review_picture!=null ?
-                    <img src={review_img+review.review_id}/>: null
+                    <img src={image+review.review_id}/>: null
                   }
                 </div>
                 

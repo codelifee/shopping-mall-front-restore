@@ -6,7 +6,8 @@ import axios from "../axios/axios";
 import { useHistory, useParams } from "react-router-dom";
 import "./Orders.css";
 import { ImageData } from "../axios/urlData";
-
+import SearchIcon from "@material-ui/icons/Search";
+import { useStateValue } from "../StateProvider/StateProvider";
 function Orders() {
   const [startDate, setStartDate] = useState(new Date());
   const [orders, setOrders] = useState([{}]);
@@ -15,6 +16,19 @@ function Orders() {
   let history = useHistory();
 
   const { user_sequence_id } = useParams();
+  const [{ basket, user }, dispatch] = useStateValue();
+
+  const [{ keyword }, keyword_dispatch] = useStateValue();
+
+  const [search, setSearch] = useState("");
+
+  const handleAuthentication = () => {
+    if (user.loggedIn != "") {
+      dispatch({ type: "SET_USER", user: {} });
+    }
+  };
+
+  console.log(search);
 
   useEffect(() => {
     async function fetchDate() {
@@ -32,14 +46,6 @@ function Orders() {
 
   return (
     <div className="orders_bg">
-      {/* <p
-        className="product__name"
-        onClick={() => {
-          history.push(`orders/${user_sequence_id}`);
-        }}
-      >
-        {orders.title}
-      </p> */}
       <div className="orders__container">
         <div className="orders__search">
           <div className="orders__button">
@@ -48,12 +54,35 @@ function Orders() {
           </div>
           <form className="orders__searchbar">
             <input
-              name="keyword"
-              placeholder="Search"
+              className="header__searchInput"
               type="text"
-              className="orders__input"
+              placeholder="검색"
+              value={search}
+              onChange={(e) => {
+                setSearch(e.target.value);
+              }}
+              onKeyPress={(e) => {
+                if (e.key === "Enter") {
+                  keyword_dispatch({
+                    type: "SEARCH",
+                    item: { word: search },
+                  });
+                  history.push(`product/${search}`);
+                }
+              }}
             />
-            <FaSearch className="search-icon" />
+
+            <SearchIcon
+              className="header__searchIcon"
+              onClick={() => {
+                keyword_dispatch({
+                  type: "SEARCH",
+                  item: { word: search },
+                });
+
+                history.push(`product/${search}`);
+              }}
+            />
           </form>
           <div className="orders__category">
             <p lassName="orders__category_p">Order Creation Date</p>

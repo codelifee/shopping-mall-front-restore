@@ -93,6 +93,7 @@ function OrdersData({
             </ul>
           </div>
         </td>
+
         <td className="order_tdtd" style={style11}>
           {status}
         </td>

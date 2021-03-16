@@ -23,7 +23,7 @@ function AnswerYetProducts() {
   useEffect(() => {
     async function fetchDate() {
       const request = await axios
-        .get('products/all')
+        .get(`products/category/${id}`)
         .then((response) => setProducts(response.data))
         .catch((error) => console.log(error));
 
@@ -46,7 +46,6 @@ function AnswerYetProducts() {
     }
     getQuestion();
   }, []);
-
 
   return (
     <div className="AnsweYetProduct">
@@ -89,13 +88,13 @@ function AnswerYetProducts() {
             <tbody>
               {products
                 .filter((product) => {
-                  if (searchTerm == '' && product.category_id == id) {
+                  if (searchTerm == '' /*&& product.category_id == id*/) {
                     return product;
                   } else if (
                     product.product_name
                       .toLowerCase()
-                      .includes(searchTerm.toLowerCase()) &&
-                    product.category_id == id
+                      .includes(searchTerm.toLowerCase()) /*&&
+                    product.category_id == id*/
                   ) {
                     return product;
                   }

@@ -1,5 +1,4 @@
 import React from 'react'
-import banner from '../img/banner.gif';
 import { useStateValue } from '../StateProvider/StateProvider';
 import "./Checkout.css";
 import Subtotal from './Subtotal';

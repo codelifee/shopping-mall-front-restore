@@ -10,8 +10,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import 'react-datepicker/dist/react-datepicker.css';
 import { Category } from '@material-ui/icons';
+import AnsweredProducts from './AnsweredProducts';
 
-function Answered() {
+function AnsweredCategory() {
   const [startDate, setStartDate] = useState(new Date());
   const [products, setProducts] = useState([]);
 
@@ -115,7 +116,7 @@ function Answered() {
                     <td>{categoryQuestion.length}</td>
                     <td>
                       <Link to={`/seller/answeredProducts/${category.category_id}`}
-                  ><i class="fas fa-pencil-ruler"></i></Link></td>
+                  ><i class="fas fa-pencil-alt"></i></Link></td>
                   
                   </tr>
                 );
@@ -128,4 +129,4 @@ function Answered() {
   );
 }
 
-export default Answered;
+export default AnsweredCategory;

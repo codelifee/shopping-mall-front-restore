@@ -10,13 +10,13 @@ import { useParams } from "react-router-dom";
 function ProductView() {
   const [products, setProducts] = useState([]);
   const { id } = useParams();
-  
+
   useEffect(() => {
     async function getProduct() {
       const request = await axios
-        .get("products/all")
-        .then(response => setProducts(response.data))
-        .catch(error => console.log(error));
+        .get(`products/category/${id}`)
+        .then((response) => setProducts(response.data))
+        .catch((error) => console.log(error));
 
       return request;
     }
@@ -29,8 +29,8 @@ function ProductView() {
     async function getCategory() {
       const request = await axios
         .get(`categories/${id}`)
-        .then(response => setCategories(response.data))
-        .catch(error => console.log(error));
+        .then((response) => setCategories(response.data))
+        .catch((error) => console.log(error));
 
       return request;
     }
@@ -43,8 +43,8 @@ function ProductView() {
     async function getReview() {
       const request = await axios
         .get(`review/all`)
-        .then(response => setReviews(response.data))
-        .catch(error => console.log(error));
+        .then((response) => setReviews(response.data))
+        .catch((error) => console.log(error));
 
       return request;
     }
@@ -54,20 +54,20 @@ function ProductView() {
 
   return (
     <div className="products">
-      <div className="products__category">
-        {categories.category_name}
-      </div>
+      <div className="products__category">{categories.category_name}</div>
       <div className="products__row">
         {products
-          .filter(function (product) {
-            return product.category_id == id;
-          })
+          // .filter(function (product) {
+          //   return product.category_id == id;
+          // })
           .map((product, i) => {
-            let reviewLength = reviews.filter((review)=>{
-              return review.product_id==product.product_id;
-            }).map((review)=>{
-              return review.review_id;
-            })
+            let reviewLength = reviews
+              .filter((review) => {
+                return review.product_id == product.product_id;
+              })
+              .map((review) => {
+                return review.review_id;
+              });
             return (
               <Product
                 id={product.product_id}

@@ -38,7 +38,7 @@ function QnAForm(){
         e.preventDefault()
         
         axios.post('question', form)
-        .then(res => console.log(res))
+        .then(res => console.log(res), window.opener.parent.location.reload())
         .catch(err => console.log(err))
     }
 
@@ -60,7 +60,7 @@ function QnAForm(){
        <button type="submit" onClick={()=>{
                 
                 form.question == '' ? alert("내용을 입력해주세요!") : alert("내용이 입력됐습니다.");
-                window.opener.parent.location.reload();
+                
                 setTimeout("self.close()", 2000 );
                 
             }}>Submit</button>
