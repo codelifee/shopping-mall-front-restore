@@ -118,9 +118,19 @@
   /* background: wheat; */
   margin-left: 36px;
   width: 1130px;
-  height: 600px;
+  height: 750px;
   margin: 0 10px;
   text-align: center;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+
+
+.overall_sellerProduct{
+  display: flex;
+  height: 900px;
+  align-items: center;
 }
 
 .sellerProduct__table {
@@ -157,4 +167,7 @@ td {
 
 .sellerProduct__table tbody tr:last-of-type {
   border-bottom: 2px solid #009879;
+}
+#answeYettd{
+  width:150px;
 }

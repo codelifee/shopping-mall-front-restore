@@ -6,15 +6,18 @@ import { FaSearch } from 'react-icons/fa';
 import { useHistory, Link } from 'react-router-dom';
 import './AnswerYetProducts.css';
 import AnswerYetProductsView from './AnswerYetProductsView';
-
+import { ImageData } from '../axios/urlData';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Category } from '@material-ui/icons';
 
 function AnswerYetProducts() {
   const [startDate, setStartDate] = useState(new Date());
   const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [complete, setComplete] = useState(false);
+
   const [searchTerm, setSearchTerm] = useState('');
-  const product_img = `http://shoppingmall-env.eba-jac9afx7.us-east-1.elasticbeanstalk.com/products/showProductImage/`;
+  let image = ImageData.image1;
   const { id } = useParams();
   const history = useHistory();
 
@@ -40,6 +43,18 @@ function AnswerYetProducts() {
       const request = await axios
         .get('question/all')
         .then((response) => setQuestion(response.data))
+        .catch((error) => console.log(error));
+
+      return request;
+    }
+    getQuestion();
+  }, []);
+
+  useEffect(() => {
+    async function getQuestion() {
+      const request = await axios
+        .get(`categories/${id}`)
+        .then((response) => setCategories(response.data))
         .catch((error) => console.log(error));
 
       return request;
@@ -78,12 +93,19 @@ function AnswerYetProducts() {
         {/* <div className="question__info">
                     <h2>0 Questions</h2>
                 </div> */}
+       
+        <p className="question_length1">답변 미완료 페이지</p>
+        <span className="answer_span1">&nbsp;&nbsp;&nbsp;&nbsp;카테고리: {categories.category_name}
+        </span>
+<div className="overall_AnsweYet">
         <div className="AnsweYetProduct__table_bg">
           <table className="AnsweYetProduct__table">
             <thead>
-              <th>Product Name</th>
-              <th>Product Description</th>
-              <th>Wating answer questions</th>
+              <th>상품명</th>
+              <th>상품설명</th>
+              <th>답변 대기 질문 개수</th>
+              <th>답변작성</th>
+
             </thead>
             <tbody>
               {products
@@ -93,7 +115,9 @@ function AnswerYetProducts() {
                   } else if (
                     product.product_name
                       .toLowerCase()
-                      .includes(searchTerm.toLowerCase()) /*&&
+                      .includes(
+                        searchTerm.toLowerCase(),
+                      ) /*&&
                     product.category_id == id*/
                   ) {
                     return product;
@@ -117,12 +141,6 @@ function AnswerYetProducts() {
                     <AnswerYetProductsView
                       key={product.product_id}
                       id={product.product_id}
-                      picture={
-                        <img
-                          src={product_img + product.product_id}
-                          alt="사진"
-                        />
-                      }
                       name={product.product_name}
                       description={product.product_description}
                       question={wait.length}
@@ -133,6 +151,7 @@ function AnswerYetProducts() {
           </table>
         </div>
       </div>
+    </div>
     </div>
   );
 }

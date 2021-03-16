@@ -2,19 +2,19 @@
   display: flex;
   flex-direction: row;
   padding: 20px;
-
   height: max-content;
   margin-left: auto;
   margin-right: auto;
 }
 
 .checkout__left {
+  padding-top: 100px;
   width: 100%;
 }
 
 .checkout__right {
-  position: sticky;
   top: 1rem;
+  margin-top: 125px;
 }
 
 .checkout__title {

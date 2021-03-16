@@ -17,6 +17,7 @@ import Slider from './slide2/Slide2';
 import LandingPage from './landingpage/LandingPage';
 import ProductView from './ProductView/ProductView';
 import ReviewForm from './detail/ReviewForm';
+import Cookies from 'js-cookie'
 
 import ReviewPatchDeleteForm from './detail/ReviewPatchDeleteForm';
 import './App.css';
@@ -27,31 +28,18 @@ import SignUp from './authentication/SignUp';
 
 function App() {
   const [{}, dispatch] = useStateValue();
-
-  // useEffect(() => {
-  //   auth.onAuthStateChanged(authUser => {
-  //     console.log("THE USER IS >>>", authUser);
-
-  //     if (authUser) {
-  //       // the user logged in
-  //       dispatch({
-  //         type: "SET_USER",
-  //         user: authUser,
-  //       });
-  //     } else {
-  //       //the user is logged out
-  //       dispatch({
-  //         type: "SET_USER",
-  //         user: null,
-  //       });
-  //     }
-  //   });
-  // }, []);
+  const [cookie, setCookie] = useState();
 
   const [isSubmittied, setIsSubmitted] = useState(false);
 
   function submitForm() {
     setIsSubmitted(true);
+  }
+
+  const getCookie = () => {
+    const cookie = Cookies.get("user");
+    console.log(cookie);
+    setCookie(cookie);
   }
 
   return (
@@ -97,7 +85,7 @@ function App() {
           </Route>
 
           <Route path="/review/:id">
-            <ReviewForm />
+            <ReviewForm/>
           </Route>
 
           <Route path="/reviewUpdate/:id">
@@ -129,7 +117,7 @@ function App() {
             <Footer />
           </Route>
 
-          <Route path="/">
+          <Route exact path="/">
             <LandingPage />
           </Route>
         </Switch>

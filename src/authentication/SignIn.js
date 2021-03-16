@@ -97,7 +97,7 @@ function AuthButton() {
       <p>
         Welcome!{" "}
         <button
-          onClick={() => {
+          ={() => {
             auth.signout(() => history.push("/home"));
           }}
         >
@@ -154,7 +154,7 @@ function AuthButton() {
     return (
       <div>
         <p>You must log in to view the page at {from.pathname}</p>
-        <button onClick={login}>Log in</button>
+        <button ={login}>Log in</button>
       </div>
     );
   }

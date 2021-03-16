@@ -3,27 +3,14 @@ import { useStateValue } from "./StateProvider/StateProvider";
 import SearchResultView from "./SearchResultView";
 import "./SearchResult.css";
 import axios from "./axios/axios";
+import { ImageData } from "./axios/urlData";
 //import { useParams } from 'react-router-dom';
 
 function SearchResult() {
+  const image = ImageData.image1;
   const [{ keyword }, dispatch] = useStateValue();
   const [products, setProducts] = useState([]);
   //const {search} = useParams();
-
-  const image = "https://api.xn--vx3b30no7b.com/products/showProductImage/";
-
-  // useEffect(() => {
-  //   async function getProducts() {
-  //     const request = await axios
-  //       .get('products/all')
-  //       .then((response) => setProducts(response.data))
-  //       .catch((error) => console.log(error));
-
-  //     return request;
-  //   }
-
-  //   getProducts();
-  // }, []);
 
   const [reviews, setReviews] = useState([]);
   useEffect(() => {

@@ -10,6 +10,7 @@ import { useParams } from "react-router-dom";
 function ProductView() {
   const [products, setProducts] = useState([]);
   const { id } = useParams();
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     async function getProduct() {
@@ -22,9 +23,8 @@ function ProductView() {
     }
 
     getProduct();
-  }, []);
+  }, [id]);
 
-  const [categories, setCategories] = useState([]);
   useEffect(() => {
     async function getCategory() {
       const request = await axios

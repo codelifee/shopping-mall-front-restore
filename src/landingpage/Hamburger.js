@@ -99,9 +99,8 @@ const Hamburger = ({ state }) => {
                       onMouseOut={e => handleHoverExit(e)}
                       ref={el => (line1 = el)}
                       className="link1"
-                      to='/Payment'>
-                      
-Healthy story
+                      >
+
                     </Link>
                   </li>
                   <li>
@@ -110,9 +109,10 @@ Healthy story
                       onMouseOut={e => handleHoverExit(e)}
                       ref={el => (line2 = el)}
                       className="link2"
-                      to='/Detail'>
-                      
-See more
+                      >
+웰빙즙에 오신걸 환영합니다
+
+
                     </Link>
                   </li>
                   <li>
@@ -123,7 +123,7 @@ See more
                       ref={el => (line3 = el)}
                       className="link3"
                       to='/home'>
-                      Go Shopping 
+                      BUY NOW 
                       </Link>
                   </li>
                 </ul>

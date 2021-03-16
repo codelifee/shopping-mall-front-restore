@@ -1,12 +1,16 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import './ReviewForm.css';
 import { FaStar } from 'react-icons/fa'
-import {useStateValue} from '../StateProvider/StateProvider';
 import axios from '../axios/axios';
 import {useHistory, useParams} from 'react-router-dom';
+import Cookies from 'js-cookie';
 
- function ReviewForm(){
+ function ReviewForm({user_id}){
 
+
+const [cookie, setCookie] = useState();
+
+console.log(user_id);
 const history = useHistory();
 
 const [rating, setRating] = useState(null);
@@ -17,10 +21,11 @@ const {id} = useParams();
 
 const formData = new FormData();
 
+
     const [form, setForm] = useState({
         review_id: '',
         product_id: id,
-        user_sequence_id: 6, //로그인 한 user의 user_sequence_id넣기
+        user_sequence_id: Cookies.get("user"), //로그인 한 user의 user_sequence_id넣기
         //if review 안에 있는 user정보와 로그인된 user 정보 같으면 중복 작성 안 됨.
         review: '',
         star: 0,
@@ -29,6 +34,8 @@ const formData = new FormData();
         user_id:''
         }
     )
+
+
 
     formData.append('review_id', form.review_id)
     formData.append('product_id',form.product_id)
@@ -62,6 +69,8 @@ const formData = new FormData();
 
     }
 
+    
+
     const handleFileChange = e => {
         e.preventDefault()
 
@@ -71,7 +80,10 @@ const formData = new FormData();
         })
     }
 
+
     const showForm = (e) => {
+        
+    
         e.preventDefault();
         //삼항연산자로 사진이 null이면 글만 넘어가는 post로
         //null이 아니면 아래 post로 동작하게 만들기
