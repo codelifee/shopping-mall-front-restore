@@ -1,7 +1,7 @@
 export const initialState = {
   basket: [],
   user: {},
-  keyword: JSON.parse(localStorage.getItem("keyword")) || {},
+  keyword: JSON.parse(localStorage.getItem('"keyword"')) || {},
 };
 
 export const getBasketTotal = (basket) =>
