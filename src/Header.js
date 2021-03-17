@@ -108,10 +108,6 @@ function Header() {
           <Link to="/home">
             <img className="header__logo" src={Logo} alt="" />
           </Link>
-
-          <Link to="/home">
-            <p className="logo_name">ChenJiYeon</p>
-          </Link>
         </div>
 
         <div className="header__nav">
@@ -143,14 +139,23 @@ function Header() {
           </Link>
           
           :
-          <Link to={`/user/${cookie}`}>
-            <div className="header__option">
-              <span className="header__optionLineOne">Users</span>
-              <span className="header__optionLinetwo">Orders</span>
-            </div>
-          </Link>
+          
+          <></>
           
           }
+
+          {cookie && cookie != 6? 
+          <Link to={`/user/${cookie}`}>
+          <div className="header__option">
+            <span className="header__optionLineOne">Users</span>
+            <span className="header__optionLinetwo">Orders</span>
+          </div>
+        </Link>
+        :
+        <></>
+          }
+
+          
 
           <Link to="/checkout">
             <div className="header__optionBasket">
