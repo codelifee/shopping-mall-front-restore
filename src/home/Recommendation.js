@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import './Recommendation.css';
 import RecommendationData from './RecommendationData';
 import { Link } from 'react-router-dom';
 import axios from '../axios/axios.js';
-
 //product_id 받아와서 product page로 넘기기
 
 function Recommendation() {
@@ -36,19 +36,25 @@ function Recommendation() {
 }
 
 function SlideItem(props) {
+  const history = useHistory();
+
   return (
     <div className="slide_item2">
-      <Link
-        to={`/detail/{props.Recommendation.product_id}`}
+      <div
+        onClick={() => {
+          history.push(`/detail/${props.Recommendation.product_id}`);
+        }}
         className="slide_item2_box"
       >
         <img src={props.Recommendation.img} />
         <div>
           <h4>{props.Recommendation.decoration}</h4>
           <h4>{props.Recommendation.title}</h4>
-          <h4>{props.Recommendation.price}원</h4>
+          <h4>
+            {new Intl.NumberFormat().format(props.Recommendation.price)}원
+          </h4>
         </div>
-      </Link>
+      </div>
     </div>
   );
 }

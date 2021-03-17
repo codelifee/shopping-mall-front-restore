@@ -7,6 +7,27 @@
   margin-right: auto;
 }
 
+.checkout__description {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.checkout_table {
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.checkout_table td,
+.checkout_table th {
+  border: 1px dotted gray;
+  text-align: center;
+}
+
+.checkout_table th {
+  background-color: khaki;
+}
+
 .checkout__left {
   padding-top: 100px;
   width: 100%;
@@ -18,12 +39,14 @@
 }
 
 .checkout__title {
-  padding: 10px;
+  dispaly: flex;
+  padding: 20px;
   border-bottom: 1px solid lightgray;
-  background-color: #333;
+  background-color: white;
   width: 100%;
-  color: #e6b797;
+  color: black;
   border-radius: 10px;
+  font-size: 40px;
 }
 h3 {
   padding: 0 30px;

@@ -8,7 +8,7 @@ export default [
     id: 0,
     title: '칡즙',
     img: arrowroot,
-    price: 5000,
+    price: 39000,
     decoration: '[강력추천] 신선한 칡즙 X 30봉',
     product_id: 50,
   },
@@ -16,8 +16,9 @@ export default [
     id: 1,
     title: '양파즙',
     img: onion,
-    price: 5000,
-    decoration: '[한의사추천] 살빼지 필수품 양파즙 X 30봉',
+    price: 31650,
+    decoration:
+      '[한의사추천] 무안 빨간양파즙 120팩 110ml 뿌리부터 껍질까지 달임',
     product_id: 51,
   },
   {
