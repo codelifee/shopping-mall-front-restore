@@ -9,12 +9,12 @@ import Cookies from 'js-cookie';
 import { HistoryOutlined } from '@material-ui/icons';
 import NaverLogin from './Naver';
 import KakaoLogin from './Kakao';
-import { SocialKey } from './SocialKey';
+// import { SocialKey } from './SocialKey';
 import kakao from '../img/kakao.png';
 import { event } from 'jquery';
 
 function Login() {
-  const key = SocialKey;
+  // const key = SocialKey;
   const history = useHistory();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -23,8 +23,8 @@ function Login() {
 
   const [values, setValues] = useState({
     user_id: '',
-    user_pwd: key,
-    user_pwd2: key,
+    // user_pwd: key,
+    // user_pwd2: key,
     user_name: '',
     user_phone: '010-8282-2424',
     user_address: '회원정보에서 수정',

@@ -55,9 +55,6 @@ function Header() {
     window.location.reload(false);
   };
 
-  console.log(Cookies.get('user'));
-  console.log(cookie);
-
   return (
     <div className="header_container">
       <div className="header">
@@ -96,7 +93,7 @@ function Header() {
           />
         </div>
 
-        <div className="log_name_wap">
+        <div className="header__logo">
           <Link to="/home">
             <img className="header__logo" src={Logo} alt="" />
           </Link>
@@ -132,14 +129,19 @@ function Header() {
                 <span className="header__optionLinetwo">Center</span>
               </div>
             </Link>
-          ) : (
-            <Link to={`/user/${cookie}`}>
-              <div className="header__option">
-                <span className="header__optionLineOne">Users</span>
-                <span className="header__optionLinetwo">Orders</span>
-              </div>
-            </Link>
-          )}
+          ) : <></>}
+
+          {cookie && cookie != 6? 
+          <Link to={`/user/${cookie}`}>
+          <div className="sidebar__option">
+            <span className="sidebar__optionLineOne">Users</span>
+            <span className="sidebar__optionLinetwo">Orders</span>
+          </div>
+        </Link>
+        :
+        <></>
+          }
+
           <Link to="/checkout">
             <div className="header__optionBasket">
               <ShoppingBasketIcon />
