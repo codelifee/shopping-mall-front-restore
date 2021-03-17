@@ -8,7 +8,7 @@ a {
   font-weight: bold;
 }
 
-.detail{
+.detail {
   margin: auto 0;
 }
 
@@ -95,21 +95,25 @@ a {
   width: 180px;
   height: 50px;
   margin: 0 15px;
-  background: rgba(230, 125, 122, 0.7);
-  color: rgb(0, 0, 0);
+  background: white;
+  color: black;
   cursor: pointer;
-  border: none;
+  border: 1px gainsboro solid;
   border-radius: 8px;
+  font-weight: bold;
+  font-size: 18px;
 }
 
 .detail__order {
   width: 180px;
   height: 50px;
   background: rgba(230, 125, 122, 0.7);
-  color: rgb(0, 0, 0);
+  color: white;
   cursor: pointer;
   border: none;
   border-radius: 8px;
+  font-weight: bold;
+  font-size: 18px;
 }
 
 .quantity_button {

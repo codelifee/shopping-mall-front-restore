@@ -43,6 +43,7 @@ function Product(props) {
           history.push(`/detail/${props.id}`);
         }}
       >
+        <br />
         <p className="product2__name">{props.title}</p>
         <div className="price_status">
           {' '}
@@ -53,12 +54,12 @@ function Product(props) {
           <small>{props.description}</small>
         </p>
         <div className="icons">
-          <div className="icons1"onClick={addToBasket}>
+          <div className="icons1" onClick={addToBasket}>
             <FaShoppingCart className="product__cartIcon" />
           </div>
           <div className="tok">
-            <FaComment />
-            {props.comment}
+            <FaComment style={{ color: 'rgba(230, 125, 122, 0.7)' }} />
+            <small> &nbsp; ({props.comment})</small>
           </div>
         </div>
         <div className="product2__rating">

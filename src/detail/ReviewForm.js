@@ -1,12 +1,14 @@
 import React,{useState, useEffect} from 'react';
 import './ReviewForm.css';
 import { FaStar } from 'react-icons/fa'
-import {useStateValue} from '../StateProvider/StateProvider';
 import axios from '../axios/axios';
 import {useHistory, useParams} from 'react-router-dom';
 import Cookies from 'js-cookie';
 
  function ReviewForm({user_id}){
+
+
+const [cookie, setCookie] = useState();
 
 console.log(user_id);
 const history = useHistory();
