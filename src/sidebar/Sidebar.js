@@ -5,6 +5,9 @@ import axios from '../axios/axios';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import { IconContext } from 'react-icons';
+import Cookies from 'js-cookie';
+import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
+import { useStateValue } from '../StateProvider/StateProvider';
 
 
 
@@ -13,8 +16,28 @@ function Sidebar() {
   const showSidebar = () => setSidebar(!sidebar);
   const [categories, setCategories] = useState([]);
   const history = useHistory();
+  const [{basket}, dispatch] = useStateValue();
+
+  const [cookie, setCookie] = useState();
+
+  const handleLogout = () => {
+    Cookies.remove("user");
+
+    window.location.reload(false)
+  }
+
+  const getCookie = () => {
+    const cookie = Cookies.get("user");
+
+    console.log(cookie);
+
+    setCookie(cookie);
+  }
   
   useEffect(()=>{
+
+    getCookie();
+
     async function fetchDate(){
         const request = await axios.get(`categories/all`)
         .then(response =>
@@ -48,6 +71,59 @@ function Sidebar() {
          <li key={i} className="menu_link">{category.category_name}</li>
          </a>
      })}
+
+     <div className="sidebar__user">
+
+            <div>
+              {!cookie ? 
+              <Link to="/login" className="sidebar__optionLinetwo">
+                Sign In
+              </Link>
+              :
+              <span onClick={handleLogout} className="sidebar__optionLinetwo">
+                Sign Out
+              </span>
+              }
+            </div>
+
+          {cookie == 6 ?
+
+          <Link to="/seller">
+            <div className="sidebar__option">
+              <span className="sidebar__optionLineOne">Admin</span>
+              <span className="sidebar__optionLinetwo">Center</span>
+            </div>
+          </Link>
+          
+          :
+          
+          <></>
+          
+          }
+
+          {cookie && cookie != 6? 
+          <Link to={`/user/${cookie}`}>
+          <div className="sidebar__option">
+            <span className="sidebar__optionLineOne">Users</span>
+            <span className="sidebar__optionLinetwo">Orders</span>
+          </div>
+        </Link>
+        :
+        <></>
+          }
+
+          
+
+          <Link to="/checkout">
+            <div className="sidebar__optionBasket">
+              <ShoppingBasketIcon />
+              <span className="sidebar__optionLineTwo header__basketCount">
+                {/* {basket?.length} */}
+              </span>
+            </div>
+          </Link>
+
+      </div>
     
       </ul>
       </nav>

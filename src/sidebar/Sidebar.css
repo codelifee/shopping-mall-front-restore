@@ -59,3 +59,25 @@
   justify-content: start;
   align-items: center;
 }
+
+.sidebar__user {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-right: 60px;
+}
+
+.sidebar__option {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.sidebar__optionBasket {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
