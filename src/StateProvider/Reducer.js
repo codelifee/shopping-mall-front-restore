@@ -32,8 +32,6 @@ const reducer = (state, action) => {
                     basket!`,
         );
       }
-      
-      sessionStorage.removeItem("basket")
 
       return {
         ...state,

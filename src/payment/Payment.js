@@ -39,7 +39,7 @@ function Payment() {
                     </div>
                     <div className="payment__items">
                         <p>
-                            {basket.map(item => {
+                            {basket.map((item) => {
                             <CheckoutProduct
                                 id={item.id}
                                 title={item.title}
