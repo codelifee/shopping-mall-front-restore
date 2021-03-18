@@ -209,3 +209,6 @@ a {
     background: none;
   }
 }
+.header__optionLinetwo {
+  cursor: pointer;
+}

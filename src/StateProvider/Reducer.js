@@ -1,7 +1,7 @@
 export const initialState = {
   basket: [],
   user: {},
-  keyword: JSON.parse(localStorage.getItem('"keyword"')) || {},
+  keyword: JSON.parse(sessionStorage.getItem("keyword")) || {},
 };
 
 export const getBasketTotal = (basket) =>
@@ -30,6 +30,8 @@ const reducer = (state, action) => {
         );
       }
 
+      sessionStorage.removeItem("basket");
+
       return {
         ...state,
         basket: newBasket,
@@ -41,7 +43,8 @@ const reducer = (state, action) => {
       };
 
     case "SEARCH":
-      localStorage.setItem("keyword", JSON.stringify(action.item));
+      sessionStorage.setItem("keyword", JSON.stringify(action.item));
+
       return {
         ...state,
         keyword: action.item,

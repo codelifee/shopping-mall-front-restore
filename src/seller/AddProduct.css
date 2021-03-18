@@ -15,7 +15,7 @@ body {
   width: 1200px;
   height: 80vh;
   display: grid;
-  margin-top: 100px;
+
   padding: 70px 20px;
   grid-template-columns: 1fr;
   grid-template-rows: 100px 100px auto;

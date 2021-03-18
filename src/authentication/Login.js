@@ -7,28 +7,15 @@ import axios from "../axios/axios";
 import { useStateValue } from "../StateProvider/StateProvider";
 import Cookies from "js-cookie";
 import { HistoryOutlined } from "@material-ui/icons";
-import NaverLogin from "./Naver";
-import KakaoLogin from "./Kakao";
-// import { SocialKey } from './SocialKey';
-import kakao from "../img/kakao.png";
+import UseConfirm from "./UseConfirm";
 import { event } from "jquery";
 
 function Login() {
-  // const key = SocialKey;
   const history = useHistory();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
   const [{ auth }, dispatch] = useStateValue();
-
-  const [values, setValues] = useState({
-    user_id: "",
-    // user_pwd: key,
-    // user_pwd2: key,
-    user_name: "",
-    user_phone: "010-8282-2424",
-    user_address: "회원정보에서 수정",
-  });
 
   const setUser = (res) => {
     if (res.data == "") {
@@ -66,25 +53,6 @@ function Login() {
       .then((res) => console.log(res))
       .catch((err) => alert("이메일이나 비밀번호를 입력해주세요"));
   };
-
-  //소셜로그인 성공시 출력
-  const onSuccessHandler = (res) => {
-    console.log(res);
-
-    //kakao 회원 naver회원 구분
-    res.platform === "kakao"
-      ? setValues({
-          ...values,
-          user_id: res.email + "_K",
-          user_name: res.name,
-        })
-      : setValues({
-          ...values,
-          user_id: res.email + "_N",
-          user_name: res.name,
-        });
-  };
-  console.log(values);
 
   // useEffect(() => {
   //     if(Object.keys(user).length === 0) {
@@ -130,14 +98,7 @@ function Login() {
           <button className="login__registerButton">Create Account</button>
         </Link>
 
-        <NaverLogin
-          success={onSuccessHandler}
-          fail={(res) => console.log(res)}
-        />
-        <KakaoLogin
-          success={onSuccessHandler}
-          fail={(res) => console.log(res)}
-        />
+        <UseConfirm />
       </div>
     </div>
   );
