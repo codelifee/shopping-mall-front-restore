@@ -8,7 +8,7 @@ import axios from "../axios/axios";
 import {ImageData} from '../axios/urlData';
 import Cookies from 'js-cookie';
 
-function Review(props) {
+function Review() {
 
   const image = ImageData.image4
   //const [cookie, setCookie] = useState();
@@ -21,8 +21,6 @@ function Review(props) {
   console.log(cookie);
 
   //const [{ user }, dispatch] = useStateValue();
-  
-  const history = useHistory();
 
 
   useEffect(() => {
@@ -185,19 +183,19 @@ function Review(props) {
 
           function star(){//user_id옆 별점 표시
            if(review.star==5){
-             return [...Array(5)].map((k)=>{
+             return [...Array(5)].map(()=>{
                return <FaStar color={"#ffc107"} size={20} />
              })
            }else if(review.star==4){
-             return [...Array(4)].map((k)=>{
+             return [...Array(4)].map(()=>{
                return <FaStar color={"#ffc107"} size={20}/>
              })
            }else if(review.star==3){
-             return [...Array(3)].map((k)=>{
+             return [...Array(3)].map(()=>{
                return <FaStar color={"#ffc107"} size={20} />
              })
            }else if(review.star==2){
-             return [...Array(2)].map((k)=>{
+             return [...Array(2)].map(()=>{
                return <FaStar color={"#ffc107"} size={20} />
              })
            }else if(review.star==1){
@@ -217,7 +215,7 @@ function Review(props) {
                   {review.review_date_created} 작성<br/>
                   {review.review}
                   {review.review_picture!=null ?
-                    <img src={image+review.review_id}/>: null
+                    <img src={image+review.review_id} alt="리뷰 사진"/>: null
                   }
                 </div>
                 

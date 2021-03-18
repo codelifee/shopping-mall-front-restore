@@ -34,15 +34,15 @@ function Detail() {
   const history = useHistory();
   
   useEffect(()=>{
-    async function fetchDate() {
-      const request = await axios.get(`products/${id}`)
+    async function getProducts() {
+      const request = await axios.get(`products/JsonData/${id}`)
       .then(response => setProducts(response.data))
       .catch(error => console.log(error))
             
             return request;
           }
           
-          fetchDate();
+          getProducts();
         }, [])
         
         
