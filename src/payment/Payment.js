@@ -8,6 +8,7 @@ import {Link, useHistory} from 'react-router-dom';
 
 function Payment() {
     const [{basket, user} , dispatch] = useStateValue();
+    const [total, SetTotal] = useState();
 
     const history = useHistory();
 
@@ -38,7 +39,7 @@ function Payment() {
                     </div>
                     <div className="payment__items">
                         <p>
-                            {basket.map(item => (
+                            {basket.map(item => {
                             <CheckoutProduct
                                 id={item.id}
                                 title={item.title}
@@ -46,7 +47,8 @@ function Payment() {
                                 price={item.price}
                                 rating={item.rating}
                             />
-                            ))}
+                            // <p></p>
+                            })}
                         </p>
                     </div>
                 </div>
