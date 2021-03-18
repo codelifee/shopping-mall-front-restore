@@ -1,4 +1,5 @@
 import './App.css';
+import "antd/dist/antd.css";
 import Header from './Header';
 import React, { useState, useEffect } from 'react';
 import Home from './home/Home';
@@ -22,8 +23,9 @@ import QnAForm from './detail/QnAForm';
 import KakaoMap from './Introduction/KakaoMap';
 import User from './user/User';
 import SignUp from './authentication/SignUp';
-import SignIn from './authentication/SignIn';
-import KakaoPay from './kakaopay/KakaoPay';
+import Login from './authentication/Login';
+import PaymentPage from './payment/PaymentPage';
+import PaymentResult from './payment/PaymentResult';
 
 function App() {
   const [{}, dispatch] = useStateValue();
@@ -59,7 +61,7 @@ function App() {
             )}
           </Route>
           <Route path="/login">
-              <SignIn/>
+              <Login/>
           </Route>
           <Route path="/checkout">
             <Header />
@@ -88,13 +90,17 @@ function App() {
             <QnAForm />
           </Route>
 
-          <Route path="/payment">
+          <Route exact path="/payment">
             <Header />
             <Payment />
           </Route>
 
-          <Route path="/kakaopay">
-              <KakaoPay/>
+          <Route exact path="/paymentpage">
+            <PaymentPage />
+          </Route>
+          
+          <Route path="/paymentresult">
+            <PaymentResult />
           </Route>
 
           <Route path="/seller">
@@ -112,7 +118,7 @@ function App() {
             <Footer />
           </Route>
 
-          <Route path="/">
+          <Route exact path="/">
             <LandingPage />
           </Route>
         </Switch>

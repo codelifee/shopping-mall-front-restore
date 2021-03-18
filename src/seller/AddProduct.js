@@ -66,7 +66,7 @@ function AddProduct() {
         }
         
         axios.post('products/upload', data)
-        .then(res => console.log(res))
+        .then(res => alert('변경이 완료 되었습니다'))
         .catch(err => console.log(err))
 
     }
@@ -148,8 +148,7 @@ function AddProduct() {
                         <input type="file" name="quality_img" onChange={handleChange}  className="product-description_input"/>
                     </div>
                     <button className="add_fin_button"
-                    type="submit"
-                    >Submit</button>
+                    type="submit">Submit</button>
                 </form>
             </div>
         </div>

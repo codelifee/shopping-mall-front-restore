@@ -102,14 +102,14 @@
 .AnsweYetProduct__table_bg {
   /* background: wheat; */
 
-  width: 1300px;
-  height: 500px;
+  width:1400px;
+  height: 1000px;
   overflow-y: scroll;
   overflow-x: hidden;
 }
 
 .AnsweYetProduct__table {
-  width: 1300px;
+  width: 1400px;
   text-align: center;
   border-radius: 5px;
   background-image: linear-gradient(to right, #faf4c0 0%, #f1d9f5 100%);
@@ -149,8 +149,9 @@ td {
   font-weight: bold;
   font-size: 20px;
 }
+.overall_answerYet{
+  display: flex;
 
-.AnsweYetProduct__table td img {
-  width: 200px;
-  height: 150px;
+  align-items: center;
+  justify-content: center;
 }

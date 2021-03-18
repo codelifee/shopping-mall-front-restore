@@ -64,12 +64,13 @@ function SellerProducts() {
                     </form>
                 </div>
                 <div className="sellerProduct__info">
-                    <h2>0 Product</h2>
+                    <h2> {products.length} Product</h2>
                     <Link to="/seller/addProduct">
                     <button className="Button">+ Add a New Product</button>
                     </Link>
                     
                 </div>
+                <div className="overall_sellerProduct">
                 <div className="sellerProduct__table_bg">
                     <table className="sellerProduct__table">
                             <thead>
@@ -108,6 +109,7 @@ function SellerProducts() {
 
                 </div>
             </div>
+        </div>
         </div>
     )
 }

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from '../axios/axios';
 import { useHistory } from 'react-router-dom';
 import { ImageData } from '../axios/urlData';
+import Cookies from 'js-cookie'
 
 function OrdersData({
   date,
@@ -16,6 +17,7 @@ function OrdersData({
   quantity,
 }) {
   let image = ImageData.image1 + product_id;
+  const [cookie, setCookie] = useState();
 
   console.log(date);
   console.log(status);
@@ -24,6 +26,13 @@ function OrdersData({
   console.log(order_id);
   console.log(o_return);
   console.log(product_id);
+
+   
+  const getCookie = () => {
+    const cookie = Cookies.get("user");
+    console.log(cookie);
+    setCookie(cookie);
+  }
 
   const style11 = {
     borderTop: '1px solid red',
@@ -111,7 +120,7 @@ function OrdersData({
               window.open(
                 `/review/${product_id}`,
                 'review_form',
-                'width=600,height=700,location=no,status=no,scrollbars=no',
+                'width=600,height=500,location=no,status=no,scrollbars=no',
               );
             }}
           >

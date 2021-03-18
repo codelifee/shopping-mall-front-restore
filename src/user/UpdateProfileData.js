@@ -80,11 +80,11 @@ const UpdateProfileData = (callback,Validate) => {
     const checkPhone2 = () => {
         let error = {};
         for(let i=0;i<check.length;i++){
-            if(form.user_phone != check[i].user_phone){
-                error.user_phone = "사용가능한 전화번호입니다.";
-            }else{
+            if(form.user_phone == check[i].user_phone){
                 error.user_phone = "사용불가능한 전화번호입니다.";
                 break;
+            }else{
+                error.user_phone = "사용가능한 전화번호입니다.";
             }
         }
         setErrors(error);

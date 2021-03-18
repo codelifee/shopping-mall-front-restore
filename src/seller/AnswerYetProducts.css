@@ -151,3 +151,23 @@ td {
   width: 200px;
   height: 150px;
 }
+
+.answer_span1 {
+  font-weight: bold;
+  font-size: 25px;
+}
+.question_length0,.question_length{
+  text-align: center;
+}
+
+.overall_AnsweYet{
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.question_length1{
+  font-size: 35px;
+  text-align: center;
+}

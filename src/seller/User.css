@@ -2,6 +2,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  
 }
 
 .user__container {
@@ -80,6 +81,14 @@
   border-radius: 5px;
 }
 
+.overall_user_table {
+  display: flex;
+
+  height: 900px;
+  align-items: center;
+
+
+}
 .user__info {
   display: flex;
   align-items: center;
@@ -100,9 +109,10 @@
 
 .user__table_bg {
   /* background: wheat; */
-
+  overflow-y: scroll;
+  overflow-x: hidden;
   width: 1130px;
-  height: 600px;
+  height: 700px;
 }
 
 .user__table {
@@ -140,4 +150,8 @@ td {
 
 .user__table tbody tr:last-of-type {
   border-bottom: 2px solid #009879;
+}
+
+.search-icon {
+  margin-left: 10px;
 }
