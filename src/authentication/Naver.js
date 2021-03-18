@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-
+import './Naver.css';
 import NaverLogin from 'react-naver-login';
 import { snsPayloadParser } from './Common';
 import React, {useState, useEffect} from "react";
@@ -120,7 +120,7 @@ const postForm = () => {
       onSuccess={success}
       onFailure={() => fail}
       render={renderProps => (
-        <button onClick={renderProps.onClick} style={{width:'100%'}}>Naver Login</button>
+        <button onClick={renderProps.onClick} className="loginButton" style={{}}>Naver Login</button>
       )}
     ></NaverLogin>
   );
