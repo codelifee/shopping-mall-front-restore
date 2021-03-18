@@ -58,7 +58,6 @@ function User() {
         <div className="user__info">
           <h2>{users.length} Users</h2>
         </div>
-        <div className="overall_user_table">
           <div className="user__table_bg">
             <table className="user__table">
               <thead>
@@ -94,7 +93,7 @@ function User() {
           </div>
         </div>
       </div>
-    </div>
+   
   );
 }
 

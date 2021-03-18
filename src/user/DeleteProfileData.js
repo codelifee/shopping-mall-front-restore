@@ -74,7 +74,7 @@ const DeleteProfileData = (callback) => {
             setErrors('비밀번호를 다시 입력하세요.');
             return false;
         }else{
-            axios.delete(`http://localhost:5000/users/${user_sequence_id}`, user)
+            axios.delete(`users/${user_sequence_id}`, user)
             .then(alert("탈퇴가 완료되었습니다."))
             .catch(err => console.log(err))
             window.location.href="/home";

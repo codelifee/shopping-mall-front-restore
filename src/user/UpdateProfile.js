@@ -11,7 +11,7 @@ function UpdateProfile({submitForm}) {
         <div className="updateProfile">
             <div className="updateProfile__container">
                 <div className="updateProfile__container__head">
-                    <h1>Update {form.user_name}'s Profile</h1>
+                    <h1>회원 정보 수정</h1>
                 </div>
                 <form className="updateProfile__search"onSubmit={handleSubmit} noValidate>
                     <div className="update__id">
@@ -79,7 +79,7 @@ function UpdateProfile({submitForm}) {
                         />
                         {errors.user_address && <p>{errors.user_address}</p>}
                     </div>
-                    <button type="submit">Update</button>
+                    <button type="submit">수정</button>
                 </form>
             </div>
         </div>

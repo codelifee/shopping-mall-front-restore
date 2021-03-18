@@ -1,12 +1,20 @@
-import React, {useState} from 'react'
+import React, {useEffect,useState}from 'react';
+import axios from '../axios/axios';
+import icon from '../img/payment_icon_yellow_small.png';
 import './Payment.css'
 import {useStateValue} from '../StateProvider/StateProvider'
 import CheckoutProduct from '../checkout/CheckoutProduct'
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 
 function Payment() {
     const [{basket, user} , dispatch] = useStateValue();
     const [total, SetTotal] = useState();
+
+    const history = useHistory();
+
+    const btn = () => {
+        history.push('/paymentpage')
+    }
 
     return (
         <div className='payment'>
@@ -15,8 +23,6 @@ function Payment() {
                 <h1>
                   Checkout <Link to="/checkout">( {basket?.length} items ) </Link>
                 </h1>
-
-
 
                 <div className="payment__section">
                     <div className="payment__title">
@@ -52,12 +58,11 @@ function Payment() {
                         <h3>Payment Method</h3>
                     </div>
                     <div className="payment__details">
-                        <p>
-                            
-                        </p>
+                    <form>
+                        <button className="kakaoBtn" onClick= {btn}><img src={icon} alt="카카오페이"/></button>
+                    </form>
                     </div>
                 </div>
-            
             </div>
         </div>
     )
