@@ -1,15 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Button } from 'antd';
 import { withRouter } from 'react-router-dom';
 import queryString from 'query-string';
+import axios from '../axios/axios';
 
 function PaymentResult({ history }) {
   const { location } = history;
   const { search } = location;
   const query = queryString.parse(search);
   
-  const { merchant_uid, error_msg, imp_uid } = query;
+  const { merchant_uid, name, amount, buyer_name, buyer_tel, buyer_email, error_msg, imp_uid } = query;
+  const body ={
+    merchant_uid:merchant_uid,
+    profuct_name:name,
+    amount:amount,
+    user_name:buyer_name,
+    user_phone:buyer_tel,
+    user_id:buyer_email
+  }
   const isSuccessed = getIsSuccessed();
   function getIsSuccessed() {
     const { success, imp_success } = query;
@@ -21,6 +30,20 @@ function PaymentResult({ history }) {
 
   const resultType = isSuccessed ? '성공' : '실패';
   const colorType = isSuccessed ? '#52c41a' : '#f5222d';
+
+  useEffect(() => {
+    async function fetchData() {
+        const request = await axios.post(`payment/`,body)
+        .then(response => console.log(response))
+        .catch(error => console.log(error))
+       
+        return request;
+    }
+    if(resultType == '성공'){
+      fetchData();  
+    }
+  }, [])
+
   return (
     <Wrapper>
       <Container colorType={colorType}>

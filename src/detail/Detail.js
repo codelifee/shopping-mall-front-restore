@@ -6,10 +6,10 @@ import { useStateValue } from '../StateProvider/StateProvider';
 import axios from '../axios/axios';
 import './Modal.css';
 import { ImageData } from '../axios/urlData';
+import Cookies from 'js-cookie';
 
 function Modal() {
   const history = useHistory();
-
   return (
     <div id="myModal" className="modal">
       <div className="modal_content">
@@ -33,6 +33,15 @@ function Detail() {
   const [products, setProducts] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [question, setQuestion] = useState([]);
+  const [cookie, setCookie] = useState();
+
+  const getCookie = () => {
+    const cookie = Cookies.get('user');
+
+    console.log(cookie);
+
+    setCookie(cookie);
+  };
 
   const { id } = useParams();
 
@@ -43,6 +52,8 @@ function Detail() {
   const history = useHistory();
 
   useEffect(() => {
+    getCookie();
+
     async function fetchDate() {
       const request = await axios
         .get(`products/JsonData/${id}`)
@@ -170,18 +181,22 @@ function Detail() {
             <button
               className="detail__order"
               onClick={() => {
-                dispatch({
-                  type: 'ADD_TO_BASKET',
-                  item: {
-                    id: products.product_id,
-                    title: products.product_name,
-                    image: image1,
-                    description: products.product_description,
-                    price: products.product_price * quantity,
-                    rating: products.product_rating,
-                  },
-                });
-                history.push('/payment');
+                if( cookie != null){
+                  dispatch({
+                    type: 'ADD_TO_BASKET',
+                    item: {
+                      id: products.product_id,
+                      title: products.product_name,
+                      image: image1,
+                      description: products.product_description,
+                      price: products.product_price * quantity,
+                      rating: products.product_rating,
+                    },
+                  });
+                  history.push('/payment');
+                }else{
+                  alert("로그인을 해주세요!");
+                }
               }}
             >
               주문하기
