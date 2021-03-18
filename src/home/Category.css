@@ -71,11 +71,13 @@ a {
   width: 240px;
   height: 240px;
   border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .slide_item > .slide_item_ul > .slide_item_li > .link .screen .top {
   position: absolute;
   bottom: 150%;
-  left: 40px;
   z-index: 2;
   color: #fff;
   font-size: 26px;
@@ -117,10 +119,10 @@ a {
 }
 
 .slide_item > .slide_item_ul > .slide_item_li > .link:hover .top {
-  bottom: 45%;
+  bottom: 40%;
 }
 .slide_item > .slide_item_ul > .slide_item_li > .link:hover .bottom {
-  top: 55%;
+  top: 50%;
 }
 .slide_item > .slide_item_ul > .slide_item_li > .link:hover .screen::after {
   opacity: 1;

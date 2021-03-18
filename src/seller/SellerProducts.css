@@ -13,7 +13,7 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 100px 100px 100px 1fr;
-  margin-top: 100px;
+
   background-color: #fff;
   color: #333;
 }
@@ -125,9 +125,7 @@
   overflow-x: hidden;
 }
 
-
-
-.overall_sellerProduct{
+.overall_sellerProduct {
   display: flex;
   height: 900px;
   align-items: center;
@@ -168,6 +166,6 @@ td {
 .sellerProduct__table tbody tr:last-of-type {
   border-bottom: 2px solid #009879;
 }
-#answeYettd{
-  width:150px;
+#answeYettd {
+  width: 150px;
 }

@@ -17,14 +17,14 @@ import Slider from './slide2/Slide2';
 import LandingPage from './landingpage/LandingPage';
 import ProductView from './ProductView/ProductView';
 import ReviewForm from './detail/ReviewForm';
-import Cookies from 'js-cookie'
-
+import Cookies from 'js-cookie';
 import ReviewPatchDeleteForm from './detail/ReviewPatchDeleteForm';
 import './App.css';
 import QnAForm from './detail/QnAForm';
 import KakaoMap from './Introduction/KakaoMap';
 import User from './user/User';
 import SignUp from './authentication/SignUp';
+import ScrollToTop from './ScrollToTop';
 
 function App() {
   const [{}, dispatch] = useStateValue();
@@ -37,90 +37,92 @@ function App() {
   }
 
   const getCookie = () => {
-    const cookie = Cookies.get("user");
+    const cookie = Cookies.get('user');
     console.log(cookie);
     setCookie(cookie);
-  }
+  };
 
   return (
     //BEM convention
     <Router>
       <div className="app">
-        <Switch>
-          <Route path="/home">
-            <Header />
-            <Slider />
-            <Home />
-            <Footer />
-          </Route>
+        <ScrollToTop>
+          <Switch>
+            <Route path="/home">
+              <Header />
+              <Slider />
+              <Home />
+              <Footer />
+            </Route>
 
-          <Route path="/searchResult/:search">
-            <Header />
-            <SearchResult />
-          </Route>
+            <Route path="/searchResult/:search">
+              <Header />
+              <SearchResult />
+            </Route>
 
-          <Route path="/signup">
-            {!isSubmittied ? (
-              <SignUp submitForm={submitForm} />
-            ) : (
-              (window.location.href = '/login')
-            )}
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/checkout">
-            <Header />
-            <Checkout />
-          </Route>
+            <Route path="/signup">
+              {!isSubmittied ? (
+                <SignUp submitForm={submitForm} />
+              ) : (
+                (window.location.href = '/login')
+              )}
+            </Route>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route path="/checkout">
+              <Header />
+              <Checkout />
+            </Route>
 
-          <Route path="/products/:id">
-            <Header />
-            <ProductView />
-          </Route>
+            <Route path="/products/:id">
+              <Header />
+              <ProductView />
+            </Route>
 
-          <Route path="/detail/:id">
-            <Header />
-            <Detail />
-          </Route>
+            <Route path="/detail/:id">
+              <Header />
+              <Detail />
+            </Route>
 
-          <Route path="/review/:id">
-            <ReviewForm/>
-          </Route>
+            <Route path="/review/:id">
+              <ReviewForm />
+            </Route>
 
-          <Route path="/reviewUpdate/:id">
-            <ReviewPatchDeleteForm />
-          </Route>
+            <Route path="/reviewUpdate/:id">
+              <ReviewPatchDeleteForm />
+            </Route>
 
-          <Route path="/question/:id">
-            <QnAForm />
-          </Route>
+            <Route path="/question/:id">
+              <QnAForm />
+            </Route>
 
-          <Route path="/payment">
-            <Header />
+            <Route path="/payment">
+              <Header />
 
-            <Payment />
-          </Route>
+              <Payment />
+            </Route>
 
-          <Route path="/seller">
-            <Seller />
-          </Route>
+            <Route path="/seller">
+              <Seller />
+            </Route>
 
-          <Route path="/user">
-            <User />
-          </Route>
+            <Route path="/user">
+              <User />
+            </Route>
 
-          <Route path="/introduction">
-            <Header />
+            <Route path="/introduction">
+              <Header />
 
-            <KakaoMap />
-            <Footer />
-          </Route>
+              <KakaoMap />
+              <Footer />
+            </Route>
 
-          <Route exact path="/">
-            <LandingPage />
-          </Route>
-        </Switch>
+            <Route exact path="/">
+              <LandingPage />
+            </Route>
+          </Switch>
+        </ScrollToTop>
       </div>
     </Router>
   );

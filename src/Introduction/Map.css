@@ -1,16 +1,15 @@
 .map__container {
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: max-content;
 }
 
 .map {
   border-top: 5px solid #ffb755;
-  margin: 0;
-  padding: 0;
+  padding-bottom: 30px;
 }
 .map_name {
   width: 100px;
@@ -21,10 +20,10 @@
   text-align: center;
   background: #ffb755;
   border-radius: 10px 10px 0 0;
-  margin-top: 50px;
 }
 
 .map_name_container {
+  margin-top: 20px;
   width: 700px;
 }
 
@@ -32,6 +31,11 @@
   font-weight: 1000;
   font-size: 35px;
   margin-left: 50px;
+}
+
+.map_header {
+  padding-top: 100px;
+  width: 100%;
 }
 
 hr.map_line {

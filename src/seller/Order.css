@@ -10,7 +10,7 @@
   /* background: rgb(182, 167, 167); */
   width: 1200px;
   display: grid;
-  margin-top: 100px;
+
   grid-template-columns: 1fr;
   grid-template-rows: 100px 100px 100px 1fr;
   background-color: #fff;

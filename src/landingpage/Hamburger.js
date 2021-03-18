@@ -10,7 +10,7 @@ import {
   handleHoverExit,
   handleCityReturn,
   handleCity,
-  staggerRevealClose
+  staggerRevealClose,
 } from "./Animations";
 
 import dallas from "./images/pumpkin_main.jpg";
@@ -24,7 +24,7 @@ const cities = [
   { name: "Nature", image: austin },
   { name: "Fresh", image: newyork },
   { name: "High quality", image: sanfrancisco },
-  { name: "health", image: beijing }
+  { name: "health", image: beijing },
 ];
 
 const Hamburger = ({ state }) => {
@@ -56,7 +56,7 @@ const Hamburger = ({ state }) => {
       gsap.to([reveal1, reveal2], {
         duration: 0,
         opacity: 1,
-        height: "100%"
+        height: "100%",
       });
       staggerReveal(reveal1, reveal2);
       fadeInUp(info);
@@ -65,79 +65,72 @@ const Hamburger = ({ state }) => {
   }, [state]);
 
   return (
-    <div ref={el => (menuLayer = el)} className='hamburger-menu'>
+    <div ref={(el) => (menuLayer = el)} className="hamburger-menu">
       <div
-        ref={el => (reveal1 = el)}
-        className='menu-secondary-background-color'></div>
-      <div ref={el => (reveal2 = el)} className='menu-layer'>
+        ref={(el) => (reveal1 = el)}
+        className="menu-secondary-background-color"
+      ></div>
+      <div ref={(el) => (reveal2 = el)} className="menu-layer">
         <div
-          ref={el => (cityBackground = el)}
-          className='menu-city-background'></div>
-        <div className='container1'>
-          <div className='wrapper'>
-          <div className='locations'>
-              
+          ref={(el) => (cityBackground = el)}
+          className="menu-city-background"
+        ></div>
+        <div className="container1">
+          <div className="wrapper">
+            <div className="locations">
               Good market:
-                              {/* Returning the list of cities */}
-                              {cities.map(el => (
-                                <span
-                                  key={el.name}
-                                  onMouseLeave={() => handleCity(el.image, cityBackground)}
-                                  onMouseEnter={() => handleCity(el.image, cityBackground)}
-                                  onMouseOut={() => handleCityReturn(cityBackground)}>
-                                  {el.name}
-                                </span>
-                              ))}
-                            </div>
-            <div className='menu-links'>
-              
+              {/* Returning the list of cities */}
+              {cities.map((el) => (
+                <span
+                  key={el.name}
+                  onMouseLeave={() => handleCity(el.image, cityBackground)}
+                  onMouseEnter={() => handleCity(el.image, cityBackground)}
+                  onMouseOut={() => handleCityReturn(cityBackground)}
+                >
+                  {el.name}
+                </span>
+              ))}
+            </div>
+            <div className="menu-links">
               <nav>
                 <ul>
                   <li>
                     <Link
-                      onMouseEnter={e => handleHover(e)}
-                      onMouseOut={e => handleHoverExit(e)}
-                      ref={el => (line1 = el)}
+                      onMouseEnter={(e) => handleHover(e)}
+                      onMouseOut={(e) => handleHoverExit(e)}
+                      ref={(el) => (line1 = el)}
                       className="link1"
-                      >
-
-                    </Link>
+                    ></Link>
+                  </li>
+                  <li
+                    onMouseEnter={(e) => handleHover(e)}
+                    onMouseOut={(e) => handleHoverExit(e)}
+                    ref={(el) => (line2 = el)}
+                    className="link2"
+                  >
+                    웰빙즙에 오신걸 환영합니다
                   </li>
                   <li>
                     <Link
-                      onMouseEnter={e => handleHover(e)}
-                      onMouseOut={e => handleHoverExit(e)}
-                      ref={el => (line2 = el)}
-                      className="link2"
-                      >
-웰빙즙에 오신걸 환영합니다
-
-
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-
-                      onMouseEnter={e => handleHover(e)}
-                      onMouseOut={e => handleHoverExit(e)}
-                      ref={el => (line3 = el)}
+                      onMouseEnter={(e) => handleHover(e)}
+                      onMouseOut={(e) => handleHoverExit(e)}
+                      ref={(el) => (line3 = el)}
                       className="link3"
-                      to='/home'>
-                      BUY NOW 
-                      </Link>
+                      to="/home"
+                    >
+                      BUY NOW
+                    </Link>
                   </li>
                 </ul>
               </nav>
-              <div ref={el => (info = el)} className='info'>
+              <div ref={(el) => (info = el)} className="info">
                 <h3>Our Story</h3>
                 <p>
-                   
-Herb refers to a plant grown in the West for use as a flavor or medicine.
+                  Herb refers to a plant grown in the West for use as a flavor
+                  or medicine.
                 </p>
               </div>
-              </div>
-              
-            
+            </div>
           </div>
         </div>
       </div>

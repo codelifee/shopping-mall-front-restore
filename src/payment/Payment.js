@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './Payment.css'
 import {useStateValue} from '../StateProvider/StateProvider'
 import CheckoutProduct from '../checkout/CheckoutProduct'
@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom';
 
 function Payment() {
     const [{basket, user} , dispatch] = useStateValue();
+    const [total, SetTotal] = useState();
 
     return (
         <div className='payment'>
@@ -32,7 +33,7 @@ function Payment() {
                     </div>
                     <div className="payment__items">
                         <p>
-                            {basket.map(item => (
+                            {basket.map(item => {
                             <CheckoutProduct
                                 id={item.id}
                                 title={item.title}
@@ -40,7 +41,8 @@ function Payment() {
                                 price={item.price}
                                 rating={item.rating}
                             />
-                            ))}
+                            // <p></p>
+                            })}
                         </p>
                     </div>
                 </div>

@@ -30,3 +30,6 @@
 .payment__items {
   flex: 0.8;
 }
+.payment {
+  padding-top: 70px;
+}
