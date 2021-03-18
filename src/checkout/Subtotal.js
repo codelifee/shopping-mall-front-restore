@@ -5,10 +5,12 @@ import { useStateValue } from '../StateProvider/StateProvider';
 import {useState, useEffect} from 'react';
 import {getBasketTotal} from '../StateProvider/Reducer'
 import { useHistory } from 'react-router-dom'
+import Cookies from 'js-cookie';
 
 function Subtotal() {
     const history = useHistory();
     const [{basket}, dispatch] = useStateValue();
+    const cookie = Cookies.get('user');
 
     //first attempt without CurrencyFormat API
     const [price, setPrice] = useState(0);
@@ -23,6 +25,14 @@ function Subtotal() {
     useEffect(() => {
         addPrice()
     }, [])
+
+    const ProceedToCheckout = (e) => {
+        if(cookie != null){
+            history.push('/payment');
+        }else{
+            alert('로그인하세요.');
+        }
+    }
 
     return (
         <div className='subtotal'>
@@ -46,7 +56,7 @@ function Subtotal() {
                 prefix={"₩"}
                 />
 
-                <button onClick={e => history.push('/payment')}>Proceed to Checkout</button>
+                <button onClick={ProceedToCheckout}>Proceed to Checkout</button>
         </div>
     )
 }
