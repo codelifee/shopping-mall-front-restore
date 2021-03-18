@@ -27,7 +27,7 @@ function Profile() {
         <div className="profile">
             <div className="profile__container">
                 <div className="profile__container__head">
-                    <h1>{user.user_name}'s Profile</h1>
+                    <h1>회원 정보</h1>
                 </div>
                 <div className="profile__search"> 
                     <div className="profile__id">
@@ -48,7 +48,7 @@ function Profile() {
                     </div>
                     <Link to={`/user/updateprofile/${user_sequence_id}`}>
                         <button className="update">
-                            Go to update
+                            회원 정보 수정
                         </button>
                     </Link>
                 </div>    
