@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { FaSearch } from 'react-icons/fa';
-import DatePicker from 'react-datepicker';
-import OrdersData from './OrdersData';
-import axios from '../axios/axios';
-import { useHistory, useParams } from 'react-router-dom';
-import './Orders.css';
-import { ImageData } from '../axios/urlData';
+import React, { useEffect, useState } from "react";
+import { FaSearch } from "react-icons/fa";
+import DatePicker from "react-datepicker";
+import OrdersData from "./OrdersData";
+import axios from "../axios/axios";
+import { useHistory, useParams } from "react-router-dom";
+import "./Orders.css";
+import { ImageData } from "../axios/urlData";
 
 function Orders() {
   const [startDate, setStartDate] = useState(new Date());
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
 
   const [orders, setOrders] = useState([{}]);
   let image = ImageData.image1;
@@ -78,8 +78,8 @@ function Orders() {
           <table
             className="order_table"
             style={{
-              border: '1px solid black',
-              width: '100%',
+              border: "1px solid black",
+              width: "100%",
             }}
           >
             <thead>
@@ -92,13 +92,13 @@ function Orders() {
             <tbody>
               {orders
                 .filter((order) => {
-                  if (searchTerm == '' /*&& product.category_id == id*/) {
+                  if (searchTerm == "" /*&& product.category_id == id*/) {
                     return order;
                   } else if (
                     order.product_name
                       .toLowerCase()
                       .includes(
-                        searchTerm.toLowerCase(),
+                        searchTerm.toLowerCase()
                       ) /*&&
                     product.category_id == id*/
                   ) {

@@ -1,3 +1,9 @@
-.sellerProduct__tableButton {
+.seller_product_td{
+    height: 30px;
+    font-size:12px;
+}
+.seller_product_td1{
     cursor: pointer;
+    height: 30px;
+    font-size:12px;
 }

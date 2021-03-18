@@ -1,6 +1,6 @@
-import React, { useRef, useEffect } from 'react';
-import { gsap } from 'gsap';
-import { Link } from 'react-router-dom';
+import React, { useRef, useEffect } from "react";
+import { gsap } from "gsap";
+import { Link } from "react-router-dom";
 
 import {
   staggerText,
@@ -11,20 +11,20 @@ import {
   handleCityReturn,
   handleCity,
   staggerRevealClose,
-} from './Animations';
+} from "./Animations";
 
-import dallas from './images/pumpkin_main.jpg';
-import austin from './images/cabbage_main.jpg';
-import newyork from './images/apple_main.jpg';
-import sanfrancisco from './images/pomegranate_main.jpg';
-import beijing from './images/onion_main.jpg';
+import dallas from "./images/pumpkin_main.jpg";
+import austin from "./images/cabbage_main.jpg";
+import newyork from "./images/apple_main.jpg";
+import sanfrancisco from "./images/pomegranate_main.jpg";
+import beijing from "./images/onion_main.jpg";
 
 const cities = [
-  { name: 'Qualitative', image: dallas },
-  { name: 'Nature', image: austin },
-  { name: 'Fresh', image: newyork },
-  { name: 'High quality', image: sanfrancisco },
-  { name: 'health', image: beijing },
+  { name: "Qualitative", image: dallas },
+  { name: "Nature", image: austin },
+  { name: "Fresh", image: newyork },
+  { name: "High quality", image: sanfrancisco },
+  { name: "health", image: beijing },
 ];
 
 const Hamburger = ({ state }) => {
@@ -45,18 +45,18 @@ const Hamburger = ({ state }) => {
 
       staggerRevealClose(reveal2, reveal1);
       // Set menu to display none
-      gsap.to(menuLayer, { duration: 1, css: { display: 'none' } });
+      gsap.to(menuLayer, { duration: 1, css: { display: "none" } });
     } else if (
       state.clicked === true ||
       (state.clicked === true && state.initial === null)
     ) {
       // Set menu to display block
-      gsap.to(menuLayer, { duration: 0, css: { display: 'block' } });
+      gsap.to(menuLayer, { duration: 0, css: { display: "block" } });
       //Allow menu to have height of 100%
       gsap.to([reveal1, reveal2], {
         duration: 0,
         opacity: 1,
-        height: '100%',
+        height: "100%",
       });
       staggerReveal(reveal1, reveal2);
       fadeInUp(info);

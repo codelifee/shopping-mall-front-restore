@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import Product from '../detail/Product';
-import axios from '../axios/axios';
-import './ProductView.css';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import Product from "../detail/Product";
+import axios from "../axios/axios";
+import "./ProductView.css";
+import { useParams } from "react-router-dom";
 //import Recommendation from '../home/Recommendation';
 
 //카테고리 id에 맞게 출력될 것
@@ -29,8 +29,8 @@ function ProductView() {
     async function getCategory() {
       const request = await axios
         .get(`categories/${id}`)
-        .then(response => setCategories(response.data))
-        .catch(error => console.log(error));
+        .then((response) => setCategories(response.data))
+        .catch((error) => console.log(error));
 
       return request;
     }
@@ -38,12 +38,11 @@ function ProductView() {
     getCategory();
   }, []);
 
-
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
     async function getReview() {
       const request = await axios
-        .get(`review/all`)
+        .get(`review/allJsonData`)
         .then((response) => setReviews(response.data))
         .catch((error) => console.log(error));
 

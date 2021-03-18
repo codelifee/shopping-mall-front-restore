@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import axios from '../axios/axios';
-import { useHistory } from 'react-router-dom';
-import { ImageData } from '../axios/urlData';
-import Cookies from 'js-cookie'
+import React, { useState, useEffect } from "react";
+import axios from "../axios/axios";
+import { useHistory } from "react-router-dom";
+import { ImageData } from "../axios/urlData";
+import Cookies from "js-cookie";
 
 function OrdersData({
   date,
@@ -27,15 +27,14 @@ function OrdersData({
   console.log(o_return);
   console.log(product_id);
 
-   
   const getCookie = () => {
     const cookie = Cookies.get("user");
     console.log(cookie);
     setCookie(cookie);
-  }
+  };
 
   const style11 = {
-    borderTop: '1px solid red',
+    borderTop: "1px solid red",
   };
   const history = useHistory();
 
@@ -62,7 +61,7 @@ function OrdersData({
 
     axios
       .patch(`/orders/${order_id}`, { order_return: orders })
-      .then((res) => alert('변경이 완료 되었습니다'))
+      .then((res) => alert("변경이 완료 되었습니다"))
       .catch((err) => console.log(err));
   };
 
@@ -72,27 +71,27 @@ function OrdersData({
         <td style={style11}>{date}</td>
         <td
           style={{
-            display: 'flex',
-            flexDecoration: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            borderTop: '1px solid red',
+            display: "flex",
+            flexDecoration: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            borderTop: "1px solid red",
           }}
           className="order_tdtd"
         >
           <img
             src={image}
             alt="img"
-            style={{ width: '80px', position: 'relative', left: '-20px' }}
+            style={{ width: "80px", position: "relative", left: "-20px" }}
           />
           <div className="product">
-            <ul style={{ listStyle: 'none', textAlign: 'left' }}>
+            <ul style={{ listStyle: "none", textAlign: "left" }}>
               <li>{product}</li>
-              <li style={{ fontSize: '10px' }}>
-                수량: {quantity}개 / 주문번호 : {order_id}{' '}
+              <li style={{ fontSize: "10px" }}>
+                수량: {quantity}개 / 주문번호 : {order_id}{" "}
               </li>
-              <li style={{ fontSize: '20px', fontWeight: '1000' }}>
-                {' '}
+              <li style={{ fontSize: "20px", fontWeight: "1000" }}>
+                {" "}
                 ₩{new Intl.NumberFormat().format(price)}
               </li>
             </ul>
@@ -110,7 +109,6 @@ function OrdersData({
           <button id={order_id} onClick={patchOrderStatus}>
             변경하기
           </button>
-
         </td>
 
         <td className="order_td" style={style11}>
@@ -119,8 +117,8 @@ function OrdersData({
             onClick={() => {
               window.open(
                 `/review/${product_id}`,
-                'review_form',
-                'width=600,height=500,location=no,status=no,scrollbars=no',
+                "review_form",
+                "width=600,height=500,location=no,status=no,scrollbars=no"
               );
             }}
           >
