@@ -12,7 +12,6 @@ import { HistoryOutlined } from "@material-ui/icons";
 import { event } from "jquery";
 
 function Login() {
-
   const history = useHistory();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -55,7 +54,6 @@ function Login() {
       .then((res) => console.log(res))
       .catch((err) => alert("이메일이나 비밀번호를 입력해주세요"));
   };
-
 
   // useEffect(() => {
   //     if(Object.keys(user).length === 0) {
@@ -101,6 +99,7 @@ function Login() {
           <button className="login__registerButton">Create Account</button>
         </Link>
 
+
         <NaverLogin
           success={res => console.log(res)}
           fail={(res) => console.log(res)}
@@ -110,6 +109,7 @@ function Login() {
           success={res => console.log(res)}
           fail={(res) => console.log(res)}
         />
+
       </div>
     </div>
   );

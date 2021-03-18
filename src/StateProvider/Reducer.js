@@ -1,9 +1,7 @@
 export const initialState = {
-
-    basket: [],
-    user: {},
-    keyword: JSON.parse(sessionStorage.getItem("keyword")) || {}
-
+  basket: [],
+  user: {},
+  keyword: JSON.parse(sessionStorage.getItem("keyword")) || {},
 };
 
 export const getBasketTotal = (basket) =>
@@ -11,16 +9,15 @@ export const getBasketTotal = (basket) =>
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'ADD_TO_BASKET':
-      
+    case "ADD_TO_BASKET":
       return {
         ...state,
         basket: [...state.basket, action.item],
       };
 
-    case 'REMOVE_FROM_BASKET':
+    case "REMOVE_FROM_BASKET":
       const index = state.basket.findIndex(
-        (basketItem) => basketItem.id === action.id,
+        (basketItem) => basketItem.id === action.id
       );
       let newBasket = [...state.basket];
 
@@ -29,7 +26,7 @@ const reducer = (state, action) => {
       } else {
         console.warn(
           `cant remove product (id: ${action.id}) as its not in 
-                    basket!`,
+                  basket!`
         );
       }
 
@@ -38,13 +35,13 @@ const reducer = (state, action) => {
         basket: newBasket,
       };
 
-    case 'SET_USER':
+    case "SET_USER":
       return {
+        ...state,
         user: action.user,
       };
 
-    case 'SEARCH':
-
+    case "SEARCH":
       sessionStorage.setItem("keyword", JSON.stringify(action.item));
 
       return {

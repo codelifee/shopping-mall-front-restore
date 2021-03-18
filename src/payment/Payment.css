@@ -32,7 +32,10 @@
 }
 
 .kakaoBtn {
-  background: url( "../img/payment_icon_yellow_small.png" ) no-repeat;
+  background: url("../img/payment_icon_yellow_small.png") no-repeat;
   border: none;
   cursor: pointer;
+}
+.payment {
+  padding-top: 70px;
 }

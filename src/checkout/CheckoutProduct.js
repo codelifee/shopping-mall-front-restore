@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import fire from '../img/fire.svg';
 import { useStateValue } from '../StateProvider/StateProvider';
 import './CheckoutProduct.css';
-function CheckoutProduct({ id, title, image, description, price, rating }) {
+function CheckoutProduct({ id, title, image, price, rating }) {
   const [{ basket }, dispatch] = useStateValue();
   const [quantity, setQuantity] = useState(1);
 

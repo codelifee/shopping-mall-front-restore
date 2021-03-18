@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-//import { Switch } from '@ant-design/icons';
-import {Button, Form, Icon, Input, Select} from 'antd';
+import { useStateValue } from '../StateProvider/StateProvider';
+import { Form, Select, Input, Button, Icon, Switch } from 'antd';
 import { withRouter } from 'react-router-dom';
 import { withUserAgent } from 'react-useragent';
 import queryString from 'query-string';
+import Cookies from 'js-cookie';
+import axios from '../axios/axios';
 
 import {
   PGS,
@@ -16,11 +18,29 @@ import { getMethods, getQuotas } from './Utils';
 const { Item } = Form;
 const { Option } = Select;
 
-function Payment({ history, form, ua }) {
+function Payment({ history, form, ua}) {
   const [methods, setMethods] = useState(METHODS_FOR_INICIS);
   const [quotas, setQuotas] = useState(QUOTAS_FOR_INICIS_AND_KCP);
   const [isQuotaRequired, setIsQuotaRequired] = useState(true);
   const { getFieldDecorator, validateFieldsAndScroll, setFieldsValue, getFieldsValue } = form;
+  const [{basket} , dispatch] = useStateValue();
+  const cookie = Cookies.get('user');
+  const [users, setUsers] = useState({
+      user_sequence_id:'',
+      user_id:'',
+      user_name:'',
+      user_phone:'',
+  });
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
+  const getUser = () => {
+    axios.get(`users/${cookie}`)
+    .then((response) => setUsers(response.data))
+    .catch((error) => console.log(error));
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -183,18 +203,18 @@ function Payment({ history, form, ua }) {
         )}
         <Item>
           {getFieldDecorator('name', {
-            initialValue: '아임포트 결제 데이터 분석',
-            rules: [{ required: true, message: '주문명은 필수입력입니다' }],
+            initialValue: basket.title,
+            rules: [{ required: true, message: '제품명은 필수입력입니다' }],
           })(
-            <Input size="large" addonBefore="주문명" />,
+            <Input size="large" addonBefore="제품명" />,
           )}
         </Item>
         <Item>
           {getFieldDecorator('amount', {
-            initialValue: '100',
+            initialValue: basket.price,
             rules: [{ required: true, message: '결제금액은 필수입력입니다' }],
           })(
-            <Input size="large" type="number" addonBefore="결제금액" />,
+            <Input size="large" addonBefore="결제금액" />,
           )}
         </Item>
         <Item>
@@ -207,7 +227,7 @@ function Payment({ history, form, ua }) {
         </Item>
         <Item>
           {getFieldDecorator('buyer_name', {
-            initialValue: '홍길동',
+            initialValue: users.user_name,
             rules: [{ required: true, message: '구매자 이름은 필수입력입니다' }],
           })(
             <Input size="large" addonBefore="이름" />,
@@ -215,15 +235,15 @@ function Payment({ history, form, ua }) {
         </Item>
         <Item>
           {getFieldDecorator('buyer_tel', {
-            initialValue: '01012341234',
+            initialValue: users.user_phone,
             rules: [{ required: true, message: '구매자 전화번호는 필수입력입니다' }],
           })(
-            <Input size="large" type="number" addonBefore="전화번호" />,
+            <Input size="large" addonBefore="전화번호" />,
           )}
         </Item>
         <Item>
           {getFieldDecorator('buyer_email', {
-            initialValue: 'example@example.com',
+            initialValue : users.user_id,
             rules: [{ required: true, message: '구매자 이메일은 필수입력입니다' }],
           })(
             <Input size="large" addonBefore="이메일" />,

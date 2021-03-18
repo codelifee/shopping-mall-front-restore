@@ -13,7 +13,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-
+  padding: 30px;
+  margin-top: 20px;
+  margin-bottom: 30px;
   font-size: 13px;
   /* color: rgb(175, 126, 35); */
   padding-top: 70px;
@@ -29,7 +31,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 95vh;
+  min-height: 800px;
   width: 220px;
   list-style: none;
   text-align: center;
