@@ -8,8 +8,10 @@ import axios from '../axios/axios';
 import { ImageData } from '../axios/urlData';
 import Cookies from 'js-cookie';
 
+
 function Review(props) {
   const image = ImageData.image4;
+
   //const [cookie, setCookie] = useState();
 
   const [reviews, setReviews] = useState([]);
@@ -204,43 +206,48 @@ function Review(props) {
         .filter(function (review) {
           return review.product_id == id;
         })
-        .map((review, i) => {
-          function star() {
-            //user_id옆 별점 표시
-            if (review.star == 5) {
-              return [...Array(5)].map((k) => {
-                return <FaStar color={'#ffc107'} size={20} />;
-              });
-            } else if (review.star == 4) {
-              return [...Array(4)].map((k) => {
-                return <FaStar color={'#ffc107'} size={20} />;
-              });
-            } else if (review.star == 3) {
-              return [...Array(3)].map((k) => {
-                return <FaStar color={'#ffc107'} size={20} />;
-              });
-            } else if (review.star == 2) {
-              return [...Array(2)].map((k) => {
-                return <FaStar color={'#ffc107'} size={20} />;
-              });
-            } else if (review.star == 1) {
-              return <FaStar color={'#ffc107'} size={20} />;
-            }
-          }
+        .map((review, i) => { 
 
-          return (
-            <div className="review__list" key={i}>
-              <div className="review__list_user">
-                {review.user_id} 님 {star()}
-              </div>
+          function star(){//user_id옆 별점 표시
+           if(review.star==5){
+             return [...Array(5)].map(()=>{
+               return <FaStar color={"#ffc107"} size={20} />
+             })
+           }else if(review.star==4){
+             return [...Array(4)].map(()=>{
+               return <FaStar color={"#ffc107"} size={20}/>
+             })
+           }else if(review.star==3){
+             return [...Array(3)].map(()=>{
+               return <FaStar color={"#ffc107"} size={20} />
+             })
+           }else if(review.star==2){
+             return [...Array(2)].map(()=>{
+               return <FaStar color={"#ffc107"} size={20} />
+             })
+           }else if(review.star==1){
+             return <FaStar color={"#ffc107"} size={20} />
+           }
+         }
+         
+         return (
+ 
+           <div className="review__list" key={i}>
+                         
+                <div className="review__list_user">
+                  {review.user_id} 님 {star()}
+                </div>
+
               <div className="review__list_content_container">
                 <div className="review__list_content">
                   {review.review_date_created} 작성
                   <br />
                   {review.review}
-                  {review.review_picture != null ? (
-                    <img src={image + review.review_id} />
-                  ) : null}
+
+                  {review.review_picture!=null ?
+                    <img src={image+review.review_id} alt="리뷰 사진"/>: null
+                  }
+
                 </div>
 
                 <div className="review__update_button_container">

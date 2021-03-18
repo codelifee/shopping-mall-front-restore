@@ -39,18 +39,17 @@ body {
     display: flex;
     flex-direction: column;
     margin-left: 30px;
-    margin-top: 30px;
     height: 400px;
     background: #fff;
   }
   
   .profile__search p {
-    color: #6b9900;
+    color: #333;
   }  
   
   .profile__id {
     display: flex;
-    margin: 40px 0 30px 50px;
+    margin: 20px 0 30px 50px;
   }
   
   .profile__id > label {

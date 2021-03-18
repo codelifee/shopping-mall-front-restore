@@ -10,7 +10,7 @@ function DeleteProfile() {
         <div className="delete">
             <div className="delete__container">
                 <div className="delete__container__head">
-                    <h1>Delete {user.user_name}'s Information</h1>
+                    <h1>회원 탈퇴</h1>
                 </div>
                 <div className="delete__search"> 
                     <div className="delete__id">
@@ -45,7 +45,7 @@ function DeleteProfile() {
                         type='submit'
                         className="deleteBtn"
                         onClick={confirmDelete}>
-                            Delete
+                            탈퇴
                         </button>
                 </div>    
             </div>

@@ -43,7 +43,7 @@ function Detail() {
   const history = useHistory();
 
   useEffect(() => {
-    async function fetchDate() {
+    async function getProducts() {
       const request = await axios
         .get(`products/JsonData/${id}`)
         .then((response) => setProducts(response.data))
@@ -52,7 +52,7 @@ function Detail() {
       return request;
     }
 
-    fetchDate();
+    getProducts();
   }, []);
 
   useEffect(() => {
@@ -82,6 +82,7 @@ function Detail() {
 
   return (
     <div className="detail">
+
       <div className="detail__product">
         <div className="detail__product_img">
           <img src={image1} className="img" alt="" />

@@ -1,13 +1,10 @@
-import { React, useState, useEffect } from 'react';
-import Axios from 'axios';
+import { React, useState} from 'react';
 import Navbar from './Navbar';
 import UpdateProfile from './UpdateProfile';
 import Cookies from 'js-cookie'
-
 import Profile from './Profile';
 import Orders from './Orders';
 import Exchange from './Exchange';
-import ReviewForm from '../detail/ReviewForm';
 import Return from './Return';
 import OrderDetails from './OrderDetails';
 import OrdersData from './OrdersData';
@@ -15,7 +12,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  useParams,
+  useParams
 } from 'react-router-dom';
 import './User.css';
 import DeleteProfile from './DeleteProfile';
@@ -52,8 +49,7 @@ function User() {
             <Navbar />
             <DeleteProfile />
           </Route>
-
-
+          
           <Route path="/user/updateprofile/:user_sequence_id">
             <Navbar />
             {!isSubmittied ? (

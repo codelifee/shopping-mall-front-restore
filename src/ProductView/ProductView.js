@@ -43,7 +43,7 @@ function ProductView() {
   useEffect(() => {
     async function getReview() {
       const request = await axios
-        .get(`review/all`)
+        .get(`review/allJsonData`)
         .then((response) => setReviews(response.data))
         .catch((error) => console.log(error));
 

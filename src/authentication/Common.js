@@ -2,7 +2,7 @@ export const snsPayloadParser = {
     NAVER: (payload) => ({
       id: payload.id,
       name: payload.nickname,
-      email: payload.email,
+      email: payload.email+"_N",
       platform: 'naver',
     }),
     GOOGLE: (payload) => ({
@@ -15,7 +15,7 @@ export const snsPayloadParser = {
     KAKAO: (payload) => ({
       id: payload.profile.id,
       name: payload.profile.properties.nickname,
-      email: payload.profile.kakao_account.email,
+      email: payload.profile.kakao_account.email+"_K",
       platform: 'kakao'
     }),
   };
