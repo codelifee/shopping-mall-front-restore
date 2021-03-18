@@ -4,17 +4,17 @@ import NaverLogin from 'react-naver-login';
 import { snsPayloadParser } from './Common';
 
 const Naver = (props) => {
-  const clientId = "TsDiYvG41H1q_nQg0Y8r" || '';
-  const success = payload => {
+  const clientId = 'TsDiYvG41H1q_nQg0Y8r' || '';
+  const success = (payload) => {
     props.success(snsPayloadParser.NAVER(payload));
     console.log(payload);
   };
 
-  const fail = payload => {
+  const fail = (payload) => {
     props.fail(payload);
   };
 
-  if (!clientId) return <>Naver의 Client Id를 확인해주세요.</>
+  if (!clientId) return <>Naver의 Client Id를 확인해주세요.</>;
 
   return (
     // <></>
@@ -23,8 +23,8 @@ const Naver = (props) => {
       callbackUrl={`http://localhost:3000${window.location.pathname}`}
       onSuccess={success}
       onFailure={() => fail}
-      render={renderProps => (
-        <button onClick={renderProps.onClick} >Naver Login</button>
+      render={(renderProps) => (
+        <button onClick={renderProps.onClick}>Naver Login</button>
       )}
     ></NaverLogin>
   );
