@@ -4,13 +4,12 @@ import SearchIcon from "@material-ui/icons/Search";
 import SearchResult from "./SearchResult";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import "./header.css";
-import { Link, Redirect } from "react-router-dom";
+import { Link, Redirect, useParams, useHistory } from "react-router-dom";
 import { useStateValue } from "./StateProvider/StateProvider";
 import Sidebar from "./sidebar/Sidebar";
 import AllProducts from "./sidebar/Sidebar";
 import { auth } from "./configuration/firebase";
 import Login from "./authentication/Login";
-import { useHistory } from "react-router-dom";
 import axios from "./axios/axios";
 import { faVestPatches } from "@fortawesome/free-solid-svg-icons";
 import Cookies from "js-cookie";
@@ -25,6 +24,8 @@ function Header() {
   const [search, setSearch] = useState("");
 
   const history = useHistory();
+
+  const { id } = useParams();
 
   const getCookie = () => {
     const cookie = Cookies.get("user");
@@ -144,7 +145,7 @@ function Header() {
             <></>
           )}
 
-          <Link to="/checkout">
+          <Link to={`/checkout/${id}`}>
             <div className="header__optionBasket">
               <ShoppingBasketIcon />
               <span className="header__optionLineTwo header__basketCount">
