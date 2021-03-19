@@ -33,6 +33,7 @@ a {
   border-radius: 10px;
   padding: 10px;
   background: rgba(230, 183, 151, 0.3);
+  cursor: pointer;
 }
 /* a:hover img {
   box-shadow: 20px 20px 40px 0 rgba(0, 0, 0, 0.2);

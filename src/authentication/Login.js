@@ -6,12 +6,12 @@ import { auth } from "../configuration/firebase";
 import axios from "../axios/axios";
 import { useStateValue } from "../StateProvider/StateProvider";
 import Cookies from "js-cookie";
+import NaverLogin from "./Naver";
+import KakaoLogin from "./Kakao";
 import { HistoryOutlined } from "@material-ui/icons";
-import UseConfirm from "./UseConfirm";
 import { event } from "jquery";
 
 function Login() {
-
   const history = useHistory();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -54,7 +54,6 @@ function Login() {
       .then((res) => console.log(res))
       .catch((err) => alert("이메일이나 비밀번호를 입력해주세요"));
   };
-
 
   // useEffect(() => {
   //     if(Object.keys(user).length === 0) {
@@ -100,7 +99,17 @@ function Login() {
           <button className="login__registerButton">Create Account</button>
         </Link>
 
-        <UseConfirm/>
+
+        <NaverLogin
+          success={res => console.log(res)}
+          fail={(res) => console.log(res)}
+        />
+
+        <KakaoLogin
+          success={res => console.log(res)}
+          fail={(res) => console.log(res)}
+        />
+
       </div>
     </div>
   );

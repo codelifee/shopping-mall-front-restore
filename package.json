@@ -29,8 +29,7 @@
     "http-proxy-middleware": "^1.0.6",
     "jquery": "^3.5.1",
     "js-cookie": "^2.2.1",
-    "less": "^3.9.0",
-    "less-loader": "^5.0.0",
+    "naver-login": "^1.0.1",
     "popper.js": "^1.16.1",
     "query-string": "^6.8.1",
     "react": "^16.8.6",
@@ -75,7 +74,7 @@
   },
   "browserslist": {
     "production": [
-      ">0.2%",
+      "0.2%",
       "not dead",
       "not op_mini all"
     ],
@@ -84,5 +83,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@ant-design/icons": "^4.5.0"
   }
 }

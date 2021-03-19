@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Button } from 'antd';
 import { withRouter } from 'react-router-dom';
 import queryString from 'query-string';
+import axios from '../axios/axios';
 
 function PaymentResult({ history }) {
   const { location } = history;
   const { search } = location;
   const query = queryString.parse(search);
   
-  const { merchant_uid, error_msg, imp_uid } = query;
+  const { merchant_uid, error_msg, imp_uid, paid_amount, name, buyer_name, buyer_email } = query;
   const isSuccessed = getIsSuccessed();
   function getIsSuccessed() {
     const { success, imp_success } = query;
@@ -18,9 +19,29 @@ function PaymentResult({ history }) {
     if (typeof success === 'string') return success === 'true';
     if (typeof success === 'boolean') return success === true;
   }
+  const body ={
+    merchant_uid:merchant_uid,
+    product_name:name,
+    amount:paid_amount,
+    user_name:buyer_name
+  };
 
   const resultType = isSuccessed ? '성공' : '실패';
   const colorType = isSuccessed ? '#52c41a' : '#f5222d';
+
+  useEffect(() => {
+    async function postPayment() {
+      const request = await axios
+        .post(`payment/`,body)
+        .then((response) => console.log(response.data))
+        .catch((error) => console.log(error));
+      return request;
+    }
+    if(resultType == '성공'){
+      postPayment();
+    }
+  }, []);
+
   return (
     <Wrapper>
       <Container colorType={colorType}>

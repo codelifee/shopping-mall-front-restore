@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-
+import './Kakao.css';
 import KakaoLogin from 'react-kakao-login';
 import { snsPayloadParser } from './Common';
 import React, {useState, useEffect} from "react";
@@ -119,7 +119,7 @@ const postForm = () => {
       getProfile={true}
       render={renderProps => (
           //props로 전달된 위의 값들을 onClick으로 render
-        <button onClick={renderProps.onClick} style={{width:'100%'}}>Kakao Login</button>
+        <button onClick={renderProps.onClick} className="kakaoLoginButton">Kakao Login</button>
       )}
     />
   );

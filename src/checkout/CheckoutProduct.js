@@ -1,29 +1,9 @@
-import { CheckBoxOutlineBlankSharp } from '@material-ui/icons';
-import React, { useState, useEffect } from 'react';
-import Cookies from 'js-cookie';
-import fire from '../img/fire.svg';
-import { useStateValue } from '../StateProvider/StateProvider';
-import './CheckoutProduct.css';
-import { FaWindows } from 'react-icons/fa';
+import React, { useState } from "react";
 
-function CheckoutProduct({
-  id2,
-  title2,
-  image2,
-  description2,
-  price2,
-  rating2,
-  quantity2,
-}) {
-  const [quantity1, setQuantity1] = useState(quantity2);
-  const [cookie, setCookie] = useState();
-
-  const getCookie = () => {
-    const cookie = Cookies.get('user');
-    console.log(cookie);
-    setCookie(cookie);
-  };
-
+import fire from "../img/fire.svg";
+import { useStateValue } from "../StateProvider/StateProvider";
+import "./CheckoutProduct.css";
+function CheckoutProduct({ id, title, image, price, rating }) {
   const [{ basket }, dispatch] = useStateValue();
   const [storedValue, setStoredValue] = useState(() => {
     try {
@@ -52,12 +32,17 @@ function CheckoutProduct({
 
   const removeFromBasket = () => {
     dispatch({
+<<<<<<< HEAD
       type: 'REMOVE_FROM_BASKET',
       id: id2,
+=======
+      type: "REMOVE_FROM_BASKET",
+      id: id,
+>>>>>>> 21af3f67dcfa70f6b0e7028edc4083c96df861c4
     });
   };
   const style11 = {
-    borderBottom: '1px solid red',
+    borderBottom: "1px solid red",
   };
 
   // useEffect(() => {
@@ -84,6 +69,7 @@ function CheckoutProduct({
     <>
       <tr style={style11}>
         <td style={{ rowSpan: 2 }}>
+<<<<<<< HEAD
           {' '}
           {
             <img
@@ -92,12 +78,17 @@ function CheckoutProduct({
               style={{ width: '80px', position: 'relative', left: '-20px' }}
             />
           }
+=======
+          {" "}
+          {<img src={image} alt="img" style={{ width: "80px" }} />}
+>>>>>>> 21af3f67dcfa70f6b0e7028edc4083c96df861c4
         </td>
         <td
           style={{
-            width: '700px',
+            width: "700px",
           }}
         >
+<<<<<<< HEAD
           <li className="checkout_li">{title2}</li>
           <li className="checkout_li">
             {quantity1 > 1 ? (
@@ -105,10 +96,40 @@ function CheckoutProduct({
                 className="checkout_button"
                 onClick={() => {
                   setQuantity1(quantity1 - 1);
+=======
+          <ul className="checkout_ul">
+            <li className="checkout_li">{title}</li>
+            <li className="checkout_li">
+              {quantity > 1 ? (
+                <button
+                  className="checkout_button"
+                  onClick={() => {
+                    setQuantity(quantity - 1);
+                  }}
+                >
+                  -
+                </button>
+              ) : (
+                <button
+                  className="checkout_button"
+                  onClick={() => {
+                    setQuantity(quantity);
+                  }}
+                >
+                  -
+                </button>
+              )}
+              {quantity}
+              <button
+                className="checkout_button"
+                onClick={() => {
+                  setQuantity(quantity + 1);
+>>>>>>> 21af3f67dcfa70f6b0e7028edc4083c96df861c4
                 }}
               >
-                -
+                +
               </button>
+<<<<<<< HEAD
             ) : (
               <button
                 className="checkout_button"
@@ -139,18 +160,32 @@ function CheckoutProduct({
                 <img src={fire} alt="fire" />
               ))}
           </li>
+=======
+            </li>
+            <li
+              className="checkout_li"
+              style={{ fontSize: "20px", fontWeight: "1000" }}
+            >
+              {Array(rating)
+                .fill()
+                .map((_, i) => (
+                  <img src={fire} alt="fire" />
+                ))}
+            </li>
+          </ul>
+        </td>
+
+        <td className="order_td">
+>>>>>>> 21af3f67dcfa70f6b0e7028edc4083c96df861c4
           <li
             className="checkout_li"
-            style={{ listStyle: 'none', textAlign: 'center' }}
+            style={{ listStyle: "none", textAlign: "center" }}
           >
             <small>₩</small>
             <strong>
               {new Intl.NumberFormat().format(price2 * quantity1)}
             </strong>
           </li>
-        </td>
-
-        <td className="order_td">
           <div className="btnBox">
             <button className="remove" onClick={removeFromBasket}>
               <span></span>

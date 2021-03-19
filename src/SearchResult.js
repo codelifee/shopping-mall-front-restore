@@ -1,18 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { useStateValue } from './StateProvider/StateProvider';
-import SearchResultView from './SearchResultView';
-import './SearchResult.css';
-import axios from './axios/axios';
-import {ImageData} from './axios/urlData';
+import React, { useState, useEffect } from "react";
+import { useStateValue } from "./StateProvider/StateProvider";
+import SearchResultView from "./SearchResultView";
+import "./SearchResult.css";
+import axios from "./axios/axios";
+import { ImageData } from "./axios/urlData";
 //import { useParams } from 'react-router-dom';
 
 function SearchResult() {
-
-  const image = ImageData.image1
+  const image = ImageData.image1;
   const [{ keyword }, dispatch] = useStateValue();
   const [products, setProducts] = useState([]);
   //const {search} = useParams();
- 
+
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
     async function getReview() {
@@ -32,7 +31,7 @@ function SearchResult() {
   useEffect(() => {
     async function getCategories() {
       const request = await axios
-        .get('categories/all')
+        .get("categories/all")
         .then((response) => setCategories(response.data))
         .catch((error) => console.log(error));
 
@@ -64,7 +63,6 @@ function SearchResult() {
           //   return item.product_name.includes(`${keyword.word}`);
           // })
           .map((product, i) => {
-
             let reviewLength = reviews
               .filter((review) => {
                 return review.product_id == product.product_id;
@@ -84,7 +82,7 @@ function SearchResult() {
                   .map((category) => {
                     return (
                       <div className="search_result_category_name">
-                        카테고리 {'>>'}{' '}
+                        카테고리 {">>"}{" "}
                         <a href={`/products/${category.category_id}`}>
                           {category.category_name}
                         </a>

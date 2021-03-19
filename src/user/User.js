@@ -1,21 +1,21 @@
-import { React, useState} from 'react';
-import Navbar from './Navbar';
-import UpdateProfile from './UpdateProfile';
-import Cookies from 'js-cookie'
-import Profile from './Profile';
-import Orders from './Orders';
-import Exchange from './Exchange';
-import Return from './Return';
-import OrderDetails from './OrderDetails';
-import OrdersData from './OrdersData';
+import { React, useState } from "react";
+import Navbar from "./Navbar";
+import UpdateProfile from "./UpdateProfile";
+import Cookies from "js-cookie";
+import Profile from "./Profile";
+import Orders from "./Orders";
+import Exchange from "./Exchange";
+import Return from "./Return";
+import OrderDetails from "./OrderDetails";
+import OrdersData from "./OrdersData";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  useParams
-} from 'react-router-dom';
-import './User.css';
-import DeleteProfile from './DeleteProfile';
+  useParams,
+} from "react-router-dom";
+import "./User.css";
+import DeleteProfile from "./DeleteProfile";
 
 function User() {
   const [isSubmittied, setIsSubmitted] = useState(false);
@@ -25,37 +25,33 @@ function User() {
   function submitForm() {
     setIsSubmitted(true);
   }
- 
- 
+
   const getCookie = () => {
     const cookie = Cookies.get("user");
     console.log(cookie);
     setCookie(cookie);
-  }
-
+  };
 
   return (
     <Router>
       <div className="user">
         <Switch>
-
-        <Route path={`/user/${cookie}`}>
+          <Route path={`/user/${cookie}`}>
             <Navbar />
             <Orders />
-
           </Route>
 
-        <Route path="/user/deleteprofile/:user_sequence_id">
+          <Route path="/user/deleteprofile/:user_sequence_id">
             <Navbar />
             <DeleteProfile />
           </Route>
-          
+
           <Route path="/user/updateprofile/:user_sequence_id">
             <Navbar />
             {!isSubmittied ? (
               <UpdateProfile submitForm={submitForm} />
             ) : (
-              (window.location.href = '/home')
+              (window.location.href = "/home")
             )}
           </Route>
           <Route path="/user/deleteprofile/:user_sequence_id">
