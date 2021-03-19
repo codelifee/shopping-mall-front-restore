@@ -10,15 +10,7 @@ function PaymentResult({ history }) {
   const { search } = location;
   const query = queryString.parse(search);
   
-  const { merchant_uid, name, amount, buyer_name, buyer_tel, buyer_email, error_msg, imp_uid } = query;
-  const body ={
-    merchant_uid:merchant_uid,
-    profuct_name:name,
-    amount:amount,
-    user_name:buyer_name,
-    user_phone:buyer_tel,
-    user_id:buyer_email
-  }
+  const { merchant_uid, error_msg, imp_uid, paid_amount, name, buyer_name, buyer_email } = query;
   const isSuccessed = getIsSuccessed();
   function getIsSuccessed() {
     const { success, imp_success } = query;
@@ -27,22 +19,28 @@ function PaymentResult({ history }) {
     if (typeof success === 'string') return success === 'true';
     if (typeof success === 'boolean') return success === true;
   }
+  const body ={
+    merchant_uid:merchant_uid,
+    product_name:name,
+    amount:paid_amount,
+    user_name:buyer_name
+  };
 
   const resultType = isSuccessed ? '성공' : '실패';
   const colorType = isSuccessed ? '#52c41a' : '#f5222d';
 
   useEffect(() => {
-    async function fetchData() {
-        const request = await axios.post(`payment/`,body)
-        .then(response => console.log(response))
-        .catch(error => console.log(error))
-       
-        return request;
+    async function postPayment() {
+      const request = await axios
+        .post(`payment/`,body)
+        .then((response) => console.log(response.data))
+        .catch((error) => console.log(error));
+      return request;
     }
     if(resultType == '성공'){
-      fetchData();  
+      postPayment();
     }
-  }, [])
+  }, []);
 
   return (
     <Wrapper>

@@ -100,7 +100,7 @@ function App() {
               <QnAForm />
             </Route>
 
-            <Route path="/payment">
+            <Route path="/payment/">
               <Header />
               <Payment />
             </Route>
