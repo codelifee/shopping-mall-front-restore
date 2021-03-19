@@ -1,9 +1,7 @@
 export const initialState = {
-
-    basket: [],
-    user: {},
-    keyword: JSON.parse(sessionStorage.getItem("keyword")) || {}
-
+  basket: [],
+  user: {},
+  keyword: JSON.parse(sessionStorage.getItem('keyword')) || {},
 };
 
 export const getBasketTotal = (basket) =>
@@ -12,7 +10,6 @@ export const getBasketTotal = (basket) =>
 const reducer = (state, action) => {
   switch (action.type) {
     case 'ADD_TO_BASKET':
-      
       return {
         ...state,
         basket: [...state.basket, action.item],
@@ -32,8 +29,6 @@ const reducer = (state, action) => {
                     basket!`,
         );
       }
-      
-      sessionStorage.removeItem("basket")
 
       return {
         ...state,
@@ -46,8 +41,7 @@ const reducer = (state, action) => {
       };
 
     case 'SEARCH':
-
-      sessionStorage.setItem("keyword", JSON.stringify(action.item));
+      sessionStorage.setItem('keyword', JSON.stringify(action.item));
 
       return {
         ...state,

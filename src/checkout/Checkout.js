@@ -31,12 +31,13 @@ function Checkout() {
               <tbody>
                 {basket.map((item) => (
                   <CheckoutProduct
-                    id={item.id}
-                    title={item.title}
-                    image={item.image}
-                    description={item.description}
-                    price={item.price}
-                    rating={item.rating}
+                    id2={item.id}
+                    title2={item.title}
+                    image2={item.image}
+                    description2={item.description}
+                    price2={item.price}
+                    rating2={item.rating}
+                    quantity2={item.quantity}
                   />
                 ))}
               </tbody>
@@ -52,5 +53,6 @@ function Checkout() {
   );
 }
 import { formatCountdown } from 'antd/lib/statistic/utils';
+import jsCookie from 'js-cookie';
 
 export default Checkout;
