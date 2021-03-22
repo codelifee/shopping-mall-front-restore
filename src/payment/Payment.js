@@ -29,7 +29,7 @@ function Payment() {
     const history = useHistory();
 
     const PaymentBtn = () => {
-        history.push('/paymentpage');
+        history.push('/paymentpage/');
     }
 
     return (

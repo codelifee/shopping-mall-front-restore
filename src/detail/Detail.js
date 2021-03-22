@@ -33,16 +33,8 @@ function Detail() {
   const [products, setProducts] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [question, setQuestion] = useState([]);
-  const [cookie, setCookie] = useState();
 
-
-  const getCookie = () => {
-    const cookie = Cookies.get('user');
-
-    console.log(cookie);
-
-    setCookie(cookie);
-  };
+  const cookie = Cookies.get('user');
 
   const { id } = useParams();
 
@@ -53,8 +45,6 @@ function Detail() {
   const history = useHistory();
 
   useEffect(() => {
-    getCookie();
-
     async function getProducts() {
       const request = await axios
         .get(`products/JsonData/${id}`)
@@ -194,7 +184,7 @@ function Detail() {
                       rating: products.product_rating,
                     },
                   });
-                  history.push('/payment');
+                  history.push('/payment/');
                 }else{
                   alert("로그인을 해주세요!");
                 }

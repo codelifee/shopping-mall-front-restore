@@ -31,9 +31,22 @@ function Payment({ history, form, ua}) {
       user_name:'',
       user_phone:'',
   });
+  const [products, setProducts] = useState({
+    product_name:'',
+    product_price:''
+  })
 
   useEffect(() => {
+    var id = basket.map((item)=>item.id);
+    async function getProducts() {
+      const request = await axios
+        .get(`products/JsonData/${id}`)
+        .then((response) => setProducts(response.data))
+        .catch((error) => console.log(error));
+      return request;
+    }
     getUser();
+    getProducts();
   }, []);
 
   const getUser = () => {
@@ -203,7 +216,7 @@ function Payment({ history, form, ua}) {
         )}
         <Item>
           {getFieldDecorator('name', {
-            initialValue: basket.title,
+            initialValue: products.product_name,
             rules: [{ required: true, message: '제품명은 필수입력입니다' }],
           })(
             <Input size="large" addonBefore="제품명" />,
@@ -211,7 +224,7 @@ function Payment({ history, form, ua}) {
         </Item>
         <Item>
           {getFieldDecorator('amount', {
-            initialValue: basket.price,
+            initialValue: products.product_price,
             rules: [{ required: true, message: '결제금액은 필수입력입니다' }],
           })(
             <Input size="large" addonBefore="결제금액" />,

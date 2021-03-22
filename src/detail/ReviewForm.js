@@ -91,13 +91,13 @@ const formData = new FormData();
             return axios.post('/review/upload', formData, config)
             .then(res => console.log(res))
             .then(window.opener.parent.location.reload())
-            .then(window.close())
+            .then(setTimeout("self.close()", 2000 ))
             .catch(err => console.log(err))
         }else{
             axios.post('/review', form)
             .then(res => console.log(res))
             .then(window.opener.parent.location.reload())
-            .then(window.close())
+            .then(setTimeout("self.close()", 2000 ))
             .catch(err => console.log(err))
         }
     }

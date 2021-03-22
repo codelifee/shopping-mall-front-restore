@@ -5,6 +5,10 @@
 }
 
 .checkout_li {
-  float: left;
   list-style: none;
+}
+.checkout_ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
