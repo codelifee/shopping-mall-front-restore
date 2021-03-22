@@ -35,6 +35,7 @@ function Detail() {
   const [question, setQuestion] = useState([]);
   const [cookie, setCookie] = useState();
 
+
   const getCookie = () => {
     const cookie = Cookies.get('user');
 

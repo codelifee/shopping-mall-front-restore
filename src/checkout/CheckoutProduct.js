@@ -6,6 +6,7 @@ import './CheckoutProduct.css';
 function CheckoutProduct({ id, title, image, price, rating }) {
   const [{ basket }, dispatch] = useStateValue();
   const [quantity, setQuantity] = useState(1);
+  const [price2, setPrice] = useState(price);
 
   const removeFromBasket = () => {
     dispatch({
@@ -13,6 +14,7 @@ function CheckoutProduct({ id, title, image, price, rating }) {
       id: id,
     });
   };
+
   const style11 = {
     borderBottom: '1px solid red',
   };
@@ -58,9 +60,7 @@ function CheckoutProduct({ id, title, image, price, rating }) {
             {quantity}
             <button
               className="checkout_button"
-              onClick={() => {
-                setQuantity(quantity + 1);
-              }}
+              onClick={() => {setQuantity(quantity + 1)}}
             >
               +
             </button>
