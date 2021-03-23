@@ -5,6 +5,8 @@ import { useStateValue } from '../StateProvider/StateProvider';
 import './CheckoutProduct.css';
 function CheckoutProduct({ id, title, image, price, rating }) {
   const [{ basket }, dispatch] = useStateValue();
+  const [quantity, setQuantity] = useState(1);
+  const [price2, setPrice] = useState(price);
 
   const removeFromBasket = () => {
     dispatch({
@@ -12,6 +14,7 @@ function CheckoutProduct({ id, title, image, price, rating }) {
       id: id,
     });
   };
+
   const style11 = {
     borderBottom: '1px solid red',
   };
@@ -100,7 +103,7 @@ function CheckoutProduct({ id, title, image, price, rating }) {
           >
             <small>₩</small>
             <strong>
-              {new Intl.NumberFormat().format(price2 * quantity1)}
+              {new Intl.NumberFormat().format(price2 * quantity)}
             </strong>
           </li>
           <div className="btnBox">

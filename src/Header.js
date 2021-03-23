@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import Logo from './img/logo.png';
-import SearchIcon from '@material-ui/icons/Search';
-import SearchResult from './SearchResult';
-import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
-import './header.css';
-import { Link, Redirect, useParams, useHistory  } from 'react-router-dom';
-import { useStateValue } from './StateProvider/StateProvider';
-import Sidebar from './sidebar/Sidebar';
-import AllProducts from './sidebar/Sidebar';
-import { auth } from './configuration/firebase';
-import Login from './authentication/Login';
-import axios from './axios/axios';
-import { faVestPatches } from '@fortawesome/free-solid-svg-icons';
-import Cookies from 'js-cookie';
+import React, { useState, useEffect } from "react";
+import Logo from "./img/logo.png";
+import SearchIcon from "@material-ui/icons/Search";
+import SearchResult from "./SearchResult";
+import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
+import "./header.css";
+import { Link, Redirect, useParams, useHistory } from "react-router-dom";
+import { useStateValue } from "./StateProvider/StateProvider";
+import Sidebar from "./sidebar/Sidebar";
+import AllProducts from "./sidebar/Sidebar";
+import { auth } from "./configuration/firebase";
+import Login from "./authentication/Login";
+import axios from "./axios/axios";
+import { faVestPatches } from "@fortawesome/free-solid-svg-icons";
+import Cookies from "js-cookie";
 
 function Header() {
   const [products, setProducts] = useState([]);
@@ -21,14 +21,14 @@ function Header() {
   const [{ keyword }, keyword_dispatch] = useStateValue();
   const [cookie, setCookie] = useState();
 
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
 
   const history = useHistory();
 
-  const {id} = useParams();
+  const { id } = useParams();
 
   const getCookie = () => {
-    const cookie = Cookies.get('user');
+    const cookie = Cookies.get("user");
 
     console.log(cookie);
 
@@ -51,7 +51,7 @@ function Header() {
   }, []);
 
   const handleLogout = () => {
-    Cookies.remove('user');
+    Cookies.remove("user");
 
     window.location.reload(false);
   };
@@ -71,9 +71,9 @@ function Header() {
               setSearch(e.target.value);
             }}
             onKeyPress={(e) => {
-              if (e.key === 'Enter') {
+              if (e.key === "Enter") {
                 keyword_dispatch({
-                  type: 'SEARCH',
+                  type: "SEARCH",
                   item: { word: search },
                 });
                 history.push(`/searchResult/${search}`);
@@ -85,7 +85,7 @@ function Header() {
             className="header__searchIcon"
             onClick={() => {
               keyword_dispatch({
-                type: 'SEARCH',
+                type: "SEARCH",
                 item: { word: search },
               });
 
@@ -110,7 +110,7 @@ function Header() {
           <div className="header__option">
             <span className="header__optionLineOne">
               Hello
-              {cookie == 6 ? 'Admin' : 'Guest'}
+              {cookie == 6 ? "Admin" : "Guest"}
             </span>
             {!cookie ? (
               <Link to="/login" className="header__optionLinetwo">
@@ -130,18 +130,20 @@ function Header() {
                 <span className="header__optionLinetwo">Center</span>
               </div>
             </Link>
-          ) : <></>}
+          ) : (
+            <></>
+          )}
 
-          {cookie && cookie != 6? 
-          <Link to={`/user/${cookie}`}>
-          <div className="sidebar__option">
-            <span className="sidebar__optionLineOne">Users</span>
-            <span className="sidebar__optionLinetwo">Orders</span>
-          </div>
-        </Link>
-        :
-        <></>
-          }
+          {cookie && cookie != 6 ? (
+            <Link to={`/user/${cookie}`}>
+              <div className="header__option">
+                <span className="header__optionLineOne">Users</span>
+                <span className="header__optionLinetwo">Orders</span>
+              </div>
+            </Link>
+          ) : (
+            <></>
+          )}
 
           <Link to={`/checkout/${id}`}>
             <div className="header__optionBasket">

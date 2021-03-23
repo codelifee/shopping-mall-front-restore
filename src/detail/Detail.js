@@ -33,6 +33,7 @@ function Detail() {
   const [products, setProducts] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [question, setQuestion] = useState([]);
+
   const cookie = Cookies.get('user');
 
   const { id } = useParams();

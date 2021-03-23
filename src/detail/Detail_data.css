@@ -3,3 +3,15 @@
     flex-direction: column;
     justify-content: center;
 }
+
+@media all and (max-width: 414px){
+    .detail_img{
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .button_box {
+        text-align: center;
+      }
+}
