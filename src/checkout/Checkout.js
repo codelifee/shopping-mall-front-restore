@@ -12,29 +12,30 @@ import jsCookie from 'js-cookie';
 
 function Checkout() {
   const [{ basket }, dispatch] = useStateValue();
+
   const [user, setUser] = useState({});
+  const [quantity, setQuantity] = useState(1);
+
+  const removeFromBasket = () => {
+    dispatch({
+      type: 'REMOVE_FROM_BASKET',
+      id: basket.id,
+    });
+  };
+
+  const style11 = {
+    borderBottom: '1px solid red',
+  };
 
   const cookie = Cookies.get('user');
   console.log(cookie);
   console.log(user);
 
-  useEffect(() => {
-    async function getUser() {
-      const request = await axios
-        .get(`/users/${cookie}`)
-        .then((response) => setUser(response.data))
-        .catch((error) => console.log(error));
-
-      return request;
-    }
-    getUser();
-  }, []);
-
   return (
     <div className="checkout">
       <div className="checkout__left">
         <div className="checkout__second">
-          <h3>Hello, {user.user_name}</h3>
+          <h3>Hello, {cookie}님</h3>
           <h2 className="checkout__title">
             <span style={{ color: 'grey' }}>
               <i class="fas fa-shopping-cart" />
@@ -50,25 +51,91 @@ function Checkout() {
                 <th>상품금액</th>
               </thead>
               <tbody>
-                {basket.map((item) => (
-                  <CheckoutProduct
-                    id2={item.id}
-                    title2={item.title}
-                    image2={item.image}
-                    description2={item.description}
-                    price2={item.price}
-                    rating2={item.rating}
-                    quantity2={item.quantity}
-                  />
-                ))}
+                <div>
+                  {basket.map((product, index) => (
+                    <tr style={style11}>
+                      <td style={{ rowSpan: 1 }}>
+                        {' '}
+                        {
+                          <img
+                            src={product.image}
+                            alt="img"
+                            style={{ width: '80px' }}
+                          />
+                        }
+                      </td>
+                      <td
+                        style={{
+                          width: '700px',
+                        }}
+                      >
+                        <ul className="checkout_ul">
+                          <li className="checkout_li">{product.title}</li>
+                          <li className="checkout_li">
+                            {quantity > 1 ? (
+                              <button
+                                className="checkout_button"
+                                onClick={() => {
+                                  setQuantity(quantity - 1);
+                                }}
+                              >
+                                -
+                              </button>
+                            ) : (
+                              <button
+                                className="checkout_button"
+                                onClick={() => {
+                                  setQuantity(quantity);
+                                }}
+                              >
+                                -
+                              </button>
+                            )}
+                            {quantity}
+                            <button
+                              className="checkout_button"
+                              onClick={() => {
+                                setQuantity(quantity + 1);
+                              }}
+                            >
+                              +
+                            </button>
+                          </li>
+                        </ul>
+                      </td>
+
+                      <td className="order_td">
+                        <li
+                          className="checkout_li"
+                          style={{ listStyle: 'none', textAlign: 'center' }}
+                        >
+                          <small>₩</small>
+                          <strong>
+                            {new Intl.NumberFormat().format(
+                              product.price * quantity,
+                            )}
+                          </strong>
+                        </li>
+
+                        <div className="btnBox">
+                          <button className="remove" onClick={removeFromBasket}>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}{' '}
+                  ;
+                </div>
               </tbody>
             </table>
           </div>
         </div>
       </div>
-
       <div className="checkout__right">
-        <Subtotal />
+        <Subtotal price={basket.price} quantity={quantity} />
       </div>
     </div>
   );

@@ -1,12 +1,21 @@
-import React, { useState } from 'react';
-
+import React, { useState, useEffect } from 'react';
+import Subtotal from './Subtotal';
+import { useSelector } from 'react-redux';
 import fire from '../img/fire.svg';
 import { useStateValue } from '../StateProvider/StateProvider';
 import './CheckoutProduct.css';
+
+const cartFromLocalStorage = JSON.parse(localStorage.getItem('cart') || '[]');
+
 function CheckoutProduct({ id, title, image, price, rating }) {
   const [{ basket }, dispatch] = useStateValue();
   const [quantity, setQuantity] = useState(1);
-  const [price2, setPrice] = useState(price);
+  const [cart, setCart] = useState(basket);
+  console.log(cart);
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
 
   const removeFromBasket = () => {
     dispatch({
@@ -19,103 +28,77 @@ function CheckoutProduct({ id, title, image, price, rating }) {
     borderBottom: '1px solid red',
   };
 
-  // useEffect(() => {
-  //   const formData = window.localStorage.getItem('basket');
-  //   console.log(formData);
-  //   const savedValues = JSON.parse(formData);
-
-  //   updateFormValues({
-  //     ...savedValues.formValues,
-  //     id: id2,
-  //     title: title2,
-  //     image: image2,
-  //     price: price2,
-  //     quantity: quantity,
-  //   });
-  // }, []);
-
-  // useEffect(() => {
-  //   window.localStorage.setItem('basket', JSON.stringify(formValues));
-  //   console.log(formValues);
-  // });
-
   return (
-    <>
-      <tr style={style11}>
-        <td style={{ rowSpan: 2 }}>
-          {' '}
-          {<img src={image} alt="img" style={{ width: '80px' }} />}
-        </td>
-        <td
-          style={{
-            width: '700px',
-          }}
-        >
-          <ul className="checkout_ul">
-            <li className="checkout_li">{title}</li>
-            <li className="checkout_li">
-              {quantity > 1 ? (
+    <div>
+      {cart.map((product, index) => (
+        <tr style={style11}>
+          <td style={{ rowSpan: 2 }}>
+            {' '}
+            {<img src={product.image} alt="img" style={{ width: '80px' }} />}
+          </td>
+          <td
+            style={{
+              width: '700px',
+            }}
+          >
+            <ul className="checkout_ul">
+              <li className="checkout_li">{product.title}</li>
+              <li className="checkout_li">
+                {quantity > 1 ? (
+                  <button
+                    className="checkout_button"
+                    onClick={() => {
+                      setQuantity(quantity - 1);
+                    }}
+                  >
+                    -
+                  </button>
+                ) : (
+                  <button
+                    className="checkout_button"
+                    onClick={() => {
+                      setQuantity(quantity);
+                    }}
+                  >
+                    -
+                  </button>
+                )}
+                {quantity}
                 <button
                   className="checkout_button"
                   onClick={() => {
-                    setQuantity(quantity - 1);
+                    setQuantity(quantity + 1);
                   }}
                 >
-                  -
+                  +
                 </button>
-              ) : (
-                <button
-                  className="checkout_button"
-                  onClick={() => {
-                    setQuantity(quantity);
-                  }}
-                >
-                  -
-                </button>
-              )}
-              {quantity}
-              <button
-                className="checkout_button"
-                onClick={() => {
-                  setQuantity(quantity + 1);
-                }}
-              >
-                +
-              </button>
-            </li>
+              </li>
+            </ul>
+          </td>
+
+          <td className="order_td">
             <li
               className="checkout_li"
-              style={{ fontSize: '20px', fontWeight: '1000' }}
+              style={{ listStyle: 'none', textAlign: 'center' }}
             >
-              {Array(rating)
-                .fill()
-                .map((_, i) => (
-                  <img src={fire} alt="fire" />
-                ))}
+              <small>₩</small>
+              <strong>
+                {new Intl.NumberFormat().format(product.price * quantity)}
+              </strong>
             </li>
-          </ul>
-        </td>
 
-        <td className="order_td">
-          <li
-            className="checkout_li"
-            style={{ listStyle: 'none', textAlign: 'center' }}
-          >
-            <small>₩</small>
-            <strong>
-              {new Intl.NumberFormat().format(price2 * quantity)}
-            </strong>
-          </li>
-          <div className="btnBox">
-            <button className="remove" onClick={removeFromBasket}>
-              <span></span>
-              <span></span>
-              <span></span>
-            </button>
-          </div>
-        </td>
-      </tr>
-    </>
+            <div className="btnBox">
+              <button className="remove" onClick={removeFromBasket}>
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      ))}
+      ;
+    </div>
   );
 }
 

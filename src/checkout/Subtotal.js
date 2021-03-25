@@ -6,20 +6,15 @@ import { useState, useEffect } from 'react';
 import { getBasketTotal } from '../StateProvider/Reducer';
 import { useHistory } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import { useSelector } from 'react-redux';
 
-function Subtotal() {
+function Subtotal({ price, quantity }) {
   const history = useHistory();
   const [{ basket }, dispatch] = useStateValue();
   const cookie = Cookies.get('user');
 
-  const addPrice = (num) => {
-    console.log('hello');
-    basket.map((item) => setPrice((preValue) => preValue + item.price));
-  };
-
-  useEffect(() => {
-    addPrice();
-  }, []);
+  //first attempt without CurrencyFormat API
+  // const [price, setPrice] = useState(0);
 
   const ProceedToCheckout = (e) => {
     if (cookie != null) {
@@ -34,8 +29,14 @@ function Subtotal() {
         renderText={(value) => (
           <>
             <p>
-              Subtotal ({basket.length} items):
-              <strong>{addPrice}</strong>
+              총 상품금액 ({basket.length} 개) :
+              <strong>
+                {' '}
+                ₩{' '}
+                {new Intl.NumberFormat().format(
+                  getBasketTotal(basket) * quantity,
+                )}
+              </strong>
             </p>
             <small className="subtotal__gift">This order contains a gift</small>
           </>
@@ -46,29 +47,8 @@ function Subtotal() {
         thousandSeparator={true}
         prefix={'₩'}
       />
-      return (
-      <div className="subtotal">
-        <CurrencyFormat
-          renderText={(value) => (
-            <>
-              <p>
-                Subtotal ({basket.length} items):
-                <strong>{value}</strong>
-              </p>
-              <small className="subtotal__gift">
-                This order contains a gift
-              </small>
-            </>
-          )}
-          decimalScale={2}
-          value={getBasketTotal(basket)}
-          displayType={'text'}
-          thousandSeparator={true}
-          prefix={'₩'}
-        />
 
-        <button onClick={ProceedToCheckout}>Proceed to Checkout</button>
-      </div>
+      <button onClick={ProceedToCheckout}>Proceed to Checkout</button>
     </div>
   );
 }
