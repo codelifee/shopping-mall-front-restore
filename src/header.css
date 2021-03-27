@@ -85,8 +85,12 @@ a {
   transition: all 0.3s;
   font-size: 20px;
   font-weight: 800;
+  color: #999;
 }
-.header__option:hover {
+.header__option:hover,
+.header__optionLinetwo:hover {
+  cursor: pointer;
+
   color: #000;
 }
 
@@ -157,8 +161,11 @@ a {
     width: 30%;
   }
 }
+.header__optionLinetwo {
+  cursor: pointer;
+}
 
-@media all and (max-width: 414px) {
+@media all and (max-width: 435px) {
   .header {
     display: flex;
     justify-content: flex-start;
@@ -208,7 +215,4 @@ a {
 
     background: none;
   }
-}
-.header__optionLinetwo {
-  cursor: pointer;
 }

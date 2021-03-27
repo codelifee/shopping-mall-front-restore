@@ -127,7 +127,7 @@ a {
 .slide_item > .slide_item_ul > .slide_item_li > .link:hover .screen::after {
   opacity: 1;
 }
-@media all and (max-width: 414px) {
+@media all and (max-width: 435px) {
   .slide_item > .slide_item_ul > .slide_item_li > .link .screen {
     position: relative;
     overflow: hidden;
