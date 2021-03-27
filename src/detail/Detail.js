@@ -33,6 +33,7 @@ function Detail() {
   const [products, setProducts] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [question, setQuestion] = useState([]);
+
   const cookie = Cookies.get('user');
 
   const { id } = useParams();
@@ -82,7 +83,6 @@ function Detail() {
 
   return (
     <div className="detail">
-
       <div className="detail__product">
         <div className="detail__product_img">
           <img src={image1} className="img" alt="" />
@@ -159,6 +159,7 @@ function Detail() {
                       description: products.product_description,
                       price: products.product_price * quantity,
                       rating: products.product_rating,
+                      quantity: quantity,
                     },
                   });
                 }
