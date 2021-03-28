@@ -52,6 +52,7 @@ function Profile() {
           <div>
             <p>{user.user_address}</p>
           </div>
+<<<<<<< HEAD
           <div> </div>
           <Link to={`/user/updateprofile/${user_sequence_id}`}>
             <button className="update">회원 정보 수정</button>
@@ -59,6 +60,13 @@ function Profile() {
          
         </div>
 
+=======
+          <div></div>
+          <Link to={`/user/updateprofile/${user_sequence_id}`}>
+            <button className="update">회원 정보 수정</button>
+          </Link>
+        </div>
+>>>>>>> 08adf1609043558b39f7d86d20c9a938cf70028a
       </div>
     </div>
   );
