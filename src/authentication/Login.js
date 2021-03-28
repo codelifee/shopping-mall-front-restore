@@ -100,10 +100,10 @@ function Login() {
         </Link>
 
 
-        <NaverLogin
+        {/*<NaverLogin
           success={res => console.log(res)}
           fail={(res) => console.log(res)}
-        />
+        />*/}
 
         <KakaoLogin
           success={res => console.log(res)}
