@@ -50,8 +50,8 @@ a {
  color:#555;
  padding:0px 2px 0px 2px
 }
+
 .header {
-  height: 100px;
   display: flex;
   align-items: center;
   position: fixed;
@@ -179,6 +179,11 @@ a {
   width: 80px;
 }
 
+
+.header__search2{
+display: none;
+}
+
 @media all and (max-width: 800px) {
   .header__nav {
     display: none;
@@ -188,6 +193,15 @@ a {
     flex: 1;
   }
 
+  .header__option{
+    display:none;
+  }
+
+  
+  .header__search2{
+    display: none;
+    }
+
   .header__search {
     width: 30%;
   }
@@ -195,11 +209,13 @@ a {
 .header__optionLinetwo {
   cursor: pointer;
 }
-<<<<<<< HEAD
 
 @media all and (max-width: 414px) {
 
 
+  .header__search2{
+    display: block;
+    }
   .header__option__navi{
     display:none;
   }
@@ -208,12 +224,6 @@ a {
     display:none;
   }
   
-=======
-.header__search2 {
-  display: none;
-}
-@media all and (max-width: 414px) {
->>>>>>> 08adf1609043558b39f7d86d20c9a938cf70028a
   .header {
     display: flex;
     justify-content: flex-start;

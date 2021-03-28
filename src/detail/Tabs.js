@@ -24,7 +24,7 @@ function Tabs({ reviews, question }) {
       <input type="radio" name="tabmenu" id="tab03" className="tab_input" />
       <label htmlFor="tab03">
         리뷰{' '}
-        <span style={{ fontSize: '0.8rem', fontWeight: 'lighter' }}>
+        <span style={{ fontSize: '0.8rem', fontWeight: 'lighter', color:'white'}}>
           {' '}
           {new Intl.NumberFormat().format(reviews)}
         </span>
@@ -33,7 +33,7 @@ function Tabs({ reviews, question }) {
       <input type="radio" name="tabmenu" id="tab04" className="tab_input" />
       <label htmlFor="tab04">
         Q & A{' '}
-        <span style={{ fontSize: '0.8rem', fontWeight: 'lighter' }}>
+        <span style={{ fontSize: '0.8rem', fontWeight: 'lighter', color:'white'}}>
           {' '}
           {new Intl.NumberFormat().format(question)}
         </span>

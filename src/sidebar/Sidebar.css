@@ -38,7 +38,7 @@
 }
 
 .nav-text {
-  text-decoration: none;
+   text-decoration: none;
   color: #f5f5f5;
   font-size: 18px;
   width: 95%;
@@ -56,22 +56,32 @@
   text-align: center;
   cursor: pointer;
   font-family: "MaruBuri-Regular";
+  height: 4px;
 }
+
 .menu_link_ul {
-  display: flex;
+  display: block;
   align-items: center;
-  flex-direction: column;
   list-style: none;
   width: 100%;
 }
 .nav-menu-items {
-  width: 100%;
+   width: 100%;
   font-family: "MaruBuri-Regular";
-  list-style: none;
-  text-align: center;
-
 }
 
+.nav-menu-items li{
+  width:100%;
+}
+
+.navbar-toggle {
+  background-color: #fff;
+  display: flex;
+  margin-bottom: -50px;
+  justify-content: start;
+  align-items: center;
+  font-family: "MaruBuri-Regular";
+}
 
 .sidebar__user {
   width: 100%;
@@ -79,10 +89,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-<<<<<<< HEAD
-=======
 
->>>>>>> 08adf1609043558b39f7d86d20c9a938cf70028a
   font-family: "MaruBuri-Regular";
 }
 
@@ -99,8 +106,4 @@
   margin-top: 20px;
 
   font-family: "MaruBuri-Regular";
-}
-
-.header_align{
-  display:inline-block;
 }

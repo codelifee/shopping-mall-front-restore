@@ -46,7 +46,7 @@ function Sidebar() {
     fetchDate();
   }, []);
 
-  return (<>
+  return (
     <IconContext.Provider value={{ color: "#333" }}>
       <div
         style={{
@@ -62,7 +62,7 @@ function Sidebar() {
 
       <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
         <ul className="nav-menu-items" onClick={showSidebar}>
-          <li>
+          <li className="navbar-toggle">
             <Link to="#" className="menu-bars">
               <AiIcons.AiOutlineClose />
             </Link>
@@ -82,55 +82,53 @@ function Sidebar() {
               })}
             </ul>
           </li>
-
-
-            <li className="sidebar_align">
-          
-                {!cookie ? (
-                  <Link to="/login" className="sidebar__optionLinetwo">
-                    Sign In
-                  </Link>
-                ) : (
-                  <span onClick={handleLogout} className="sidebar__optionLinetwo">
-                    Sign Out
-                  </span>
-                )}
-           
-            </li>
-
-
-            <li className="header_align">
-              {cookie == 6 ? (
-                <Link to="/seller">
-              관리자페이지
+          <div className="sidebar__user">
+            <div>
+              {!cookie ? (
+                <Link to="/login" className="sidebar__optionLinetwo">
+                  Sign In
                 </Link>
               ) : (
-                <></>
+                <span onClick={handleLogout} className="sidebar__optionLinetwo">
+                  Sign Out
+                </span>
               )}
+            </div>
 
-              {cookie && cookie != 6 ? (
-                <Link to={`/user/${cookie}`}>
-         마이웰빙즙
-                </Link>
-              ) : (
-                <></>
-              )}
-            </li>
-
-
-            <li className="header_align">
-              <Link to="/checkout">
-                  <ShoppingBasketIcon />
-                  <span className="sidebar__optionLineTwo header__basketCount">
-                    {/* {basket?.length} */}
-                  </span>
+            {cookie == 6 ? (
+              <Link to="/seller">
+                <div className="sidebar__option">
+                  <span className="sidebar__optionLineOne">Admin</span>
+                  <span className="sidebar__optionLinetwo">Center</span>
+                </div>
               </Link>
-            </li>
+            ) : (
+              <></>
+            )}
 
+            {cookie && cookie != 6 ? (
+              <Link to={`/user/${cookie}`}>
+                <div className="sidebar__option">
+                  <span className="sidebar__optionLineOne">Users</span>
+                  <span className="sidebar__optionLinetwo">Orders</span>
+                </div>
+              </Link>
+            ) : (
+              <></>
+            )}
+
+            <Link to="/checkout">
+              <div className="sidebar__optionBasket">
+                <ShoppingBasketIcon />
+                <span className="sidebar__optionLineTwo header__basketCount">
+                  {/* {basket?.length} */}
+                </span>
+              </div>
+            </Link>
+          </div>
         </ul>
       </nav>
     </IconContext.Provider>
-    </>
   );
 }
 
