@@ -29,6 +29,7 @@ function SellerProducts() {
         axios.delete("products/" + id)
         .then(res => {console.log(res)
             window.location.reload(false)
+            alert('삭제가 완료 되었습니다')
         })
         .catch(err => console.log(err))
     }
@@ -41,15 +42,15 @@ function SellerProducts() {
                     <form className="sellerProduct__form">
                         <div className="sellerProduct__searchbar">
                           <div className="sellerProduct__button">
-                            <button className="sellerProduct__search-button">Search</button>
-                            <button className="sellerProduct__reset-button">Reset</button>
+                            <button className="sellerProduct__search-button">검색</button>
+                            <button className="sellerProduct__reset-button">초기화</button>
                         </div>
                         <input 
                             type="text" className="sellerProduct__input"
                             onChange={e => {setSearchTerm(e.target.value)}}
-                            /> <label className="sellerProduct__label">Category</label> 
+                            /> <label className="sellerProduct__label">카테고리</label> 
                             <select  className="sellerProduct__select">
-                                <option value="Product Name">Product Name</option>
+                                <option value="Product Name">상품명</option>
                             </select>
                             
                             
@@ -64,20 +65,21 @@ function SellerProducts() {
                     </form>
                 </div>
                 <div className="sellerProduct__info">
-                    <h2> {products.length} Product</h2>
+                    <h2> 등록된 총 상품 개수: {products.length} 개 </h2>
                     <Link to="/seller/addProduct">
-                    <button className="Button">+ Add a New Product</button>
+                    <button className="Button">+ 상품 등록</button>
                     </Link>
                     
                 </div>
                 <div className="sellerProduct__table_bg">
                     <table className="sellerProduct__table">
                             <thead>
-                                <th>Product Name</th>
-                                <th>Price</th>
-                                <th>Stock</th>
-                                <th>DELETE</th>
-                                <th>Update</th>
+                                <th>상품명</th>
+                                <th>판매가</th>
+                                <th>재고수량</th>
+                                
+                                <th>상품삭제</th>
+                                <th>상품수정</th>
                             </thead>
                             <tbody>
                             {products.filter(val => {
@@ -96,16 +98,11 @@ function SellerProducts() {
                                 name={product.product_name}
                                 price={product.product_price}
                                 handleDelete={handleDelete}
+                                stock={product.stock}
                                 />
                             ))}
                             </tbody>
                  </table> 
-
-                
- 
-
-
-
                 </div>
             </div>
         </div>

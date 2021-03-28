@@ -39,7 +39,7 @@
 }
 
 .checkout__title {
-  dispaly: flex;
+  display: flex;
   padding: 20px;
   border-bottom: 1px solid lightgray;
   background-color: white;

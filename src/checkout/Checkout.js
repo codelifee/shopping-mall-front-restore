@@ -35,7 +35,7 @@ function Checkout() {
     <div className="checkout">
       <div className="checkout__left">
         <div className="checkout__second">
-          <h3>Hello, {cookie}님</h3>
+          <h3>{cookie}님의 </h3>
           <h2 className="checkout__title">
             <span style={{ color: 'grey' }}>
               <i class="fas fa-shopping-cart" />
@@ -51,7 +51,7 @@ function Checkout() {
                 <th>상품금액</th>
               </thead>
               <tbody>
-                <div>
+               
                   {basket.map((product, index) => (
                     <tr style={style11}>
                       <td style={{ rowSpan: 1 }}>
@@ -65,7 +65,7 @@ function Checkout() {
                         }
                       </td>
                       <td
-                        style={{
+                        style={{ 
                           width: '700px',
                         }}
                       >
@@ -119,16 +119,12 @@ function Checkout() {
 
                         <div className="btnBox">
                           <button className="remove" onClick={removeFromBasket}>
-                            <span></span>
-                            <span></span>
-                            <span></span>
                           </button>
                         </div>
                       </td>
                     </tr>
                   ))}{' '}
-                  ;
-                </div>
+              
               </tbody>
             </table>
           </div>

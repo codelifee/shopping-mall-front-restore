@@ -44,6 +44,18 @@ function Detail() {
   const [{ basket }, dispatch] = useStateValue();
   const history = useHistory();
 
+
+  
+  const [cartItem, setcartItem] = useState({
+    cart_item_id: '',
+    product_id: id,
+    user_sequence_id: cookie, //로그인 한 user의 user_sequence_id넣기
+    //if review 안에 있는 user정보와 로그인된 user 정보 같으면 중복 작성 안 됨.
+    cart_item_quantity:0
+    }
+)
+
+
   useEffect(() => {
     async function getProducts() {
       const request = await axios
@@ -81,12 +93,38 @@ function Detail() {
     getQuestion();
   }, []);
 
+
+  const handleStatus = e => {
+    e.preventDefault();
+        let id = e.target.id;
+
+        setcartItem({
+            user_sequence_id: e.target.value
+        })
+
+   //     console.log(newStatus)
+
+}
+
+  
+  const patchCartItem = (e) => {
+    e.preventDefault();
+
+    axios
+      .post('cartitem', cartItem)
+      .then((res) => alert('장바구니에 상품이 저장되었습니다'))
+      .catch((err) => console.log(err));
+  };
+
   return (
+  
     <div className="detail">
       <div className="detail__product">
+   
+  
         <div className="detail__product_img">
           <img src={image1} className="img" alt="" />
-        </div>
+
         <div className="detail__product_info">
           <p className="detail__product_name">{products.product_name}</p>
           <p className="detail__product_description">
@@ -148,6 +186,7 @@ function Detail() {
 
             <button
               className="detail__keep"
+              type="submit"
               onClick={() => {
                 if (modal == false) {
                   dispatch({
@@ -161,8 +200,10 @@ function Detail() {
                       rating: products.product_rating,
                       quantity: quantity,
                     },
+                    
                   });
                 }
+                
                 setModal(!modal);
               }}
             >
@@ -183,7 +224,7 @@ function Detail() {
                       price: products.product_price * quantity,
                       rating: products.product_rating,
                     },
-                  });
+                  }  && {patchCartItem} );
                   history.push('/payment/');
                 }else{
                   alert("로그인을 해주세요!");
@@ -192,13 +233,17 @@ function Detail() {
             >
               주문하기
             </button>
+         
           </div>
+         
         </div>
       </div>
-
+    
+     
       <Tabs reviews={reviews} question={question} />
     </div>
-  );
+    </div>
+  )
 }
 
 export default Detail;

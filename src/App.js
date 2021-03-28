@@ -64,15 +64,23 @@ function App() {
             </Route>
 
             <Route path="/signup">
+
               {!isSubmittied ? (
+
                 <SignUp submitForm={submitForm} />
-              ) : (
+
+               ): (
                 (window.location.href = '/login')
               )}
             </Route>
+
+        
+
             <Route path="/login">
               <Login />
             </Route>
+
+
             <Route path="/checkout">
               <Header />
               <Checkout />

@@ -23,6 +23,8 @@ a {
   height: 100%;
 }
 
+
+
 .detail__product_img {
   width: 700px;
   height: 500px;
@@ -39,7 +41,8 @@ a {
   padding: 0;
   width: 400px;
   height: 500px;
-  flex: none;
+  display:flex;
+  flex-direction: column;
 }
 
 .detail__product_name {

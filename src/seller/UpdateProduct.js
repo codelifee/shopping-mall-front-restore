@@ -140,7 +140,7 @@ function UpdateProduct() {
                     <p>Please choose the right category for your product</p>
                 </div>
                 <form className="addProduct__search" 
-                onSubmit={postForm}>
+                onSubmit={cartForm}>
                     <div className="addProduct__searchbar">
                         <p>Product Name</p>
                         <input 
