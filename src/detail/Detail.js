@@ -44,18 +44,37 @@ function Detail() {
   const [{ basket }, dispatch] = useStateValue();
   const history = useHistory();
 
+  console.log(quantity)
+ 
+  
+  
   useEffect(() => {
     async function getProducts() {
       const request = await axios
-        .get(`products/JsonData/${id}`)
-        .then((response) => setProducts(response.data))
-        .catch((error) => console.log(error));
+      .get(`products/JsonData/${id}`)
+      .then((response) => setProducts(response.data))
+      .catch((error) => console.log(error));
       return request;
     }
-
+    
     getProducts();
   }, []);
+  
+  const postBasketItems = ()=>{
+    axios.post('/cartitems', basketItems)
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+  }
 
+  const [basketItems, setBasketItems] = useState({
+    cart_item_id: '',
+    user_sequence_id: 8,
+    cart_item_quantity: quantity,
+    product_id: id
+  })
+
+  console.log(basketItems)
+  
   useEffect(() => {
     async function getReviews() {
       const request = await axios
@@ -83,7 +102,6 @@ function Detail() {
 
   return (
     <div className="detail">
-
       <div className="detail__product">
         <div className="detail__product_img">
           <img src={image1} className="img" alt="" />
@@ -110,7 +128,7 @@ function Detail() {
               {quantity > 1 ? (
                 <button
                   onClick={() => {
-                    setQuantity(quantity - 1);
+                   return setQuantity(quantity - 1), basketItems.cart_item_quantity=quantity-1
                   }}
                   className="quantity_button"
                 >
@@ -119,7 +137,7 @@ function Detail() {
               ) : (
                 <button
                   onClick={() => {
-                    setQuantity(quantity);
+                    return setQuantity(quantity), basketItems.cart_item_quantity=quantity
                   }}
                   className="quantity_button"
                 >
@@ -129,7 +147,7 @@ function Detail() {
               구매수량 {quantity}
               <button
                 onClick={() => {
-                  setQuantity(quantity + 1);
+                  return setQuantity(quantity + 1), basketItems.cart_item_quantity=quantity+1;
                 }}
                 className="quantity_button"
               >
@@ -150,18 +168,20 @@ function Detail() {
             <button
               className="detail__keep"
               onClick={() => {
-                if (modal == false) {
-                  dispatch({
-                    type: 'ADD_TO_BASKET',
-                    item: {
-                      id: products.product_id,
-                      title: products.product_name,
-                      image: image1,
-                      description: products.product_description,
-                      price: products.product_price * quantity,
-                      rating: products.product_rating,
-                    },
-                  });
+                if (modal == false) { 
+                  // dispatch({
+                  //   type: 'ADD_TO_BASKET',
+                  //   item: {
+                  //     id: products.product_id,
+                  //     title: products.product_name,
+                  //     image: image1,
+                  //     description: products.product_description,
+                  //     price: products.product_price * quantity,
+                  //     rating: products.product_rating,
+                  //     quantity: quantity,
+                  //   },
+                  // })
+                  postBasketItems()
                 }
                 setModal(!modal);
               }}

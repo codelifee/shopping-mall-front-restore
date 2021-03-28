@@ -4,10 +4,11 @@ import UpdateProfile from "./UpdateProfile";
 import Cookies from "js-cookie";
 import Profile from "./Profile";
 import Orders from "./Orders";
-import Exchange from "./Exchange";
 import Return from "./Return";
 import OrderDetails from "./OrderDetails";
 import OrdersData from "./OrdersData";
+import Header from "./Header2";
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -37,17 +38,17 @@ function User() {
       <div className="user">
         <Switch>
           <Route path={`/user/${cookie}`}>
-            <Navbar />
+            <Header />
             <Orders />
           </Route>
 
           <Route path="/user/deleteprofile/:user_sequence_id">
-            <Navbar />
+            <Header />
             <DeleteProfile />
           </Route>
 
           <Route path="/user/updateprofile/:user_sequence_id">
-            <Navbar />
+            <Header />
             {!isSubmittied ? (
               <UpdateProfile submitForm={submitForm} />
             ) : (
@@ -55,34 +56,30 @@ function User() {
             )}
           </Route>
           <Route path="/user/deleteprofile/:user_sequence_id">
-            <Navbar />
+            <Header />
             <DeleteProfile />
           </Route>
           <Route exact path="/user/:user_sequence_id">
-            <Navbar />
+            <Header />
             <Profile />
           </Route>
 
           <Route path="/user/order/:user_sequence_id">
-            <Navbar />
+            <Header />
             <Orders />
           </Route>
           <Route path="/user/orderdata/:user_sequence_id">
-            <Navbar />
+            <Header />
             <OrdersData />
           </Route>
           <Route path="/user/orderdetail/:user_sequence_id">
-            <Navbar />
+            <Header />
             <OrderDetails />
           </Route>
 
           <Route path="/user/return/:order_id">
-            <Navbar />
+            <Header />
             <Return />
-          </Route>
-          <Route path="/user/exchange/:order_id">
-            <Navbar />
-            <Exchange />
           </Route>
         </Switch>
       </div>

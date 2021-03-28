@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Logo from "./img/logo.png";
 import SearchIcon from "@material-ui/icons/Search";
 import SearchResult from "./SearchResult";
+import Search from "./Search";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import "./header.css";
 import { Link, Redirect, useParams, useHistory } from "react-router-dom";
@@ -59,8 +60,12 @@ function Header() {
   return (
     <div className="header_container">
       <div className="header">
-        <Sidebar />
-
+        <div className="sidebar">
+          <Sidebar />
+        </div>
+        <div className="header__search2">
+          <Search />
+        </div>
         <div className="header__search">
           <input
             className="header__searchInput"

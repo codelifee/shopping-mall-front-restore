@@ -6,6 +6,7 @@ import axios from "../axios/axios";
 import { useHistory, useParams } from "react-router-dom";
 import "./Orders.css";
 import { ImageData } from "../axios/urlData";
+import * as AiIcons from "react-icons/ai";
 
 function Orders() {
   const [startDate, setStartDate] = useState(new Date());
@@ -44,11 +45,10 @@ function Orders() {
       </p> */}
       <div className="orders__container">
         <div className="orders__search">
-          <div className="orders__button">
-            <button className="orders__search-button">Search</button>
-            <button className="orders__reset-button">Reset</button>
-          </div>
           <form className="orders__searchbar">
+            <div className="orders__button">
+              <button className="orders__search-button">검색</button>
+            </div>
             <input
               name="keyword"
               placeholder="Search"
@@ -59,9 +59,12 @@ function Orders() {
               }}
             />
             <FaSearch className="search-icon" />
+            <button className="orders__reset-button">
+              <AiIcons.AiOutlineClose />
+            </button>
           </form>
           <div className="orders__category">
-            <p lassName="orders__category_p">Order Creation Date</p>
+            <p className="orders__category_p">주문 내역 조회</p>
             <DatePicker
               className="orders_date"
               selected={startDate}
@@ -71,25 +74,12 @@ function Orders() {
         </div>
 
         <div className="orders__info">
-          <h2>{orders?.length} Orders</h2>
+          <h2>{orders?.length} 개의 상품</h2>
         </div>
         <div className="orders__table">
           {orders.order_status}
-          <table
-            className="order_table"
-            style={{
-              border: "1px solid black",
-              width: "100%",
-            }}
-          >
-            <thead>
-              <th className="order_td">날짜</th>
-              <th className="order_td">상품정보</th>
-              <th className="order_td">상태</th>
-              <th className="order_td">교환/환불신청</th>
-              <th className="order_td">리뷰작성</th>
-            </thead>
-            <tbody>
+          <div className="order_table">
+            <div className="body">
               {orders
                 .filter((order) => {
                   if (searchTerm == "" /*&& product.category_id == id*/) {
@@ -121,8 +111,8 @@ function Orders() {
                     o_return={order.order_return}
                   />
                 ))}
-            </tbody>
-          </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -71,7 +71,7 @@ a {
   }
 }
 
-@media all and (max-width: 414px) {
+@media all and (max-width: 435px) {
   .slide_item2_box {
     display: flex;
     align-items: center;
