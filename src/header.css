@@ -164,8 +164,10 @@ a {
 .header__optionLinetwo {
   cursor: pointer;
 }
-
-@media all and (max-width: 435px) {
+.header__search2 {
+  display: none;
+}
+@media all and (max-width: 414px) {
   .header {
     display: flex;
     justify-content: flex-start;
@@ -188,11 +190,7 @@ a {
   }
 
   .header__search {
-    display: flex;
-    align-items: center;
-    width: 200px;
-    border-radius: 10px;
-    background: none;
+    display: none;
   }
 
   .header__searchInput {
@@ -214,5 +212,9 @@ a {
     border-radius: 10px;
 
     background: none;
+  }
+
+  .header__search2 {
+    display: block;
   }
 }

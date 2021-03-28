@@ -58,7 +58,11 @@
   font-family: "MaruBuri-Regular";
 }
 .menu_link_ul {
-  padding-left: 5%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  list-style: none;
+  width: 100%;
 }
 .nav-menu-items {
   width: 100%;
@@ -76,11 +80,12 @@
 }
 
 .sidebar__user {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding-left: 10%;
+
   font-family: "MaruBuri-Regular";
 }
 
