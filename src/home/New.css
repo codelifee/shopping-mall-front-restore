@@ -120,7 +120,7 @@ a {
 
   text-align: left;
 }
-@media all and (max-width: 414px) {
+@media all and (max-width: 435px) {
   .new_item_box {
     display: flex;
     align-items: center;

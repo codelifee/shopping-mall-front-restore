@@ -75,7 +75,7 @@
   },
   "browserslist": {
     "production": [
-      "0.2%",
+      ">0.2%",
       "not dead",
       "not op_mini all"
     ],
@@ -84,8 +84,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@ant-design/icons": "^4.5.0"
   }
 }

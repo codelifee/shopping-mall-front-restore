@@ -116,8 +116,12 @@ a {
   transition: all 0.3s;
   font-size: 15px;
   font-weight: 800;
+  color: #999;
 }
-.header__option:hover {
+.header__option:hover,
+.header__optionLinetwo:hover {
+  cursor: pointer;
+
   color: #000;
 }
 
@@ -188,6 +192,9 @@ a {
     width: 30%;
   }
 }
+.header__optionLinetwo {
+  cursor: pointer;
+}
 
 @media all and (max-width: 414px) {
 
@@ -249,7 +256,4 @@ a {
 
     background: none;
   }
-}
-.header__optionLinetwo {
-  cursor: pointer;
 }
