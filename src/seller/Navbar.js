@@ -53,7 +53,7 @@ function Navbar() {
             </div>
           )}
         </div>
-        <div className="seller_navbar__link">
+        <div className="seller__link">
           <h2>
             <FaShoppingBag />
             Order
