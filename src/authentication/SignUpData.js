@@ -32,7 +32,7 @@ const SignUpData = (callback,Validate) => {
     const handleSubmit = e =>{
         e.preventDefault();
 
-        setErrors(Validate(values));
+        setErrors(Validate(values,customer));
         setIsSubmitting(true);
     };
 
@@ -46,48 +46,18 @@ const SignUpData = (callback,Validate) => {
     );
 
     const getAll = () => {
-        axios.get(`users/all`, customer)
+        axios.get(`users/all`)
         .then(res => setCustomer(res.data))
         .catch(err => console.log(err))
     }
 
     const postForm = () => {        
-        axios.post(`users`, values)
+        axios.post(`users`, [values.user_id, values.user_pwd, values.user_name, values.user_phone, values.user_address])
         .then(alert("가입이 완료되었습니다."))
         .catch(err => console.log(err))
     }
 
-    const checkId = () => {  
-        let error = {};       
-        for(let i=0;i<customer.length;i++){
-            if(values.user_id != customer[i].user_id){
-                error.user_id = '';
-            }else{
-                error.user_id = "사용불가능한 아이디입니다.";
-                break;
-            }
-            }
-        setErrors(error);
-        console.log(error);
-    }
-    
-    const checkPhone = () => {
-        let error = {
-            user_id:'',
-            user_phone:''
-        };
-        for(let i=0;i<customer.length;i++){
-            if(values.user_phone != customer[i].user_phone){
-                error.user_phone = '';
-            }else{
-                error.user_phone = "사용불가능한 전화번호입니다.";
-                break;
-            }
-        }
-        setErrors(error);
-    }
-
-    return {handleChange, values, handleSubmit, errors, checkId, checkPhone};
+    return {handleChange, values, handleSubmit, errors};
 }
 
 export default SignUpData;

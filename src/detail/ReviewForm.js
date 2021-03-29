@@ -89,11 +89,15 @@ const formData = new FormData();
         //null이 아니면 아래 post로 동작하게 만들기
         if(form.review_picture!==null){
             return axios.post('/review/upload', formData, config)
-            .then(res => console.log(res), window.opener.parent.location.reload())
+            .then(res => console.log(res))
+            .then(window.opener.parent.location.reload())
+            .then(setTimeout("self.close()", 2000 ))
             .catch(err => console.log(err))
         }else{
             axios.post('/review', form)
-            .then(res => console.log(res), window.opener.parent.location.reload())
+            .then(res => console.log(res))
+            .then(window.opener.parent.location.reload())
+            .then(setTimeout("self.close()", 2000 ))
             .catch(err => console.log(err))
         }
     }
@@ -162,8 +166,6 @@ const formData = new FormData();
                 
                     form.review == '' ? alert("내용을 입력해주세요!") : alert("내용이 입력됐습니다.");
                 
-                
-                   setTimeout("self.close()", 2000 );
                 } 
 
                     

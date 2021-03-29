@@ -62,6 +62,7 @@ function Payment() {
                                 price={item.price}
                                 rating={item.rating}
                             />
+                                
                             })}
                         </p>
                     </div>

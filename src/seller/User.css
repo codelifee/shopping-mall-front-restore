@@ -2,6 +2,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  
 }
 
 .user__container {
@@ -10,7 +11,7 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 100px 100px 100px 1fr;
-
+  margin-top: 100px;
   background-color: #fff;
   color: #333;
   margin-bottom: 100px;
@@ -80,12 +81,6 @@
   border-radius: 5px;
 }
 
-.overall_user_table {
-  display: flex;
-  height: 900px;
-  align-items: center;
-  
-}
 
 .user__info {
   display: flex;

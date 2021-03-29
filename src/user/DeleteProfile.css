@@ -1,130 +1,112 @@
+@font-face {
+  font-family: "MaruBuri-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/MaruBuri-Regular.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 body {
-    margin: 0;
-    padding: 0;
-  }
-  .delete {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    background-color: #fff;
-    color: #333;
-  }
-  
-  .delete__container {
-    width: 800px;
-    height: 80vh;
-    display: grid;
-    margin-top: 100px;
-    padding: 20px;
-    grid-template-columns: 1fr;
-    grid-template-rows: 100px 100px auto;
-    border: 10px solid;
-    border-image: linear-gradient(45deg, #f2cb61, #bce55c);
-    border-image-slice: 1;
-    background-color: #fff;
-    color: #333;
-  }
-  .delete__container__head h1 {
-    color: #333;
-  }
-  .delete__container__head {
-    padding-left: 36px;
-    padding-top: 20px;
-  }
-  .delete__container__head p {
-    color: #333;
-  }
-  .delete__search {
-    display: flex;
-    flex-direction: column;
-    margin-left: 30px;
-    height: 400px;
-    background: #fff;
-  }
-  
-  .delete__search p {
-    color: #333;
-  }
-  
-  .delete__search input {
-    height: 30px;
-    width: 300px;
-    background: rgba(255, 183, 85, 0.3);
-    border-radius: 5px;
-    border: 1px dotted #333;
-    width: 200px;
-  }
-  
-  .delete__id {
-    display: flex;
-    margin: 20px 0 30px 50px;
-  }
-  
-  .delete__id > label {
-    margin-right: 77px;
-    color: #333;
-  }
+  margin: 0;
+  padding: 0;
+}
+.delete {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+  color: #333;
+}
 
-  .delete_password {
-    display: flex;
-    margin-left: 48px;
-    margin-bottom: 30px;
-  }
-    
-  .delete_password > label {
-    margin-right: 15px;
-    color: #333;
-  }
-  
-  .delete__name {
-    display: flex;
-    margin-left: 49px;
-    margin-bottom: 30px;
-  }
-    
-  .delete__name > label {
-    margin-right: 43px;
-    color: #333;
-  }
-  
-  .delete__phone {
-    display: flex;
-    margin-left: 49px;
-    margin-bottom: 30px;
-  }
-    
-  .delete__phone > label {
-    margin-right: 42px;
-    color: #333;
-  }
-  
-  .delete__address {
-    display: flex;
-    margin-left: 48px;
-  }
-    
-  .delete__address > label {
-    margin-right: 27px;
-    color: #333;
-  }
-  
-  .deleteBtn {
-    margin-top: 30px;
-    width: 200px;
-    margin-left: 165px;
-    border: 1px dotted #333;
-    background: #ffb755;
-    border-radius: 5px;
-  }
+.delete__container {
+  margin-top: 100px;
+  background-color: #fff;
+  color: #333;
+}
+.delete__container__head h1 {
+  color: #333;
+  font-family: "MaruBuri-Regular";
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+}
 
-  input {
-    height: 30px;
-    width: 300px;
-    background: rgba(255, 183, 85, 0.3);
-    border-radius: 5px;
-    border: 1px dotted #333;
-    width: 200px;
-  }
-  
-  
+.delete__container__head {
+}
+.delete__container__head p {
+  color: #333;
+}
+.delete__search {
+  margin-left: 10px;
+  background: #fff;
+  display: grid;
+  grid-template-columns: 100px 260px;
+  grid-template-rows: 65px 65px 65px 65px 65px 65px;
+  font-size: 12px;
+}
+
+.delete__search p {
+  color: #333;
+}
+
+.delete__input {
+  height: 30px;
+  width: 300px;
+  border: 1px solid #333;
+  width: 200px;
+  padding-left: 10px;
+  background: rgba(255, 183, 85, 0.3);
+}
+
+.delete__id {
+  padding-top: 10px;
+}
+
+.delete__id > label {
+  color: #333;
+}
+
+.delete_password {
+  padding-top: 10px;
+}
+
+.delete_password > label {
+  color: #333;
+  font-family: "MaruBuri-Regular";
+  padding-top: 50px;
+}
+
+.delete__name {
+  padding-top: 10px;
+}
+
+.delete__name > label {
+  color: #333;
+  font-family: "MaruBuri-Regular";
+}
+
+.delete__phone {
+  padding-top: 10px;
+}
+
+.delete__phone > label {
+  color: #333;
+  font-family: "MaruBuri-Regular";
+}
+
+.delete__address {
+  padding-top: 10px;
+}
+
+.delete__address > label {
+  color: #333;
+  font-family: "MaruBuri-Regular";
+}
+
+.deleteBtn {
+  margin-top: 30px;
+  width: 200px;
+  border: 1px solid #333;
+  background: rgba(0, 0, 0, 1);
+  color: #fff;
+}

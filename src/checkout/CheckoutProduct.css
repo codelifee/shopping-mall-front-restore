@@ -12,3 +12,6 @@
   align-items: center;
   justify-content: center;
 }
+.checkout__right {
+  float: right;
+}

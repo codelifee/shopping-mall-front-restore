@@ -28,7 +28,6 @@ import Login from './authentication/Login';
 import PaymentPage from './payment/PaymentPage';
 import PaymentResult from './payment/PaymentResult';
 import ScrollToTop from './ScrollToTop';
-import RegisterPage from './authentication/RegisterPage';
 
 function App() {
   const [{}, dispatch] = useStateValue();
@@ -65,18 +64,20 @@ function App() {
             </Route>
 
             <Route path="/signup">
+
               {!isSubmittied ? (
+
                 <SignUp submitForm={submitForm} />
-              ) : (
+
+               ): (
                 (window.location.href = '/login')
               )}
             </Route>
-            <Route path="/register">
-              <RegisterPage />
-            </Route>
+            
             <Route path="/login">
               <Login />
             </Route>
+
             <Route path="/checkout">
               <Header />
               <Checkout />

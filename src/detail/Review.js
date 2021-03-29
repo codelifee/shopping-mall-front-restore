@@ -173,6 +173,7 @@ function Review(props) {
             <Graph1>{isNaN(one_per) == true ? 0 : one_per.toFixed(0)}%</Graph1>
           </div>
         </div>
+        
         <div className="review__button_">
           <p>리뷰를 작성해보세요</p>
           {orderedUser.length !== 0 ? (

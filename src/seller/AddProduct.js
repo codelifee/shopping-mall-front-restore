@@ -135,6 +135,15 @@ function AddProduct() {
                         onChange={handleChange}
                         />
                     </div>
+                    <div className="stock">
+                        <label>Stock</label>
+                        <input className="stock_input"
+                        type="text" 
+                        name="stock"
+                        onChange={handleChange}
+                        />
+                    </div>
+
                     <div className="label_and_input">
                         <label>메인 이미지 1 </label>
                         <input type="file" name="product_picture" onChange={handleChange}  className="product-description_input"/>

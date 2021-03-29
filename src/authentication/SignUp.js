@@ -2,12 +2,17 @@ import React from 'react';
 import './SignUp.css';
 import SignUpData from './SignUpData';
 import Validate from '../user/ValidateInfo';
+import Header from '../Header';
+import Footer from '../footer/Footer';
 
 function SignUp({submitForm}) {
 
     const {handleChange, values, handleSubmit, errors, checkId, checkPhone} = SignUpData(submitForm,Validate);
 
     return (
+        <>
+                    <Header/>
+
         <div className="addUser">
             <div className="addUser__container">
                 <div className="addUser__container__head">
@@ -26,12 +31,6 @@ function SignUp({submitForm}) {
                             value={values.user_id}
                             onChange={handleChange}
                         />
-                        <button 
-                        type="button"
-                        onClick={checkId}
-                        >
-                            중복아이디 확인
-                        </button>
                         {errors.user_id && <p>{errors.user_id}</p>}
                     </div>
                     <div className="add_password">
@@ -80,12 +79,6 @@ function SignUp({submitForm}) {
                             value={values.user_phone}
                             onChange={handleChange}
                         />
-                        <button 
-                        type="button"
-                        onClick={checkPhone}
-                        >
-                            전화번호 확인
-                        </button>
                         {errors.user_phone && <p>{errors.user_phone}</p>}
                     </div>
                     <div className="add_address">
@@ -106,6 +99,8 @@ function SignUp({submitForm}) {
                 </form>
             </div>
         </div>
+                    <Footer/>
+</>
     )
 }
 
