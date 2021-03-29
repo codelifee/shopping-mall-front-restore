@@ -8,7 +8,6 @@ const SignUpData = (callback,Validate) => {
     useEffect(() => {
         getAll();
     }, [])
-    console.log(customer);
 
     const[values, setValues] = useState({
         user_id:'',
@@ -18,7 +17,6 @@ const SignUpData = (callback,Validate) => {
         user_phone:'',
         user_address:''
     });
-    console.log(values);
 
     const [errors, setErrors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -59,24 +57,28 @@ const SignUpData = (callback,Validate) => {
         .catch(err => console.log(err))
     }
 
-    const checkId = () => {
-        let error = {};            
-            for(let i=0;i<customer.length;i++){
-                if(values.user_id != customer[i].user_id){
-                    error.user_id = "사용가능한 아이디입니다.";
-                }else{
-                    error.user_id = "사용불가능한 아이디입니다.";
-                    break;
-                }
+    const checkId = () => {  
+        let error = {};       
+        for(let i=0;i<customer.length;i++){
+            if(values.user_id != customer[i].user_id){
+                error.user_id = '';
+            }else{
+                error.user_id = "사용불가능한 아이디입니다.";
+                break;
+            }
             }
         setErrors(error);
+        console.log(error);
     }
     
     const checkPhone = () => {
-        let error = {};
+        let error = {
+            user_id:'',
+            user_phone:''
+        };
         for(let i=0;i<customer.length;i++){
             if(values.user_phone != customer[i].user_phone){
-                error.user_phone = "사용가능한 전화번호입니다.";
+                error.user_phone = '';
             }else{
                 error.user_phone = "사용불가능한 전화번호입니다.";
                 break;

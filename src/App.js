@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 import Home from './home/Home';
 import SearchResult from './SearchResult';
 import Seller from './seller/Seller';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Checkout from './checkout/Checkout';
 import Detail from './detail/Detail';
 import { auth } from './configuration/firebase';
@@ -28,6 +28,7 @@ import Login from './authentication/Login';
 import PaymentPage from './payment/PaymentPage';
 import PaymentResult from './payment/PaymentResult';
 import ScrollToTop from './ScrollToTop';
+import RegisterPage from './authentication/RegisterPage';
 
 function App() {
   const [{}, dispatch] = useStateValue();
@@ -69,6 +70,9 @@ function App() {
               ) : (
                 (window.location.href = '/login')
               )}
+            </Route>
+            <Route path="/register">
+              <RegisterPage />
             </Route>
             <Route path="/login">
               <Login />
