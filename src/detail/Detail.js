@@ -4,51 +4,36 @@ import { useParams, useHistory } from 'react-router-dom';
 import './Detail.css';
 import { useStateValue } from '../StateProvider/StateProvider';
 import axios from '../axios/axios';
-import './Modal.css';
+import BasketModal from './BasketModal.js'
 import { ImageData } from '../axios/urlData';
 import Cookies from 'js-cookie';
 
-function Modal(props) {
-  const history = useHistory();
-  return (
-    <div id="myModal" className="modal">
-      <span className="close_modal" onClick={()=>{
-        return props.close();
-      }}>X</span>
-      <div className="modal_content">
-        <h4>
-          장바구니에 상품이 <br /> 담겼습니다.
-        </h4>
-        <button
-          className="modalButton"
-          onClick={() => {
-            history.push('/checkout');
-          }}
-        >
-          장바구니로 이동
-        </button>
-      </div>
-    </div>
-  );
-}
-
 function Detail() {
+  
+  const { id } = useParams();
+
   const [products, setProducts] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [question, setQuestion] = useState([]);
-
-  const cookie = Cookies.get('user');
-
-  const { id } = useParams();
-
-  let image1 = ImageData.image1 + id;
   const [modal, setModal] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const [{ basket }, dispatch] = useStateValue();
   const history = useHistory();
+  const [basketItems, setBasketItems] = useState({
+    cart_item_id: '',
+    user_sequence_id: 8,
+    cart_item_quantity: quantity,
+    product_id: id
+  })
+  
+  let image1 = ImageData.image1 + id;
+  
+  const cookie = Cookies.get('user');
+  
+  const closeModal = () => {
+    setModal(!modal)
+  }
 
-  console.log(quantity)
- 
   useEffect(() => {
     async function getProducts() {
       const request = await axios
@@ -60,26 +45,7 @@ function Detail() {
     
     getProducts();
   }, []);
-  
-  const closeModal = () => {
-    setModal(!modal)
-  }
 
-  const postBasketItems = ()=>{
-    axios.post('/cartitems', basketItems)
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
-  }
-
-  const [basketItems, setBasketItems] = useState({
-    cart_item_id: '',
-    user_sequence_id: 8,
-    cart_item_quantity: quantity,
-    product_id: id
-  })
-
-  console.log(basketItems)
-  
   useEffect(() => {
     async function getReviews() {
       const request = await axios
@@ -104,6 +70,12 @@ function Detail() {
     }
     getQuestion();
   }, []);
+
+  const postBasketItems = ()=>{
+    axios.post('/cartitems', basketItems)
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+  }
 
   return (
     <div className="detail">
@@ -164,7 +136,7 @@ function Detail() {
             </p>
           </div>
           <div className="button_box">
-            {modal == true ? <Modal close={closeModal}/> : null}
+            {modal == true ? <BasketModal close={closeModal}/> : null}
             <button
               className="detail__keep"
               onClick={() => {
@@ -180,18 +152,8 @@ function Detail() {
             <button
               className="detail__order"
               onClick={() => {
-                if( cookie != null){
-                  dispatch({
-                    type: 'ADD_TO_BASKET',
-                    item: {
-                      id: products.product_id,
-                      title: products.product_name,
-                      image: image1,
-                      description: products.product_description,
-                      price: products.product_price * quantity,
-                      rating: products.product_rating,
-                    },
-                  });
+                if(cookie != null){
+                  postBasketItems()
                   history.push('/payment/');
                 }else{
                   alert("로그인을 해주세요!");
