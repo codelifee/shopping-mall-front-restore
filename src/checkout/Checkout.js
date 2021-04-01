@@ -9,13 +9,23 @@ import Cookies from 'js-cookie';
 import axios from '../axios/axios';
 import { formatCountdown } from 'antd/lib/statistic/utils';
 import jsCookie from 'js-cookie';
-
+import { ImageData } from "../axios/urlData";
 function Checkout() {
   const [{ basket }, dispatch] = useStateValue();
+  const[users, setUsers]=useState("");
 
   const [user, setUser] = useState({});
-  const [quantity, setQuantity] = useState(1);
-
+  const [quantity, setQuantity] = useState([]);
+  const image = ImageData.image1;
+  const [checkoutItems, setCheckoutItems] = useState([{
+    cart_item_id: '',
+    user_sequence_id: Cookies.get('user'),
+    cart_item_quantity: 0,
+    product_id: '',
+    price:0,
+    product_name:'',
+    product_price:0
+  }])
   const removeFromBasket = () => {
     dispatch({
       type: 'REMOVE_FROM_BASKET',
@@ -24,18 +34,42 @@ function Checkout() {
   };
 
   const style11 = {
-    borderBottom: '1px solid red',
+    borderBottom: '1px solid black',
   };
-
   const cookie = Cookies.get('user');
-  console.log(cookie);
-  console.log(user);
+
+  useEffect(() => {
+    //var id = basket.map((item)=>item.id);
+    async function getCheckoutItems() {
+      const request = await axios
+        .get(`cartitems/getCartItemsByUser/${cookie}`)
+        .then(response => {setCheckoutItems(response.data)
+        console.log(response.data)})
+                .catch((error) => console.log(error));
+      return request;
+    }
+    getCheckoutItems();
+  }, [checkoutItems]);
+
+
+  useEffect(() => {
+    async function getUserName() {
+      const request = await axios
+        .get(`users/${Cookies.get("user")}`)
+        .then((response) => setUsers(response.data))
+        .catch((error) => console.log(error));
+
+      return request;
+    }
+
+    getUserName();
+  }, []);
 
   return (
     <div className="checkout">
       <div className="checkout__left">
         <div className="checkout__second">
-          <h3>{cookie}님의 </h3>
+          <h3>{users.user_name}님의 </h3>
           <h2 className="checkout__title">
             <span style={{ color: 'grey' }}>
               <i class="fas fa-shopping-cart" />
@@ -51,80 +85,15 @@ function Checkout() {
                 <th>상품금액</th>
               </thead>
               <tbody>
-               
-                  {basket.map((product, index) => (
-                    <tr style={style11}>
-                      <td style={{ rowSpan: 1 }}>
-                        {' '}
-                        {
-                          <img
-                            src={product.image}
-                            alt="img"
-                            style={{ width: '80px' }}
-                          />
-                        }
-                      </td>
-                      <td
-                        style={{ 
-                          width: '700px',
-                        }}
-                      >
-                        <ul className="checkout_ul">
-                          <li className="checkout_li">{product.title}</li>
-                          <li className="checkout_li">
-                            {quantity > 1 ? (
-                              <button
-                                className="checkout_button"
-                                onClick={() => {
-                                  setQuantity(quantity - 1);
-                                }}
-                              >
-                                -
-                              </button>
-                            ) : (
-                              <button
-                                className="checkout_button"
-                                onClick={() => {
-                                  setQuantity(quantity);
-                                }}
-                              >
-                                -
-                              </button>
-                            )}
-                            {quantity}
-                            <button
-                              className="checkout_button"
-                              onClick={() => {
-                                setQuantity(quantity + 1);
-                              }}
-                            >
-                              +
-                            </button>
-                          </li>
-                        </ul>
-                      </td>
-
-                      <td className="order_td">
-                        <li
-                          className="checkout_li"
-                          style={{ listStyle: 'none', textAlign: 'center' }}
-                        >
-                          <small>₩</small>
-                          <strong>
-                            {new Intl.NumberFormat().format(
-                              product.price * quantity,
-                            )}
-                          </strong>
-                        </li>
-
-                        <div className="btnBox">
-                          <button className="remove" onClick={removeFromBasket}>
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}{' '}
-              
+              {checkoutItems.map((check, index) => (<CheckoutProduct
+              id={check.product_id}
+              cart_id={check.cart_item_quantity}
+              title={check.product_name}
+              quantity={check.cart_item_quantity}
+              image={image+check.product_id}
+              price={check.product_price}
+         />
+              ))}
               </tbody>
             </table>
           </div>
