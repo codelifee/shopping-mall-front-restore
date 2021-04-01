@@ -21,7 +21,6 @@ function Product(props) {
         image: image + props.id,
         description: props.description,
         price: props.price,
-        //rating: props.product_rating
       },
     });
   };
@@ -61,17 +60,6 @@ function Product(props) {
             <FaComment style={{ color: 'rgba(230, 125, 122, 0.7)' }} />
             <small> &nbsp; ({props.comment})</small>
           </div>
-        </div>
-        <div className="product2__rating">
-          {
-            //Array(props.product_rating)
-            //.fill()
-            //.map((_, i) => (
-            //   <p>
-            //   {/* <img src={fire} alt=""/> */}
-            //   </p>
-            // ))
-          }
         </div>
       </div>
     </div>
