@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Tabs from './Tabs';
 import { useParams, useHistory } from 'react-router-dom';
 import './Detail.css';
-import { useStateValue } from '../StateProvider/StateProvider';
 import axios from '../axios/axios';
 import BasketModal from './BasketModal.js'
 import { ImageData } from '../axios/urlData';
@@ -13,11 +12,8 @@ function Detail() {
   const { id } = useParams();
 
   const [products, setProducts] = useState([]);
-  const [reviews, setReviews] = useState([]);
-  const [question, setQuestion] = useState([]);
   const [modal, setModal] = useState(false);
   const [quantity, setQuantity] = useState(1);
-  const [{ basket }, dispatch] = useStateValue();
   const history = useHistory();
   const [basketItems, setBasketItems] = useState({
     cart_item_id: '',
@@ -44,31 +40,6 @@ function Detail() {
     }
     
     getProducts();
-  }, []);
-
-  useEffect(() => {
-    async function getReviews() {
-      const request = await axios
-        .get(`/review/JsonDataByProductId/${id}`)
-        .then((response) => setReviews(response.data))
-        .catch((error) => console.log(error));
-
-      return request;
-    }
-
-    getReviews();
-  }, []);
-
-  useEffect(() => {
-    async function getQuestion() {
-      const request = await axios
-        .get(`/question/countByProductId/${id}`)
-        .then((response) => setQuestion(response.data))
-        .catch((error) => console.log(error));
-
-      return request;
-    }
-    getQuestion();
   }, []);
 
   const postBasketItems = ()=>{
@@ -166,7 +137,7 @@ function Detail() {
         </div>
       </div>
 
-      <Tabs reviews={reviews} question={question} />
+      <Tabs/>
     </div>
   );
 }
