@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import './StarRating.css';
+import './UpdateStarRating.css';
 import { FaStar } from 'react-icons/fa';
 
-function StarRating(props){
+function UpdateStarRating(props){
 	const [rating, setRating] = useState(null);
 	const [hover, setHover] = useState(null);
 
@@ -19,7 +19,7 @@ function StarRating(props){
 				  type="radio"
 				  name="rating"
 				  value={ratingValue}
-				  onClick={() => (props.form.star = ratingValue)}
+				  onClick={() => (props.review.star = ratingValue)}
 				/>
 				<FaStar
 				  className="star"
@@ -36,4 +36,4 @@ function StarRating(props){
 		</div>
 	)
 }
-export default StarRating;
+export default UpdateStarRating;

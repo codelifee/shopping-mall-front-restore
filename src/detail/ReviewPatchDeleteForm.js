@@ -1,181 +1,157 @@
-import React,{useState, useEffect} from 'react';
-import './ReviewPatchDeleteForm.css';
-import { FaStar } from 'react-icons/fa'
-import {useStateValue} from '../StateProvider/StateProvider';
-import axios from '../axios/axios';
-import {useHistory, useParams} from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import "./ReviewPatchDeleteForm.css";
+import UpdateStarRating from "./UpdateStarRating";
+import axios from "../axios/axios";
+import { useParams } from "react-router-dom";
 
-function ReviewPatchDeleteForm(){
+function ReviewPatchDeleteForm() {
+  const { id } = useParams(); //review_id
 
+  const [review, setReview] = useState([]);
 
-const history = useHistory();
-
-const [rating, setRating] = useState(null);
-	
-const [hover, setHover] = useState(null);
-
-const {id} = useParams(); //review_id
-
-const [reviews, setReviews] = useState([]);
-
-useEffect(() => {
-    async function fetchDate() {
+  useEffect(() => {
+    async function getReview() {
       const request = await axios
-      .get(`review/${id}`)
-      .then((response) => setReviews(response.data))
-      .catch((error) => console.log(error));
-      
+        .get(`review/${id}`)
+        .then((response) => setReview(response.data))
+        .catch((error) => console.log(error));
+
       return request;
     }
-    
-    fetchDate();
+
+    getReview();
   }, []);
 
-const formData = new FormData();
+  const formData = new FormData();
 
-    formData.append('review_picture', reviews.review_picture)
+  formData.append("review_picture", review.review_picture);
 
-    const config = {
-        headers: {
-            'Content-Type': 'multipart/form-data'
-        }
+  const config = {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  };
+
+  const handleChange = (e) => {
+    e.preventDefault();
+
+    if (e.target.name == "star") {
+      setReview({
+        ...review,
+        [e.target.name]: parseInt(e.target.value),
+      });
+    } else {
+      setReview({
+        ...review,
+        [e.target.name]: e.target.value,
+      });
     }
+  };
 
-    const handleChange = e => {
-        e.preventDefault()
+  const handleFileChange = (e) => {
+    e.preventDefault();
 
-        if (e.target.name == "star") {
-            setReviews({
-                ...reviews,
-                [e.target.name]: parseInt(e.target.value) 
-            })
-        } else {
-            setReviews({
-                ...reviews,
-                [e.target.name]: e.target.value 
-            })
-        }
+    setReview({
+      ...review,
+      [e.target.name]: e.target.files[0],
+    });
+  };
 
-    }
+  const updateForm = (e) => {
+    e.preventDefault();
 
-    const handleFileChange = e => {
-        e.preventDefault()
-
-        setReviews({
-            ...reviews,
-            [e.target.name]: e.target.files[0]
-        })
-    }
-
-    const updateForm = (e) => {
-        e.preventDefault();
-        
-        if(reviews.review_picture!=null){
-            return (axios.patch(`/review/image/${id}`, formData, config)
-            .then(res => console.log(res))
-            .then(window.opener.parent.location.reload())
-            .then(setTimeout("self.close()", 2000 ))
-            .catch(err => console.log(err)))&&
-            (axios.patch(`/review/${id}`, {review:reviews.review,
-                star: reviews.star
-            })
-            .then(res => console.log(res))
-            .then(window.opener.parent.location.reload())
-            .then(setTimeout("self.close()", 2000 ))
-            .catch(err => console.log(err))
-            )
-        }else{
-            axios.patch(`/review/${id}`, reviews)
-            .then(res => console.log(res))
-            .then(window.opener.parent.location.reload())
-            .then(setTimeout("self.close()", 2000 ))
-            .catch(err => console.log(err))
-        }
-    }
-
-    const deleteReview=()=>{
-        axios.delete(`/review/${id}`)
-        .then(res => console.log(res))
+    if (review.review_picture != null) {
+      return (
+        axios
+          .patch(`/review/image/${id}`, formData, config)
+          .then((res) => console.log(res))
+          .then(window.opener.parent.location.reload())
+          .then(setTimeout("self.close()", 2000))
+          .catch((err) => console.log(err)) &&
+        axios
+          .patch(`/review/${id}`, { review: review.review, star: review.star })
+          .then((res) => console.log(res))
+          .then(window.opener.parent.location.reload())
+          .then(setTimeout("self.close()", 2000))
+          .catch((err) => console.log(err))
+      );
+    } else {
+      axios
+        .patch(`/review/${id}`, review)
+        .then((res) => console.log(res))
         .then(window.opener.parent.location.reload())
-        .then(setTimeout("self.close()", 2000 ))
-        .catch(err => console.log(err))
-      }
+        .then(setTimeout("self.close()", 2000))
+        .catch((err) => console.log(err));
+    }
+  };
 
+  const deleteReview = () => {
+    axios
+      .delete(`/review/${id}`)
+      .then((res) => console.log(res))
+      .then(window.opener.parent.location.reload())
+      .then(setTimeout("self.close()", 2000))
+      .catch((err) => console.log(err));
+  };
 
-     return(
-         <div className="ReviewUpdateForm">
+  return (
+    <div className="ReviewUpdateForm">
+      <div className="stars">
+        <UpdateStarRating review={review} />
+      </div>
 
-             <div className="stars">
-			{
-				[...Array(5)].map((star,i) => {
-					const ratingValue = i + 1;
-                    
-					return (
-						<label key={i}>
-							<input 
-								type="radio" 
-                                className="rating_star"
-								name="rating" 
-								value={ratingValue}
-								onClick={()=>reviews.star=ratingValue}              
-							/>
-							<FaStar 
-								className="star" 
-								color={ratingValue <= (hover||rating) ? "#ffc107" : "#e4e5e9"} 
-								size={100}
-								onMouseEnter={()=>setHover(ratingValue)}
-								onMouseLeave={()=>setHover(ratingValue)}
-							/>
-                            
-                            <p className="stars_score"> {ratingValue} 점 </p> 
-						</label>
-					);
-				})}
-		    </div>
+      <form
+        className="review_update_form"
+        onSubmit={review.review !== "" ? updateForm : null}
+      >
+        <label htmlFor="input">리뷰 작성</label>
 
-            <form className="review_update_form" onSubmit={reviews.review !== '' ? updateForm : null}> 
-                <label htmlFor="input">리뷰 작성</label>
-              
-                <input 
-                id="input"
-                type="text" 
-                name="review"
-                value={reviews.review}
-                onChange={handleChange}
-                />
+        <input
+          id="ReviewUpdateForm__input"
+          type="text"
+          name="review"
+          value={review.review}
+          onChange={handleChange}
+        />
 
-                <div className="file_upload">
-                   
-                <input 
-                    type="file" 
-                    id="file_upload"
-                    name="review_picture" 
-                    file={reviews.review_picture} 
-                    multiple onChange={handleFileChange}/>
-                    
-                </div>    
-            
-                {console.log(reviews)}
+        <div className="ReviewUpdateForm__file_upload">
+          <input
+            type="file"
+            id="ReviewUpdateForm__file_upload"
+            name="review_picture"
+            file={review.review_picture}
+            multiple
+            onChange={handleFileChange}
+          />
+        </div>
 
-                <div className="button">
-                
-                    <button className="reviewPatchSubmit" type="submit" onClick={()=>{
-                        
-                        reviews.review == '' ? alert("내용을 입력해주세요!") : alert("내용이 입력됐습니다.");
+        {console.log(review)}
 
-                } 
-                        
-                        }>수정</button> &nbsp;
-                
-                    <button className="reviewDelete" onClick={()=>{
-                        return deleteReview() 
-                    }}>삭제</button>
-                </div>
-            </form>
-            
+        <div className="ReviewUpdateForm__button">
+          <button
+            className="ReviewUpdateForm__reviewPatchSubmit"
+            type="submit"
+            onClick={() => {
+              review.review == ""
+                ? alert("내용을 입력해주세요!")
+                : alert("내용이 입력됐습니다.");
+            }}
+          >
+            수정
+          </button>{" "}
+          &nbsp;
+          <button
+            className="ReviewUpdateForm__reviewDelete"
+            onClick={() => {
+              return deleteReview();
+            }}
+          >
+            삭제
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+}
 
-         </div>
-     );
- }
-
- export default ReviewPatchDeleteForm;
+export default ReviewPatchDeleteForm;

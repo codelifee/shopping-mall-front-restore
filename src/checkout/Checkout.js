@@ -12,6 +12,8 @@ import jsCookie from 'js-cookie';
 import { ImageData } from "../axios/urlData";
 function Checkout() {
   const [{ basket }, dispatch] = useStateValue();
+  const[users, setUsers]=useState("");
+
   const [user, setUser] = useState({});
   const [quantity, setQuantity] = useState([]);
   const image = ImageData.image1;
@@ -50,12 +52,24 @@ function Checkout() {
   }, [checkoutItems]);
 
 
+  useEffect(() => {
+    async function getUserName() {
+      const request = await axios
+        .get(`users/${Cookies.get("user")}`)
+        .then((response) => setUsers(response.data))
+        .catch((error) => console.log(error));
+
+      return request;
+    }
+
+    getUserName();
+  }, []);
 
   return (
     <div className="checkout">
       <div className="checkout__left">
         <div className="checkout__second">
-          <h3>{cookie}님의 </h3>
+          <h3>{users.user_name}님의 </h3>
           <h2 className="checkout__title">
             <span style={{ color: 'grey' }}>
               <i class="fas fa-shopping-cart" />

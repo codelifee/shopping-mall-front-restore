@@ -4,7 +4,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import './Detail.css';
 import { useStateValue } from '../StateProvider/StateProvider';
 import axios from '../axios/axios';
-import './Modal.css';
+import BasketModal from './BasketModal.js'
 import { ImageData } from '../axios/urlData';
 import Cookies from 'js-cookie';
 import * as FaIcons from "react-icons/fa";
@@ -34,24 +34,26 @@ function Modal() {
 }
 
 function Detail() {
+  
+  const { id } = useParams();
+
   const [products, setProducts] = useState([]);
   const [reviews, setReviews] = useState([]);
 
   const [question, setQuestion] = useState([]);
-
-  const cookie = Cookies.get('user');
-
-  const { id } = useParams();
-
-  let image1 = ImageData.image1 + id;
   const [modal, setModal] = useState(false);
 
   const [quantity, setQuantity] = useState(1);
   const [{ basket }, dispatch] = useStateValue();
   const history = useHistory();
 
-  console.log(quantity)
- 
+  let image1 = ImageData.image1 + id;
+  
+  const cookie = Cookies.get('user');
+  
+  const closeModal = () => {
+    setModal(!modal)
+  }
 
   useEffect(() => {
     async function getProducts() {
@@ -108,6 +110,7 @@ function Detail() {
     getQuestion();
   }, []);
 
+
   return (
     <div className="detail">
       <div className="detail__product">
@@ -125,10 +128,6 @@ function Detail() {
           </p>
           <p className="detail__product_delivery">
             배송정보 | 도서산간지역 제외 평균 2~3일 배송
-          </p>
-          {/* <p className="detail__product_deliveryPrice">배송료 정보</p> */}
-          <p className="detail__product_deliveryPrice_">
-            {/* 일반지역 2,500원 / 도서산간지역 4,000원{" "} */}
           </p>
           <p className="detail__proudct_stock">재고 : {products.stock}</p>
           <div className="center">
@@ -171,24 +170,11 @@ function Detail() {
             </p>
           </div>
           <div className="button_box">
-            {modal == true? <Modal/>:null}
-
+            {modal == true ? <BasketModal close={closeModal}/> : null}
             <button
               className="detail__keep"
               onClick={() => {
                 if (modal == false) { 
-                  // dispatch({
-                  //   type: 'ADD_TO_BASKET',
-                  //   item: {
-                  //     id: products.product_id,
-                  //     title: products.product_name,
-                  //     image: image1,
-                  //     description: products.product_description,
-                  //     price: products.product_price * quantity,
-                  //     rating: products.product_rating,
-                  //     quantity: quantity,
-                  //   },
-                  // })
                   postBasketItems()
                 }
                 setModal(!modal);
@@ -200,18 +186,8 @@ function Detail() {
             <button
               className="detail__order"
               onClick={() => {
-                if( cookie != null){
-                  dispatch({
-                    type: 'ADD_TO_BASKET',
-                    item: {
-                      id: products.product_id,
-                      title: products.product_name,
-                      image: image1,
-                      description: products.product_description,
-                      price: products.product_price * quantity,
-                      rating: products.product_rating,
-                    },
-                  });
+                if(cookie != null){
+                  postBasketItems()
                   history.push('/payment/');
                 }else{
                   alert("로그인을 해주세요!");

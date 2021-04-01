@@ -16,90 +16,78 @@ function SignUp({submitForm}) {
         <div className="addUser">
             <div className="addUser__container">
                 <div className="addUser__container__head">
-                    <h1>Sign up</h1>
+                    <h1>회원가입</h1>
                 </div>
                 <form className="addUser__search" 
                 onSubmit={handleSubmit}
                 >
                     <div className="add_id">
-                        <label htmlFor="">Id</label>
+                        <label htmlFor="">아이디</label>
                         <input 
                             id="user_id"
                             type="email" 
                             name="user_id"
-                            placeholder="Enter your id"
+                            placeholder="아이디를 입력하세요"
                             value={values.user_id}
                             onChange={handleChange}
                         />
-                        <button 
-                        type="button"
-                        onClick={checkId}
-                        >
-                            Check Id
-                        </button>
                         {errors.user_id && <p>{errors.user_id}</p>}
                     </div>
                     <div className="add_password">
-                        <label htmlFor="">Password</label>
+                        <label htmlFor="">비밀번호</label>
                         <input 
                             id="user_pwd"
                             type="password" 
                             name="user_pwd"
-                            placeholder="Enter your password"
+                            placeholder="비밀번호를 입력하세요"
                             value={values.user_pwd}
                             onChange={handleChange}
                         />
                         {errors.user_pwd && <p>{errors.user_pwd}</p>}
                     </div>
                     <div className="add_password2">
-                        <label htmlFor="">Confirm <br/>Password</label>
+                        <label htmlFor="">비밀번호<br/>확인</label>
                         <input 
                             id="user_pwd2"
                             type="password" 
                             name="user_pwd2"
-                            placeholder="Enter your password again"
+                            placeholder="비밀번호 확인을 입력하세요"
                             value={values.user_pwd2}
                             onChange={handleChange}
                         />
                         {errors.user_pwd2 && <p>{errors.user_pwd2}</p>}
                     </div>
                     <div className="add_name">
-                        <label htmlFor="">Name</label>
+                        <label htmlFor="">이름</label>
                         <input 
                             id="user_name"
                             type="text" 
                             name="user_name"
-                            placeholder="Enter your name"
+                            placeholder="이름을 입력하세요"
                             value={values.user_name}
                             onChange={handleChange}
                         />
                         {errors.user_name && <p>{errors.user_name}</p>}
                     </div>
                     <div className="add_phone">
-                        <label htmlFor="">Phone</label>
+                        <label htmlFor="">전화번호</label>
                         <input 
                             id="user_phone"
                             type="text" 
                             name="user_phone"
-                            placeholder="Enter your phone number"
+                            placeholder="전화번호를 입력하세요"
                             value={values.user_phone}
                             onChange={handleChange}
                         />
-                        <button 
-                        type="button"
-                        onClick={checkPhone}
-                        >
-                            Check Phone
-                        </button>
                         {errors.user_phone && <p>{errors.user_phone}</p>}
                     </div>
                     <div className="add_address">
-                        <label htmlFor="">Address</label>
+                        <label htmlFor="">주소</label>
                         <input 
                             id="user_address"
                             type="text" 
                             name="user_address"
-                            placeholder="Enter your address"
+                            placeholder="주소를 입력하세요"
                             value={values.user_address}
                             onChange={handleChange}
                         />
@@ -107,7 +95,7 @@ function SignUp({submitForm}) {
                     </div>
                     <button 
                     type="submit"
-                    >Submit</button>
+                    >가입</button>
                 </form>
             </div>
         </div>

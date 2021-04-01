@@ -6,27 +6,23 @@
   box-sizing: border-box;
 }
 
-.header__option__navi{
-float:right; 
+.header__option__navi {
+  float: right;
   list-style: none;
-  width:600px;
-  height:120px;
-
+  width: 600px;
+  height: 120px;
 }
-.header__cookie{
-  font-size:40px;
+.header__cookie {
+  font-size: 40px;
   font-weight: bolder;
 }
-.header_li{
-  float:right;
+.header_li {
+  float: right;
   margin: 5px 5px;
   line-height: 119px;
   text-align: right;
-  vertical-align: middle
-
+  vertical-align: middle;
 }
-
-
 
 a {
   text-decoration: none;
@@ -42,13 +38,10 @@ a {
   align-items: center;
 }
 
-
-
-
-.header__stick{
- font-weight:ligher;
- color:#555;
- padding:0px 2px 0px 2px
+.header__stick {
+  font-weight: bolder;
+  color: #555;
+  padding: 0px 2px 0px 2px;
 }
 
 .header {
@@ -106,7 +99,7 @@ a {
 }
 
 .header__optionLineOne {
-  font-size:20px;
+  font-size: 10px;
   text-align: center;
   font-weight: 800;
   margin-top: 10px;
@@ -114,9 +107,6 @@ a {
 
 .header__option .header__optionLinetwo {
   transition: all 0.3s;
-  font-size: 15px;
-  font-weight: 800;
-  color: #999;
 }
 .header__option:hover,
 .header__optionLinetwo:hover {
@@ -130,7 +120,7 @@ a {
   display: flex;
   align-items: center;
   color: #555;
-  margin-top: 7px;
+  margin-top: 20px;
 }
 .header__optionBasket:hover {
   color: #000;
@@ -179,9 +169,8 @@ a {
   width: 80px;
 }
 
-
-.header__search2{
-display: none;
+.header__search2 {
+  display: none;
 }
 
 @media all and (max-width: 800px) {
@@ -193,14 +182,13 @@ display: none;
     flex: 1;
   }
 
-  .header__option{
-    display:none;
+  .header__option {
+    display: none;
   }
 
-  
-  .header__search2{
+  .header__search2 {
     display: none;
-    }
+  }
 
   .header__search {
     width: 30%;
@@ -209,21 +197,21 @@ display: none;
 .header__optionLinetwo {
   cursor: pointer;
 }
-
+.header__search2 {
+  display: none;
+}
 @media all and (max-width: 414px) {
-
-
-  .header__search2{
+  .header__search2 {
     display: block;
-    }
-  .header__option__navi{
-    display:none;
+  }
+  .header__option__navi {
+    display: none;
   }
 
-  .header__option{
-    display:none;
+  .header__option {
+    display: none;
   }
-  
+
   .header {
     display: flex;
     justify-content: flex-start;

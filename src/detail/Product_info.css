@@ -20,7 +20,30 @@ dt{
     margin-bottom: 20px;
 }
 
+
+
+@media all and (max-width: 768px){
+
+    .product_info {
+        width: 100%;
+    }
+    .product_info__detail_img {
+        width: 100%;
+    }
+}
+
 @media all and (max-width: 414px){
+
+    .product_info {
+        width: 100%;
+    }
+    .product_info__detail_img {
+        width: 100%;
+    }
+}
+
+
+@media all and (max-width: 280px){
 
     .product_info {
         width: 100%;
