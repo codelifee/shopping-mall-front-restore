@@ -18,14 +18,15 @@
   margin-top: 20px;
 }
 
-.checkout_table td,
-.checkout_table th {
+.checkout_table td{
   border: 1px dotted gray;
   text-align: center;
 }
 
 .checkout_table th {
-  background-color: khaki;
+  background-color: white;
+  text-align: center;
+  font-size: 15pt;
 }
 
 .checkout__left {

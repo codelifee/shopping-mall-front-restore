@@ -7,8 +7,12 @@ import axios from '../axios/axios';
 import './Modal.css';
 import { ImageData } from '../axios/urlData';
 import Cookies from 'js-cookie';
+import * as FaIcons from "react-icons/fa";
 
 function Modal() {
+  const [modal, setModal] = useState(false);
+  const hideModal = () => setModal(!modal);
+
   const history = useHistory();
   return (
     <div id="myModal" className="modal">
@@ -32,6 +36,7 @@ function Modal() {
 function Detail() {
   const [products, setProducts] = useState([]);
   const [reviews, setReviews] = useState([]);
+
   const [question, setQuestion] = useState([]);
 
   const cookie = Cookies.get('user');
@@ -40,14 +45,14 @@ function Detail() {
 
   let image1 = ImageData.image1 + id;
   const [modal, setModal] = useState(false);
+
   const [quantity, setQuantity] = useState(1);
   const [{ basket }, dispatch] = useStateValue();
   const history = useHistory();
 
   console.log(quantity)
  
-  
-  
+
   useEffect(() => {
     async function getProducts() {
       const request = await axios
@@ -59,20 +64,23 @@ function Detail() {
     
     getProducts();
   }, []);
-  
-  const postBasketItems = ()=>{
-    axios.post('/cartitems', basketItems)
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
-  }
 
   const [basketItems, setBasketItems] = useState({
     cart_item_id: '',
-    user_sequence_id: 8,
+    user_sequence_id: Cookies.get('user'),
     cart_item_quantity: quantity,
     product_id: id
   })
 
+  
+  const postBasketItems = ()=>{
+    axios.post('/cartitems', basketItems)
+    .then(res => {console.log(res)
+       alert('장바구니에 저장이 완료됐습니다')})
+    .catch(err => console.log(err))
+  }
+
+ 
   console.log(basketItems)
   
   useEffect(() => {
@@ -92,7 +100,7 @@ function Detail() {
     async function getQuestion() {
       const request = await axios
         .get(`/question/countByProductId/${id}`)
-        .then((response) => setQuestion(response.data))
+        .then(response => setQuestion(response.data))
         .catch((error) => console.log(error));
 
       return request;
@@ -163,7 +171,7 @@ function Detail() {
             </p>
           </div>
           <div className="button_box">
-            {modal == true ? <Modal /> : null}
+            {modal == true? <Modal/>:null}
 
             <button
               className="detail__keep"

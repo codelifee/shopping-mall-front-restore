@@ -19,7 +19,7 @@ export default [
     price: 20000,
     decoration: "갱년기 여성을 위한 석류즙 X 30봉",
     ranking: "6",
-    product_id: 33,
+    product_id: 65,
   },
   {
     id: 2,

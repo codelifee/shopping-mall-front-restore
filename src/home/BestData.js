@@ -10,7 +10,7 @@ export default [
     price: 20000,
     decoration: "신선한 사과즙 X 30봉",
     ranking: "1",
-    product_id: 1,
+    product_id: 64,
   },
   {
     id: 1,
