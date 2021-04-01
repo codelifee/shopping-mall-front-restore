@@ -48,9 +48,9 @@
   border: none;
   background-color: rgba(230, 125, 122, 0.7);
   cursor: pointer;
-  margin-bottom: 100px;
 }
 
 .ReviewForm__button{
   text-align: center;
+  margin-bottom: 50px;
 }

@@ -1,0 +1,15 @@
+.stars {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+  }
+  
+  .input_radio {
+    display: none;
+  }
+  
+  .star {
+    cursor: pointer;
+    transition: color 200ms;
+  }
