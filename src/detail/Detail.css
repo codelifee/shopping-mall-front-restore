@@ -17,13 +17,11 @@ a {
   flex-direction: row;
   position: relative;
   padding-top: 70px;
-  padding-bottom: 30px;
+  padding-bottom: 60px;
   margin: 0;
   width: 100%;
   height: 100%;
 }
-
-
 
 .detail__product_img {
   width: 700px;
@@ -58,13 +56,6 @@ a {
   font-size: 16px;
   margin-bottom: 30px;
 }
-.detail__product_deliveryPrice {
-  font-size: 16px;
-  margin-bottom: 10px;
-}
-.detail__product_deliveryPrice_ {
-  margin-bottom: 30px;
-}
 
 .detail__proudct_stock {
   border-bottom: solid 1px black;
@@ -91,7 +82,13 @@ a {
 .detail__product_totalPrice {
   font-size: 24px;
   margin-top: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+}
+
+.button_box {
+  display: inline;
+  width: 400px;
+  height: 50px;
 }
 
 .detail__keep {

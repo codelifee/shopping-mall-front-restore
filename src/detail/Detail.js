@@ -8,10 +8,13 @@ import './Modal.css';
 import { ImageData } from '../axios/urlData';
 import Cookies from 'js-cookie';
 
-function Modal() {
+function Modal(props) {
   const history = useHistory();
   return (
     <div id="myModal" className="modal">
+      <span className="close_modal" onClick={()=>{
+        return props.close();
+      }}>X</span>
       <div className="modal_content">
         <h4>
           장바구니에 상품이 <br /> 담겼습니다.
@@ -46,8 +49,6 @@ function Detail() {
 
   console.log(quantity)
  
-  
-  
   useEffect(() => {
     async function getProducts() {
       const request = await axios
@@ -60,6 +61,10 @@ function Detail() {
     getProducts();
   }, []);
   
+  const closeModal = () => {
+    setModal(!modal)
+  }
+
   const postBasketItems = ()=>{
     axios.post('/cartitems', basketItems)
     .then(res => console.log(res))
@@ -118,10 +123,6 @@ function Detail() {
           <p className="detail__product_delivery">
             배송정보 | 도서산간지역 제외 평균 2~3일 배송
           </p>
-          {/* <p className="detail__product_deliveryPrice">배송료 정보</p> */}
-          <p className="detail__product_deliveryPrice_">
-            {/* 일반지역 2,500원 / 도서산간지역 4,000원{" "} */}
-          </p>
           <p className="detail__proudct_stock">재고 : {products.stock}</p>
           <div className="center">
             <p className="quantity">
@@ -163,24 +164,11 @@ function Detail() {
             </p>
           </div>
           <div className="button_box">
-            {modal == true ? <Modal /> : null}
-
+            {modal == true ? <Modal close={closeModal}/> : null}
             <button
               className="detail__keep"
               onClick={() => {
                 if (modal == false) { 
-                  // dispatch({
-                  //   type: 'ADD_TO_BASKET',
-                  //   item: {
-                  //     id: products.product_id,
-                  //     title: products.product_name,
-                  //     image: image1,
-                  //     description: products.product_description,
-                  //     price: products.product_price * quantity,
-                  //     rating: products.product_rating,
-                  //     quantity: quantity,
-                  //   },
-                  // })
                   postBasketItems()
                 }
                 setModal(!modal);
