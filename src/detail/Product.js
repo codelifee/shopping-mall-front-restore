@@ -1,7 +1,7 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React from 'react';
 import './Product.css';
 import { useStateValue } from '../StateProvider/StateProvider';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory} from 'react-router-dom';
 import { FaComment, FaShoppingCart } from 'react-icons/fa';
 import { ImageData } from '../axios/urlData';
 
@@ -24,7 +24,9 @@ function Product(props) {
       },
     });
   };
+
   let history = useHistory();
+
   return (
     <div className="product2">
       <img

@@ -1,15 +1,11 @@
 import React, {useState} from 'react';
 import axios from '../axios/axios';
-import {useStateValue} from '../StateProvider/StateProvider'
-import {useHistory, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import './QnAForm.css';
 
-function QnAForm(){
-    const [{user}, dispatch] = useStateValue(); 
+function QnAForm(){ 
 
     const {id} = useParams();
-
-    const history = useHistory();
 
     const [form, setForm] = useState({
         product_id: id,
@@ -21,20 +17,16 @@ function QnAForm(){
         answer_date_created: ''
     })
 
-
     const handleChange = e => {
         e.preventDefault();
 
             setForm({
                 ...form,
                 [e.target.name]: e.target.value 
-            })
-       
+            })       
     }
-    
-    console.log(form);
 
-    const showForm = (e) => {
+    const postForm = (e) => {
         e.preventDefault()
         
         axios.post('question', form)
@@ -45,21 +37,19 @@ function QnAForm(){
     return (
         <div className="QnAForm">
            
-           <form className="QnA_form" onSubmit={
-               form.question != '' ? showForm : null
-               }> 
+           <form className="QnA_form" onSubmit={form.question != '' ? postForm : null}> 
                 <label htmlFor="input">질문 작성</label>
            <input 
-           id="input"
+           id="QnA_form__input"
            type="text" 
            name="question"
            value={form.question}
            onChange={handleChange}
            />
-       <div className="button">
+       <div className="QnA_form__button">
        <button type="submit" onClick={()=>{
                 
-                form.question == '' ? alert("내용을 입력해주세요!") : alert("내용이 입력됐습니다.");
+                form.question === '' ? alert("내용을 입력해주세요!") : alert("내용이 입력됐습니다.");
                 
                 setTimeout("self.close()", 2000 );
                 
