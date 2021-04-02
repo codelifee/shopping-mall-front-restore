@@ -38,32 +38,31 @@ function Checkout() {
   };
   const cookie = Cookies.get('user');
 
-  useEffect(() => {
-    //var id = basket.map((item)=>item.id);
-    async function getCheckoutItems() {
-      const request = await axios
-        .get(`cartitems/getCartItemsByUser/${cookie}`)
-        .then(response => {setCheckoutItems(response.data)
-        console.log(response.data)})
-                .catch((error) => console.log(error));
-      return request;
-    }
-    getCheckoutItems();
-  }, [checkoutItems]);
+  async function getCheckoutItems() {
+    const request = await axios
+      .get(`cartitems/getCartItemsByUser/${cookie}`)
+      .then(response => {setCheckoutItems(response.data)
+      console.log(response.data)})
+              .catch((error) => console.log(error));
+    return request;}
 
-
-  useEffect(() => {
     async function getUserName() {
       const request = await axios
         .get(`users/${Cookies.get("user")}`)
         .then((response) => setUsers(response.data))
         .catch((error) => console.log(error));
-
+  
       return request;
     }
 
-    getUserName();
+
+
+  useEffect(() => {  
+    getUserName()  
+   getCheckoutItems();
   }, []);
+
+
 
   return (
     <div className="checkout">
@@ -87,11 +86,12 @@ function Checkout() {
               <tbody>
               {checkoutItems.map((check, index) => (<CheckoutProduct
               id={check.product_id}
-              cart_id={check.cart_item_quantity}
+              cart_id={check.cart_item_id}
               title={check.product_name}
               quantity={check.cart_item_quantity}
               image={image+check.product_id}
               price={check.product_price}
+              
          />
               ))}
               </tbody>

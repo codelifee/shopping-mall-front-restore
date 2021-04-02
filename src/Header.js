@@ -14,8 +14,8 @@ import Login from "./authentication/Login";
 import axios from "./axios/axios";
 import { faVestPatches } from "@fortawesome/free-solid-svg-icons";
 import Cookies from "js-cookie";
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import RoomIcon from '@material-ui/icons/Room';
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import RoomIcon from "@material-ui/icons/Room";
 
 function Header() {
   const [products, setProducts] = useState([]);
@@ -25,7 +25,7 @@ function Header() {
   const [cookie, setCookie] = useState();
 
   const [search, setSearch] = useState("");
-const[users, setUsers]=useState("");
+  const [users, setUsers] = useState("");
   const history = useHistory();
 
   const { id } = useParams();
@@ -52,7 +52,6 @@ const[users, setUsers]=useState("");
 
     getSearchItem();
   }, []);
-
 
   useEffect(() => {
     async function getUserName() {
@@ -136,52 +135,64 @@ const[users, setUsers]=useState("");
           </Link>
         </div>
 
-
         <div className="header__option">
           <ul className="header__option__navi">
             <li className="header_li">
-              <Link to="/introduction" className="header__optionLineThree">오시는 길
+              <Link to="/introduction" className="header__optionLineThree">
+                오시는 길
               </Link>
             </li>
-
 
             <li className="header_li">
-              {!cookie ?(<Link to="/signup" className="header__optionLinetwo">
-                회원가입 <span className="header__stick"> |</span>
-              </Link>
-              ):<></>}
-            </li>
-
-            {cookie ? ((cookie != 6? (
-              
-              <li className="header_li">
-                <Link to={`/checkout/${id}`} className="header__optionLinetwo">장바구니
-                    <span className="header__basketCount">
-                    {basket?.length}</span> <span className="header__stick"> |</span>
-
+              {!cookie ? (
+                <Link to="/signup" className="header__optionLinetwo">
+                  회원가입 <span className="header__stick"> |</span>
                 </Link>
+              ) : (
+                <></>
+              )}
+            </li>
 
-            </li>):<> </>)):(<></>)}
-              
-              {cookie == 6 ? (
-            <li className="header_li">
+            {cookie ? (
+              cookie != 6 ? (
+                <li className="header_li">
+                  <Link
+                    to={`/checkout/${cookie}`}
+                    className="header__optionLinetwo"
+                  >
+                    장바구니
+                    <span className="header__basketCount">
+                      {basket?.length}
+                    </span>{" "}
+                    <span className="header__stick"> |</span>
+                  </Link>
+                </li>
+              ) : (
+                <> </>
+              )
+            ) : (
+              <></>
+            )}
 
-              
-                <Link to="/seller" className="header__optionLineTwo">관리자페이지&nbsp;&nbsp;
+            {cookie == 6 ? (
+              <li className="header_li">
+                <Link to="/seller" className="header__optionLineTwo">
+                  관리자페이지&nbsp;&nbsp;
                   <span className="header__stick"> |</span>
                 </Link>
-              </li>) : (
-                <></>
-                )}
+              </li>
+            ) : (
+              <></>
+            )}
 
-              {cookie && cookie != 6 &&
-                <li className="header_li">
+            {cookie && cookie != 6 && (
+              <li className="header_li">
                 <Link to={`/user/${cookie}`} className="header__optionLineTwo">
-                  마이웰빙즙 <span className="header__stick">&nbsp; &nbsp;|</span>
+                  마이웰빙즙{" "}
+                  <span className="header__stick">&nbsp; &nbsp;|</span>
                 </Link>
-
-                </li> }
-           
+              </li>
+            )}
 
             <li className="header_li">
               {!cookie ? (
@@ -190,15 +201,22 @@ const[users, setUsers]=useState("");
                 </Link>
               ) : (
                 <span onClick={handleLogout} className="header__optionLinetwo">
-                  로그아웃 <span className="header__stick"> | </span> </span>
-
+                  로그아웃 <span className="header__stick"> | </span>{" "}
+                </span>
               )}
             </li>
 
             <li className="header_li">
               <span className="header__optionLineTwo">
-
-                {cookie ? ((cookie == 6 ? "Admin" : users.user_name + "님")) : (<></>)}
+                {cookie ? (
+                  cookie == 6 ? (
+                    "Admin"
+                  ) : (
+                    users.user_name + "님"
+                  )
+                ) : (
+                  <></>
+                )}
               </span>
             </li>
           </ul>
