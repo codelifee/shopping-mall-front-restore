@@ -57,10 +57,6 @@ function OrdersData({
   console.log(orders);
 
   const patchOrderStatus = (e) => {
-    //let order_id = e.target.order_id;
-
-    //console.log(id)
-
     axios
       .patch(`/orders/${order_id}`, { order_return: orders })
       .then((res) => alert("변경이 완료 되었습니다"))

@@ -13,7 +13,17 @@
   justify-content: center;
 }
 
+tfoot {
+
+  display: table-footer-group;
+
+  vertical-align: middle;
+
+  border-color: inherit;
+
+}
 .checkout_table {
+  width:100%;
   border-collapse: collapse;
   margin-top: 20px;
 }
@@ -34,11 +44,11 @@
   width: 100%;
 }
 
-.checkout__right {
-  top: 1rem;
-  margin-top: 125px;
-}
 
+.checkout__second{
+  width: 100%;
+
+}
 .checkout__title {
   display: flex;
   padding: 20px;
@@ -51,4 +61,24 @@
 }
 h3 {
   padding: 0 30px;
+}
+.checkout__button{
+  border:none;
+  padding:15px 32px;
+  color:white;
+  background-color: #4CAF50;
+  cursor:pointer;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+  font-size:30px;
+  width:30%;
+  margin:auto;
+  
+}
+
+
+.checkout__divbutton{
+width:100%;
+
 }
