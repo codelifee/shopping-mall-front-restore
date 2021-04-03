@@ -38,14 +38,15 @@ function Checkout() {
     //var id = basket.map((item)=>item.id);
     async function getCheckoutItems() {
       const request = await axios
-        .get(`cartitems/getCartItemsByUser/${Cookies.get('user')}`)
+        .get(`cartitems/getCartItemsByUser/${cookie}`)
         .then(response => setCheckoutItems(response.data))
          .catch((error) => console.log(error));
       return request;
     }
     getCheckoutItems();
-  }, [])
+  }, [checkoutItems])
   console.log(checkoutItems.user_name)
+  console.log(cookie);
 
 
 
@@ -54,25 +55,27 @@ function Checkout() {
       .delete("cartitems/" + id)
       .then((res) => {
         console.log(res);
+        window.location.reload(false);
+
         alert("삭제가 완료 되었습니다");
       })
       .catch((err) => console.log(err));
   };
 
 
-  const checkoutItems1 = React.useMemo(() => {
-    return checkoutItems ? checkoutItems.map((check, index) => (<CheckoutProduct
-      key={check.product_id}
-      id={check.product_id}
-      cart_id={check.cart_item_id}
-      title={check.product_name}
-      quantity={check.cart_item_quantity}
-      image={image+check.product_id}
-      price={check.product_price}
-      handleDelete={handleDelete}
- />
-      )) : null
-  }, [checkoutItems]);
+//   const checkoutItems1 = React.useMemo(() => {
+//     return checkoutItems ? checkoutItems.map((check, index) => (<CheckoutProduct
+//       key={check.product_id}
+//       id={check.product_id}
+//       cart_id={check.cart_item_id}
+//       title={check.product_name}
+//       quantity={check.cart_item_quantity}
+//       image={image+check.product_id}
+//       price={check.product_price}
+//       handleDelete={handleDelete}
+//  />
+//       )) : null
+//   }, [checkoutItems]);
 
   const ProceedToCheckout = (e) => {
     if (cookie != null) {
@@ -86,7 +89,7 @@ function Checkout() {
     <div className="checkout">
       <div className="checkout__left">
         <div className="checkout__second">
-          <h3>{checkoutItems.user_name}님의 </h3>
+          <h3>{checkoutItems[0].user_name}님의 </h3>
           <h2 className="checkout__title">
             <span style={{ color: 'grey' }}>
               <i class="fas fa-shopping-cart" />
@@ -103,7 +106,17 @@ function Checkout() {
                 <th>배송비</th>
               </thead>
               <tbody>
-          {checkoutItems1}
+          {checkoutItems.map((check, index) => (<CheckoutProduct
+      key={check.product_id}
+      id={check.product_id}
+      cart_id={check.cart_item_id}
+      title={check.product_name}
+      quantity={check.cart_item_quantity}
+      image={image+check.product_id}
+      price={check.product_price}
+      handleDelete={handleDelete}
+ />
+      ))}
               </tbody>
               <Subtotal />
             </table>

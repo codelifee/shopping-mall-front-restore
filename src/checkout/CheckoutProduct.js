@@ -18,12 +18,6 @@ function CheckoutProduct({ cart_id, id, title, quantity, image, price, handleDel
     cart_item_quantity: quantity1,
   },
   );
-  const removeFromBasket = () => {
-    dispatch({
-      type: "REMOVE_FROM_BASKET",
-      id: id,
-    });
-  };
 
   const style11 = {
     borderBottom: "1px solid gray",
@@ -83,7 +77,7 @@ function CheckoutProduct({ cart_id, id, title, quantity, image, price, handleDel
               {quantity > 1 ? (
                 <button
                   className="checkout_button"
-                  onClick={()=> minusQuantity}
+                  onClick={minusQuantity}
                 >
                   -
                 </button>
@@ -94,7 +88,7 @@ function CheckoutProduct({ cart_id, id, title, quantity, image, price, handleDel
               )}
 
               {checkoutItems2.cart_item_quantity}
-              <button className="checkout_button" onClick={()=>plusQuantity}>
+              <button className="checkout_button" onClick={plusQuantity}>
                 +
               </button>
             </li>
