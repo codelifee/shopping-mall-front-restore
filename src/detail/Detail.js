@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import Tabs from './Tabs';
-import { useParams, useHistory } from 'react-router-dom';
-import './Detail.css';
-import { useStateValue } from '../StateProvider/StateProvider';
-import axios from '../axios/axios';
-import './Modal.css';
-import { ImageData } from '../axios/urlData';
-import Cookies from 'js-cookie';
+import React, { useState, useEffect } from "react";
+import Tabs from "./Tabs";
+import { useParams, useHistory } from "react-router-dom";
+import "./Detail.css";
+import { useStateValue } from "../StateProvider/StateProvider";
+import axios from "../axios/axios";
+import "./Modal.css";
+import { ImageData } from "../axios/urlData";
+import Cookies from "js-cookie";
 
 function Modal() {
   const history = useHistory();
@@ -19,7 +19,7 @@ function Modal() {
         <button
           className="modalButton"
           onClick={() => {
-            history.push('/checkout');
+            history.push("/checkout");
           }}
         >
           장바구니로 이동
@@ -34,7 +34,7 @@ function Detail() {
   const [reviews, setReviews] = useState([]);
   const [question, setQuestion] = useState([]);
 
-  const cookie = Cookies.get('user');
+  const cookie = Cookies.get("user");
 
   const { id } = useParams();
 
@@ -136,9 +136,9 @@ function Detail() {
               </button>
             </p>
             <p className="detail__product_totalPrice">
-              총 금액{' '}
+              총 금액{" "}
               {new Intl.NumberFormat().format(
-                products.product_price * quantity,
+                products.product_price * quantity
               )}
               원
             </p>
@@ -151,7 +151,7 @@ function Detail() {
               onClick={() => {
                 if (modal == false) {
                   dispatch({
-                    type: 'ADD_TO_BASKET',
+                    type: "ADD_TO_BASKET",
                     item: {
                       id: products.product_id,
                       title: products.product_name,
@@ -172,9 +172,9 @@ function Detail() {
             <button
               className="detail__order"
               onClick={() => {
-                if( cookie != null){
+                if (cookie != null) {
                   dispatch({
-                    type: 'ADD_TO_BASKET',
+                    type: "ADD_TO_BASKET",
                     item: {
                       id: products.product_id,
                       title: products.product_name,
@@ -184,8 +184,8 @@ function Detail() {
                       rating: products.product_rating,
                     },
                   });
-                  history.push('/payment/');
-                }else{
+                  history.push("/payment/");
+                } else {
                   alert("로그인을 해주세요!");
                 }
               }}

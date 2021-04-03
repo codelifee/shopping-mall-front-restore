@@ -20,7 +20,6 @@ a {
   align-items: center;
 }
 .header {
-  height: 100px;
   display: flex;
   align-items: center;
   position: fixed;
@@ -148,6 +147,9 @@ a {
   width: 80px;
 }
 
+.header__search2 {
+  display: none;
+}
 @media all and (max-width: 800px) {
   .header__nav {
     display: none;
