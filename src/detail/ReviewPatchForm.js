@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import "./ReviewPatchDeleteForm.css";
+import "./ReviewPatchForm.css";
 import UpdateStarRating from "./UpdateStarRating";
 import axios from "../axios/axios";
 import { useParams } from "react-router-dom";
 
-function ReviewPatchDeleteForm() {
+function ReviewPatchForm() {
   const { id } = useParams(); //review_id
 
   const [review, setReview] = useState([]);
@@ -85,15 +85,6 @@ function ReviewPatchDeleteForm() {
     }
   };
 
-  const deleteReview = () => {
-    axios
-      .delete(`/review/${id}`)
-      .then((res) => console.log(res))
-      .then(window.opener.parent.location.reload())
-      .then(setTimeout("self.close()", 2000))
-      .catch((err) => console.log(err));
-  };
-
   return (
     <div className="ReviewUpdateForm">
       <div className="stars">
@@ -140,18 +131,10 @@ function ReviewPatchDeleteForm() {
             수정
           </button>{" "}
           &nbsp;
-          <button
-            className="ReviewUpdateForm__reviewDelete"
-            onClick={() => {
-              return deleteReview();
-            }}
-          >
-            삭제
-          </button>
         </div>
       </form>
     </div>
   );
 }
 
-export default ReviewPatchDeleteForm;
+export default ReviewPatchForm;

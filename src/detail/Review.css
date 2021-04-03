@@ -103,6 +103,16 @@
   background-color: rgba(230, 125, 122, 0.7);
   border: none;
   border-radius: 8px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.review__delete_button{
+  width: 180px;
+  height: 50px;
+  background-color: rgba(230, 125, 122, 0.7);
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
 }
 
