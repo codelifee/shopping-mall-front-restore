@@ -45,10 +45,6 @@ function Checkout() {
     }
     getCheckoutItems();
   }, [checkoutItems])
-  console.log(checkoutItems.user_name)
-  console.log(cookie);
-
-
 
   const handleDelete = (id) => {
     axios
@@ -100,14 +96,16 @@ function Checkout() {
           <div className="checkout__description">
             <table className="checkout_table">
               <thead>
+                <tr>
                 <th>전체선택</th>
                 <th>상품정보</th>
                 <th>상품금액</th>
                 <th>배송비</th>
+                </tr>
               </thead>
               <tbody>
           {checkoutItems.map((check, index) => (<CheckoutProduct
-      key={check.product_id}
+      key={index}
       id={check.product_id}
       cart_id={check.cart_item_id}
       title={check.product_name}
