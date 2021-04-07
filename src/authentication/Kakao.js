@@ -7,7 +7,6 @@ import axios from "../axios/axios";
 import {useHistory} from "react-router-dom";
 import { useStateValue } from "../StateProvider/StateProvider";
 import Cookies from "js-cookie";
-import Modal from "./SocialSignUpModal";
 import { SocialKey } from "./SocialKey";
 
 const Kakao = (props) => {
@@ -40,15 +39,16 @@ const postForm = () => {
         console.log(res);
         Cookies.set("user", res.data.user_sequence_id);
 
-        history.push("/home");
+        alert('회원정보 수정 메뉴에서 핸드폰 번호와 주소를 입력해주세요!')
+        history.push(`/user/${Cookies.get('user')}`);
       });
     }
   };
 
   const [values, setValues] = useState({
     user_id: "",
-    user_pwd: '12345',
-    user_pwd2: '12345',
+    user_pwd: 12345,
+    user_pwd2: 12345,
     user_name: "",
     user_phone: "",
     user_address: "회원정보에서 수정",
@@ -73,10 +73,7 @@ const postForm = () => {
     return confirmEvent;
   };
 
-  const event = () => new Promise((resolve, reject)=>{
-    resolve(<Modal/>);
-    postForm()
-  })
+  const event = () =>{postForm()}
   const cancel = () => alert("가입이 취소 되었습니다");
   const confirmAction = useConfirm("해당 계정 정보가 없습니다. 해당 계정으로 가입하시겠습니까?", event, cancel) 
 

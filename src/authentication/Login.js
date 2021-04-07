@@ -6,7 +6,6 @@ import { auth } from "../configuration/firebase";
 import axios from "../axios/axios";
 import { useStateValue } from "../StateProvider/StateProvider";
 import Cookies from "js-cookie";
-import NaverLogin from "./Naver";
 import KakaoLogin from "./Kakao";
 import { HistoryOutlined } from "@material-ui/icons";
 import { event } from "jquery";

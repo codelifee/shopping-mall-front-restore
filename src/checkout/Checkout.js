@@ -49,7 +49,7 @@ function Checkout() {
       return request;
     }
     getCheckoutItems();
-  }, [checkoutItems]);
+  }, []);
 
 
   useEffect(() => {
