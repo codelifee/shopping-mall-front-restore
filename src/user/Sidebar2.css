@@ -110,7 +110,7 @@
   margin-top: 50px;
 }
 
-@media all and (max-width: 432px) {
+@media all and (max-width: 414px) {
   .nav-menu {
     background-color: #fff;
     width: 100%;

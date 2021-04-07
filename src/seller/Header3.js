@@ -6,14 +6,14 @@ import Logo from "../img/logo.png";
 
 function Header3() {
   return (
-    <div className="header2_container">
-      <div className="header2">
+    <div className="header3_container">
+      <div className="header3">
         <Sidebar3 />
         <div className="logo_title">
-          <p className="header2_title">사업자 페이지</p>
-          <div className="header2__logo">
+          <p className="header3_title">사업자 페이지</p>
+          <div className="header3__logo">
             <a href="/home">
-              <img className="header2__logo" src={Logo} alt="" />
+              <img className="header3__logo" src={Logo} alt="" />
             </a>
           </div>
         </div>

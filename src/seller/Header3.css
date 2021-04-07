@@ -5,12 +5,12 @@
   font-weight: normal;
   font-style: normal;
 }
-.header2_container {
+.header3_container {
   display: none;
 }
 
 @media all and (max-width: 414px) {
-  .header2_container {
+  .header3_container {
     display: block;
     height: 70px;
     background-color: rgba(255, 255, 255, 0.8);
@@ -18,7 +18,7 @@
     z-index: 100;
     width: 100%;
   }
-  .header2 {
+  .header3 {
     height: 70px;
     background: rgba(251, 115, 137, 0.2);
     position: fixed;
@@ -28,14 +28,14 @@
     align-items: center;
   }
 
-  .header2__logo {
+  .header3__logo {
     height: 60px;
     width: 60px;
     object-fit: contain;
     color: white;
   }
 
-  .header2__logo {
+  .header3__logo {
     padding-bottom: 10px;
   }
 
@@ -46,7 +46,7 @@
     width: 100%;
     margin: 10px 10px 0 0;
   }
-  .header2_title {
+  .header3_title {
     font-family: "KoreanFrenchTypewriter";
     font-size: 30px;
     font-weight: 500;
