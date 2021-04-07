@@ -9,33 +9,85 @@ import Cookies from 'js-cookie';
 import axios from '../axios/axios';
 import { formatCountdown } from 'antd/lib/statistic/utils';
 import jsCookie from 'js-cookie';
+import { ImageData } from "../axios/urlData";
+import { useHistory } from 'react-router-dom';
 
 function Checkout() {
-  const [{ basket }, dispatch] = useStateValue();
+  const history = useHistory();
 
-  const [user, setUser] = useState({});
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState([]);
+  const image = ImageData.image1;
+  const [checkoutItems, setCheckoutItems] = useState([{
+    cart_item_id: '',
+    user_sequence_id: Cookies.get('user'),
+    cart_item_quantity: 0,
+    product_id: '',
+    price:0,
+    product_name:'',
+    product_price:0,
+    user_name:''
+  }])
 
-  const removeFromBasket = () => {
-    dispatch({
-      type: 'REMOVE_FROM_BASKET',
-      id: basket.id,
-    });
-  };
 
   const style11 = {
-    borderBottom: '1px solid red',
+    borderBottom: '1px solid black',
+  };
+  const cookie = Cookies.get('user');
+
+  useEffect(() => {
+    //var id = basket.map((item)=>item.id);
+    async function getCheckoutItems() {
+      const request = await axios
+        .get(`cartitems/getCartItemsByUser/${cookie}`)
+        .then(response => setCheckoutItems(response.data))
+         .catch((error) => console.log(error));
+      return request;
+    }
+    getCheckoutItems();
+
+  }, [checkoutItems])
+
+
+  const handleDelete = (id) => {
+    axios
+      .delete("cartitems/" + id)
+      .then((res) => {
+        console.log(res);
+        window.location.reload(false);
+
+        alert("삭제가 완료 되었습니다");
+      })
+      .catch((err) => console.log(err));
   };
 
-  const cookie = Cookies.get('user');
-  console.log(cookie);
-  console.log(user);
+
+//   const checkoutItems1 = React.useMemo(() => {
+//     return checkoutItems ? checkoutItems.map((check, index) => (<CheckoutProduct
+//       key={check.product_id}
+//       id={check.product_id}
+//       cart_id={check.cart_item_id}
+//       title={check.product_name}
+//       quantity={check.cart_item_quantity}
+//       image={image+check.product_id}
+//       price={check.product_price}
+//       handleDelete={handleDelete}
+//  />
+//       )) : null
+//   }, [checkoutItems]);
+
+  const ProceedToCheckout = (e) => {
+    if (cookie != null) {
+      history.push('/payment');
+    } else {
+      alert('로그인하세요.');
+    }
+  };
 
   return (
     <div className="checkout">
       <div className="checkout__left">
         <div className="checkout__second">
-          <h3>{cookie}님의 </h3>
+          <h3>{checkoutItems[0].user_name}님의 </h3>
           <h2 className="checkout__title">
             <span style={{ color: 'grey' }}>
               <i class="fas fa-shopping-cart" />
@@ -46,93 +98,35 @@ function Checkout() {
           <div className="checkout__description">
             <table className="checkout_table">
               <thead>
+                <tr>
                 <th>전체선택</th>
                 <th>상품정보</th>
                 <th>상품금액</th>
+                <th>배송비</th>
+                </tr>
               </thead>
               <tbody>
-               
-                  {basket.map((product, index) => (
-                    <tr style={style11}>
-                      <td style={{ rowSpan: 1 }}>
-                        {' '}
-                        {
-                          <img
-                            src={product.image}
-                            alt="img"
-                            style={{ width: '80px' }}
-                          />
-                        }
-                      </td>
-                      <td
-                        style={{ 
-                          width: '700px',
-                        }}
-                      >
-                        <ul className="checkout_ul">
-                          <li className="checkout_li">{product.title}</li>
-                          <li className="checkout_li">
-                            {quantity > 1 ? (
-                              <button
-                                className="checkout_button"
-                                onClick={() => {
-                                  setQuantity(quantity - 1);
-                                }}
-                              >
-                                -
-                              </button>
-                            ) : (
-                              <button
-                                className="checkout_button"
-                                onClick={() => {
-                                  setQuantity(quantity);
-                                }}
-                              >
-                                -
-                              </button>
-                            )}
-                            {quantity}
-                            <button
-                              className="checkout_button"
-                              onClick={() => {
-                                setQuantity(quantity + 1);
-                              }}
-                            >
-                              +
-                            </button>
-                          </li>
-                        </ul>
-                      </td>
-
-                      <td className="order_td">
-                        <li
-                          className="checkout_li"
-                          style={{ listStyle: 'none', textAlign: 'center' }}
-                        >
-                          <small>₩</small>
-                          <strong>
-                            {new Intl.NumberFormat().format(
-                              product.price * quantity,
-                            )}
-                          </strong>
-                        </li>
-
-                        <div className="btnBox">
-                          <button className="remove" onClick={removeFromBasket}>
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}{' '}
-              
+          {checkoutItems.map((check, index) => (<CheckoutProduct
+      key={index}
+      id={check.product_id}
+      cart_id={check.cart_item_id}
+      title={check.product_name}
+      quantity={check.cart_item_quantity}
+      image={image+check.product_id}
+      price={check.product_price}
+      handleDelete={handleDelete}
+ />
+      ))}
               </tbody>
+              <Subtotal />
             </table>
           </div>
         </div>
+        <div className="checkout__divbutton">
+        <button className="checkout__button" onClick={ProceedToCheckout}>구매하기</button>
+        </div>
       </div>
-      <div className="checkout__right">
-        <Subtotal price={basket.price} quantity={quantity} />
-      </div>
+
     </div>
   );
 }

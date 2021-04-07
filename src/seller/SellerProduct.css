@@ -1,9 +1,22 @@
-.seller_product_td{
-    height: 30px;
-    font-size:12px;
+.seller_product_td {
+  height: 30px;
+  font-size: 12px;
 }
-.seller_product_td1{
+.seller_product_td1 {
+  cursor: pointer;
+  height: 30px;
+  font-size: 12px;
+}
+@media all and (max-width: 414px) {
+  .seller_product_td {
+    height: 30px;
+    font-size: 10px;
+    width: 60px;
+  }
+  .seller_product_td1 {
     cursor: pointer;
     height: 30px;
-    font-size:12px;
+    font-size: 10px;
+    width: 60px;
+  }
 }

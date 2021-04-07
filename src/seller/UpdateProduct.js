@@ -193,18 +193,18 @@ function UpdateProduct() {
                         onChange={handleForm}
                         />
                     </div>
-                    <div>
-                        <label>메인 이미지</label>
+                    <div className="updateProduct__image">
+                        <label>메인 이미지1</label>
                         <input type="file" name="product_picture" onChange={handleImage} />
                         <button onClick={patchImage}>upload image</button>
                     </div>
-                    <div>
-                        <label>상세 이미지 1</label>
+                    <div className="updateProduct__image">
+                        <label>상세 이미지1</label>
                         <input type="file" name="info_img" onChange={handleImage} />
                         <button onClick={patchImage}>upload image</button>
                     </div>
-                    <div>
-                        <label>상세 이미지 2</label>
+                    <div className="updateProduct__image">
+                        <label>상세 이미지2</label>
                         <input type="file" name="quality_img" onChange={handleImage} />
                         <button onClick={patchImage}>upload image</button>
                     </div>

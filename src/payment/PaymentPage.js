@@ -31,23 +31,27 @@ function Payment({ history, form, ua}) {
       user_name:'',
       user_phone:'',
   });
-  const [products, setProducts] = useState({
-    product_name:'',
-    product_price:''
-  })
+  const [checkoutItems, setCheckoutItems]=useState([{
+    product_name:"",
+    price:0
+  }]);
 
   useEffect(() => {
-    var id = basket.map((item)=>item.id);
-    async function getProducts() {
+    async function getCheckoutItems() {
       const request = await axios
-        .get(`products/JsonData/${id}`)
-        .then((response) => setProducts(response.data))
-        .catch((error) => console.log(error));
+        .get(`cartitems/getCartItemsByUser/${cookie}`)
+        .then(response => {setCheckoutItems(response.data)
+        })
+                .catch((error) => console.log(error));
       return request;
     }
+    getCheckoutItems();
     getUser();
-    getProducts();
-  }, []);
+  }, [checkoutItems]);
+
+  const sum = checkoutItems.map(datum => datum.price).reduce((a, b) => a + b);
+
+  const product_name = JSON.stringify(checkoutItems.map(datum => datum.product_name));
 
   const getUser = () => {
     axios.get(`users/${cookie}`)
@@ -216,7 +220,7 @@ function Payment({ history, form, ua}) {
         )}
         <Item>
           {getFieldDecorator('name', {
-            initialValue: toString(basket.product_name), 
+            initialValue: product_name, 
             rules: [{ required: true, message: '제품명은 필수입력입니다' }],
           })(
             <Input size="large" addonBefore="제품명" />,
@@ -224,7 +228,7 @@ function Payment({ history, form, ua}) {
         </Item>
         <Item>
           {getFieldDecorator('amount', {
-            initialValue: toString(basket.product_price),
+            initialValue: sum,
             rules: [{ required: true, message: '결제금액은 필수입력입니다' }],
           })(
             <Input size="large" addonBefore="결제금액" />,

@@ -16,9 +16,11 @@
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.6.0",
     "antd": "^3.26.20",
+    "autoprefixer": "^10.2.5",
     "axios": "^0.21.1",
     "customize-cra": "^0.4.1",
     "daum-map-api": "^1.0.2",
+    "dotenv": "^8.2.0",
     "dropzone": "^5.7.6",
     "eslint": "^7.20.0",
     "eslint-config-airbnb-base": "^14.2.1",
@@ -39,6 +41,7 @@
     "react-datepicker": "^3.5.0",
     "react-daum-postcode": "^2.0.6",
     "react-dom": "^16.8.6",
+    "react-draggable": "^4.4.3",
     "react-dropzone": "^11.3.1",
     "react-element-replace": "^0.3.2",
     "react-firebase": "^2.2.8",
@@ -63,7 +66,7 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "SET PORT=3002 & react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -74,16 +77,8 @@
       "react-app/jest"
     ]
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "browserslist": [],
+  "devDependencies": {
+    "@ant-design/icons": "^4.5.0"
   }
 }

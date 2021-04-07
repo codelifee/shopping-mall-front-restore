@@ -1,6 +1,6 @@
 .modal {
   width: 180px;
-  height: 100px;
+  height: 130px;
   border: solid 1px #ffb755;
   text-align: center;
   margin-bottom: 10px;
@@ -15,8 +15,8 @@
   margin-top: 10px;
 }
 
-.modal button {
-  margin-top: 5px;
+.close_modal {
+  cursor: pointer;
 }
 
 .modalButton {

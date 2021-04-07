@@ -57,10 +57,6 @@ function OrdersData({
   console.log(orders);
 
   const patchOrderStatus = (e) => {
-    //let order_id = e.target.order_id;
-
-    //console.log(id)
-
     axios
       .patch(`/orders/${order_id}`, { order_return: orders })
       .then((res) => alert("변경이 완료 되었습니다"))
@@ -117,7 +113,7 @@ function OrdersData({
               className="order_option2"
               style={diff1 > 7 ? { display: "block" } : { display: "none" }}
             >
-              배송 완료 후 8일 이후
+              배송 완료 후 7일 이후
               <br />
               교환/반품 불가 합니다.
             </p>

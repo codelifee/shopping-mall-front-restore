@@ -3,9 +3,6 @@ import Product from "../detail/Product";
 import axios from "../axios/axios";
 import "./ProductView.css";
 import { useParams } from "react-router-dom";
-//import Recommendation from '../home/Recommendation';
-
-//카테고리 id에 맞게 출력될 것
 
 function ProductView() {
   const [products, setProducts] = useState([]);
@@ -56,18 +53,11 @@ function ProductView() {
     <div className="products">
       <div className="products__category">{categories.category_name}</div>
       <div className="products__row">
-        {products
-          // .filter(function (product) {
-          //   return product.category_id == id;
-          // })
-          .map((product, i) => {
+        {products.map((product, i) => {
             let reviewLength = reviews
               .filter((review) => {
-                return review.product_id == product.product_id;
+                return review.product_id === product.product_id;
               })
-              .map((review) => {
-                return review.review_id;
-              });
             return (
               <Product
                 id={product.product_id}

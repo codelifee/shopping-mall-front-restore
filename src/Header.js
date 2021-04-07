@@ -23,18 +23,14 @@ function Header() {
 
   const [{ keyword }, keyword_dispatch] = useStateValue();
   const [cookie, setCookie] = useState();
-
+  const[cartCount, setCartCount]=useState({});
   const [search, setSearch] = useState("");
-
+  const[users, setUsers]=useState("");
   const history = useHistory();
 
   const { id } = useParams();
-
   const getCookie = () => {
     const cookie = Cookies.get("user");
-
-    console.log(cookie);
-
     setCookie(cookie);
   };
 
@@ -53,9 +49,49 @@ function Header() {
     getSearchItem();
   }, []);
 
+
+  useEffect(() => {
+    async function getUserName() {
+      const request = await axios
+        .get(`users/${Cookies.get("user")}`)
+        .then((response) => setUsers(response.data))
+        .catch((error) => console.log(error));
+
+      return request;
+    }
+
+    getUserName();
+  }, []);
+
+  useEffect(() => {
+    getCookie();
+
+    async function getSearchItem() {
+      const request = await axios
+        .get(`products/all`)
+        .then((response) => setProducts(response.data))
+        .catch((error) => console.log(error));
+
+      return request;
+    }
+
+    getSearchItem();
+  }, []);
+
+  useEffect(() => {
+    async function getCartCount() {
+      const request = await axios
+        .get('cartitems/getCartItemsByUser/'+cookie)
+        .then((response) => setCartCount(response.data))
+        .catch((error) => console.log(error));
+
+      return request;
+    }
+    getCartCount();
+  }, [cookie]);
+
   const handleLogout = () => {
     Cookies.remove("user");
-
     window.location.reload(false);
   };
 
@@ -111,46 +147,48 @@ function Header() {
         <div className="header__option">
           <ul className="header__option__navi">
             <li className="header_li">
-              <Link to="/introduction" className="header__optionLinetwo">오시는 길
+              <Link to="/introduction" className="header__optionLineThree">오시는 길
               </Link>
             </li>
 
 
             <li className="header_li">
-              {!cookie && (<Link to="/signup" className="header__optionLinetwo">
+              {!cookie ?(<Link to="/signup" className="header__optionLinetwo">
                 회원가입 <span className="header__stick"> |</span>
               </Link>
-              )}
+              ):<></>}
             </li>
-<>
-            {cookie && cookie != 6 &&
 
+            {cookie ? ((cookie != 227? (
+              
               <li className="header_li">
                 <Link to={`/checkout/${id}`} className="header__optionLinetwo">장바구니
-                    <span className="header__basketCount">
-                    {basket?.length}</span> <span className="header__stick"> |</span>
+                <span className="header__basketCount">
+                    {cartCount.length}&nbsp;&nbsp;&nbsp;</span> <span className="header__stick"> |</span>
 
                 </Link>
 
-              </li>}</>
-
+            </li>):<> </>)):(<></>)}
+              
+              {cookie == 227 ? (
             <li className="header_li">
 
-              {cookie == 6 ? (
-                <Link to="/seller" className="header__optionLineTwo">
-                  관리자페이지&nbsp;&nbsp;<span className="header__stick"> |</span>
+              
+                <Link to="/seller" className="header__optionLineTwo">관리자페이지&nbsp;&nbsp;
+                  <span className="header__stick"> |</span>
                 </Link>
-              ) : (
+              </li>) : (
                 <></>
-              )}
+                )}
 
-              {cookie && cookie != 6 &&
+              {cookie && cookie != 227 &&
+                <li className="header_li">
                 <Link to={`/user/${cookie}`} className="header__optionLineTwo">
                   마이웰빙즙 <span className="header__stick">&nbsp; &nbsp;|</span>
                 </Link>
 
-              }
-            </li>
+                </li> }
+           
 
             <li className="header_li">
               {!cookie ? (
@@ -167,7 +205,7 @@ function Header() {
             <li className="header_li">
               <span className="header__optionLineTwo">
 
-                {cookie ? ((cookie == 6 ? "Admin" : cookie + "님")) : (<></>)}
+                {cookie ? ((cookie == 227 ? "Admin" : users.user_name + "님")) : (<></>)}
               </span>
             </li>
           </ul>

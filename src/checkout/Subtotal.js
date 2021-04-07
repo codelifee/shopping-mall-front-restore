@@ -7,49 +7,44 @@ import { getBasketTotal } from '../StateProvider/Reducer';
 import { useHistory } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { useSelector } from 'react-redux';
+import axios from '../axios/axios';
 
 function Subtotal({ price, quantity }) {
   const history = useHistory();
   const [{ basket }, dispatch] = useStateValue();
   const cookie = Cookies.get('user');
+  const [checkoutItems, setCheckoutItems]=useState([{
+    price:0
+  }]);
 
   //first attempt without CurrencyFormat API
   // const [price, setPrice] = useState(0);
 
-  const ProceedToCheckout = (e) => {
-    if (cookie != null) {
-      history.push('/payment');
-    } else {
-      alert('로그인하세요.');
+  useEffect(() => {
+    //var id = basket.map((item)=>item.id);
+    async function getCheckoutItems() {
+      const request = await axios
+        .get(`cartitems/getCartItemsByUser/${cookie}`)
+        .then(response => {setCheckoutItems(response.data)
+        })
+                .catch((error) => console.log(error));
+      return request;
     }
-  };
-  return (
-    <div className="subtotal">
-      <CurrencyFormat
-        renderText={(value) => (
-          <>
-            <p>
-              총 상품금액 ({basket.length} 개) :
-              <strong>
-                {' '}
-                ₩{' '}
-                {new Intl.NumberFormat().format(
-                  getBasketTotal(basket) * quantity,
-                )}
-              </strong>
-            </p>
-            <small className="subtotal__gift">This order contains a gift</small>
-          </>
-        )}
-        decimalScale={2}
-        value={getBasketTotal(basket)}
-        displayType={'text'}
-        thousandSeparator={true}
-        prefix={'₩'}
-      />
+    getCheckoutItems();
+  }, [checkoutItems]);
 
-      <button onClick={ProceedToCheckout}>Proceed to Checkout</button>
-    </div>
+  const sum = checkoutItems.map(datum => datum.price).reduce((a, b) => a + b)
+  return (
+    <>             
+ <tfoot className="subtotal__tfoot" style={{border: "4px solid black"}}>
+   <tr style={{height:"150px"}}>
+                <td>상품수: <strong>{checkoutItems.length} </strong>개</td>
+                <td>상품금액: &nbsp;  <strong>{new Intl.NumberFormat().format(sum)}  </strong>원</td>
+                <td>전체 합계:  &nbsp;<strong>{new Intl.NumberFormat().format(sum)}  </strong>원</td>
+                <td>배송비: <strong>0</strong>원</td> 
+                </tr>
+                </tfoot>
+    </>
   );
 }
 

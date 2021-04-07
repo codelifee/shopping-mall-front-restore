@@ -94,8 +94,7 @@ function Sidebar() {
                 </span>
               )}
             </div>
-
-            {cookie == 6 ? (
+            {cookie == 227 ? (
               <Link to="/seller">
                 <div className="sidebar__option">
                   <span className="sidebar__optionLineOne">Admin</span>
@@ -106,7 +105,7 @@ function Sidebar() {
               <></>
             )}
 
-            {cookie && cookie != 6 ? (
+            {cookie && cookie != 227 ? (
               <Link to={`/user/${cookie}`}>
                 <div className="sidebar__option">
                   <span className="sidebar__optionLineOne">Users</span>

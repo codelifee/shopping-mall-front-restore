@@ -1,12 +1,42 @@
-import React, { useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
+import {useParams} from 'react-router-dom';
+import axios from '../axios/axios';
 import Data from './Detail_data';
 import Info from './Product_info';
 import Review from './Review';
 import QnA from './QnA';
 import './Tabs.css';
 
-function Tabs({ reviews, question }) {
-  console.log(reviews);
+function Tabs() {
+
+  const [reviewCount, setReviewCount] = useState([]);
+  const [questionCount, setQuestionCount] = useState([]);
+  const {id} = useParams();
+
+  useEffect(() => {
+    async function getReviewsCount() {
+      const request = await axios
+        .get(`/review/JsonDataByProductId/${id}`)
+        .then((response) => setReviewCount(response.data))
+        .catch((error) => console.log(error));
+
+      return request;
+    }
+    getReviewsCount();
+  }, []);
+
+  useEffect(() => {
+    async function getQuestionCount() {
+      const request = await axios
+        .get(`/question/countByProductId/${id}`)
+        .then((response) => setQuestionCount(response.data))
+        .catch((error) => console.log(error));
+
+      return request;
+    }
+    getQuestionCount();
+  }, []);
+
   return (
     <div className="tab_center">
       <input
@@ -26,7 +56,7 @@ function Tabs({ reviews, question }) {
         리뷰{' '}
         <span style={{ fontSize: '0.8rem', fontWeight: 'lighter', color:'white'}}>
           {' '}
-          {new Intl.NumberFormat().format(reviews)}
+          {new Intl.NumberFormat().format(reviewCount)}
         </span>
       </label>
 
@@ -35,7 +65,7 @@ function Tabs({ reviews, question }) {
         Q & A{' '}
         <span style={{ fontSize: '0.8rem', fontWeight: 'lighter', color:'white'}}>
           {' '}
-          {new Intl.NumberFormat().format(question)}
+          {new Intl.NumberFormat().format(questionCount)}
         </span>
       </label>
 

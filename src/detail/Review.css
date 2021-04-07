@@ -103,7 +103,72 @@
   background-color: rgba(230, 125, 122, 0.7);
   border: none;
   border-radius: 8px;
+  margin-bottom: 20px;
   cursor: pointer;
+}
+
+.review__delete_button{
+  width: 180px;
+  height: 50px;
+  background-color: rgba(230, 125, 122, 0.7);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+@media all and (max-width:768px) {
+  .review{
+    width: 100%;
+  }
+  .review__score {
+    display: flex;
+    width: 100%;
+    border-bottom: 0.5px solid black;
+  }
+
+  .review__score_list {
+    flex: 1;
+    display: flex;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-left: 0px;
+    margin-right: 80px;
+  }
+  
+
+  .review__button_ {
+    text-align: center;
+    margin: 0px;
+  }
+
+  .review__button {
+    flex: 1;
+    width: 80px;
+    height: 50px;
+    margin: 0;
+    background: rgba(230, 125, 122, 0.7);
+    color: black;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+  }
+
+  .review__update_button{
+    width: 75px;
+    height: 40px;
+    margin-right: 30px;
+    background-color: rgba(230, 125, 122, 0.7);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  .review__list_user {
+    flex: 1 1;
+    font-weight: bold;
+    font-size: 15px;
+    background-color: rgba(230, 125, 122, 1);
+  }
 }
 
 @media all and (max-width:414px) {
@@ -114,6 +179,71 @@
     display: flex;
     width: 100%;
     border-bottom: 0.5px solid black;
+  }
+
+
+  .review__score_list {
+    flex: 1;
+    display: flex;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-left: 30px;
+    margin-right: 0px;
+  }
+
+  .review__button_ {
+    text-align: center;
+    margin: 0px;
+  }
+
+  .review__button {
+    flex: 1;
+    width: 80px;
+    height: 50px;
+    margin: 0;
+    background: rgba(230, 125, 122, 0.7);
+    color: black;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+  }
+
+  .review__update_button{
+    width: 75px;
+    height: 40px;
+    margin-right: 30px;
+    background-color: rgba(230, 125, 122, 0.7);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  .review__list_user {
+    flex: 1 1;
+    font-weight: bold;
+    font-size: 15px;
+    background-color: rgba(230, 125, 122, 1);
+  }
+}
+
+
+@media all and (max-width:280px) {
+  .review{
+    width: 100%;
+  }
+  .review__score {
+    display: flex;
+    width: 100%;
+    border-bottom: 0.5px solid black;
+  }
+
+  .review__score_list {
+    flex: 1;
+    display: flex;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-left: 30px;
+    margin-right: 0px;
   }
 
   .review__button_ {

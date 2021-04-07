@@ -39,7 +39,22 @@ a {
   box-shadow: 20px 20px 40px 0 rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s ease;
 }*/
-
+.new_content {
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+.new_content::-webkit-scrollbar {
+  height: 8px;
+}
+.new_content::-webkit-scrollbar-thumb {
+  background-color: #ffb755;
+  border-radius: 10px;
+}
+.new_content::-webkit-scrollbar-track {
+  background-color: rgba(255, 183, 85, 0.3);
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 5px white;
+}
 @media all and (max-width: 768px) {
   .title {
     font-size: 20px;

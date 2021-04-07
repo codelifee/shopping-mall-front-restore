@@ -21,12 +21,21 @@ function PaymentResult({ history }) {
     if (typeof success === 'string') return success === 'true';
     if (typeof success === 'boolean') return success === true;
   }
-  const body ={
+  
+  const paymentBody ={
     merchant_uid:merchant_uid,
     product_name:name,
     amount:paid_amount,
     user_name:buyer_name,
-    cookie
+    user_sequence_id:cookie
+  };
+
+  const OrdersBody ={
+    order_status:merchant_uid,
+    product_id:name,
+    order_amount:paid_amount,
+    quantity:buyer_name,
+    user_sequence_id:cookie
   };
 
   const resultType = isSuccessed ? '성공' : '실패';
@@ -35,7 +44,14 @@ function PaymentResult({ history }) {
   useEffect(() => {
     async function postPayment() {
       const request = await axios
-        .post(`payment/`,body)
+        .post(`payment/`,paymentBody)
+        .then((response) => console.log(response.data))
+        .catch((error) => console.log(error));
+      return request;
+    }
+    async function postOrders() {
+      const request = await axios
+        .post(`orders/`,OrdersBody)
         .then((response) => console.log(response.data))
         .catch((error) => console.log(error));
       return request;

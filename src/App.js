@@ -18,7 +18,7 @@ import LandingPage from './landingpage/LandingPage';
 import ProductView from './ProductView/ProductView';
 import ReviewForm from './detail/ReviewForm';
 import Cookies from 'js-cookie';
-import ReviewPatchDeleteForm from './detail/ReviewPatchDeleteForm';
+import ReviewPatchForm from './detail/ReviewPatchForm';
 import './App.css';
 import QnAForm from './detail/QnAForm';
 import KakaoMap from './Introduction/KakaoMap';
@@ -98,7 +98,7 @@ function App() {
             </Route>
 
             <Route path="/reviewUpdate/:id">
-              <ReviewPatchDeleteForm />
+              <ReviewPatchForm />
             </Route>
 
             <Route path="/question/:id">
