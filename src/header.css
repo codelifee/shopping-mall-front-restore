@@ -64,6 +64,13 @@ a {
   left: 2%;
 }
 
+.header__box{
+  width: 30px;
+  height: 30px; 
+  border-radius: 70%;
+  overflow: hidden;
+}
+
 .header__search {
   display: flex;
   align-items: center;
@@ -129,6 +136,8 @@ a {
   margin-left: 10px;
   margin-right: 10px;
   text-decoration: none;
+  background-color: rgb(244,67,162);
+  color:#eee
 }
 
 .header__nav {

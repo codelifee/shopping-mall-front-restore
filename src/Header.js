@@ -23,18 +23,14 @@ function Header() {
 
   const [{ keyword }, keyword_dispatch] = useStateValue();
   const [cookie, setCookie] = useState();
-
+  const[cartCount, setCartCount]=useState({});
   const [search, setSearch] = useState("");
-const[users, setUsers]=useState("");
+  const[users, setUsers]=useState("");
   const history = useHistory();
 
   const { id } = useParams();
-
   const getCookie = () => {
     const cookie = Cookies.get("user");
-
-    console.log(cookie);
-
     setCookie(cookie);
   };
 
@@ -82,9 +78,20 @@ const[users, setUsers]=useState("");
     getSearchItem();
   }, []);
 
+  useEffect(() => {
+    async function getCartCount() {
+      const request = await axios
+        .get('cartitems/getCartItemsByUser/'+cookie)
+        .then((response) => setCartCount(response.data))
+        .catch((error) => console.log(error));
+
+      return request;
+    }
+    getCartCount();
+  }, [cookie]);
+
   const handleLogout = () => {
     Cookies.remove("user");
-
     window.location.reload(false);
   };
 
@@ -156,8 +163,8 @@ const[users, setUsers]=useState("");
               
               <li className="header_li">
                 <Link to={`/checkout/${id}`} className="header__optionLinetwo">장바구니
-                    <span className="header__basketCount">
-                    {basket?.length}</span> <span className="header__stick"> |</span>
+                <span className="header__basketCount">
+                    {cartCount.length}&nbsp;&nbsp;&nbsp;</span> <span className="header__stick"> |</span>
 
                 </Link>
 

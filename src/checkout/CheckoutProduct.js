@@ -1,130 +1,215 @@
-import React, { useState, useEffect } from 'react';
-import Subtotal from './Subtotal';
-import { useSelector } from 'react-redux';
-import fire from '../img/fire.svg';
-import { useStateValue } from '../StateProvider/StateProvider';
-import './CheckoutProduct.css';
-import axios from '../axios/axios';
-import Cookies from 'js-cookie';
-const cartFromLocalStorage = JSON.parse(localStorage.getItem('cart') || '[]');
+import React, {
+  useState,
+  useEffect
+} from "react";
+import Subtotal from "./Subtotal";
+import {
+  useSelector
+} from "react-redux";
+import fire from "../img/fire.svg";
+import {
+  useStateValue
+} from "../StateProvider/StateProvider";
+import "./CheckoutProduct.css";
+import axios from "../axios/axios";
+import Cookies from "js-cookie";
+import * as AiIcons from "react-icons/ai";
 
-function CheckoutProduct({ cart_id, id, title, quantity, image, price }) {
-  const [{ basket }, dispatch] = useStateValue();
-  const [cart, setCart] = useState(basket);
-  console.log(cart);
-const [count, setCount]=useState(1);
+function CheckoutProduct({
+  cart_id,
+  id,
+  title,
+  quantity,
+  image,
+  price,
+  handleDelete
+}) {
+  const [{
+    basket
+  }, dispatch] = useStateValue();
+  const [change, setChange] = useState(0);
+  const [quantity1, setQuantity1] = useState(quantity);
+
+  const [checkoutItems2, setCheckoutItems2] = useState({
+    cart_item_quantity: quantity,
+  }, );
+
   useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cart));
-  }, [cart]);
+    setCheckoutItems2({
+      cart_item_quantity: quantity,
 
-
-  const [checkoutItems, setCheckoutItems] = useState([{
-    cart_item_id: '',
-    user_sequence_id: Cookies.get('user'),
-    cart_item_quantity: 0,
-    product_id: '',
-    price: 0,
-    product_name: '',
-    product_price: 0
-  }])
-
-  const removeFromBasket = () => {
-    dispatch({
-      type: 'REMOVE_FROM_BASKET',
-      id: id,
-    });
-  };
+    })
+  }, [quantity])
 
   const style11 = {
-    borderBottom: '1px solid red',
+    borderBottom: "1px solid gray",
+    fontSize: "30px"
   };
 
-  const cookie = Cookies.get('user');
+  const cookie = Cookies.get("user");
 
+  const plusQuantity = (e) => {
 
-  const changeQuantity = (e) => {
     axios
-      .patch(`/cartitems/${e.target.value}`, { cart_item_quantity: checkoutItems.cart_item_quantity - 1 })
-      .then(res => {
-        alert("변경이 완료 되었습니다")
-        console.log(e);
+      .patch(`cartitems/plusQuantity/${cart_id}`, checkoutItems2)
+      .then((res) => {
+        alert("수량이 1개 증가했습니다");
+        console.log(res);
+        setChange(change + 1);
+      })
+      .catch((err) => console.log(err))
+    console.log(checkoutItems2)
+  }
+
+  const minusQuantity = (e) => {
+    axios
+      .patch(`cartitems/minusQuantity/${cart_id}`, checkoutItems2)
+      .then((res) => {
+        alert("수량이 1개 감소했습니다");
+        console.log(res);
+        setChange(change + 1);
       })
       .catch((err) => console.log(err));
-  };
+  }
+
+  useEffect(() => {
+    async function fetchData() {
+      const request = await axios
+        .get(`cartitems/${cart_id}`)
+        .then((response) => setCheckoutItems2(response.data))
+        .catch((error) => console.log(error));
+      return request;
+    }
+    fetchData();
+  }, [change]);
 
 
-  return (
-    <>
-      <tr style={style11}>
-        <td style={{ rowSpan: 1 }}>
-          {' '}
+
+  return ( <
+    >
+    <
+    tr className = "checkoutproduct__tr"
+    style = {
+      style11
+    } >
+    <
+    td className = "checkout__order_td"
+    style = {
+      {
+        rowSpan: 1
+      }
+    } > {
+      " "
+    } {
+      < img src = {
+        image
+      }
+      alt = "img"
+      style = {
+        {
+          width: "100px",
+          height: "100px"
+        }
+      }
+      />} <
+      /td> <
+      td className = "checkout__order_td" >
+        <
+        ul className = "checkout_ul" >
+        <
+        li className = "checkout_li" > {
+          title
+        } < /li> <
+        li className = "checkout_li" > {
+          checkoutItems2.cart_item_quantity > 1 ? ( <
+            button className = "checkout_button"
+            onClick = {
+              minusQuantity
+            } >
+            -
+            <
+            /button>
+
+          ) : ( <
+            button className = "checkout_button"
+            onClick = {
+              () => {
+                alert("최소수량은 1개입니다.")
+              }
+            } >
+            -
+            <
+            /button>
+          )
+        }
+
+      {
+        checkoutItems2.cart_item_quantity
+      } <
+      button className = "checkout_button"
+      onClick = {
+          plusQuantity
+        } >
+        +
+        <
+        /button> <
+        /li>
+
+        <
+        li className = "checkout_li" > {
+          new Intl.NumberFormat().format(price)
+        } <
+        /li> <
+        /ul> <
+        /td>
+
+        <
+        td className = "checkout__order_td" >
+        <
+        li
+      className = "checkout_li"
+      style = {
           {
-            <img
-              src={image}
-              alt="img"
-              style={{ width: '80px' }}
-            />
+            listStyle: "none",
+            textAlign: "center"
           }
-        </td>
-        <td
-          style={{
-            width: '660px',
-          }}
-        >
-          <ul className="checkout_ul">
-            <li className="checkout_li">{title}</li>
+        } >
+        <
+        small > ₩ < /small> <
+        strong style = {
+          {
+            textAlign: "center"
+          }
+        } > {
+          new Intl.NumberFormat().format(price * checkoutItems2.cart_item_quantity)
+        } < /strong> <
+        /li>
 
-            <li className="checkout_li">
-              {quantity > 1 ? (
-                <button
-                value={cart_id}                  
-                className="checkout_button"
-                >
-                  -
-                </button>
-              ) : (
-                <button
-                  value={cart_id}
-                  className="checkout_button"
-                  onClick={changeQuantity}
-                >
-                  -
-                </button>
-              )}
+        <
+        button className = "checkoutproduct__remove-button"
+      onClick = {
+          () => handleDelete(cart_id)
+        } >
+        <
+        AiIcons.AiOutlineClose style = {
+          {
+            width: "20px",
+            marginBottom: "25px",
+            paddingBottom: "4px",
+            color: "rgb(120, 120, 120)"
+          }
+        }
+      /> <
+      /button>
 
-              {quantity}
-              <button
-                value={cart_id}
-                className="checkout_button"
-              >
-                +
-         </button>
-            </li>
-            <li className="checkout_li">{new Intl.NumberFormat().format(price)}</li>
 
-          </ul>
-        </td>
+      <
+      /td> <
+      td className = "checkout__order_td" > < strong className = "checkout__deliver" > 무료배송 < /strong></td >
+        <
+        /tr> <
+        />
+    );
+  }
 
-        <td className="order_td">
-          <li
-            className="checkout_li"
-            style={{ listStyle: 'none', textAlign: 'center' }}
-          >
-            <small>₩</small>
-            <strong>
-              {price}
-            </strong>
-          </li>
-
-          <div className="btnBox">
-            <button className="remove" onClick={removeFromBasket}>
-            </button>
-          </div>
-        </td>
-      </tr>
-
-    </>
-  );
-}
-
-export default CheckoutProduct;
+  export default CheckoutProduct;
