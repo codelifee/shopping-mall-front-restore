@@ -6,22 +6,6 @@
     background-color: #f3f3f3;
 }
 
-.stars{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 300px;
-}
-
-.rating_star{
-    display: none;
-}
-
-.star {
-    cursor: pointer;
-    transition: color 200ms;
-}
-
 .review_update_form {
     display: flex;
     flex-direction: column;
@@ -34,12 +18,8 @@
     font-family: sans-serif;
     margin-bottom: 15px;
   }
-
-  .stars_score{
-      text-align: center;
-  }
   
-  #input {
+  #ReviewUpdateForm__input {
     height: 300px;
     width: 700px;
     margin: 0 auto;
@@ -47,17 +27,22 @@
     border: none;
   }
 
-  .file_upload{
+  .ReviewUpdateForm__file_upload{
       margin: 0 auto;
       margin-top: 20px;
       margin-bottom: 20px;
   }
 
-  #file_upload{
+  #ReviewUpdateForm__file_upload{
       border: none;
   }
 
-  .reviewPatchSubmit {
+  .ReviewUpdateForm__button {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .ReviewUpdateForm__reviewPatchSubmit {
       width: 200px;
       height: 60px;
       border-radius: 50px;
@@ -67,7 +52,7 @@
       margin: 0 auto;
   }
 
-  .reviewDelete {
+  .ReviewUpdateForm__reviewDelete {
     width: 200px;
     height: 60px;
     border-radius: 50px;

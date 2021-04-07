@@ -6,7 +6,7 @@
 
 .seller {
   display: flex;
-  min-width: 1441px;
+  min-width: 100%;
 }
 @media all and (max-width: 414px) {
   .seller {

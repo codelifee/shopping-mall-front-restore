@@ -24,7 +24,8 @@ body {
 }
 
 .product-description_input,
-.Price_input {
+.Price_input,
+.stock_input {
   background: rgba(255, 183, 85, 0.3);
 }
 .addProduct__container__head h1 {
@@ -131,9 +132,22 @@ body {
   padding-right: 10px;
   border-radius: 5px;
 }
+
+.stock > label {
+  padding-left: 6px;
+  border-radius: 5px;
+}
+
 .Price_input {
   width: 280px;
   height: 25px;
+  border-radius: 5px;
+  border: 1px dotted #333;
+}
+
+.stock_input {
+  width: 100px;
+  margin-left: 5px;
   border-radius: 5px;
   border: 1px dotted #333;
 }

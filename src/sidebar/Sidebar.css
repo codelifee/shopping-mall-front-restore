@@ -56,7 +56,9 @@
   text-align: center;
   cursor: pointer;
   font-family: "MaruBuri-Regular";
+  height: 4px;
 }
+
 .menu_link_ul {
   display: block;
   align-items: center;
@@ -72,11 +74,14 @@
 .nav-menu-items li {
   width: 100%;
 }
-.navbar-toggle {
-  background-color: #fff;
+<<<<<<< HEAD ======= .nav-menu-items li {
   width: 100%;
-  height: 80px;
+}
+
+>>>>>>>a812d96042c3154bfe50d3a98e417df811e7b57c .navbar-toggle {
+  background-color: #fff;
   display: flex;
+  margin-bottom: -50px;
   justify-content: start;
   align-items: center;
   font-family: "MaruBuri-Regular";

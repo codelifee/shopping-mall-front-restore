@@ -1,19 +1,20 @@
 import {useState, useEffect} from 'react';
 import axios from '../axios/axios';
 
-const SignUpData = (callback,Validate) => {
+const SocialSignUpData = (callback,Validate) => {
 
     const [customer, setCustomer] = useState([]);
+    const phoneNadrress = customer.map((val)=>{return {user_phone: val.user_phone,
+        user_address: val.user_address
+    }});
+
+     console.log(phoneNadrress)
 
     useEffect(() => {
         getAll();
     }, [])
 
     const[values, setValues] = useState({
-        user_id:'',
-        user_pwd:'',
-        user_pwd2:'',
-        user_name:'',
         user_phone:'',
         user_address:''
     });
@@ -32,14 +33,14 @@ const SignUpData = (callback,Validate) => {
     const handleSubmit = e =>{
         e.preventDefault();
 
-        setErrors(Validate(values,customer));
+        setErrors(Validate(values,phoneNadrress));
         setIsSubmitting(true);
     };
 
     useEffect(() =>{
         if(Object.keys(errors).length === 0 && isSubmitting){
             callback();
-            postForm();
+            return values;
         }
       },
       [errors]
@@ -60,4 +61,4 @@ const SignUpData = (callback,Validate) => {
     return {handleChange, values, handleSubmit, errors};
 }
 
-export default SignUpData;
+export default SocialSignUpData;

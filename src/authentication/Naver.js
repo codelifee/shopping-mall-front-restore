@@ -117,17 +117,11 @@ const Naver = (props) => {
     // <></>
     <NaverLogin
       clientId={clientId}
-      callbackUrl={`http://localhost:3000${window.location.pathname}`}
+      callbackUrl={`https://www.xn--vx3b30no7b.com/login#`}
       onSuccess={success}
       onFailure={() => fail}
-      render={(renderProps) => (
-        <button
-          onClick={renderProps.onClick}
-          className="loginButton"
-          style={{}}
-        >
-          Naver Login
-        </button>
+      render={renderProps => (
+        <button onClick={renderProps.onClick} className="loginButton">Naver Login</button>
       )}
     ></NaverLogin>
   );

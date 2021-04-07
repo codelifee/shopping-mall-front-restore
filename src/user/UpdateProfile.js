@@ -83,13 +83,6 @@ function UpdateProfile({ submitForm }) {
               defaultValue={form.user_phone}
               onChange={handleChange}
             />
-            <button
-              type="button"
-              onClick={checkPhone2}
-              className="phone_button"
-            >
-              Check Phone
-            </button>
             {errors.user_phone && <p>{errors.user_phone}</p>}
           </div>
           <div className="update__address">

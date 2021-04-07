@@ -1,7 +1,7 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React from 'react';
 import './Product.css';
 import { useStateValue } from '../StateProvider/StateProvider';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory} from 'react-router-dom';
 import { FaComment, FaShoppingCart } from 'react-icons/fa';
 import { ImageData } from '../axios/urlData';
 
@@ -21,11 +21,12 @@ function Product(props) {
         image: image + props.id,
         description: props.description,
         price: props.price,
-        //rating: props.product_rating
       },
     });
   };
+
   let history = useHistory();
+
   return (
     <div className="product2">
       <img
@@ -61,17 +62,6 @@ function Product(props) {
             <FaComment style={{ color: 'rgba(230, 125, 122, 0.7)' }} />
             <small> &nbsp; ({props.comment})</small>
           </div>
-        </div>
-        <div className="product2__rating">
-          {
-            //Array(props.product_rating)
-            //.fill()
-            //.map((_, i) => (
-            //   <p>
-            //   {/* <img src={fire} alt=""/> */}
-            //   </p>
-            // ))
-          }
         </div>
       </div>
     </div>
