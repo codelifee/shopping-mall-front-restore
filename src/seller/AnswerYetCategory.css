@@ -10,7 +10,7 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 100px 100px 100px 1fr;
-
+  margin-top: 50px;
   background-color: #fff;
   color: #333;
   margin-bottom: 100px;
@@ -104,7 +104,7 @@
   height: 600px;
 }
 
-.category__table {
+.yet__category__table {
   width: 1125px;
   text-align: center;
   border-radius: 5px;
@@ -117,31 +117,31 @@
   color: #333;
 }
 
-.category__table thead {
+.yet__category__table thead {
   background-color: #555;
   color: #ffffff;
 }
-.category__table th {
+.yet__category__table th {
   border-radius: 5px;
 }
-.category__table th,
+.yet__category__table th,
 td {
   padding: 12px 15px;
 }
 
-.category__table tbody tr {
+.yet__category__table tbody tr {
   border-bottom: 1px solid #c7c3c3;
 }
 
-.category__table tbody tr:nth-of-type(even) {
+.yet__category__table tbody tr:nth-of-type(even) {
   background-color: #e0dede;
 }
 
-.category__table tbody tr:last-of-type {
+.yet__category__table tbody tr:last-of-type {
   border-bottom: 2px solid #009879;
 }
 
-.category__table span {
+.yet__category__table span {
   cursor: pointer;
 }
 .answer__category {
@@ -152,4 +152,190 @@ td {
 .question_length0 {
   font-size: 35px;
   text-align: center;
+}
+
+@media all and (max-width: 414px) {
+  .category {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+  }
+
+  .category__container {
+    /* background: rgb(182, 167, 167); */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    background-color: #fff;
+    color: #333;
+    margin-bottom: 0px;
+  }
+
+  .products__searchbar {
+    width: 300px;
+    display: flex;
+    align-items: center;
+    margin-left: 0px;
+  }
+
+  .products__searchbar > .products__input {
+    margin-right: 0px;
+  }
+
+  .products__input {
+    height: 30px;
+    width: 300px;
+    border-radius: 0px;
+  }
+
+  .products__search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* background: rgb(121, 112, 112); */
+  }
+
+  .datepicker_date {
+    padding: 3px;
+    border-radius: 0px;
+    border: 1px solid #555;
+  }
+
+  .answer__category {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-left: 0px;
+  }
+
+  .answer__category p {
+    margin-right: 0px;
+    width: 300px;
+    text-align: center;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
+  .products__button {
+    display: flex;
+    align-items: center;
+  }
+
+  .products__search-button {
+    margin-right: 20px;
+    width: 100px;
+    height: 30px;
+    color: white;
+    background: #777;
+    border: 1px solid #333;
+    border-radius: 5px;
+  }
+
+  .products__reset-button {
+    width: 100px;
+    height: 30px;
+    background: #fff;
+    border: 1px solid #333;
+    border-radius: 5px;
+  }
+
+  .category__info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background: purple; */
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
+  .category__info > button {
+    margin-right: 0px;
+    width: 200px;
+    height: 30px;
+    color: aliceblue;
+    background: rgb(200, 73, 73);
+    font-size: medium;
+  }
+
+  .category__table_bg {
+    /* background: wheat; */
+
+    width: 100%;
+  }
+
+  .yet__category__table {
+    width: 100%;
+    text-align: center;
+    border-radius: 0px;
+    background-image: linear-gradient(
+      to right,
+      rgba(255, 183, 85, 0.3) 0%,
+      rgba(251, 115, 185, 0.2) 100%
+    );
+    border: 2px solid #f2cb61;
+    color: #333;
+  }
+
+  .yet__category__table thead {
+    background-color: #555;
+    color: #ffffff;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  .yet__category__table th {
+    border-radius: 0px;
+    background-color: #555;
+    color: #fff;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  .yet__category__table th,
+  td {
+    padding: 0px;
+    border-radius: 0;
+    font-size: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  .yet__category__table tbody tr {
+    border-bottom: 0px solid #c7c3c3;
+  }
+
+  .yet__category__table tbody tr:nth-of-type(even) {
+    background-color: #e0dede;
+  }
+
+  .yet__category__table tbody tr:last-of-type {
+    border-bottom: 0px solid #009879;
+  }
+
+  .yet__category__table span {
+    cursor: pointer;
+  }
+  .answer__category {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
+  .question_length0 {
+    font-size: 35px;
+    text-align: center;
+  }
+  .react-datepicker-wrapper {
+    width: 300px;
+    margin-left: 0;
+    margin-right: 0;
+  }
 }

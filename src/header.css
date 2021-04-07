@@ -181,7 +181,10 @@ a {
 .header__search2 {
   display: none;
 }
+<<<<<<< HEAD
+=======
 
+>>>>>>> a812d96042c3154bfe50d3a98e417df811e7b57c
 @media all and (max-width: 800px) {
   .header__nav {
     display: none;

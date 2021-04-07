@@ -14,8 +14,10 @@ function SellerProducts() {
         .get("products/allJsonData")
         .then((response) => setProducts(response.data))
         .catch((error) => console.log(error));
+
       return request;
     }
+
     fetchDate();
   }, []);
 
@@ -25,36 +27,43 @@ function SellerProducts() {
       .then((res) => {
         console.log(res);
         window.location.reload(false);
-        alert("삭제가 완료 되었습니다");
       })
       .catch((err) => console.log(err));
   };
 
   return (
-    <div className="sellerProduct">
-      <div className="sellerProduct__container">
-        <div className="sellerProduct__search">
-          <form className="sellerProduct__form">
-            <div className="sellerProduct__searchbar">
-              <div className="sellerProduct__button">
-                <button className="sellerProduct__search-button">검색</button>
-                <button className="sellerProduct__reset-button">초기화</button>
+    <div className="sellerProduct1">
+      <div className="sellerProduct__container1">
+        <div className="sellerProduct__search1">
+          <form className="sellerProduct__form1">
+            <div className="sellerProduct__searchbar1">
+              <div className="sellerProduct__button-input1">
+                <div className="sellerProduct__button1">
+                  <button className="sellerProduct__search-button1">
+                    Search
+                  </button>
+                  <button className="sellerProduct__reset-button1">
+                    Reset
+                  </button>
+                </div>
+                <input
+                  type="text"
+                  className="sellerProduct__input1"
+                  onChange={(e) => {
+                    setSearchTerm(e.target.value);
+                  }}
+                />
               </div>
-              <input
-                type="text"
-                className="sellerProduct__input"
-                onChange={(e) => {
-                  setSearchTerm(e.target.value);
-                }}
-              />{" "}
-              <label className="sellerProduct__label">카테고리</label>
-              <select className="sellerProduct__select">
-                <option value="Product Name">상품명</option>
+              <label className="sellerProduct__label1">Category</label>
+
+              <select className="sellerProduct__select1">
+                <option value="Product Name">Product Name</option>
               </select>
+
               <select
                 name="categories"
                 id="categories"
-                className="sellerProduct__select"
+                className="sellerProduct__select1"
               >
                 <option value="1">의자</option>
                 <option value="2">서랍</option>
@@ -63,21 +72,20 @@ function SellerProducts() {
             </div>
           </form>
         </div>
-        <div className="sellerProduct__info">
-          <h2> 등록된 총 상품 개수: {products.length} 개 </h2>
+        <div className="sellerProduct__info1">
+          <h2> {products.length} Product</h2>
           <Link to="/seller/addProduct">
-            <button className="Button">+ 상품 등록</button>
+            <button className="Button1">+ Add a New Product</button>
           </Link>
         </div>
-        <div className="sellerProduct__table_bg">
-          <table className="sellerProduct__table">
+        <div className="sellerProduct__table_bg1">
+          <table className="sellerProduct__table1">
             <thead>
-              <th>상품명</th>
-              <th>판매가</th>
-              <th>재고수량</th>
-
-              <th>상품삭제</th>
-              <th>상품수정</th>
+              <th className="sellerProduct__th11">Product Name</th>
+              <th>Price</th>
+              <th>Stock</th>
+              <th>DELETE</th>
+              <th>Update</th>
             </thead>
             <tbody>
               {products
@@ -99,7 +107,6 @@ function SellerProducts() {
                     name={product.product_name}
                     price={product.product_price}
                     handleDelete={handleDelete}
-                    stock={product.stock}
                   />
                 ))}
             </tbody>

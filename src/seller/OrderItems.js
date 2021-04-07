@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "../axios/axios";
+import "./Order.css";
 
 function OrderItems({ id, name, date, address, status }) {
   const [newStatus, setNewStatus] = useState({
@@ -9,9 +10,11 @@ function OrderItems({ id, name, date, address, status }) {
   const handleStatus = (e) => {
     e.preventDefault();
     let id = e.target.id;
+
     setNewStatus({
       order_status: e.target.value,
     });
+
     //     console.log(newStatus)
   };
 
@@ -37,23 +40,26 @@ function OrderItems({ id, name, date, address, status }) {
   return (
     <>
       <tr>
-        <td>{name}</td>
-        <td>{address}</td>
-        <td>{date}</td>
-        <td>
+        <td className="order__product_td1">{name}</td>
+        <td className="order__product_td2">{date}</td>
+        <td className="order__product_td3">{address}</td>
+        <td className="order__product_td3">
           <select
             value={newStatus.order_status}
             id={id}
             onChange={handleStatus}
+            className="order__product-option"
           >
             <option value="배송완료">배송완료</option>
             <option value="배송중">배송중</option>
             <option value="배송시작">배송시작</option>
             <option value="배송준비중">배송준비중</option>
           </select>
-        </td>
-        <td>
-          <button id={id} onClick={patchOrderStatus}>
+          <button
+            id={id}
+            onClick={patchOrderStatus}
+            className="order__table-button"
+          >
             변경하기
           </button>
         </td>

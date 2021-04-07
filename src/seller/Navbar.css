@@ -75,3 +75,9 @@ p {
 .seller_navbar__link > p {
   margin-left: 20px;
 }
+
+@media all and (max-width: 414px) {
+  .seller_navbar {
+    display: none;
+  }
+}
