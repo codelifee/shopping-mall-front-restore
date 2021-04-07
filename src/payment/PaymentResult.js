@@ -4,11 +4,13 @@ import { Button } from 'antd';
 import { withRouter } from 'react-router-dom';
 import queryString from 'query-string';
 import axios from '../axios/axios';
+import Cookies from 'js-cookie';
 
 function PaymentResult({ history }) {
   const { location } = history;
   const { search } = location;
   const query = queryString.parse(search);
+  const cookie = Cookies.get('user');
   
   const { merchant_uid, error_msg, imp_uid, paid_amount, name, buyer_name, buyer_email } = query;
   const isSuccessed = getIsSuccessed();
@@ -23,7 +25,8 @@ function PaymentResult({ history }) {
     merchant_uid:merchant_uid,
     product_name:name,
     amount:paid_amount,
-    user_name:buyer_name
+    user_name:buyer_name,
+    cookie
   };
 
   const resultType = isSuccessed ? '성공' : '실패';
