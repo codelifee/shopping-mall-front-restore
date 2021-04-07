@@ -6,6 +6,24 @@
   box-sizing: border-box;
 }
 
+.header__option__navi {
+  float: right;
+  list-style: none;
+  width: 600px;
+  height: 120px;
+}
+.header__cookie {
+  font-size: 40px;
+  font-weight: bolder;
+}
+.header_li {
+  float: right;
+  margin: 5px 5px;
+  line-height: 119px;
+  text-align: right;
+  vertical-align: middle;
+}
+
 a {
   text-decoration: none;
 }
@@ -19,8 +37,14 @@ a {
   display: flex;
   align-items: center;
 }
+
+.header__stick {
+  font-weight: bolder;
+  color: #555;
+  padding: 0px 2px 0px 2px;
+}
+
 .header {
-  height: 100px;
   display: flex;
   align-items: center;
   position: fixed;
@@ -38,6 +62,13 @@ a {
   padding: 3px;
   position: relative;
   left: 2%;
+}
+
+.header__box{
+  width: 30px;
+  height: 30px; 
+  border-radius: 70%;
+  overflow: hidden;
 }
 
 .header__search {
@@ -83,10 +114,11 @@ a {
 
 .header__option .header__optionLinetwo {
   transition: all 0.3s;
-  font-size: 20px;
-  font-weight: 800;
 }
-.header__option:hover {
+.header__option:hover,
+.header__optionLinetwo:hover {
+  cursor: pointer;
+
   color: #000;
 }
 
@@ -104,6 +136,8 @@ a {
   margin-left: 10px;
   margin-right: 10px;
   text-decoration: none;
+  background-color: rgb(244,67,162);
+  color:#eee
 }
 
 .header__nav {
@@ -144,6 +178,13 @@ a {
   width: 80px;
 }
 
+.header__search2 {
+  display: none;
+}
+<<<<<<< HEAD
+=======
+
+>>>>>>> a812d96042c3154bfe50d3a98e417df811e7b57c
 @media all and (max-width: 800px) {
   .header__nav {
     display: none;
@@ -153,12 +194,36 @@ a {
     flex: 1;
   }
 
+  .header__option {
+    display: none;
+  }
+
+  .header__search2 {
+    display: none;
+  }
+
   .header__search {
     width: 30%;
   }
 }
-
+.header__optionLinetwo {
+  cursor: pointer;
+}
+.header__search2 {
+  display: none;
+}
 @media all and (max-width: 414px) {
+  .header__search2 {
+    display: block;
+  }
+  .header__option__navi {
+    display: none;
+  }
+
+  .header__option {
+    display: none;
+  }
+
   .header {
     display: flex;
     justify-content: flex-start;
@@ -181,11 +246,7 @@ a {
   }
 
   .header__search {
-    display: flex;
-    align-items: center;
-    width: 200px;
-    border-radius: 10px;
-    background: none;
+    display: none;
   }
 
   .header__searchInput {
@@ -208,7 +269,8 @@ a {
 
     background: none;
   }
-}
-.header__optionLinetwo {
-  cursor: pointer;
+
+  .header__search2 {
+    display: block;
+  }
 }

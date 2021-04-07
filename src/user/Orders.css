@@ -1,54 +1,61 @@
+@font-face {
+  font-family: "MaruBuri-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/MaruBuri-Regular.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
 .orders_bg {
   width: 100%;
+
   display: flex;
   justify-content: center;
   background-color: #fff;
   color: #333;
-  margin-bottom: 100px;
+  align-items: center;
 }
 
 .orders__container {
   /* background: rgb(182, 167, 167); */
-  max-width: 100%;
-  height: 80vh;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 100px 100px 100px 1fr;
-  margin-top: 100px;
+  width: 100%;
+  padding-top: 70px;
   background-color: #fff;
   color: #333;
 }
 
 .orders__input {
   height: 30px;
-  width: 350px;
-  margin: 0 15px 0 0;
-  border-radius: 5px;
+  width: 300px;
   padding-left: 5px;
+  border: 1px solid #555;
 }
 .orders__category {
-  flex: 1;
   display: flex;
-  flex-direction: ;
   align-items: center;
   justify-content: center;
 }
 .orders__category_p {
   color: #333;
+  font-family: "MaruBuri-Regular";
 }
 
 .orders_date {
   height: 30px;
   padding-left: 5px;
   margin: 0 5px 0 30px;
-  border-radius: 5px;
+  border: 1px solid #555;
 }
 
 .orders__search {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
   color: #333;
+  display: flex;
+  justify-content: center;
+  margin-top: 70px;
+}
+.search-icon {
+  font-size: 25px;
 }
 .orders__form {
   display: flex;
@@ -56,8 +63,6 @@
 }
 .orders__searchbar {
   display: flex;
-  margin-left: 20px;
-  margin-right: 80px;
   align-items: center;
   justify-content: center;
 }
@@ -68,7 +73,6 @@
 
 .orders__button {
   display: flex;
-
   margin-left: 30px;
   align-items: center;
 
@@ -80,62 +84,186 @@
   width: 100px;
   height: 30px;
   color: white;
-  background: #777;
+  background: #000;
   border: 1px solid #333;
-  border-radius: 5px;
+  font-family: "MaruBuri-Regular";
 }
 
 .orders__reset-button {
-  width: 100px;
-  height: 30px;
-  background: #fff;
-  border: 1px solid #333;
+  width: 20px;
+  height: 20px;
+  background: #000;
+  border: 1px solid #777;
   border-radius: 5px;
+  z-index: 10;
+  position: relative;
+  right: 60px;
+  color: #fff;
 }
 
 .orders__info {
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   /* background: purple; */
   margin-left: 36px;
   margin-right: 36px;
   color: #333;
+  font-family: "MaruBuri-Regular";
+  margin: 20px 0;
+}
+
+.orders__info h2 {
+  font-family: "MaruBuri-Regular";
+  margin-top: 40px;
+}
+.orders__table,
+.order_table {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.body {
+  width: 90%;
 }
 @media all and (max-width: 414px) {
-  .orders__table {
-    width: 360px;
-  }
-  .orders__input,
-  .orders__category,
-  .orders__category_p,
-  .orders_date,
-  .orders__form,
-  .orders__category,
-  .orders__search-button,
-  .orders__reset-button,
-  search-icon,
-  .orders__searchbar {
-    display: none;
-  }
   .orders_bg {
     width: 100%;
-
     background-color: #fff;
     color: #333;
-    margin-bottom: 100px;
-    margin-top: 30px;
   }
   .orders__container {
-    max-width: 100%;
+    width: 100%;
+  }
+  .orders__search {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    color: #333;
+  }
+  .orders__input {
+    height: 30px;
+    width: 150px;
+  }
+  .orders__searchbar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .orders__category {
+    display: none;
+  }
+  .orders__table {
+    width: 95%;
+  }
+
+  .orders_bg {
+    width: 100%;
+    display: flex;
+    justify-content: center;
     background-color: #fff;
     color: #333;
   }
-  .orders__table {
-    margin-top: 50px;
+
+  .orders__container {
+    /* background: rgb(182, 167, 167); */
+    width: 100%;
+    padding-top: 70px;
+    background-color: #fff;
+    color: #333;
+  }
+
+  .orders__input {
+    height: 30px;
+    width: 300px;
+    padding-left: 5px;
+  }
+  .orders__category {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .orders__category_p {
+    color: #333;
+    font-family: "MaruBuri-Regular";
+  }
+
+  .orders_date {
+    height: 30px;
+    padding-left: 5px;
+    margin: 0 5px 0 30px;
+  }
+
+  .orders__search {
+    width: 100%;
+    color: #333;
+  }
+  .search-icon {
+    font-size: 25px;
+  }
+  .orders__form {
+    display: flex;
+    padding: 0 30px;
+  }
+  .orders__searchbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .orders__category {
+    display: none;
+  }
+
+  .orders__button {
+    display: flex;
+    margin-left: 30px;
+    align-items: center;
+
+    /* background: blue; */
+  }
+
+  .orders__search-button {
+    margin-right: 10px;
+    width: 100px;
+    height: 30px;
+    color: white;
+    background: #000;
+    border: 1px solid #333;
+    font-family: "MaruBuri-Regular";
+  }
+
+  .orders__reset-button {
+    width: 20px;
+    height: 20px;
+    background: #000;
+    border: 1px solid #777;
+    border-radius: 5px;
+    z-index: 10;
+    position: relative;
+    right: 50px;
+    color: #fff;
+  }
+
+  .orders__info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background: purple; */
+    margin-left: 36px;
+    margin-right: 36px;
+    color: #333;
+    font-family: "MaruBuri-Regular";
+  }
+
+  .orders__info h2 {
+    font-family: "MaruBuri-Regular";
+    margin-top: 40px;
   }
 }

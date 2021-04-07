@@ -61,7 +61,7 @@ function Payment({ history, form, ua}) {
     validateFieldsAndScroll((error, values) => {
       if (!error) {
         /* 가맹점 식별코드 */
-        const userCode = 'imp19424728';
+        const userCode = 'imp79897551';
         /* 결제 데이터 */
         const {
           pg,
@@ -216,7 +216,7 @@ function Payment({ history, form, ua}) {
         )}
         <Item>
           {getFieldDecorator('name', {
-            initialValue: products.product_name,
+            initialValue: toString(basket.product_name), 
             rules: [{ required: true, message: '제품명은 필수입력입니다' }],
           })(
             <Input size="large" addonBefore="제품명" />,
@@ -224,7 +224,7 @@ function Payment({ history, form, ua}) {
         </Item>
         <Item>
           {getFieldDecorator('amount', {
-            initialValue: products.product_price,
+            initialValue: toString(basket.product_price),
             rules: [{ required: true, message: '결제금액은 필수입력입니다' }],
           })(
             <Input size="large" addonBefore="결제금액" />,

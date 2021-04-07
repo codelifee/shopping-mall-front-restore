@@ -1,97 +1,215 @@
-import React, { useState } from "react";
-
+import React, {
+  useState,
+  useEffect
+} from "react";
+import Subtotal from "./Subtotal";
+import {
+  useSelector
+} from "react-redux";
 import fire from "../img/fire.svg";
-import { useStateValue } from "../StateProvider/StateProvider";
+import {
+  useStateValue
+} from "../StateProvider/StateProvider";
 import "./CheckoutProduct.css";
-function CheckoutProduct({ id, title, image, price, rating }) {
-  const [{ basket }, dispatch] = useStateValue();
-  const [quantity, setQuantity] = useState(1);
+import axios from "../axios/axios";
+import Cookies from "js-cookie";
+import * as AiIcons from "react-icons/ai";
 
-  const removeFromBasket = () => {
-    dispatch({
-      type: "REMOVE_FROM_BASKET",
-      id: id,
-    });
-  };
+function CheckoutProduct({
+  cart_id,
+  id,
+  title,
+  quantity,
+  image,
+  price,
+  handleDelete
+}) {
+  const [{
+    basket
+  }, dispatch] = useStateValue();
+  const [change, setChange] = useState(0);
+  const [quantity1, setQuantity1] = useState(quantity);
+
+  const [checkoutItems2, setCheckoutItems2] = useState({
+    cart_item_quantity: quantity,
+  }, );
+
+  useEffect(() => {
+    setCheckoutItems2({
+      cart_item_quantity: quantity,
+
+    })
+  }, [quantity])
+
   const style11 = {
-    borderBottom: "1px solid red",
+    borderBottom: "1px solid gray",
+    fontSize: "30px"
   };
-  return (
-    <>
-      <tr style={style11}>
-        <td style={{ rowSpan: 2 }}>
-          {" "}
-          {<img src={image} alt="img" style={{ width: "80px" }} />}
-        </td>
-        <td
-          style={{
-            width: "700px",
-          }}
-        >
-          <ul className="checkout_ul">
-            <li className="checkout_li">{title}</li>
-            <li className="checkout_li">
-              {quantity > 1 ? (
-                <button
-                  className="checkout_button"
-                  onClick={() => {
-                    setQuantity(quantity - 1);
-                  }}
-                >
-                  -
-                </button>
-              ) : (
-                <button
-                  className="checkout_button"
-                  onClick={() => {
-                    setQuantity(quantity);
-                  }}
-                >
-                  -
-                </button>
-              )}
-              {quantity}
-              <button
-                className="checkout_button"
-                onClick={() => {
-                  setQuantity(quantity + 1);
-                }}
-              >
-                +
-              </button>
-            </li>
-            <li
-              className="checkout_li"
-              style={{ fontSize: "20px", fontWeight: "1000" }}
-            >
-              {Array(rating)
-                .fill()
-                .map((_, i) => (
-                  <img src={fire} alt="fire" />
-                ))}
-            </li>
-          </ul>
-        </td>
 
-        <td className="order_td">
-          <li
-            className="checkout_li"
-            style={{ listStyle: "none", textAlign: "center" }}
-          >
-            <small>₩</small>
-            <strong>{new Intl.NumberFormat().format(price * quantity)}</strong>
-          </li>
-          <div className="btnBox">
-            <button className="remove" onClick={removeFromBasket}>
-              <span></span>
-              <span></span>
-              <span></span>
-            </button>
-          </div>
-        </td>
-      </tr>
-    </>
-  );
-}
+  const cookie = Cookies.get("user");
 
-export default CheckoutProduct;
+  const plusQuantity = (e) => {
+
+    axios
+      .patch(`cartitems/plusQuantity/${cart_id}`, checkoutItems2)
+      .then((res) => {
+        alert("수량이 1개 증가했습니다");
+        console.log(res);
+        setChange(change + 1);
+      })
+      .catch((err) => console.log(err))
+    console.log(checkoutItems2)
+  }
+
+  const minusQuantity = (e) => {
+    axios
+      .patch(`cartitems/minusQuantity/${cart_id}`, checkoutItems2)
+      .then((res) => {
+        alert("수량이 1개 감소했습니다");
+        console.log(res);
+        setChange(change + 1);
+      })
+      .catch((err) => console.log(err));
+  }
+
+  useEffect(() => {
+    async function fetchData() {
+      const request = await axios
+        .get(`cartitems/${cart_id}`)
+        .then((response) => setCheckoutItems2(response.data))
+        .catch((error) => console.log(error));
+      return request;
+    }
+    fetchData();
+  }, [change]);
+
+
+
+  return ( <
+    >
+    <
+    tr className = "checkoutproduct__tr"
+    style = {
+      style11
+    } >
+    <
+    td className = "checkout__order_td"
+    style = {
+      {
+        rowSpan: 1
+      }
+    } > {
+      " "
+    } {
+      < img src = {
+        image
+      }
+      alt = "img"
+      style = {
+        {
+          width: "100px",
+          height: "100px"
+        }
+      }
+      />} <
+      /td> <
+      td className = "checkout__order_td" >
+        <
+        ul className = "checkout_ul" >
+        <
+        li className = "checkout_li" > {
+          title
+        } < /li> <
+        li className = "checkout_li" > {
+          checkoutItems2.cart_item_quantity > 1 ? ( <
+            button className = "checkout_button"
+            onClick = {
+              minusQuantity
+            } >
+            -
+            <
+            /button>
+
+          ) : ( <
+            button className = "checkout_button"
+            onClick = {
+              () => {
+                alert("최소수량은 1개입니다.")
+              }
+            } >
+            -
+            <
+            /button>
+          )
+        }
+
+      {
+        checkoutItems2.cart_item_quantity
+      } <
+      button className = "checkout_button"
+      onClick = {
+          plusQuantity
+        } >
+        +
+        <
+        /button> <
+        /li>
+
+        <
+        li className = "checkout_li" > {
+          new Intl.NumberFormat().format(price)
+        } <
+        /li> <
+        /ul> <
+        /td>
+
+        <
+        td className = "checkout__order_td" >
+        <
+        li
+      className = "checkout_li"
+      style = {
+          {
+            listStyle: "none",
+            textAlign: "center"
+          }
+        } >
+        <
+        small > ₩ < /small> <
+        strong style = {
+          {
+            textAlign: "center"
+          }
+        } > {
+          new Intl.NumberFormat().format(price * checkoutItems2.cart_item_quantity)
+        } < /strong> <
+        /li>
+
+        <
+        button className = "checkoutproduct__remove-button"
+      onClick = {
+          () => handleDelete(cart_id)
+        } >
+        <
+        AiIcons.AiOutlineClose style = {
+          {
+            width: "20px",
+            marginBottom: "25px",
+            paddingBottom: "4px",
+            color: "rgb(120, 120, 120)"
+          }
+        }
+      /> <
+      /button>
+
+
+      <
+      /td> <
+      td className = "checkout__order_td" > < strong className = "checkout__deliver" > 무료배송 < /strong></td >
+        <
+        /tr> <
+        />
+    );
+  }
+
+  export default CheckoutProduct;

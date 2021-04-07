@@ -1,47 +1,39 @@
-import React, { useState, useEffect } from 'react';
-import Tabs from './Tabs';
-import { useParams, useHistory } from 'react-router-dom';
-import './Detail.css';
-import { useStateValue } from '../StateProvider/StateProvider';
-import axios from '../axios/axios';
-import './Modal.css';
-import { ImageData } from '../axios/urlData';
-import Cookies from 'js-cookie';
-
-function Modal() {
-  const history = useHistory();
-  return (
-    <div id="myModal" className="modal">
-      <div className="modal_content">
-        <h4>
-          장바구니에 상품이 <br /> 담겼습니다.
-        </h4>
-        <button
-          className="modalButton"
-          onClick={() => {
-            history.push('/checkout');
-          }}
-        >
-          장바구니로 이동
-        </button>
-      </div>
-    </div>
-  );
-}
+import React, { useState, useEffect } from "react";
+import Tabs from "./Tabs";
+import { useParams, useHistory } from "react-router-dom";
+import "./Detail.css";
+import axios from "../axios/axios";
+import BasketModal from "./BasketModal.js";
+import { ImageData } from "../axios/urlData";
+import Cookies from "js-cookie";
 
 function Detail() {
-  const [products, setProducts] = useState([]);
-  const [reviews, setReviews] = useState([]);
-  const [question, setQuestion] = useState([]);
-  const cookie = Cookies.get('user');
-
   const { id } = useParams();
 
-  let image1 = ImageData.image1 + id;
+  const [products, setProducts] = useState([]);
   const [modal, setModal] = useState(false);
   const [quantity, setQuantity] = useState(1);
-  const [{ basket }, dispatch] = useStateValue();
   const history = useHistory();
+  const cookie = Cookies.get("user");
+  const [basketItems, setBasketItems] = useState({
+    cart_item_id: "",
+    user_sequence_id: Cookies.get("user"),
+    cart_item_quantity: quantity,
+    product_id: id,
+  });
+
+  let image1 = ImageData.image1 + id;
+
+  const closeModal = () => {
+    setModal(!modal);
+  };
+
+  const postBasketItems = () => {
+    axios
+      .post("/cartitems", basketItems)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
 
   useEffect(() => {
     async function getProducts() {
@@ -55,34 +47,8 @@ function Detail() {
     getProducts();
   }, []);
 
-  useEffect(() => {
-    async function getReviews() {
-      const request = await axios
-        .get(`/review/JsonDataByProductId/${id}`)
-        .then((response) => setReviews(response.data))
-        .catch((error) => console.log(error));
-
-      return request;
-    }
-
-    getReviews();
-  }, []);
-
-  useEffect(() => {
-    async function getQuestion() {
-      const request = await axios
-        .get(`/question/countByProductId/${id}`)
-        .then((response) => setQuestion(response.data))
-        .catch((error) => console.log(error));
-
-      return request;
-    }
-    getQuestion();
-  }, []);
-
   return (
     <div className="detail">
-
       <div className="detail__product">
         <div className="detail__product_img">
           <img src={image1} className="img" alt="" />
@@ -99,17 +65,16 @@ function Detail() {
           <p className="detail__product_delivery">
             배송정보 | 도서산간지역 제외 평균 2~3일 배송
           </p>
-          {/* <p className="detail__product_deliveryPrice">배송료 정보</p> */}
-          <p className="detail__product_deliveryPrice_">
-            {/* 일반지역 2,500원 / 도서산간지역 4,000원{" "} */}
-          </p>
           <p className="detail__proudct_stock">재고 : {products.stock}</p>
           <div className="center">
             <p className="quantity">
               {quantity > 1 ? (
                 <button
                   onClick={() => {
-                    setQuantity(quantity - 1);
+                    return (
+                      setQuantity(quantity - 1),
+                      (basketItems.cart_item_quantity = quantity - 1)
+                    );
                   }}
                   className="quantity_button"
                 >
@@ -118,7 +83,10 @@ function Detail() {
               ) : (
                 <button
                   onClick={() => {
-                    setQuantity(quantity);
+                    return (
+                      setQuantity(quantity),
+                      (basketItems.cart_item_quantity = quantity)
+                    );
                   }}
                   className="quantity_button"
                 >
@@ -128,7 +96,10 @@ function Detail() {
               구매수량 {quantity}
               <button
                 onClick={() => {
-                  setQuantity(quantity + 1);
+                  return (
+                    setQuantity(quantity + 1),
+                    (basketItems.cart_item_quantity = quantity + 1)
+                  );
                 }}
                 className="quantity_button"
               >
@@ -136,31 +107,20 @@ function Detail() {
               </button>
             </p>
             <p className="detail__product_totalPrice">
-              총 금액{' '}
+              총 금액{" "}
               {new Intl.NumberFormat().format(
-                products.product_price * quantity,
+                products.product_price * quantity
               )}
               원
             </p>
           </div>
           <div className="button_box">
-            {modal == true ? <Modal /> : null}
-
+            {modal == true ? <BasketModal close={closeModal} /> : null}
             <button
               className="detail__keep"
               onClick={() => {
                 if (modal == false) {
-                  dispatch({
-                    type: 'ADD_TO_BASKET',
-                    item: {
-                      id: products.product_id,
-                      title: products.product_name,
-                      image: image1,
-                      description: products.product_description,
-                      price: products.product_price * quantity,
-                      rating: products.product_rating,
-                    },
-                  });
+                  postBasketItems();
                 }
                 setModal(!modal);
               }}
@@ -171,20 +131,10 @@ function Detail() {
             <button
               className="detail__order"
               onClick={() => {
-                if( cookie != null){
-                  dispatch({
-                    type: 'ADD_TO_BASKET',
-                    item: {
-                      id: products.product_id,
-                      title: products.product_name,
-                      image: image1,
-                      description: products.product_description,
-                      price: products.product_price * quantity,
-                      rating: products.product_rating,
-                    },
-                  });
-                  history.push('/payment/');
-                }else{
+                if (cookie != null) {
+                  postBasketItems();
+                  history.push("/payment/");
+                } else {
                   alert("로그인을 해주세요!");
                 }
               }}
@@ -195,7 +145,7 @@ function Detail() {
         </div>
       </div>
 
-      <Tabs reviews={reviews} question={question} />
+      <Tabs />
     </div>
   );
 }

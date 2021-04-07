@@ -39,17 +39,18 @@ const postForm = () => {
         console.log(res);
         Cookies.set("user", res.data.user_sequence_id);
 
-        history.push("/home");
+        alert('회원정보 수정 메뉴에서 핸드폰 번호와 주소를 입력해주세요!')
+        history.push(`/user/${Cookies.get('user')}`);
       });
     }
   };
 
   const [values, setValues] = useState({
     user_id: "",
-    user_pwd: '12345',
-    user_pwd2: '12345',
+    user_pwd: 12345,
+    user_pwd2: 12345,
     user_name: "",
-    user_phone: "010-8282-2424",
+    user_phone: "",
     user_address: "회원정보에서 수정",
   });
 
@@ -72,7 +73,7 @@ const postForm = () => {
     return confirmEvent;
   };
 
-  const event = () => postForm(); 
+  const event = () =>{postForm()}
   const cancel = () => alert("가입이 취소 되었습니다");
   const confirmAction = useConfirm("해당 계정 정보가 없습니다. 해당 계정으로 가입하시겠습니까?", event, cancel) 
 
@@ -93,9 +94,11 @@ const postForm = () => {
   
   useEffect(()=>{
     if(values.user_id==""){
+      //로그인 전에는 작동 안하게 하는 조건.
       return;
     }else{
       axios.get("/users/login", {
+        //db에 가입된 id, pwd 있는지 확인.
         params: {
           user_id: values.user_id,
           user_pwd: values.user_pwd,

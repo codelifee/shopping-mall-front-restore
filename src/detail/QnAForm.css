@@ -13,21 +13,24 @@
     margin-bottom: 15px;
   }
   
-  #input {
+  #QnA_form__input {
     height: 300px;
     width: 700px;
     margin: 0 auto;
     background-color: white;
   }
 
-  .button{
+  .QnA_form__button{
       margin: 0 auto;
       margin-top: 15px;
   }
 
-  .button > button{
-      width: 200px;
-      height: 60px;
-      border-radius: 50px;
-      cursor: pointer;
+  .QnA_form__button > button{
+    width: 200px;
+    height: 60px;
+    border-radius: 50px;
+    border: none;
+    background-color: rgba(230, 125, 122, 0.7);
+    cursor: pointer;
+    margin-bottom: 100px;
   }

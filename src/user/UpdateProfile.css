@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "MaruBuri-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/MaruBuri-Regular.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -12,54 +20,44 @@ body {
 }
 
 .updateProfile__container {
-  width: 710px;
-  height: 85vh;
-  display: grid;
   margin-top: 100px;
-  padding: 20px;
-  grid-template-columns: 1fr;
-  grid-template-rows: 100px 100px auto;
-  border: 10px solid;
-  border-image: linear-gradient(45deg, #f2cb61, #bce55c);
-  border-image-slice: 1;
   background-color: #fff;
   color: #333;
 }
-.updateProfile__container__head h1 {
+.updateProfile__container__head .title {
   color: #333;
+  font-family: "MaruBuri-Regular";
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
 }
 .updateProfile__container__head {
-  padding-left: 36px;
-  padding-top: 20px;
+  margin-bottom: 50px;
 }
 .updateProfile__container__head p {
   color: #333;
 }
 .updateProfile__search {
-  display: flex;
-  flex-direction: column;
-  margin-left: 30px;
-  margin-top: 30px;
-  height: 430px;
   background: #fff;
+  display: grid;
+  grid-template-columns: 95px 315px;
+  grid-template-rows: 65px 65px 65px 65px 65px 65px;
+  font-size: 12px;
 }
 
-.updateProfile__search  input {
+.updateProfile__input {
   height: 30px;
   width: 300px;
-  background: rgba(255, 183, 85, 0.3);
-  border-radius: 5px;
-  border: 1px dotted #333;
+  border: 1px solid #555;
   width: 200px;
+  padding-left: 10px;
+  background: rgba(255, 183, 85, 0.3);
 }
 
-.updateProfile__search p{
-  margin-left: 5px;
-  color: red;
-}
-
-.update__i span{
+span {
   color: #333;
+  font-weight: 800;
+  padding-left: 10px;
 }
 
 .update__id {
@@ -68,19 +66,20 @@ body {
 }
 
 .update__id > label {
-  margin-right: 70px;
   color: #333;
+  font-family: "MaruBuri-Regular";
 }
 
 .update__password {
   display: flex;
   margin-left: 40px;
   margin-bottom: 30px;
+  padding-top: 5px;
 }
-  
+
 .update__password > label {
-  margin-right: 10px;
   color: #333;
+  font-family: "MaruBuri-Regular";
 }
 
 .update__password2 {
@@ -88,51 +87,44 @@ body {
   margin-left: 40px;
   margin-bottom: 30px;
 }
-  
+
 .update__password2 > label {
-  margin-right: 10px;
-  margin-right: 9px;
   color: #333;
+  font-family: "MaruBuri-Regular";
 }
 
 .update__name {
   display: flex;
   margin-left: 40px;
   margin-bottom: 30px;
+  padding-top: 5px;
 }
 
 .update__name > label {
-  margin-right: 38px;
   color: #333;
+  font-family: "MaruBuri-Regular";
 }
 
 .update__phone {
   display: flex;
   margin-left: 40px;
   margin-bottom: 30px;
+  padding-top: 5px;
 }
-  
+
 .update__phone > label {
-  margin-right: 37px;
   color: #333;
+  font-family: "MaruBuri-Regular";
 }
 
-.update__phone > button{
-  width: 60px;
-    margin-left: 5px;
-    border: 1px dotted #333;
-    background: #ffb755;
-    border-radius: 5px;
-    font-size: 10px;
-}
-
-.update__phone p{
+.update__phone p {
   color: red;
 }
 
 .update__address {
   display: flex;
   margin-left: 41px;
+  padding-top: 5px;
 }
 
 .update__address > label {
@@ -140,12 +132,19 @@ body {
   color: #333;
 }
 
-.updateProfile__search > button {
-    margin-top: 30px;
-    width: 200px;
-    margin-left: 165px;
-    border: 1px dotted #333;
-    background: #ffb755;
-    border-radius: 5px;
+.phone_button {
+  font-size: 11px;
+  height: 25px;
+  margin-left: 10px;
+  padding: 0px 10px 0px 10px;
+  width: 100px;
+  border: 1px solid #333;
+  background: rgba(0, 0, 0, 0.2);
 }
-
+.Modify {
+  width: 200px;
+  border: 1px solid #333;
+  background: rgba(0, 0, 0, 1);
+  color: #fff;
+  padding: 5px;
+}

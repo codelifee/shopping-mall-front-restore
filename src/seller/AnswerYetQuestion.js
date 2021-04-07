@@ -48,8 +48,12 @@ function AnswerYetQuestion() {
 
         const FilteredResult = question.filter((que) => {
             return que.product_id == id && que.answer == null;
-            setQuestion(FilteredResult);
+           
         });
+
+        useEffect(()=>{
+            setQuestion(FilteredResult);  
+        },FilteredResult);
         
 
   

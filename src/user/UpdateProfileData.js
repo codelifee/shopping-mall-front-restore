@@ -46,7 +46,7 @@ const UpdateProfileData = (callback,Validate) => {
     const handleSubmit = e =>{
         e.preventDefault();
         
-        setErrors(Validate(form));
+        setErrors(Validate(form,check));
         setIsSubmitting(true);
     };
 
@@ -72,25 +72,12 @@ const UpdateProfileData = (callback,Validate) => {
     }
 
     const patchForm = () => {        
-        axios.patch(`users/${user_sequence_id}`, form)
+        axios.patch(`users/${user_sequence_id}`, [form.user_id, form.user_pwd, form.user_name, form.user_phone, form.user_address])
         .then(alert("수정이 완료되었습니다."))
         .catch(err => console.log(err))
     }
 
-    const checkPhone2 = () => {
-        let error = {};
-        for(let i=0;i<check.length;i++){
-            if(form.user_phone == check[i].user_phone){
-                error.user_phone = "사용불가능한 전화번호입니다.";
-                break;
-            }else{
-                error.user_phone = "사용가능한 전화번호입니다.";
-            }
-        }
-        setErrors(error);
-    }
-
-    return {handleChange, form, handleSubmit, errors, checkPhone2};
+    return {handleChange, form, handleSubmit, errors};
 }
 
 export default UpdateProfileData;

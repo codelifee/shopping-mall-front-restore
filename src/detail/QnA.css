@@ -1,5 +1,6 @@
 .QnA__header {
   display: flex;
+  flex-direction: column;
   border-bottom: solid 1px black;
   padding-bottom: 20px;
 }
@@ -36,4 +37,35 @@
   background-color: rgba(230, 125, 122, 0.3);
   border: 1px solid rgba(230, 125, 122, 0.7);
   padding: 2px 5px;
+}
+
+@media all and (max-width: 768px) {
+
+  .question__list_user {
+    flex: 1;
+    flex-direction: row;
+    background-color:  rgba(230, 125, 122, 1);
+    font-size: 15px;
+  }
+}
+
+@media all and (max-width: 414px) {
+
+  .question__list_user {
+    flex: 1;
+    flex-direction: row;
+    background-color:  rgba(230, 125, 122, 1);
+    font-size: 15px;
+  }
+}
+
+
+@media all and (max-width: 280px) {
+
+  .question__list_user {
+    flex: 1;
+    flex-direction: row;
+    background-color:  rgba(230, 125, 122, 1);
+    font-size: 15px;
+  }
 }

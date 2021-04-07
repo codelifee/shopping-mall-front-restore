@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 import Home from './home/Home';
 import SearchResult from './SearchResult';
 import Seller from './seller/Seller';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Checkout from './checkout/Checkout';
 import Detail from './detail/Detail';
 import { auth } from './configuration/firebase';
@@ -18,7 +18,7 @@ import LandingPage from './landingpage/LandingPage';
 import ProductView from './ProductView/ProductView';
 import ReviewForm from './detail/ReviewForm';
 import Cookies from 'js-cookie';
-import ReviewPatchDeleteForm from './detail/ReviewPatchDeleteForm';
+import ReviewPatchForm from './detail/ReviewPatchForm';
 import './App.css';
 import QnAForm from './detail/QnAForm';
 import KakaoMap from './Introduction/KakaoMap';
@@ -64,15 +64,20 @@ function App() {
             </Route>
 
             <Route path="/signup">
+
               {!isSubmittied ? (
+
                 <SignUp submitForm={submitForm} />
-              ) : (
+
+               ): (
                 (window.location.href = '/login')
               )}
             </Route>
+            
             <Route path="/login">
               <Login />
             </Route>
+
             <Route path="/checkout">
               <Header />
               <Checkout />
@@ -93,7 +98,7 @@ function App() {
             </Route>
 
             <Route path="/reviewUpdate/:id">
-              <ReviewPatchDeleteForm />
+              <ReviewPatchForm />
             </Route>
 
             <Route path="/question/:id">
