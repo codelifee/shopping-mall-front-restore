@@ -56,11 +56,6 @@ body {
   border: 1px dotted #333;
 }
 
-.searchbar_and_category {
-  display: flex;
-  line-height: 20px;
-}
-
 .addProduct__search > input {
   height: 30px;
   border-radius: 5px;
@@ -73,15 +68,15 @@ body {
 }
 
 .addProduct__searchbar > p {
-  margin-right: 14px;
+  margin-right: 20px;
   color: #333;
 }
 
 .addProduct__category {
   display: flex;
-  height: 56px;
-  margin-left: 80px;
-  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+
 }
 
 .addProduct__select {
@@ -146,9 +141,11 @@ body {
   background: rgba(219, 187, 141, 0.3);
   border: 1px dotted #333;
 }
-.label_and_input {
-  margin-left: 60px;
+
+.addProduct__image {
+  margin-left: 85px;
 }
+
 .add_fin_button {
   margin-top: 50px;
   margin-left: 160px;

@@ -13,10 +13,9 @@ function SellerProduct({name, price, id, handleDelete }) {
             <td className="seller_product_td">{name}</td>
             <td className="seller_product_td">{price}</td>
             <td className="seller_product_td">40</td>
-            <td className="seller_product_td"
+            <td className="seller_product_td1"
             onClick={() => handleDelete(id)}
-            >
-            DELETE
+            ><b>Delete</b>
             </td>
             <td className="seller_product_td1">
                 <Link to={`/seller/updateProduct/${id}`}>

@@ -80,7 +80,6 @@ function AddProduct() {
                 </div>
                 <form className="addProduct__search" 
                 onSubmit={postForm}>
-                    <div className="searchbar_and_category">
                     <div className="addProduct__searchbar">
                         <p>Product Name</p>
                         <input 
@@ -116,8 +115,7 @@ function AddProduct() {
                             >약재</option>
                         </select>
                     </div>
-                    </div>
-                    <div className="product-description">
+                         <div className="product-description">
                         <label>Product Description</label>
                         <input 
                         className="addproduct-description_input"
@@ -135,15 +133,15 @@ function AddProduct() {
                         onChange={handleChange}
                         />
                     </div>
-                    <div className="label_and_input">
+                    <div className="addProduct__image">
                         <label>메인 이미지 1 </label>
                         <input type="file" name="product_picture" onChange={handleChange}  className="product-description_input"/>
                     </div>
-                    <div className="label_and_input">
+                    <div className="addProduct__image">
                         <label>상세 이미지 2 </label>
                         <input type="file" name="info_img" onChange={handleChange}  className="product-description_input"/>
                     </div>
-                    <div className="label_and_input">
+                    <div className="addProduct__image">
                         <label>상세 이미지 3 </label>
                         <input type="file" name="quality_img" onChange={handleChange}  className="product-description_input"/>
                     </div>
