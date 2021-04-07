@@ -51,7 +51,7 @@ function Payment({ history, form, ua}) {
 
   const sum = checkoutItems.map(datum => datum.price).reduce((a, b) => a + b);
 
-  const product_name = JSON.stringify(checkoutItems.map(datum => datum.product_name));
+  const product_name = String(checkoutItems.map(datum => datum.product_name));
 
   const getUser = () => {
     axios.get(`users/${cookie}`)
