@@ -78,17 +78,20 @@ function Header() {
     getSearchItem();
   }, []);
 
+
   useEffect(() => {
     async function getCartCount() {
       const request = await axios
-        .get('cartitems/getCartItemsByUser/'+cookie)
+        .get(`cartitems/getCartItemsByUser/${Cookies.get("user")}`)
         .then((response) => setCartCount(response.data))
         .catch((error) => console.log(error));
 
       return request;
     }
     getCartCount();
-  }, [cookie]);
+  }, [cartCount]);
+ console.log(cartCount.length)
+ console.log(cookie)
 
   const handleLogout = () => {
     Cookies.remove("user");
@@ -162,7 +165,7 @@ function Header() {
             {cookie ? ((cookie != 6? (
               
               <li className="header_li">
-                <Link to={`/checkout/${id}`} className="header__optionLinetwo">장바구니
+                <Link to={`/checkout/${cookie}`} className="header__optionLinetwo">장바구니
                 <span className="header__basketCount">
                     {cartCount.length}&nbsp;&nbsp;&nbsp;</span> <span className="header__stick"> |</span>
 

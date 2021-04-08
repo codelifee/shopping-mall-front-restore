@@ -28,6 +28,8 @@ import Login from './authentication/Login';
 import PaymentPage from './payment/PaymentPage';
 import PaymentResult from './payment/PaymentResult';
 import ScrollToTop from './ScrollToTop';
+import axios from './axios/axios';
+import CheckoutIntro from './checkout/CheckoutIntro';
 
 function App() {
   const [{}, dispatch] = useStateValue();
@@ -41,9 +43,11 @@ function App() {
 
   const getCookie = () => {
     const cookie = Cookies.get('user');
-    console.log(cookie);
     setCookie(cookie);
   };
+
+
+
 
   return (
     //BEM convention
@@ -78,9 +82,9 @@ function App() {
               <Login />
             </Route>
 
-            <Route path="/checkout">
-              <Header />
-              <Checkout />
+            <Route path="/checkout/:id">
+              <CheckoutIntro />
+      
             </Route>
 
             <Route path="/products/:id">

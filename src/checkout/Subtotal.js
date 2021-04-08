@@ -15,14 +15,10 @@ function Subtotal({ price, quantity }) {
   const cookie = Cookies.get('user');
   const [checkoutItems, setCheckoutItems]=useState([{
     price:0
-
   }]);
 
   //first attempt without CurrencyFormat API
   // const [price, setPrice] = useState(0);
-
- 
-
 
   useEffect(() => {
     //var id = basket.map((item)=>item.id);
@@ -36,10 +32,18 @@ function Subtotal({ price, quantity }) {
     }
     getCheckoutItems();
   }, [checkoutItems]);
+  const sum =
 
-  const sum = checkoutItems.map(datum => datum.price).reduce((a, b) => a + b)
+  (checkoutItems.length== 0 ? null : (
+ checkoutItems.filter(datum => datum !== null).map(datum => datum.price).reduce((a, b) => a + b))
+  )
+
   return (
-    <>             
+    
+    <>  
+    {
+      sum == 0 ? <>
+      </> :
  <tfoot className="subtotal__tfoot" style={{border: "4px solid black"}}>
    <tr style={{height:"150px"}}>
                  <td>상품수: <strong>{checkoutItems.length} </strong>개</td>
@@ -48,7 +52,9 @@ function Subtotal({ price, quantity }) {
                 <td>배송비: <strong>0</strong>원</td> 
                 </tr>
                 </tfoot>
+                 }
     </>
+   
   );
 }
 

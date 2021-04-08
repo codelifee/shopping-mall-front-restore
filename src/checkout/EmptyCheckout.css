@@ -1,0 +1,48 @@
+.emptycheckout {
+    width: 1536px;
+    height: 800px;
+}
+
+.emptycheckout__title {
+    height: 15%;
+    margin-top: 45px;
+    display: flex;
+    padding: 20px;
+    border-bottom: 1px solid lightgray;
+    background-color: white;
+    width: 100%;
+    color: black;
+    border-radius: 10px;
+    font-size: 60px;
+}
+
+.emptycheckout__left {
+    height: 100%;
+    display: flex;
+    width: 100%;
+}
+
+.emptycheckout__second {
+    position: absolute;
+    width: 500px;
+    height: 300px;
+    left: 50%;
+    top: 50%;
+    margin-left: -150px;
+    margin-top: -60px;
+
+}
+
+.emptycheckout__divbutton {
+    position: absolute;
+    width: 300px;
+    height: 120px;
+    left: 51%;
+    top: 60%;
+    margin-left: -125px;
+    margin-top: 30px;
+}
+
+.emptycheckout__button:hover {
+    cursor: pointer;
+}

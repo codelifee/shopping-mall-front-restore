@@ -16,7 +16,7 @@ function BasketModal(props) {
           <button
             className="modalButton"
             onClick={() => {
-              history.push('/checkout');
+              history.push('/checkout/:id');
             }}
           >
             장바구니로 이동

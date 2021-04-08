@@ -1,2 +1,6 @@
 {
+    "editor.fontFamily": "'firacode'",
+    "editor.inlineHints.fontFamily": "'fira code'",
+    "window.zoomLevel": 2,
+    "editor.mouseWheelZoom": true
 }

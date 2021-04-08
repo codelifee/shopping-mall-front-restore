@@ -37,7 +37,7 @@ function User() {
     <Router>
       <div className="user">
         <Switch>
-          <Route path={`/user/${cookie}`}>
+          <Route path={'/user/'+cookie}>
             <Header />
             <Orders />
           </Route>
