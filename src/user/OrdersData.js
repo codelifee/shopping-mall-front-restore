@@ -100,7 +100,7 @@ function OrdersData({
             <select
               id={order_id}
               onChange={handleStatus}
-              className={diff1 > 7 ? "order_none order_none2" : "order_option "}
+              className={diff1 < 7 ? "order_none order_none2" : "order_option "}
               onClick={showSelect}
             >
               <option value="교환">교환</option>
@@ -111,7 +111,7 @@ function OrdersData({
               id={order_id}
               onClick={patchOrderStatus}
               className="order_option2"
-              style={diff1 > 7 ? { display: "block" } : { display: "none" }}
+              style={diff1 < 7 ? { display: "block" } : { display: "none" }}
             >
               배송 완료 후 8일 이후
               <br />
@@ -121,7 +121,7 @@ function OrdersData({
               id={order_id}
               onClick={patchOrderStatus}
               className=" order_none2"
-              style={diff1 > 7 ? { display: "none" } : { display: "block" }}
+              style={diff1 < 7 ? { display: "none" } : { display: "block" }}
             >
               변경하기
             </button>

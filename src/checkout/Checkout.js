@@ -43,6 +43,7 @@ function Checkout() {
 console.log(cookie);
 
 
+<<<<<<< HEAD
   useEffect(() => {
     //var id = basket.map((item)=>item.id);
     async function getCheckoutItems() {
@@ -70,9 +71,27 @@ console.log(cookie);
       history.push('/payment');
     } else {
       alert('로그인하세요.');
+=======
+  async function getCheckoutItems() {
+    const request = await axios
+      .get(`cartitems/getCartItemsByUser/${cookie}`)
+      .then(response => {setCheckoutItems(response.data)
+      console.log(response.data)})
+              .catch((error) => console.log(error));
+    return request;}
+
+    async function getUserName() {
+      const request = await axios
+        .get(`users/${Cookies.get("user")}`)
+        .then((response) => setUsers(response.data))
+        .catch((error) => console.log(error));
+  
+      return request;
+>>>>>>> 0609f4f83cbf7fd17d71288bc1db78dc9dbb96c9
     }
   };
 
+<<<<<<< HEAD
     useEffect(() => {
       async function getUserName() {
         const request = await axios
@@ -95,6 +114,58 @@ console.log(cookie);
  
   
           <div div className = "checkout__second" >
+=======
+
+
+  useEffect(() => {  
+    getUserName()  
+   getCheckoutItems();
+  }, []);
+
+
+
+  return (
+    <div className="checkout">
+      <div className="checkout__left">
+        <div className="checkout__second">
+          <h3>{users.user_name}님의 </h3>
+          <h2 className="checkout__title">
+            <span style={{ color: 'grey' }}>
+              <i class="fas fa-shopping-cart" />
+            </span>
+            &nbsp; 장바구니
+          </h2>
+          <hr />
+          <div className="checkout__description">
+            <table className="checkout_table">
+              <thead>
+                <th>전체선택</th>
+                <th>상품정보</th>
+                <th>상품금액</th>
+              </thead>
+              <tbody>
+              {checkoutItems.map((check, index) => (<CheckoutProduct
+              id={check.product_id}
+              cart_id={check.cart_item_id}
+              title={check.product_name}
+              quantity={check.cart_item_quantity}
+              image={image+check.product_id}
+              price={check.product_price}
+              
+         />
+              ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div className="checkout__right">
+        <Subtotal price={basket.price} quantity={quantity} />
+      </div>
+    </div>
+  );
+}
+>>>>>>> 0609f4f83cbf7fd17d71288bc1db78dc9dbb96c9
 
       <div className = "checkout__description" >
           <table className = "checkout_table" >
