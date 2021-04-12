@@ -34,6 +34,7 @@ const UpdateProfileData = (callback,Validate) => {
         getAll();
     }, [])
     console.log(form);
+    
 
     const handleChange = e => {
         const {name, value} = e.target
@@ -49,6 +50,7 @@ const UpdateProfileData = (callback,Validate) => {
         setErrors(Validate(form,check));
         setIsSubmitting(true);
     };
+    
 
     useEffect(() =>{
         if(Object.keys(errors).length === 0 && isSubmitting){
@@ -58,7 +60,7 @@ const UpdateProfileData = (callback,Validate) => {
       },
       [errors]
     );
-
+    console.log(errors);
     const getForm = () => {
         axios.get(`users/${user_sequence_id}`)
         .then(res => setForm(res.data))

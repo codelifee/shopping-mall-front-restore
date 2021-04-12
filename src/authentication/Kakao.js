@@ -38,17 +38,21 @@ const postForm = () => {
 
         console.log(res);
         Cookies.set("user", res.data.user_sequence_id);
-
-        alert('회원정보 수정 메뉴에서 핸드폰 번호와 주소를 입력해주세요!')
-        history.push(`/user/${Cookies.get('user')}`);
+        
+        if(values.user_phone == "") {
+          alert('회원정보 수정 메뉴에서 핸드폰 번호와 주소를 입력해주세요!')
+          history.push(`/user/${Cookies.get('user')}`);
+        }else{
+          history.push(`/home`);
+        }
       });
     }
   };
 
   const [values, setValues] = useState({
     user_id: "",
-    user_pwd: 12345,
-    user_pwd2: 12345,
+    user_pwd: 12345678,
+    user_pwd2: 12345678,
     user_name: "",
     user_phone: "",
     user_address: "회원정보에서 수정",
