@@ -1,7 +1,15 @@
+@font-face {
+  font-family: "MaruBuri-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/MaruBuri-Regular.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
     margin: 0;
     padding: 0;
-  }
+}
 
   .addUser {
     width: 100%;
@@ -13,36 +21,34 @@ body {
   }
   
   .addUser__container {
-    width: 730px;
-    height: 85vh;
-    display: grid;
     margin-top: 100px;
-    padding: 20px;
-    grid-template-columns: 1fr;
-    grid-template-rows: 100px 100px auto;
-    border: 10px solid;
-    border-image: linear-gradient(45deg, #f2cb61, #bce55c);
-    border-image-slice: 1;
     background-color: #fff;
     color: #333;
   }
-  .addUser__container__head h1 {
+
+  .addUser__container__head .title{
     color: #333;
+    font-family: "MaruBuri-Regular";
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
   }
+
   .addUser__container__head {
-    padding-left: 36px;
-    padding-top: 20px;
+    margin-bottom: 50px;
   }
+
   .addUser__container__head p {
     color: #333;
   }
+
   .addUser__search {
-    display: flex;
-    flex-direction: column;
-    margin-left: 30px;
-    margin-top: 30px;
-    height: 430px;
     background: #fff;
+    display: grid;
+    grid-template-columns: 95px 315px;
+    grid-template-rows: 65px 65px 65px 65px 65px 65px;
+    font-size: 12px;
+    margin-left: 50px;
   }
 
   .addUser__search p{
@@ -53,101 +59,89 @@ body {
   .addUser__search input {
     height: 30px;
     width: 300px;
-    background: rgba(255, 183, 85, 0.3);
-    border-radius: 5px;
-    border: 1px dotted #333;
+    border: 1px solid #333;
     width: 200px;
+    padding-left: 10px;
+    background: rgba(255, 183, 85, 0.3);
   }
   
   .add_id {
     display: flex;
-    margin: 0 0 40px 40px;
+    margin: 0 0 30px 40px;
   }
   
   .add_id > label {
-    margin-right: 25px;
     color: #333;
-  }
-
-  .add_id > button{
-    width: 60px;
-    margin-left: 5px;
-    border: 1px dotted #333;
-    background: #ffb755;
-    border-radius: 5px;
-    font-size: 10px;
+    font-family: "MaruBuri-Regular";
   }
   
   .add_password {
     display: flex;
     margin-left: 40px;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
+    padding-top: 5px;
   }
     
   .add_password > label {
-    margin-right: 9px;
     color: #333;
+    font-family: "MaruBuri-Regular";
   }
 
   .add_password2 {
     display: flex;
     margin-left: 40px;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
   }
     
   .add_password2 > label {
-    margin-right: 9px;
     color: #333;
+    font-family: "MaruBuri-Regular";
   }
   
   .add_name {
     display: flex;
     margin-left: 40px;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
+    padding-top: 5px;
   }
     
   .add_name > label {
-    margin-right: 38px;
     color: #333;
+    font-family: "MaruBuri-Regular";
   }
 
   .add_phone {
     display: flex;
     margin-left: 40px;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
+    padding-top: 5px;
   }
     
   .add_phone > label {
-    margin-right: 9px;
     color: #333;
-  }
-
-  .add_phone > button{
-    width:80px;
-    margin-left: 5px;
-    border: 1px dotted #333;
-    background: #ffb755;
-    border-radius: 5px;
-    font-size: 10px;
+    font-family: "MaruBuri-Regular";
   }
 
   .add_address {
     display: flex;
     margin-left: 41px;
+    padding-top: 5px;
   }
     
   .add_address > label {
-    margin-right: 35px;
+    margin-right: 19px;
     color: #333;
+    font-family: "MaruBuri-Regular";
   }
   
   .addUser__search > button {
-    margin-top: 30px;
     width: 200px;
-    margin-left: 165px;
-    border: 1px dotted #333;
-    background: #ffb755;
-    border-radius: 5px;
+    height: 30px;
+    border: 1px solid #333;
+    background: rgba(0, 0, 0, 1);
+    color: #fff;
+    padding: 5px;
+    margin-left: 95px;
   }
 
 
