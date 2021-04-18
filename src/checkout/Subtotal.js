@@ -37,7 +37,7 @@ function Subtotal({ price, quantity }) {
     getCheckoutItems();
   }, [checkoutItems]);
 
-  const sum = checkoutItems.map(datum => datum.price).reduce((a, b) => a + b)
+  const sum = checkoutItems.map(data => data.price).reduce((a, b) => a + b)
   return (
     <>             
  <tfoot className="subtotal__tfoot" style={{border: "4px solid black"}}>

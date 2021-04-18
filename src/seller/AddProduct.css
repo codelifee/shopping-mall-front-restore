@@ -57,10 +57,6 @@ body {
   border: 1px dotted #333;
 }
 
-<<<<<<< HEAD
-.addProduct__search > input {
-  height: 30px;
-=======
 .searchbar_and_category {
   display: flex;
 
@@ -69,7 +65,6 @@ body {
 
 .addProduct__input {
   height: 25px;
->>>>>>> 2cfe7a51b9d87a2143840738f509152be3d85197
   border-radius: 5px;
   border: 1px dotted #333;
 }
