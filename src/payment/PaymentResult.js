@@ -82,7 +82,7 @@ function PaymentResult({ history }) {
             </li>
           )}
         </ul>
-        <Button size="large" onClick={() => history.push('/home')}>
+        <Button size="large" onClick={() => history.push('/payment')}>
           돌아가기
         </Button>
       </Container>
