@@ -63,7 +63,7 @@ function ReviewForm() {
   const reload_parent = () => {
     return new Promise((resolve, reject)=>{
       resolve(
-        window.opener.parent.location.reload()
+       setTimeout(window.opener.parent.location.reload(), 500) 
       )
     })
   }
@@ -72,7 +72,7 @@ function ReviewForm() {
   const close_self = () => {
     return new Promise((resolve, reject)=>{
       resolve(
-        setTimeout("self.close()", 1000)
+        setTimeout("self.close()", 500)
       )
     })
   }

@@ -57,31 +57,74 @@ function ReviewPatchForm() {
     });
   };
 
+    //부모페이지 리로드
+    const reload_parent = () => {
+      return new Promise((resolve, reject)=>{
+        resolve(
+          setTimeout(window.opener.parent.location.reload(), 500)
+        )
+      })
+    }
+
+  //현재페이지 리로드
+  const close_self = () => {
+    return new Promise((resolve, reject)=>{
+      resolve(
+        setTimeout("self.close()", 500)
+      )
+    })
+  }
+
+  const patch_review_json = () => {
+    return new Promise((resolve, reject)=>{
+      resolve(
+        axios
+          .patch(`/review/${id}`, { review: review.review, star: review.star })
+          .then((res) => console.log(res))
+          .catch((err) => console.log(err))
+      )
+    })
+  }
+
+  const patch_review_picture = () => {
+    return new Promise((resolve, reject)=>{
+      resolve(
+        axios
+          .patch(`/review/image/${id}`, formData, config)
+          .then((res) => console.log(res))
+          .catch((err) => console.log(err)) 
+    )})
+  }
+
+  const patch_review_all = () => {
+    return new Promise((resolve, reject)=>{
+      resolve(
+        axios
+        .patch(`/review/${id}`, review)
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err))
+    )})
+  }
+
+  function patch_review_with_file () {
+    return patch_review_picture().then(reload_parent()).then(close_self())}
+
+  function patch_review_only_json () {
+    return patch_review_json().then(reload_parent()).then(close_self())}
+  
+  function patch_reviews () {
+    return patch_review_all().then(reload_parent()).then(close_self())}
+
+
   const updateForm = (e) => {
     e.preventDefault();
 
     if (review.review_picture != null) {
       return (
-        axios
-          .patch(`/review/image/${id}`, formData, config)
-          .then((res) => console.log(res))
-          .then(window.opener.parent.location.reload())
-          .then(setTimeout("self.close()", 2000))
-          .catch((err) => console.log(err)) &&
-        axios
-          .patch(`/review/${id}`, { review: review.review, star: review.star })
-          .then((res) => console.log(res))
-          .then(window.opener.parent.location.reload())
-          .then(setTimeout("self.close()", 2000))
-          .catch((err) => console.log(err))
+        patch_review_with_file() && patch_review_only_json()
       );
     } else {
-      axios
-        .patch(`/review/${id}`, review)
-        .then((res) => console.log(res))
-        .then(window.opener.parent.location.reload())
-        .then(setTimeout("self.close()", 2000))
-        .catch((err) => console.log(err));
+        patch_reviews();
     }
   };
 

@@ -2,14 +2,17 @@ import React, {useState} from 'react';
 import axios from '../axios/axios';
 import {useParams} from "react-router-dom";
 import './QnAForm.css';
+import Cookies from "js-cookie";
 
 function QnAForm(){ 
 
     const {id} = useParams();
 
+    const cookie = Cookies.get("user");
+
     const [form, setForm] = useState({
         product_id: id,
-        user_sequence_id:8,
+        user_sequence_id:cookie,
         question: '',
         question_date_created: '',
         answer_id : '',
@@ -51,7 +54,7 @@ function QnAForm(){
                 
                 form.question === '' ? alert("내용을 입력해주세요!") : alert("내용이 입력됐습니다.");
                 
-                setTimeout("self.close()", 2000 );
+                setTimeout("self.close()", 1000 );
                 
             }}>Submit</button>
             </div>
