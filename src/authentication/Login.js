@@ -7,7 +7,7 @@ import axios from "../axios/axios";
 import { useStateValue } from "../StateProvider/StateProvider";
 import Cookies from "js-cookie";
 import KakaoLogin from "./Kakao";
-import { HistoryOutlined } from "@material-ui/icons";
+import { HistoryOutlined, LaptopWindows } from "@material-ui/icons";
 import { event } from "jquery";
 import jwt_decode from "jwt-decode";
 
@@ -18,6 +18,9 @@ function Login() {
 
   const signIn = (e) => {
     e.preventDefault();
+
+    console.log(email)
+    console.log(password)
 
     axios.post("/authenticate", 
               {
@@ -32,12 +35,9 @@ function Login() {
     )
     .then(res => {
 
-          console.log(res)
           
           var token = res.data.jwt;
           var decoded = jwt_decode(token);
-
-          console.log(token)
 
           Cookies.set("jwt", res.data.jwt, {expires: 2});
 
@@ -54,11 +54,17 @@ function Login() {
                 console.log(res)
               
                 Cookies.set("user", res.data, {expires: 2});
+
+                window.location.reload();
               })
               .catch(err => console.log(err))
     }
     )
-    .catch(err => console.log(err))
+    .catch(err => {
+      console.log(err)
+      alert("아이디나 비밀번호가 일치하지 않습니다")
+    }
+    )
 
 }
 
