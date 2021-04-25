@@ -52,7 +52,6 @@ function UpdateProduct() {
         })
     }
 
-    console.log(image)
 
     const productId = useParams().id;
 
@@ -78,10 +77,9 @@ function UpdateProduct() {
         .catch(err => console.log(err))
     }
 
+    // 이미지는 backend에서 patch로 따로 넣어줌
     const patchImage = (e) => {
         e.preventDefault();
-
-        console.log(image.quality_img)
 
         let product_picture = new FormData();
         let info_img = new FormData();
@@ -170,9 +168,6 @@ function UpdateProduct() {
                             <option 
                             value="5" 
                             >어패류</option>
-                            <option 
-                            value="6" 
-                            >약재</option>
                         </select>
                     </div>
                     <div className="product-description">

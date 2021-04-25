@@ -9,6 +9,7 @@ import Cookies from "js-cookie";
 import KakaoLogin from "./Kakao";
 import { HistoryOutlined } from "@material-ui/icons";
 import { event } from "jquery";
+import jwt_decode from "jwt-decode";
 
 function Login() {
   const history = useHistory();
@@ -30,20 +31,30 @@ function Login() {
               }
     )
     .then(res => {
-              console.log(res);
 
-              axios.post("/users/getUserNumber", 
+          console.log(res)
+          
+          var token = res.data.jwt;
+          var decoded = jwt_decode(token);
+
+          console.log(token)
+
+          Cookies.set("jwt", res.data.jwt, {expires: 2});
+
+              axios.post(`/users/getUserNumber?user_id=${email}`,
               {
-                "username" : email 
               },
               {
-              headers: {
-                "Content-Type" : "application/json",
-                "Authorization" : `Bearer ${res.data.jwt}`
-              }
+                headers: {
+                  "Authorization" : `Bearer ${token}`
+                }
               }
               )
-              .then(res => console.log(res))
+              .then(res => {
+                console.log(res)
+              
+                Cookies.set("user", res.data, {expires: 2});
+              })
               .catch(err => console.log(err))
     }
     )
@@ -51,13 +62,11 @@ function Login() {
 
 }
 
-  // useEffect(() => {
-  //     if(Object.keys(user).length === 0) {
-  //         history.push('/home')
-  //     } else {
-  //         alert("아이디나 비밀번호가 일치하지 않습니다")
-  //     }
-  // }, [user])
+  useEffect(() => {
+      if(Cookies.get("user") != null) {
+          history.push('/home')
+      } 
+  })
 
   return (
     <div className="login">

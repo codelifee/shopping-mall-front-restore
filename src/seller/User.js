@@ -7,6 +7,7 @@ import UserTable from "./UserTable";
 
 import "react-datepicker/dist/react-datepicker.css";
 function User() {
+  
   const [startDate, setStartDate] = useState(new Date());
   const [searchTerm, setSearchTerm] = useState("");
 

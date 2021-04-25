@@ -20,7 +20,6 @@ function OrderItems({ id, name, date, address, status }) {
   const patchOrderStatus = (e) => {
     let id = e.target.id;
 
-
     axios
       .patch(`/orders/${id}`, newStatus)
       .then((res) => alert("변경이 완료 되었습니다"))

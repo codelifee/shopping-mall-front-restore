@@ -19,8 +19,6 @@ import RoomIcon from '@material-ui/icons/Room';
 
 function Header() {
   const [products, setProducts] = useState([]);
-  const [{ basket, user }, dispatch] = useStateValue();
-
   const [{ keyword }, keyword_dispatch] = useStateValue();
   const [cookie, setCookie] = useState();
   const[cartCount, setCartCount]=useState({});
