@@ -16,6 +16,7 @@
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.6.0",
     "antd": "^3.26.20",
+    "autoprefixer": "^10.2.5",
     "axios": "^0.21.1",
     "customize-cra": "^0.4.1",
     "daum-map-api": "^1.0.2",
@@ -76,16 +77,8 @@
       "react-app/jest"
     ]
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "browserslist": [],
+  "devDependencies": {
+    "@ant-design/icons": "^4.5.0"
   }
 }

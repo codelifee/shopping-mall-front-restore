@@ -78,6 +78,8 @@ body {
 
 .product-description {
   display: flex;
+  margin-left: 17px;
+  margin-top: 20px;
 }
 
 .product-description > label {
@@ -91,7 +93,7 @@ body {
 
 .price {
   display: flex;
-  margin-top: 30px;
+  margin-top: 20px;
   margin-left: 120px;
 }
 
@@ -120,3 +122,12 @@ body {
   background: linear-gradient(45deg, #faf4c0, #e4f7ba);
   border: 1px dotted #6b9900;
 } */
+
+.updateProduct__image {
+  margin-left: 98px;
+  padding: 10px 0;
+}
+
+.updateProduct__image > input, button {
+  margin: 0 5px;
+}

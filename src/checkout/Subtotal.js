@@ -15,14 +15,10 @@ function Subtotal({ price, quantity }) {
   const cookie = Cookies.get('user');
   const [checkoutItems, setCheckoutItems]=useState([{
     price:0
-
   }]);
 
   //first attempt without CurrencyFormat API
   // const [price, setPrice] = useState(0);
-
- 
-
 
   useEffect(() => {
     //var id = basket.map((item)=>item.id);
@@ -42,7 +38,7 @@ function Subtotal({ price, quantity }) {
     <>             
  <tfoot className="subtotal__tfoot" style={{border: "4px solid black"}}>
    <tr style={{height:"150px"}}>
-                 <td>상품수: <strong>{checkoutItems.length} </strong>개</td>
+                <td>상품수: <strong>{checkoutItems.length} </strong>개</td>
                 <td>상품금액: &nbsp;  <strong>{new Intl.NumberFormat().format(sum)}  </strong>원</td>
                 <td>전체 합계:  &nbsp;<strong>{new Intl.NumberFormat().format(sum)}  </strong>원</td>
                 <td>배송비: <strong>0</strong>원</td> 

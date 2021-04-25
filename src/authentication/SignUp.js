@@ -1,7 +1,7 @@
 import React from 'react';
 import './SignUp.css';
 import SignUpData from './SignUpData';
-import Validate from '../user/ValidateInfo';
+import Validate from './ValidateSignUpInfo';
 import Header from '../Header';
 import Footer from '../footer/Footer';
 
@@ -16,13 +16,15 @@ function SignUp({submitForm}) {
         <div className="addUser">
             <div className="addUser__container">
                 <div className="addUser__container__head">
-                    <h1>회원가입</h1>
+                <h1 className="title">회원가입</h1>
                 </div>
                 <form className="addUser__search" 
                 onSubmit={handleSubmit}
                 >
                     <div className="add_id">
                         <label htmlFor="">아이디</label>
+                        </div>
+                        <div>
                         <input 
                             id="user_id"
                             type="email" 
@@ -35,6 +37,8 @@ function SignUp({submitForm}) {
                     </div>
                     <div className="add_password">
                         <label htmlFor="">비밀번호</label>
+                    </div>
+                    <div>
                         <input 
                             id="user_pwd"
                             type="password" 
@@ -47,6 +51,8 @@ function SignUp({submitForm}) {
                     </div>
                     <div className="add_password2">
                         <label htmlFor="">비밀번호<br/>확인</label>
+                    </div>
+                    <div>    
                         <input 
                             id="user_pwd2"
                             type="password" 
@@ -59,6 +65,8 @@ function SignUp({submitForm}) {
                     </div>
                     <div className="add_name">
                         <label htmlFor="">이름</label>
+                    </div>
+                    <div>
                         <input 
                             id="user_name"
                             type="text" 
@@ -71,6 +79,8 @@ function SignUp({submitForm}) {
                     </div>
                     <div className="add_phone">
                         <label htmlFor="">전화번호</label>
+                    </div>
+                    <div>
                         <input 
                             id="user_phone"
                             type="text" 
@@ -83,6 +93,8 @@ function SignUp({submitForm}) {
                     </div>
                     <div className="add_address">
                         <label htmlFor="">주소</label>
+                    </div>
+                    <div>        
                         <input 
                             id="user_address"
                             type="text" 

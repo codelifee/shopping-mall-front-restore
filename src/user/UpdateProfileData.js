@@ -7,34 +7,17 @@ const UpdateProfileData = (callback,Validate) => {
     const {user_sequence_id} = useParams();
     const [errors, setErrors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
-
-    const [check, setCheck] = useState({
-        user_id:'',
+    
+    const[form, setForm] = useState({
         user_pwd:'',
-        user_pwd2:'',
         user_name:'',
         user_phone:'',
         user_address:''
     });
-    
-    const[form, setForm] = useState({
-        user_pwd:'',
-        user_pwd2:'',
-        user_name:'',
-        user_phone:'',
-        user_address:'',
-        user_return:'',
-        user_exchange:''
-
-    });
-    console.log(form);
 
     useEffect(() => {
         getForm();
-        getAll();
     }, [])
-    console.log(form);
-    
 
     const handleChange = e => {
         const {name, value} = e.target
@@ -43,11 +26,11 @@ const UpdateProfileData = (callback,Validate) => {
             [name]: value
         });
     };
-    console.log(form);
+
     const handleSubmit = e =>{
         e.preventDefault();
         
-        setErrors(Validate(form,check));
+        setErrors(Validate(form));
         setIsSubmitting(true);
     };
     
@@ -67,14 +50,8 @@ const UpdateProfileData = (callback,Validate) => {
         .catch(err => console.log(err))
     }
 
-    const getAll = () => {
-        axios.get(`users/all`)
-        .then(res => setCheck(res.data))
-        .catch(err => console.log(err))
-    }
-
     const patchForm = () => {        
-        axios.patch(`users/${user_sequence_id}`, [form.user_id, form.user_pwd, form.user_name, form.user_phone, form.user_address])
+        axios.patch(`users/${user_sequence_id}`, form)
         .then(alert("수정이 완료되었습니다."))
         .catch(err => console.log(err))
     }

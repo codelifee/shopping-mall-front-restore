@@ -9,7 +9,6 @@ function UpdateProfile({ submitForm }) {
     form,
     handleSubmit,
     errors,
-    checkPhone2,
   } = UpdateProfileData(submitForm, Validate);
 
   return (
@@ -42,20 +41,6 @@ function UpdateProfile({ submitForm }) {
               onChange={handleChange}
             />
             {errors.user_pwd && <p>{errors.user_pwd}</p>}
-          </div>
-          <div className="update__password2">
-            <label htmlfor="">비밀번호 확인</label>
-          </div>
-          <div>
-            <input
-              className="updateProfile__input"
-              id="user_pwd2"
-              type="password"
-              name="user_pwd2"
-              defaultValue={form.user_pwd2}
-              onChange={handleChange}
-            />
-            {errors.user_pwd2 && <p>{errors.user_pwd2}</p>}
           </div>
           <div className="update__name">
             <label htmlFor="">이름</label>

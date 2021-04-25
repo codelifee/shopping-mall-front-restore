@@ -3,6 +3,7 @@ import axios from "../axios/axios";
 import "./SellerProduct.css";
 import { Link } from "react-router-dom";
 
+
 function SellerProduct({ name, price, id, handleDelete }) {
   return (
     <>
