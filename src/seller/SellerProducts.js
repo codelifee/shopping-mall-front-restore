@@ -65,9 +65,11 @@ function SellerProducts() {
                 id="categories"
                 className="sellerProduct__select1"
               >
-                <option value="1">의자</option>
-                <option value="2">서랍</option>
-                <option value="3">책상</option>
+                <option value="1">과일</option>
+                <option value="2">야채</option>
+                <option value="3">동물류</option>
+                <option value="4">어패류</option>
+                <option value="5">약재</option>
               </select>
             </div>
           </form>

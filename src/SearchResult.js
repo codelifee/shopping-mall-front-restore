@@ -4,13 +4,11 @@ import SearchResultView from "./SearchResultView";
 import "./SearchResult.css";
 import axios from "./axios/axios";
 import { ImageData } from "./axios/urlData";
-//import { useParams } from 'react-router-dom';
 
 function SearchResult() {
   const image = ImageData.image1;
   const [{ keyword }, dispatch] = useStateValue();
   const [products, setProducts] = useState([]);
-  //const {search} = useParams();
 
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
@@ -59,9 +57,6 @@ function SearchResult() {
     <div className="search_result">
       <div className="search_result_items">
         {products
-          // .filter((item) => {
-          //   return item.product_name.includes(`${keyword.word}`);
-          // })
           .map((product, i) => {
             let reviewLength = reviews
               .filter((review) => {

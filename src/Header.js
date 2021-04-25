@@ -19,8 +19,6 @@ import RoomIcon from '@material-ui/icons/Room';
 
 function Header() {
   const [products, setProducts] = useState([]);
-  const [{ basket, user }, dispatch] = useStateValue();
-
   const [{ keyword }, keyword_dispatch] = useStateValue();
   const [cookie, setCookie] = useState();
   const[cartCount, setCartCount]=useState({});
@@ -159,7 +157,7 @@ function Header() {
               ):<></>}
             </li>
 
-            {cookie ? ((cookie != 227? (
+            {cookie ? ((cookie != 11? (
               
               <li className="header_li">
                 <Link to={`/checkout/${id}`} className="header__optionLinetwo">장바구니
@@ -170,7 +168,7 @@ function Header() {
 
             </li>):<> </>)):(<></>)}
               
-              {cookie == 227 ? (
+              {cookie == 11 ? (
             <li className="header_li">
 
               
@@ -181,7 +179,7 @@ function Header() {
                 <></>
                 )}
 
-              {cookie && cookie != 227 &&
+              {cookie && cookie != 11 &&
                 <li className="header_li">
                 <Link to={`/user/${cookie}`} className="header__optionLineTwo">
                   마이웰빙즙 <span className="header__stick">&nbsp; &nbsp;|</span>
@@ -205,7 +203,7 @@ function Header() {
             <li className="header_li">
               <span className="header__optionLineTwo">
 
-                {cookie ? ((cookie == 227 ? "Admin" : users.user_name + "님")) : (<></>)}
+                {cookie ? ((cookie == 11 ? "Admin" : users.user_name + "님")) : (<></>)}
               </span>
             </li>
           </ul>
