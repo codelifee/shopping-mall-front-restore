@@ -1,15 +1,15 @@
-import React, { useState, useEffect, useRef } from 'react';
-import axios from '../axios/axios';
-import './AnswerYetQuestionModal.css';
+import React, { useState, useEffect, useRef } from "react";
+import axios from "../axios/axios";
+import "./AnswerYetQuestionModal.css";
 
-function AnswerYetQuestionModal({ id }) {
+function AnswerYetQuestionModal({ id, close }) {
   //question_id
 
   const [form, setForm] = useState({
-    answer_id: '',
-    answer: '',
+    answer_id: "",
+    answer: "",
     question_id: id,
-    answer_date_created: '',
+    answer_date_created: "",
   });
 
   const handleChange = (e) => {
@@ -26,7 +26,7 @@ function AnswerYetQuestionModal({ id }) {
 
     setForm({
       ...form,
-      answer: '',
+      answer: "",
     });
   };
 
@@ -37,38 +37,37 @@ function AnswerYetQuestionModal({ id }) {
 
     axios
       .post(`answer`, form)
-      .then((res) => console.log(res),window.location.reload())
+      .then((res) => console.log(res), window.location.reload())
       .catch((err) => console.log(err));
   };
 
   return (
     <div>
       <form
-        className="AnswerForm"
-        onSubmit={form.answer != '' ? postAnswer : null}
+        className="AnswerYetForm"
+        onSubmit={form.answer != "" ? postAnswer : null}
       >
         <input
-          className="AnswerInput"
+          className="AnswerYetInput"
           type="text"
           name="answer"
           value={form.answer}
           onChange={handleChange}
         />
-       
-        <div className="answerButton">
+
+        <div className="AnswerYetButton">
           <button
             type="submit"
             onClick={() => {
-              form.answer == ''
-                ? alert('내용을 입력해주세요!')
-                : alert('내용이 입력됐습니다.');
-              
+              form.answer == ""
+                ? alert("내용을 입력해주세요!")
+                : alert("내용이 입력됐습니다.");
             }}
           >
             Submit
           </button>
-          <br />
           <button onClick={handleDelete}>reset</button>
+          <button onClick={close}>닫기</button>
         </div>
       </form>
     </div>

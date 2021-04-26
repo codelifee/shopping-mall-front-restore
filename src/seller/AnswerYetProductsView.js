@@ -3,7 +3,7 @@ import axios from '../axios/axios'
 import './SellerProduct.css'
 import {Link, useHistory} from 'react-router-dom';
 
-function AnswerYetProductsSearch({picture, name, description, question, id, status}) {
+function AnswerYetProductsView({picture, name, description, question, id, status}) {
     const history = useHistory();
     return (
         <>
@@ -23,4 +23,4 @@ function AnswerYetProductsSearch({picture, name, description, question, id, stat
     )
 }
 
-export default AnswerYetProductsSearch;
+export default AnswerYetProductsView;
