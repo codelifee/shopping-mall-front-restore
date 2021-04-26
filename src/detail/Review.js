@@ -178,7 +178,7 @@ function Review() {
 
         <div className="review__button_">
           <p>리뷰를 작성해보세요</p>
-          {orderedUser.length !== 0 ? (
+          {/* {orderedUser.length !== 0 ? (
             <button
               className="review__button"
               onClick={() => {
@@ -200,7 +200,19 @@ function Review() {
             >
               리뷰 작성
             </button>
-          )}
+          )} */}
+          <button
+              className="review__button"
+              onClick={() => {
+                window.open(
+                  `/review/${id}`,
+                  "review_form",
+                  "width=600,height=700,location=no,status=no,scrollbars=no"
+                );
+              }}
+            >
+              리뷰 작성
+            </button>
           <br />
         </div>
       </div>
@@ -244,7 +256,7 @@ function Review() {
                 <div className="review__list_content">
                   {review.review_date_created} 작성
                   <br />
-                  {review.review}
+                  <p className="review_words">{review.review}</p>
                   {review.review_picture != null ? (
                     <img src={image + review.review_id} alt="리뷰 사진" />
                   ) : null}

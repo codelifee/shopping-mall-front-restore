@@ -54,8 +54,8 @@ function QnA() {
               </div>
 
               <div className="question__list_content">
-                <p>Q: {qus.question}</p>
-                <p>A: {qus.answer}</p>
+                <p className="question_word"><strong>Q:</strong> {qus.question}</p>
+                <p className="answer_word"><strong>A:</strong> {qus.answer}</p>
               </div>
             </div>
           );

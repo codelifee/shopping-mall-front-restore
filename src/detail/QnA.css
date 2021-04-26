@@ -10,6 +10,17 @@
   flex-direction: column;
   padding-bottom: 20px;
   border-bottom: solid 1px;
+  white-space: pre-wrap;
+}
+
+.question_word {
+  padding: 20px;
+  word-break: break-all;
+}
+
+.answer_word {
+  padding: 20px;
+  word-break: break-all;
 }
 
 .question__list_user {

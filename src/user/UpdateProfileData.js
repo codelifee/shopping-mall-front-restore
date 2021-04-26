@@ -34,6 +34,7 @@ const UpdateProfileData = (callback,Validate) => {
         setErrors(Validate(form));
         setIsSubmitting(true);
     };
+    
 
     useEffect(() =>{
         if(Object.keys(errors).length === 0 && isSubmitting){
@@ -43,7 +44,7 @@ const UpdateProfileData = (callback,Validate) => {
       },
       [errors]
     );
-
+    console.log(errors);
     const getForm = () => {
         axios.get(`users/${cookie}`,
             {

@@ -59,25 +59,60 @@ function ReviewForm() {
     });
   };
 
-  const postForm = (e) => {
+  //부모페이지 리로드
+  const reload_parent = () => {
+    return new Promise((resolve, reject)=>{
+      resolve(
+       setTimeout(window.opener.parent.location.reload(), 500) 
+      )
+    })
+  }
+
+  //현재페이지 리로드
+  const close_self = () => {
+    return new Promise((resolve, reject)=>{
+      resolve(
+        setTimeout("self.close()", 500)
+      )
+    })
+  }
+
+  const post_review_json = () => {
+    return new Promise((resolve, reject)=>{
+      resolve(
+        axios
+        .post("/review", form)
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err))
+      )
+    })
+  }
+
+  const post_review_picture = () => {
+    return new Promise((resolve, reject)=>{
+      resolve(
+        axios
+        .post("/review/upload", formData, config)
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err)))
+    })
+  }
+
+  function post_review_with_file () {
+    return post_review_picture().then(reload_parent()).then(close_self())}
+
+  function post_review_only_json () {
+    return post_review_json().then(reload_parent()).then(close_self())}
+
+  const postForm = async (e) => {
     e.preventDefault();
 
     if (form.review_picture !== null) {
-      return axios
-        .post("/review/upload", formData, config)
-        .then((res) => console.log(res))
-        .then(window.opener.parent.location.reload())
-        .then(setTimeout("self.close()", 2000))
-        .catch((err) => console.log(err));
+      return await post_review_with_file();
     } else {
-      axios
-        .post("/review", form)
-        .then((res) => console.log(res))
-        .then(window.opener.parent.location.reload())
-        .then(setTimeout("self.close()", 2000))
-        .catch((err) => console.log(err));
-    }
+      return await post_review_only_json();
   };
+}
 
   return (
     <div className="ReviewForm">

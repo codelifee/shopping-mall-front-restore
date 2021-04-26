@@ -2,27 +2,25 @@
     height:200px;
 }
 
-.AnswerInput {
+.AnswerYetInput {
     height:180px;
-    width: 1000px;
+    width: 700px;
 }
 
-
-
-.AnswerForm {
+.AnswerYetForm {
     display: flex;
     flex: 5;
     flex-direction: row;
     text-align: center;
 }
 
-.answerButton{
+.AnswerYetButton{
     flex:1;
     display: flex;
     flex-direction: column;
 }
 
-.answerButton > button{
+.AnswerYetButton > button{
     height: 40px;
     margin: 10px;
 }

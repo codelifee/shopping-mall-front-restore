@@ -79,6 +79,7 @@
   display: flex;
   flex-direction: column;
   padding-top: 20px;
+  white-space: pre-wrap;
 }
 
 .review__list_content img {
@@ -89,6 +90,11 @@
 .review__list_date {
   flex: 1;
   text-align: right;
+}
+
+.review_words {
+  word-break: break-all;
+  padding: 20px;
 }
 
 .review__update_button_container{
@@ -134,7 +140,6 @@
     margin-left: 0px;
     margin-right: 80px;
   }
-  
 
   .review__button_ {
     text-align: center;
