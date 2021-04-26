@@ -46,7 +46,7 @@ const SignUpData = (callback,ValidateSignUpInfo) => {
     );
 
     const getAll = () => {
-        axios.get(`users/all`)
+        axios.get(`getUsers`)
         .then(res => setCustomer(res.data))
         .catch(err => console.log(err))
     }
@@ -60,7 +60,7 @@ const SignUpData = (callback,ValidateSignUpInfo) => {
     }
 
     const postForm = () => {        
-        axios.post(`users`, body)
+        axios.post(`joinUser`, body)
         .then(alert("가입이 완료되었습니다."))
         .catch(err => console.log(err))
     }

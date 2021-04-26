@@ -24,21 +24,10 @@ function UpdateProduct() {
     const handleForm = e => {
         e.preventDefault()
 
-        if (e.target.name === "category_id" || 
-        e.target.name === "product_price") {
-
-            setForm({
-                ...form,
-                [e.target.name]: parseInt(e.target.value) 
-            })
-        } else {
-
             setForm({
                 ...form,
                 [e.target.name]: e.target.value 
             })
-        }
-
     }    
 
     const handleImage = e => {

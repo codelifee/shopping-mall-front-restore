@@ -1,14 +1,21 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './Navbar.css'
-import {Link, useParams} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import { FaShoppingBag, FaUserCog, FaCaretDown } from "react-icons/fa"; //FaChair,
 import Logo from '../img/logo.png'
+import Cookies from "js-cookie";
 
 function Navbar() {
 
     const [order, setOrder] = useState(false);
     const [user, setUser] = useState(false);
-    const {user_sequence_id} = useParams();
+    const [cookie, setCookie] = useState();
+ 
+    useEffect(() => {
+        setCookie(Cookies.get("user"));
+    }, [])
+
+    console.log(cookie);
 
     return (
         <div className="navbar">
@@ -30,7 +37,7 @@ function Navbar() {
                         </h2>
                         <div>
                             {order &&
-                                <Link to={`/user/order/${user_sequence_id}`}>
+                                <Link to={`/user/order/${cookie}`}>
                                 <p>나의 주문내역</p>
                                 </Link>
                             }
@@ -49,10 +56,10 @@ function Navbar() {
                         <div>
                             {user && 
                                 <div>
-                                    <Link to={`/user/updateprofile/${user_sequence_id}`}>
+                                    <Link to={`/user/updateprofile/${cookie}`} onClick={() => window.location.reload()}>
                                     <p>회원 정보 수정</p>
                                     </Link>
-                                    <Link to={`/user/deleteprofile/${user_sequence_id}`}>
+                                    <Link to={`/user/deleteprofile/${cookie}`}>
                                     <p>회원 탈퇴</p>
                                     </Link>
                                 </div>

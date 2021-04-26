@@ -11,7 +11,7 @@ function PaymentResult({ history }) {
   const { search } = location;
   const query = queryString.parse(search);
   const cookie = Cookies.get('user');
-  
+  const token = Cookies.get('jwt');
   const { merchant_uid, error_msg, imp_uid, paid_amount, name, buyer_name, buyer_email } = query;
   const isSuccessed = getIsSuccessed();
   function getIsSuccessed() {
@@ -44,14 +44,33 @@ function PaymentResult({ history }) {
   useEffect(() => {
     async function postPayment() {
       const request = await axios
-        .post(`payment/`,paymentBody)
+        .post(`payment/`, 
+        {
+          "merchant_uid":paymentBody.merchant_uid,
+          "product_name":paymentBody.product_name,
+          "amount":paymentBody.amount,
+          "user_name":paymentBody.user_name,
+          "user_sequence_id":cookie
+        },
+        {
+            headers: {
+            "Authorization" : `Bearer ${token}`,
+            }
+        })
         .then((response) => console.log(response.data))
         .catch((error) => console.log(error));
       return request;
     }
     async function postOrders() {
       const request = await axios
-        .post(`orders/`,OrdersBody)
+        .post(`orders/`,{
+          OrdersBody
+        },
+        {
+            headers: {
+            "Authorization" : `Bearer ${token}`
+            }
+        })
         .then((response) => console.log(response.data))
         .catch((error) => console.log(error));
       return request;
@@ -82,7 +101,7 @@ function PaymentResult({ history }) {
             </li>
           )}
         </ul>
-        <Button size="large" onClick={() => history.push('/home')}>
+        <Button size="large" onClick={() => history.push('/payment')}>
           돌아가기
         </Button>
       </Container>

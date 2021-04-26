@@ -34,8 +34,7 @@ function Login() {
               }
     )
     .then(res => {
-
-          
+      
           var token = res.data.jwt;
           var decoded = jwt_decode(token);
 

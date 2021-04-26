@@ -25,8 +25,7 @@ function Header() {
   const [search, setSearch] = useState("");
   const[users, setUsers]=useState("");
   const history = useHistory();
-
-  const { id } = useParams();
+  const token = Cookies.get('jwt');
   const getCookie = () => {
     const cookie = Cookies.get("user");
     setCookie(cookie);
@@ -51,7 +50,12 @@ function Header() {
   useEffect(() => {
     async function getUserName() {
       const request = await axios
-        .get(`users/${Cookies.get("user")}`)
+        .get(`users/${Cookies.get("user")}`,
+          {
+              headers: {
+              "Authorization" : `Bearer ${token}`
+              }
+          })
         .then((response) => setUsers(response.data))
         .catch((error) => console.log(error));
 
@@ -79,7 +83,7 @@ function Header() {
   useEffect(() => {
     async function getCartCount() {
       const request = await axios
-        .get('cartitems/getCartItemsByUser/'+cookie)
+        .get(`cartitems/getCartItemsByUser/${Cookies.get("user")}`)
         .then((response) => setCartCount(response.data))
         .catch((error) => console.log(error));
 
@@ -160,7 +164,7 @@ function Header() {
             {cookie ? ((cookie != 11? (
               
               <li className="header_li">
-                <Link to={`/checkout/${id}`} className="header__optionLinetwo">장바구니
+                <Link to={`/checkout/${cookie}`} className="header__optionLinetwo">장바구니
                 <span className="header__basketCount">
                     {cartCount.length}&nbsp;&nbsp;&nbsp;</span> <span className="header__stick"> |</span>
 

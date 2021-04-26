@@ -1,25 +1,31 @@
 import React, { useState, useEffect } from "react";
 import "./Profile.css";
 import axios from "../axios/axios";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import Cookies from "js-cookie";
 
 function Profile() {
   const [user, setUser] = useState([]);
-  const { user_sequence_id } = useParams();
+  const cookie = Cookies.get('user');
+  const token = Cookies.get('jwt');
 
   useEffect(() => {
-    async function fetchData() {
+    async function getUser() {
       const request = await axios
-        .get(`users/${user_sequence_id}`)
-        .then((response) => setUser(response.data))
-        .catch((error) => console.log(error));
+      .get(`users/${cookie}`,
+        {
+            headers: {
+            "Authorization" : `Bearer ${token}`
+            }
+        })
+    .then(res => setUser(res.data))
+    .catch(err => console.log(err));
 
       return request;
     }
-    fetchData();
+    getUser();
+   
   }, []);
-  console.log(user_sequence_id);
-  console.log(user);
 
   return (
     <div className="profile">
@@ -53,7 +59,7 @@ function Profile() {
             <p>{user.user_address}</p>
           </div>
           <div></div>
-          <Link to={`/user/updateprofile/${user_sequence_id}`}>
+          <Link to={`/user/updateprofile/${cookie}`}>
             <button className="update">회원 정보 수정</button>
           </Link>
         </div>

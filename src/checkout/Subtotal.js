@@ -27,13 +27,13 @@ function Subtotal({ price, quantity }) {
         .get(`cartitems/getCartItemsByUser/${cookie}`)
         .then(response => {setCheckoutItems(response.data)
         })
-                .catch((error) => console.log(error));
+        .catch((error) => console.log(error));
       return request;
     }
     getCheckoutItems();
   }, [checkoutItems]);
 
-  const sum = checkoutItems.map(data => data.price).reduce((a, b) => a + b)
+  const sum = (checkoutItems == null ? 0 : checkoutItems.map(data => data.price).reduce((a, b) => a + b));
   return (
     <>             
  <tfoot className="subtotal__tfoot" style={{border: "4px solid black"}}>

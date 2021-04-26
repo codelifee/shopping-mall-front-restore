@@ -25,6 +25,7 @@ function Payment({ history, form, ua}) {
   const { getFieldDecorator, validateFieldsAndScroll, setFieldsValue, getFieldsValue } = form;
   const [{basket} , dispatch] = useStateValue();
   const cookie = Cookies.get('user');
+  const token = Cookies.get('jwt');
   const [users, setUsers] = useState({
       user_sequence_id:'',
       user_id:'',
@@ -54,9 +55,14 @@ function Payment({ history, form, ua}) {
   const product_name = String(checkoutItems.map(datum => datum.product_name));
 
   const getUser = () => {
-    axios.get(`users/${cookie}`)
-    .then((response) => setUsers(response.data))
-    .catch((error) => console.log(error));
+    axios.get(`users/${cookie}`,
+    {
+        headers: {
+        "Authorization" : `Bearer ${token}`
+        }
+    })
+.then(res => setUsers(res.data))
+.catch(err => console.log(err));
   }
 
   function handleSubmit(e) {
@@ -236,7 +242,7 @@ function Payment({ history, form, ua}) {
         </Item>
         <Item>
           {getFieldDecorator('merchant_uid', {
-            initialValue: `min_${new Date().getTime()}`,
+            initialValue: `min_${cookie}${new Date().getFullYear()}${new Date().getMonth()}${new Date().getDate()}${new Date().getHours()}${new Date().getMinutes()}${new Date().getSeconds()}`,
             rules: [{ required: true, message: '주문번호는 필수입력입니다' }],
           })(
             <Input size="large" addonBefore="주문번호" />,

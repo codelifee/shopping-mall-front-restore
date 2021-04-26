@@ -11,6 +11,7 @@ function UpdateProfile({ submitForm }) {
     errors,
   } = UpdateProfileData(submitForm, Validate);
 
+
   return (
     <div className="updateProfile">
       <div className="updateProfile__container">

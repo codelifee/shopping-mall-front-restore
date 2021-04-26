@@ -8,6 +8,7 @@ import {useHistory} from "react-router-dom";
 import { useStateValue } from "../StateProvider/StateProvider";
 import Cookies from "js-cookie";
 import { SocialKey } from "./SocialKey";
+import jwt_decode from "jwt-decode";
 
 const Kakao = (props) => {
 
@@ -15,39 +16,17 @@ const history = useHistory();
 
 const [{ auth }, dispatch] = useStateValue();
 
+const token2 = Cookies.get('jwt');
+var decoded = jwt_decode(token2);
+
 //const key = SocialKey;
 
 const postForm = () => {        
-    axios.post(`users`, values)
-    .then(alert("가입이 완료되었습니다."))
-    .then(res => setSocialUser(res))
+    axios.post(`joinUser`, values)
+    .then(alert("가입이 완료되었습니다. 다시 로그인 하세요."))
+    .then(window.location.reload())
     .catch(err => console.log(err))
 }
-
-  const setSocialUser = (res) => {
-    if (res.data == "") {
-     return confirmAction();
-    } else {
-      return new Promise((resolve, reject) => {
-        resolve(
-          dispatch({
-            type: "SET_USER",
-            user: res.data,
-          })
-        );
-
-        console.log(res);
-        Cookies.set("user", res.data.user_sequence_id);
-        
-        if(values.user_phone == "") {
-          alert('회원정보 수정 메뉴에서 핸드폰 번호와 주소를 입력해주세요!')
-          history.push(`/user/${Cookies.get('user')}`);
-        }else{
-          history.push(`/home`);
-        }
-      });
-    }
-  };
 
   const [values, setValues] = useState({
     user_id: "",
@@ -57,8 +36,6 @@ const postForm = () => {
     user_phone: "",
     user_address: "회원정보에서 수정",
   });
-
-
 
   const useConfirm = (message = "", event, cancel) => {
     if (typeof event !== "function") {
@@ -93,21 +70,52 @@ const postForm = () => {
 
       console.log(payload)
     }
-  
+    
   useEffect(()=>{
     if(values.user_id==""){
       //로그인 전에는 작동 안하게 하는 조건.
       return;
     }else{
-      axios.get("/users/login", {
-        //db에 가입된 id, pwd 있는지 확인.
-        params: {
-          user_id: values.user_id,
-          user_pwd: values.user_pwd,
-        },
-      })
-      .then((res) => setSocialUser(res))
-      .catch((err) => console.log(err)); } 
+
+      axios.post("/authenticate", 
+              {
+                "username" : values.user_id,
+                "password" : values.user_pwd 
+              },
+              {
+              headers: {
+                "Content-Type" : "application/json"
+              }
+              }
+    )
+    .then(res => {
+          Cookies.set("jwt", res.data.jwt, {expires: 2});
+
+              axios.post(`/users/getUserNumber?user_id=${values.user_id}`,
+              {
+              },
+              {
+                headers: {
+                  "Authorization" : `Bearer ${token2}`
+                }
+              }
+              )
+              .then(res => {
+                console.log(res)
+              
+                Cookies.set("user", res.data, {expires: 2});
+                
+                history.push('/home');
+              })
+              .catch(err => console.log(err))
+    }
+    )
+    .catch(err => {
+      console.log(err)
+      confirmAction();
+    }
+    )
+      } 
     }, [success])
 
   const fail = (payload) => {

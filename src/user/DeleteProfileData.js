@@ -1,18 +1,24 @@
 import {useState, useEffect} from 'react';
 import axios from '../axios/axios';
-import { useParams} from 'react-router-dom';
+import Cookies from "js-cookie";
 
 const DeleteProfileData = (callback) => {
 
     const [user, setUser] = useState([]);
     const [check, setCheck] = useState([]);
-    const {user_sequence_id} = useParams();
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [errors, setErrors] = useState({});
+    const cookie = Cookies.get('user');
+    const token = Cookies.get('jwt');
 
     useEffect(() => {
         async function fetchData() {
-            const request = await axios.get(`users/${user_sequence_id}`)
+            const request = await axios.get(`users/${cookie}`,
+            {
+                headers: {
+                "Authorization" : `Bearer ${token}`
+                }
+            })
             .then(response => 
                 setUser(response.data)
             )
@@ -25,7 +31,12 @@ const DeleteProfileData = (callback) => {
     
     useEffect(() => {
         async function fetchData() {
-            const request = await axios.get(`users/${user_sequence_id}`)
+            const request = await axios.get(`users/${cookie}`,
+            {
+                headers: {
+                "Authorization" : `Bearer ${token}`
+                }
+            })
             .then(response => 
                 setCheck(response.data)
             )
@@ -74,7 +85,12 @@ const DeleteProfileData = (callback) => {
             setErrors('비밀번호를 다시 입력하세요.');
             return false;
         }else{
-            axios.delete(`users/${user_sequence_id}`, user)
+            axios.delete(`users/${cookie}`,
+            {
+              headers: {
+              "Authorization" : `Bearer ${token}`
+              }
+            })
             .then(alert("탈퇴가 완료되었습니다."))
             .catch(err => console.log(err))
             window.location.href="/home";

@@ -17,6 +17,7 @@ function Checkout() {
 
   const [quantity, setQuantity] = useState([]);
   const image = ImageData.image1;
+
   const [checkoutItems, setCheckoutItems] = useState([
     {
       cart_item_id: "",
@@ -85,7 +86,7 @@ function Checkout() {
     <div className="checkout">
       <div className="checkout__left">
         <div className="checkout__second">
-          <h3>{checkoutItems[0].user_name}님의 </h3>
+          {/* <h3>{checkoutItems != null ? 'user' : checkoutItems[0].user_name}님의 </h3> */}
           <h2 className="checkout__title">
             <span style={{ color: "grey" }}>
               <i class="fas fa-shopping-cart" />
@@ -104,6 +105,7 @@ function Checkout() {
                 </tr>
               </thead>
               <tbody>
+
                 {checkoutItems.map((check, index) => (
                   <CheckoutProduct
                     key={index}
@@ -116,6 +118,7 @@ function Checkout() {
                     handleDelete={handleDelete}
                   />
                 ))}
+
               </tbody>
               <Subtotal />
             </table>

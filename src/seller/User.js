@@ -4,8 +4,9 @@ import { FaSearch } from "react-icons/fa";
 import DatePicker from "react-datepicker";
 import axios from "../axios/axios";
 import UserTable from "./UserTable";
-
 import "react-datepicker/dist/react-datepicker.css";
+import Cookies from "js-cookie";
+
 function User() {
   
   const [startDate, setStartDate] = useState(new Date());
@@ -14,16 +15,22 @@ function User() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
+    const token = Cookies.get("jwt");
+
     async function fetchDate() {
       const request = await axios
-        .get("users/all")
+        .get("users/all", 
+          {
+            headers: {
+              "Authorization" : `Bearer ${token}`
+            }
+          }
+        )
         .then((response) => setUsers(response.data))
         .catch((error) => console.log(error));
 
       return request;
     }
-
-    console.log(users);
 
     fetchDate();
   }, []);
