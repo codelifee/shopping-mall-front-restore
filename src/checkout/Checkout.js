@@ -18,18 +18,7 @@ function Checkout() {
   const [quantity, setQuantity] = useState([]);
   const image = ImageData.image1;
 
-  const [checkoutItems, setCheckoutItems] = useState([
-    {
-      cart_item_id: "",
-      user_sequence_id: Cookies.get("user"),
-      cart_item_quantity: 0,
-      product_id: "",
-      price: 0,
-      product_name: "",
-      product_price: 0,
-      user_name: "",
-    },
-  ]);
+  const [checkoutItems, setCheckoutItems] = useState(null);
 
   const style11 = {
     borderBottom: "1px solid black",
@@ -106,18 +95,17 @@ function Checkout() {
               </thead>
               <tbody>
 
-                {checkoutItems.map((check, index) => (
-                  <CheckoutProduct
-                    key={index}
-                    id={check.product_id}
-                    cart_id={check.cart_item_id}
-                    title={check.product_name}
-                    quantity={check.cart_item_quantity}
-                    image={image + check.product_id}
-                    price={check.product_price}
-                    handleDelete={handleDelete}
-                  />
-                ))}
+          {checkoutItems != null && checkoutItems.map((check, index) => (<CheckoutProduct
+      key={index}
+      id={check.product_id}
+      cart_id={check.cart_item_id}
+      title={check.product_name}
+      quantity={check.cart_item_quantity}
+      image={image+check.product_id}
+      price={check.product_price}
+      handleDelete={handleDelete}
+ />
+      ))}
 
               </tbody>
               <Subtotal />

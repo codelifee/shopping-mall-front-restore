@@ -7,7 +7,7 @@ import Footer from '../footer/Footer';
 
 function SignUp({submitForm}) {
 
-    const {handleChange, values, handleSubmit, errors, checkId, checkPhone} = SignUpData(submitForm,Validate);
+    const {handleChange, values, handleSubmit, errors,} = SignUpData(submitForm,Validate);
 
     return (
         <>
