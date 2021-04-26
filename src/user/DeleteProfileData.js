@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react';
 import axios from '../axios/axios';
 import Cookies from "js-cookie";
+import {useHistory} from 'react-router-dom';
 
 const DeleteProfileData = (callback) => {
 
@@ -10,6 +11,7 @@ const DeleteProfileData = (callback) => {
     const [errors, setErrors] = useState({});
     const cookie = Cookies.get('user');
     const token = Cookies.get('jwt');
+    const history = useHistory;
 
     useEffect(() => {
         async function fetchData() {
@@ -79,6 +81,7 @@ const DeleteProfileData = (callback) => {
       
         return confirmAction;
       };
+
       const deleteConfirm = () => { 
         if(check.user_pwd !== user.user_pwd){
             alert('비밀번호를 다시 입력하세요.');
@@ -93,7 +96,8 @@ const DeleteProfileData = (callback) => {
             })
             .then(alert("탈퇴가 완료되었습니다."))
             .catch(err => console.log(err))
-            window.location.href="/home";
+            Cookies.remove('user');
+            Cookies.remove('jwt');
         }
         setIsSubmitting(true);
     };

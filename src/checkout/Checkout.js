@@ -17,23 +17,7 @@ function Checkout() {
 
   const [quantity, setQuantity] = useState([]);
   const image = ImageData.image1;
-<<<<<<< HEAD
   const [checkoutItems, setCheckoutItems] = useState(null);
-
-=======
-  const [checkoutItems, setCheckoutItems] = useState([
-    {
-      cart_item_id: "",
-      user_sequence_id: Cookies.get("user"),
-      cart_item_quantity: 0,
-      product_id: "",
-      price: 0,
-      product_name: "",
-      product_price: 0,
-      user_name: "",
-    },
-  ]);
->>>>>>> d3b6688e171b9c37fde59652cba8d54747c57fb7
 
   const style11 = {
     borderBottom: "1px solid black",
@@ -109,7 +93,6 @@ function Checkout() {
                 </tr>
               </thead>
               <tbody>
-<<<<<<< HEAD
           {checkoutItems != null && checkoutItems.map((check, index) => (<CheckoutProduct
       key={index}
       id={check.product_id}
@@ -121,20 +104,6 @@ function Checkout() {
       handleDelete={handleDelete}
  />
       ))}
-=======
-                {checkoutItems.map((check, index) => (
-                  <CheckoutProduct
-                    key={index}
-                    id={check.product_id}
-                    cart_id={check.cart_item_id}
-                    title={check.product_name}
-                    quantity={check.cart_item_quantity}
-                    image={image + check.product_id}
-                    price={check.product_price}
-                    handleDelete={handleDelete}
-                  />
-                ))}
->>>>>>> d3b6688e171b9c37fde59652cba8d54747c57fb7
               </tbody>
               <Subtotal />
             </table>
