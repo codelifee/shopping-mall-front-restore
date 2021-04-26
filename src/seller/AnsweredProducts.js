@@ -9,6 +9,7 @@ import { ImageData } from '../axios/urlData';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Category } from '@material-ui/icons';
 import AnsweredProductsView from './AnsweredProductsView';
+
 function AnsweredProducts() {
   const [startDate, setStartDate] = useState(new Date());
   const [products, setProducts] = useState([]);

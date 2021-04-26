@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import UpdateProfile from "./UpdateProfile";
 import Cookies from "js-cookie";
@@ -22,6 +22,7 @@ function User() {
   const [isSubmittied, setIsSubmitted] = useState(false);
   const user_sequence_id = useParams();
   const [cookie, setCookie] = useState();
+  //const cookie = Cookies.get("user");
 
   function submitForm() {
     setIsSubmitted(true);
@@ -33,14 +34,18 @@ function User() {
     setCookie(cookie);
   };
 
+  useEffect(()=>{
+    getCookie();
+  },[])
+
   return (
     <Router>
       <div className="user1">
         <Switch>
-          <Route path={`/user/${cookie}`}>
+          {/* <Route path={`/user/${cookie}`}>
             <Header />
             <Orders />
-          </Route>
+          </Route> */}
 
           <Route path="/user/deleteprofile/:user_sequence_id">
             <Header />
@@ -55,16 +60,13 @@ function User() {
               (window.location.href = "/home")
             )}
           </Route>
-          <Route path="/user/deleteprofile/:user_sequence_id">
-            <Header />
-            <DeleteProfile />
-          </Route>
-          <Route exact path="/user/:user_sequence_id">
+          
+          <Route exact path={`/user/:${cookie}`}>
             <Header />
             <Profile />
           </Route>
 
-          <Route path="/user/order/:user_sequence_id">
+          <Route path={`/user/order/:${cookie}`}>
             <Header />
             <Orders />
           </Route>
@@ -77,7 +79,7 @@ function User() {
             <OrderDetails />
           </Route>
 
-          <Route path="/user/return/:order_id">
+          <Route path={`/user/return/:${cookie}`}>
             <Header />
             <Return />
           </Route>

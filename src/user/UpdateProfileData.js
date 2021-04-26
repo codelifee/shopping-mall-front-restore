@@ -1,12 +1,13 @@
 import {useState, useEffect} from 'react';
 import axios from '../axios/axios';
-import { useParams } from 'react-router-dom';
+import Cookies from "js-cookie";
 
 const UpdateProfileData = (callback,Validate) => {
 
-    const {user_sequence_id} = useParams();
     const [errors, setErrors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const cookie = Cookies.get('user');
+    const token = Cookies.get('jwt');
     
     const[form, setForm] = useState({
         user_pwd:'',
@@ -44,13 +45,29 @@ const UpdateProfileData = (callback,Validate) => {
     );
 
     const getForm = () => {
-        axios.get(`users/${user_sequence_id}`)
+        axios.get(`users/${cookie}`,
+            {
+                headers: {
+                "Authorization" : `Bearer ${token}`
+                }
+            })
         .then(res => setForm(res.data))
         .catch(err => console.log(err))
     }
 
     const patchForm = () => {        
-        axios.patch(`users/${user_sequence_id}`, form)
+        axios.patch(`users/${cookie}`, 
+            {
+                "user_pwd":form.user_pwd,
+                "user_name":form.user_name,
+               "user_phone":form.user_phone,
+               "user_address":form.user_address
+            },
+            {
+                headers: {
+                "Authorization" : `Bearer ${token}`,
+                }
+            })
         .then(alert("수정이 완료되었습니다."))
         .catch(err => console.log(err))
     }

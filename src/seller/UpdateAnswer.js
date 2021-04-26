@@ -3,29 +3,9 @@ import axios from '../axios/axios';
 import './UpdateAnswer.css';
 
 function UpdateAnswer({ id, answer1}) {
-  //question_id
 
   const [form, setForm] = useState({});
 
-//   useEffect(() => {
-//     async function fetchData() {
-//         const request = await axios.get(`answer/${id}`)
-//         .then(response => 
-//             setForm(response.data)
-//         )
-//         .catch(error => console.log(error))
-       
-//         return request;
-//     }
-//     fetchData();
-// }, [])
-
-
-useEffect(() => {
-  setForm({
-    answer: answer1
-  });
-}, setForm);
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -41,7 +21,11 @@ useEffect(() => {
     });
   };
 
-  console.log(form);
+  useEffect(() => {
+    setForm({
+      answer: answer1
+    });
+  }, setForm);
 
   const patchAnswer = (e) => {
     e.preventDefault();

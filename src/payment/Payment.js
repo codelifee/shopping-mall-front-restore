@@ -11,6 +11,7 @@ import {Link, useHistory} from 'react-router-dom';
 function Payment() {
     const [{basket} , dispatch] = useStateValue();
     const cookie = Cookies.get('user');
+    const token = Cookies.get('jwt');
     const [total, SetTotal] = useState();
     const [users, setUsers] = useState({
         user_address:'',
@@ -21,9 +22,14 @@ function Payment() {
       }, []);
     
       const getUser = () => {
-        axios.get(`users/${cookie}`)
-        .then((response) => setUsers(response.data))
-        .catch((error) => console.log(error));
+        axios.get(`users/${cookie}`,
+        {
+            headers: {
+            "Authorization" : `Bearer ${token}`
+            }
+        })
+    .then(res => setUsers(res.data))
+    .catch(err => console.log(err));
       }
 
     const history = useHistory();
@@ -42,7 +48,7 @@ function Payment() {
 
                 <div className="payment__section">
                     <div className="payment__title">
-                        <h3>Delivery Address</h3>
+                        <h3>배송지</h3>
                     </div>
                     <div className="payment__address">
                         <p>{users.user_address}</p>
@@ -51,7 +57,7 @@ function Payment() {
 
                 <div className="payment__section">
                     <div className="payment__title">
-                        <h3>Review items and delivery</h3>
+                        <h3>결제 상품</h3>
                     </div>
                     <div className="payment__items">
                         <p>
@@ -70,7 +76,7 @@ function Payment() {
 
                 <div className="payment__section">
                     <div className="payment__title">
-                        <h3>Payment Method</h3>
+                        <h3>결제 수단</h3>
                     </div>
                     <div className="payment__details">
                     <form>

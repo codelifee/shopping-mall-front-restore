@@ -17,16 +17,7 @@ function Checkout() {
 
   const [quantity, setQuantity] = useState([]);
   const image = ImageData.image1;
-  const [checkoutItems, setCheckoutItems] = useState([{
-    cart_item_id: '',
-    user_sequence_id: Cookies.get('user'),
-    cart_item_quantity: 0,
-    product_id: '',
-    price:0,
-    product_name:'',
-    product_price:0,
-    user_name:''
-  }])
+  const [checkoutItems, setCheckoutItems] = useState(null);
 
 
   const style11 = {
@@ -87,7 +78,7 @@ function Checkout() {
     <div className="checkout">
       <div className="checkout__left">
         <div className="checkout__second">
-          <h3>{checkoutItems[0].user_name}님의 </h3>
+          {/* <h3>{checkoutItems != null ? 'user' : checkoutItems[0].user_name}님의 </h3> */}
           <h2 className="checkout__title">
             <span style={{ color: 'grey' }}>
               <i class="fas fa-shopping-cart" />
@@ -106,7 +97,7 @@ function Checkout() {
                 </tr>
               </thead>
               <tbody>
-          {checkoutItems.map((check, index) => (<CheckoutProduct
+          {checkoutItems != null && checkoutItems.map((check, index) => (<CheckoutProduct
       key={index}
       id={check.product_id}
       cart_id={check.cart_item_id}

@@ -55,8 +55,6 @@ const postForm = () => {
   });
 
 
-  console.log(values);
-
 
   const useConfirm = (message = "", event, cancel) => {
     if (typeof event !== "function") {

@@ -7,60 +7,72 @@ import axios from "../axios/axios";
 import { useStateValue } from "../StateProvider/StateProvider";
 import Cookies from "js-cookie";
 import KakaoLogin from "./Kakao";
-import { HistoryOutlined } from "@material-ui/icons";
+import { HistoryOutlined, LaptopWindows } from "@material-ui/icons";
 import { event } from "jquery";
+import jwt_decode from "jwt-decode";
 
 function Login() {
   const history = useHistory();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
-  const [{ auth }, dispatch] = useStateValue();
-
-  const setUser = (res) => {
-    if (res.data == "") {
-      alert("이메일이나 비밀번호가 일치하지 않습니다");
-    } else {
-      return new Promise((resolve, reject) => {
-        resolve(
-          dispatch({
-            type: "SET_USER",
-            user: res.data,
-          })
-        );
-
-        console.log(res);
-        Cookies.set("user", res.data.user_sequence_id);
-
-        history.push("/home");
-      });
-    }
-  };
-
   const signIn = (e) => {
     e.preventDefault();
 
-    axios
-      .get("/users/login", {
-        params: {
-          user_id: email,
-          user_pwd: password,
-        },
-      })
-      .then((res) => {
-        setUser(res);
-      })
-      .then((res) => console.log(res))
-      .catch((err) => alert("이메일이나 비밀번호를 입력해주세요"));
-  };
+    console.log(email)
+    console.log(password)
 
-  // useEffect(() => {
-  //     if(Object.keys(user).length === 0) {
-  //         history.push('/home')
-  //     } else {
-  //         alert("아이디나 비밀번호가 일치하지 않습니다")
-  //     }
-  // }, [user])
+    axios.post("/authenticate", 
+              {
+                "username" : email,
+                "password" : password 
+              },
+              {
+              headers: {
+                "Content-Type" : "application/json"
+              }
+              }
+    )
+    .then(res => {
+
+          
+          var token = res.data.jwt;
+          var decoded = jwt_decode(token);
+
+          Cookies.set("jwt", res.data.jwt, {expires: 2});
+
+              axios.post(`/users/getUserNumber?user_id=${email}`,
+              {
+              },
+              {
+                headers: {
+                  "Authorization" : `Bearer ${token}`
+                }
+              }
+              )
+              .then(res => {
+                console.log(res)
+              
+                Cookies.set("user", res.data, {expires: 2});
+
+                window.location.reload();
+              })
+              .catch(err => console.log(err))
+    }
+    )
+    .catch(err => {
+      console.log(err)
+      alert("아이디나 비밀번호가 일치하지 않습니다")
+    }
+    )
+
+}
+
+  useEffect(() => {
+      if(Cookies.get("user") != null) {
+          history.push('/home')
+      } 
+  })
 
   return (
     <div className="login">
@@ -112,107 +124,5 @@ function Login() {
       </div>
     </div>
   );
-
-  // import React, { useState } from 'react';
-  // import './Login.css';
-  // import { Link, useHistory } from 'react-router-dom';
-  // import logo from '../img/logo.png';
-  // import { auth } from '../configuration/firebase';
-  // import axios from '../axios/axios';
-  // import kakao from '../img/kakao.png';
-  // import { useStateValue } from '../StateProvider/StateProvider';
-
-  // function Login() {
-  //   const history = useHistory();
-  //   const [email, setEmail] = useState();
-  //   const [password, setPassword] = useState();
-  //   const [loginUser, setLoginUser] = useState();
-
-  //   const [{ user }, dispatch] = useStateValue();
-
-  // const removeFromBasket = () => {
-  //     dispatch({
-  //         type: 'REMOVE_FROM_BASKET',
-  //         id: id,
-  //     })
-  // }
-
-  // const [code, setCode] = useState([])
-
-  //   async function getCode() {
-  //     const request = await axios
-  //       .get("user/auth/kakao/callback")
-  //       .then(response => window.location.href = response)
-  //       .catch(error => console.log(error));
-
-  //     return request;
-  //   }
-  //   getCode();
-
-  //   const signIn = (e) => {
-  //     e.preventDefault();
-
-  //     axios
-  //       .get('/users/login', {
-  //         params: {
-  //           user_id: email,
-  //           user_pwd: password,
-  //         },
-  //       })
-  //       .then((res) =>
-  //         dispatch({
-  //           type: 'SET_USER',
-  //           user: res.data,
-  //         }),
-  //       )
-  //       .catch((err) => console.log(err));
-  //   };
-
-  //   console.log(loginUser);
-
-  //   return (
-  //     <div className="login">
-  //       <Link to="/home">
-  //         <img className="login__logo" src={logo} />
-  //       </Link>
-
-  //       <div className="login__container">
-  //         <h1>Sign in</h1>
-  //         <form>
-  //           <h5>Id</h5>
-  //           <input
-  //             name="email"
-  //             type="text"
-  //             onChange={(e) => setEmail(e.target.value)}
-  //           />
-
-  //           <h5>Password</h5>
-  //           <input
-  //             name="password"
-  //             type="password"
-  //             onChange={(e) => setPassword(e.target.value)}
-  //           />
-
-  //           <button
-  //             type="submit"
-  //             onClick={signIn}
-  //             className="login__signInButton"
-  //           >
-  //             Sign In
-  //           </button>
-  //         </form>
-
-  // <a href="https://kauth.kakao.com/oauth/authorize?client_id=6fb58fe9599789c28415a8e5f541acbb&redirect_uri=http://localhost:5000/auth/kakao/callback&response_type=code">
-  //     <img className="KakaoLogin" src={kakao} alt="카카오 로그인 버튼"/>
-  // </a>
-
-  {
-    /* <button 
-                onClick={register}
-                className='login__registerButton'>Create Account</button> */
-  }
-  //       </div>
-  //     </div>
-  //   );
 }
 export default Login;
