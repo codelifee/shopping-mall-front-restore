@@ -59,7 +59,7 @@ export default function Map() {
           <div className="destination">
             <div className="destination_name">교통안내</div>
             <table
-              cassName="destination_info"
+              className="destination_info"
               style={{
                 textAlign: 'left',
                 width: '700px',
