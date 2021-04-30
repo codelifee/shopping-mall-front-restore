@@ -1,9 +1,10 @@
-const localUrl = "http://localhost:5000/";
-const cloudUrl = "https://api.xn--vx3b30no7b.com/";
+const url = 
+// "http://localhost:5000/";
+ "https://api.xn--vx3b30no7b.com/";
 
 export const ImageData = {
-  image1: `${localUrl}products/showProductImage/`,
-  image2: `${localUrl}products/showInfoImage/`,
-  image3: `${localUrl}products/showQualityImage/`,
-  image4: `${localUrl}review/showReviewImage/`,
+  image1: `${url}products/showProductImage/`,
+  image2: `${url}products/showInfoImage/`,
+  image3: `${url}products/showQualityImage/`,
+  image4: `${url}review/showReviewImage/`,
 };

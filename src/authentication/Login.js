@@ -19,9 +19,6 @@ function Login() {
   const signIn = (e) => {
     e.preventDefault();
 
-    console.log(email)
-    console.log(password)
-
     axios.post("/authenticate", 
               {
                 "username" : email,
@@ -34,9 +31,7 @@ function Login() {
               }
     )
     .then(res => {
-      
-          var token = res.data.jwt;
-          var decoded = jwt_decode(token);
+          console.log(res);
 
           Cookies.set("jwt", res.data.jwt, {expires: 2});
 
@@ -45,7 +40,7 @@ function Login() {
               },
               {
                 headers: {
-                  "Authorization" : `Bearer ${token}`
+                  "Authorization" : `Bearer ${res.data.jwt}`
                 }
               }
               )
@@ -58,6 +53,7 @@ function Login() {
               })
               .catch(err => console.log(err))
     }
+
     )
     .catch(err => {
       console.log(err)
@@ -114,10 +110,10 @@ function Login() {
           fail={(res) => console.log(res)}
         />*/}
 
-        <KakaoLogin
+        {/* <KakaoLogin
           success={res => console.log(res)}
           fail={(res) => console.log(res)}
-        />
+        /> */}
 
       </div>
     </div>

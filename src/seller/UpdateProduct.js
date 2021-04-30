@@ -62,7 +62,9 @@ function UpdateProduct() {
         // }
         
         axios.put(`products/${productId}`, form)
-        .then(res => console.log(res))
+        .then(res => {
+            alert("변경되었습니다")
+            })
         .catch(err => console.log(err))
     }
 
@@ -80,8 +82,14 @@ function UpdateProduct() {
                 product_picture.append('product_picture', image.product_picture)
 
                 axios.patch(`products/productPicture/${productId}`, product_picture)
-                .then(res => console.log(res))
-                .catch(err => console.log(err))
+                .then(res => 
+                    {
+                    alert("변경되었습니다")
+                    })
+                .catch(err => { 
+                    console.log(err)
+                    alert("데이터를 넣어주세요")
+                })
             }
 
         if(image.info_img != null && 
@@ -89,8 +97,13 @@ function UpdateProduct() {
             ) {
                 info_img.append('info_img', image.info_img)
                 axios.patch(`products/infoImg/${productId}`, info_img)
-                .then(res => console.log(res))
-                .catch(err => console.log(err))
+                .then(res => {
+                    alert("변경되었습니다") 
+                })
+                .catch(err => { 
+                    console.log(err)
+                    alert("사진을 넣어주세요")
+                })
             }
 
         if(image.quality_img != null && 
@@ -98,8 +111,13 @@ function UpdateProduct() {
             ) {
                 quality_img.append('quality_img', image.quality_img)
                 axios.patch(`products/qualityImg/${productId}`, quality_img)
-                .then(res => console.log(res))
-                .catch(err => console.log(err))
+                .then(res => {
+                    alert("변경되었습니다")  
+                })
+                .catch(err => { 
+                    console.log(err)
+                    alert("사진을 넣어주세요")
+                })
             }
     
 

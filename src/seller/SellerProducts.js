@@ -26,7 +26,7 @@ function SellerProducts() {
       .delete("products/" + id)
       .then((res) => {
         console.log(res);
-        window.location.reload(false);
+        window.location.reload();
       })
       .catch((err) => console.log(err));
   };

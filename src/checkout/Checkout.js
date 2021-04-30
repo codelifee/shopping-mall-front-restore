@@ -101,11 +101,11 @@ function Checkout() {
       cart_id={check.cart_item_id}
       title={check.product_name}
       quantity={check.cart_item_quantity}
-      image={image+check.product_id}
+      image={ImageData.image1+check.product_id}
       price={check.product_price}
       handleDelete={handleDelete}
  />
-      ))}
+    ))}
 
               </tbody>
               <Subtotal />

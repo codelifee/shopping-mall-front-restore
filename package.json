@@ -64,7 +64,8 @@
     "redux-thunk": "^2.3.0",
     "slick-carousel": "^1.8.1",
     "styled-components": "^4.3.2",
-    "web-vitals": "^0.2.4"
+    "web-vitals": "^0.2.4",
+    "source-map-loader": "^1.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
